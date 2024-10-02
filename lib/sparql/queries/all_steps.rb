@@ -1,5 +1,7 @@
 module ALL_STEPS_QUERY
 
+  Sparql::Queries::AllSteps = true
+
   # A SPARQL query to get all steps.
   def all_steps_query
     "

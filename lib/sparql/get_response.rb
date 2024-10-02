@@ -1,5 +1,7 @@
 module GET_SPARQL_RESPONSE
 
+  Sparql::GetResponse = true
+
   require 'uri'
   require 'net/http'
   require 'csv'

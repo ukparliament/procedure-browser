@@ -1,5 +1,7 @@
 module ALL_STEPS_GET
 
+  Sparql::Get::AllSteps = true
+
   # A method to get an array of all steps.
   def get_all_steps
 
