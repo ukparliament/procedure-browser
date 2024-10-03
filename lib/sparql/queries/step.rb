@@ -23,7 +23,7 @@ module STEP_QUERY
         ?publication :procedureStepPublicationName ?publicationName;
                      :procedureStepPublicationUrl ?publicationUrl.}
 
-        filter (?Step IN (id:#{step_id})}
+        filter (?Step IN (id:#{step_id}))}
     "
   end
 end
