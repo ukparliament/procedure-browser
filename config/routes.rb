@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   
   get 'steps' => 'step#index', as: :step_list
+  get 'steps/:step' => 'step#show', as: :step_show
 end
