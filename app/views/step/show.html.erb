@@ -1,1 +1,15 @@
-<%= @step_id %>
+<%= content_tag( 'h1', @step.label ) %>
+
+<%= content_tag( 'p', @step.description ) if @step.description %>
+
+<%= content_tag( 'p', "Step type: #{@step.step_type_label}" ) %>
+
+<div id="notes">
+	<%= content_tag( 'h2', 'Librarian notes' ) %>
+	<%= content_tag( 'p', "Scope note: #{@step.scope_note}" ) if @step.scope_note %>
+	<%= content_tag( 'p', "Link note: #{@step.link_note}" ) if @step.link_note %>
+	<%= content_tag( 'p', "Link note: #{@step.date_note}" ) if @step.date_note %>
+	<%= content_tag( 'p', "Publication name: #{@step.publication_name}" ) if @step.publication_name %>
+	<%= content_tag( 'p', "Publication URL: #{link_to( @step.publication_url, @step.publication_url)}".html_safe ) if @step.publication_url %>
+	<%= content_tag( 'p', "Identifier: #{link_to( @step.identifier, @step.identifier )}".html_safe ) %>
+</div>
