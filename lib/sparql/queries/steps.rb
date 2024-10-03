@@ -1,9 +1,9 @@
-module ALL_STEPS_QUERY
+module STEPS_QUERY
 
-  Sparql::Queries::AllSteps = true
+  Sparql::Queries::Steps = true
 
   # A SPARQL query to get all steps.
-  def all_steps_query
+  def steps_query
     "
       PREFIX id: <https://id.parliament.uk/>
       PREFIX : <https://id.parliament.uk/schema/>
