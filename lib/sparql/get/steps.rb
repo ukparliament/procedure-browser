@@ -1,12 +1,20 @@
-module ALL_STEPS_GET
+# We require the module files for the steps query and the SPARQL response.
+require 'sparql/queries/steps'
+require 'sparql/get/response'
 
-  Sparql::Get::AllSteps = true
+module GET_STEPS
+
+  Sparql::Get::Steps = true
+  
+  # We include the steps query and SPARQL response modules.
+  include STEPS_QUERY
+  include GET_RESPONSE
 
   # A method to get an array of all steps.
-  def get_all_steps
+  def get_steps
 
     # We get the all step query.
-    request_body = all_steps_query
+    request_body = steps_query
   
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
