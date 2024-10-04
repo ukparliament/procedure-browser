@@ -10,11 +10,21 @@ class StepController < ApplicationController
   
   def index
     @steps = get_steps
+    
+    @page_title = 'Procedure steps'
+    @description = 'Steps in procedures.'
+    @crumb << { label: 'Steps', url: nil }
+    @section = 'steps'
   end
   
   def show
     step_id = params[:step]
-    
     @step = get_step( step_id )
+    
+    @page_title = @step.label
+    @description = "#{@step.label}."
+    @crumb << { label: 'Steps', url: step_list_url }
+    @crumb << { label: @step.label, url: nil }
+    @section = 'steps'
   end
 end
