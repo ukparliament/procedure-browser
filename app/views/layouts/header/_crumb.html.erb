@@ -1,0 +1,29 @@
+<div class="context-nav" role="navigation">
+    <div class="container">
+	    <nav>
+	        <ol class="breadcrumb">
+	            <li>
+					<%= link_to( 'UK Parliament', 'https://www.parliament.uk/' ) %>
+	            </li>
+	            <li>
+					<%= link_to( 'House of Commons Library', 'https://commonslibrary.parliament.uk/' ) %>
+	            </li>
+				<% if @crumb.empty? -%>
+					<li>
+		                Election Results
+					</li>
+				<% else -%>
+					<li>
+						<%= link_to( 'Procedure browser', home_url ) %>
+					</li>
+					<%= render :partial => 'layouts/header/crumb_item', :collection => @crumb %>
+				<% end -%>
+	        </ol>
+        </nav>
+    </div>
+</div>
+
+
+    
+	    
+	        
