@@ -1,16 +1,60 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>ProcedureBrowser</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<html lang="en-GB">
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="viewport" content="width=device-width">
+		<% if @page_title %>
+			<title>UK Parliament procedure browser: <%= @page_title %></title>
+			<meta name="twitter:title" content="UK Parliament procedure browser: <%= @page_title %>">
+			<meta property="og:title" content="UK Parliament procedure browser: <%= @page_title %>">
+		<% else -%>
+			<title>UK Parliament election results</title>
+			<meta name="twitter:title" content="UK Parliament procedure browser">
+			<meta property="og:title" content="UK Parliament procedure browser">
+		<% end -%>
+		
+		<% if @description -%>
+			<meta name="description" content="<%= @description %>">
+			<meta property="og:description" content="<%= @description %>">
+		<% else -%>
+			<% if @page_title %>
+				<meta name="description" content="UK Parliament procedure browser: <%= @page_title %>.">
+				<meta property="og:description" content="UK Parliament procedure browser: <%= @page_title %>.">
+			<% else -%>
+				<meta name="description" content="UK Parliament procedure browser.">
+				<meta property="og:description" content="UK Parliament procedure browser.">
+			<% end -%>
+		<% end -%>
+		
+		<link rel="canonical" href="<%= url_for(:only_path => false, :protocol => 'https') %>">
+		<% if @csv_url -%>
+			<link rel="alternate" href="<%= @csv_url %>" type="text/csv">
+		<% end -%>
+		
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://procedure-browser-036a79442650.herokuapp.com/" />
+		<meta property="og:site_name" content="UK Parliament procedure browsers" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@commonslibrary" />
+		<%= favicon_link_tag asset_path('favicon.ico') %>
+ 		<%= stylesheet_link_tag "application" %>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<!-- %= render :partial => 'layouts/head/json_ld/crumb', :object => @crumb % -->
+	</head>
+	<body class="section-<%= @section %> subsection-<%= @subsection %>">
+		<%= render :partial => 'layouts/header/header' %>
+		<main id="main-content" class="container" role="main">
+			<div class="inner-content container">
+				<div class="reading-width">
+					<%= render :partial => 'layouts/debug' %>
+					<h1><%= @multiline_page_title || @page_title || 'UK Parliament procedure browser' %></h1>
+					<%= yield %>
+				</div>
+			</div>
+		</main>
+		<%= render :partial => 'layouts/footer' %>	
+	</body>
 </html>
