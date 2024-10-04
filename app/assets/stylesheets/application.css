@@ -13,3 +13,775 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+
+
+
+nav#header-nav {
+	padding: 1em 0 0;
+}
+nav#header-nav a {
+	border-bottom: 3px #006e45 solid;
+	display: inline-block;
+	margin-right: 10px;
+}
+nav#header-nav a:hover {
+	border-bottom-color: #fff;
+}
+
+
+/* nav active */
+body.section-steps nav#header-nav a.steps {
+	border-bottom-color: #fff;
+}
+
+.subnav {
+	border-color: #cbc9cd;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	margin-bottom: 1em;
+}
+.subnav p {
+	margin: 0;
+	padding: .5em .5em 0 .5em;
+}
+
+.subnav a {
+	border-bottom: 4px #fff solid;
+	color: #2b57ab;
+	display: inline-block;
+	text-decoration: none;
+  	margin-right:0.2rem;
+  	padding:0 0.2rem;
+}
+
+.subnav a:hover {
+	border-bottom-color: #cbc9cd;
+}
+
+/* subnav active */
+body.subsection-acts-of-parliament .subnav a.acts-of-parliament {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-orders-in-council .subnav a.orders-in-council {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+
+
+div.debug {
+	border: 3px solid yellow;
+	margin: 10px;
+	padding: 10px;
+}
+
+
+
+
+
+/* A-Z nav */
+body.subsection-a .subnav a.a {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-b .subnav a.b {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-c .subnav a.c {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-d .subnav a.d {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-e .subnav a.e {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-f .subnav a.f {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-g .subnav a.g {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-h .subnav a.h {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-i .subnav a.i {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-j .subnav a.j {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-k .subnav a.k {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-l .subnav a.l {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-m .subnav a.m {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-n .subnav a.n {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-o .subnav a.o {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-p .subnav a.p {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-q .subnav a.q {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-r .subnav a.r {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-s .subnav a.s {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-t .subnav a.t {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-u .subnav a.u {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-v .subnav a.v {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-w .subnav a.w {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-x .subnav a.x {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-y .subnav a.y {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-z .subnav a.z {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-general-election .subnav a.general-election {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-by-elections .subnav a.by-elections {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-registration .subnav a.registration {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+
+	
+
+	
+
+
+
+
+
+
+a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+
+.page-header {
+  background-color: #006e45;
+  color: #fff;
+  padding: 1.5em 0;
+  border-top: 1px solid #005434;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.page-header a {
+  color: #fff;
+}
+
+.page-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.page-header nav {
+  padding-bottom: 1em;
+}
+
+h1 span[class="subhead"] {
+	display: block;
+	font-size: .7em;
+	font-weight: normal;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+#result-summary {
+  border: 1px solid #000;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+#result-summary p {
+  margin: 0;
+}
+
+.table-wrapper  {
+  overflow-x: scroll;
+  scrollbar-width:none;
+}
+/* 
+.table-wrapper th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: inherit;
+} */
+
+table {
+  border-collapse: collapse;
+  font-variant-numeric: proportional-nums;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+table thead {
+  background-color: #006e45;
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+table thead a {
+  color: #fff;
+}
+
+/* Sortable tables */
+table.sortable thead a {
+  background-image: url("/sort.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  color: #fff;
+  display: block;
+  padding-left: 1.5em;
+  text-decoration: none;
+}
+
+table.sortable thead .number a {
+  background-position: right;
+  padding-right: 1.5em;
+}
+
+table.sortable.sorted-ascending thead td a.sorted {
+  background-image: url("/sort-up.png");
+}
+
+table.sortable.sorted-ascending thead th a.sorted {
+  background-image: url("/sort-up.png");
+}
+
+table.sortable.sorted-descending thead td a.sorted {
+  background-image: url("/sort-down.png");
+}
+
+table.sortable.sorted-descending thead th a.sorted {
+  background-image: url("/sort-down.png");
+}
+
+tbody tr:nth-child(2n) {
+  background-color: #efefef;
+}
+
+table.multibody tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+table.multibody tr {
+  border-bottom: 1.5px solid #eee;
+}
+
+table.multibody tr:last-child {
+  border-color: #bbb;
+}
+
+td,
+th {
+  padding: 6px;
+  text-align: left;
+  font-weight: normal;
+}
+
+td.number {
+  text-align: right;
+}
+
+th.number {
+  text-align: right;
+}
+
+ol.previous-next {
+  list-style: none;
+  padding: 0 0 2em 0;
+}
+
+ol.previous-next li.previous {
+  float: left;
+}
+
+ol.previous-next li.next {
+  float: right;
+}
+
+div .col-6.text-start {
+  padding-left: 0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
+div .col-6.text-end {
+  padding-right:0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+
+}
+
+p,
+ol {
+  clear: both;
+}
+/* Not specified */
+td.party {
+  border-left: 0.8em solid #909090;
+}
+
+
+
+
+/* Party colours mapped to MNIS IDs. */
+/* Conservative */
+/* Alba */
+td.party-1034 {
+  border-left-color: #005eb8;
+}
+/* Alliance */
+td.party-1 {
+  border-left-color: #cdaf2d;
+}
+/* Aontú */
+td.party-1025 {
+  border-left-color: #259a47;
+}
+/* Ashfield Independents */
+td.party-264 {
+  border-left-color: #ffc0cb;
+}
+/* Brexit / Reform */
+td.party-1036 {
+  border-left-color: #12b6cf;
+}
+/* Christian Peoples Alliance Party */
+td.party-80 {
+  border-left-color: #813887;
+}
+/* Conservative */
+td.party-4 {
+  border-left-color: #0063ba;
+}
+/* DUP */
+td.party-7 {
+  border-left-color: #d46a4c;
+}
+/* English Democrats */
+td.party-90 {
+  border-left-color: #de122d;
+}
+/* Green Party (England and Wales), Scottish Green Party, NI Green Party */
+td.party-44, td.party-1057, td.party-1113 {
+  border-left-color: #78b82a;
+}
+/* Heritage Party */
+td.party-1037 {
+  border-left-color: #0a00a5;
+}
+/* Labour */
+td.party-15 {
+  border-left-color: #d50000;
+}
+/* Liberal */
+td.party-16 {
+  border-left-color: #eb7a43;
+}
+/* Liberal Democrats */
+td.party-17 {
+  border-left-color: #faa01a;
+}
+/* Mebyon Kernow */
+td.party-116 {
+  border-left-color: #d6c324;
+}
+/* Monster Raving Loony Party */
+td.party-119 {
+  border-left-color: #ffff00;
+}
+/* People Before Profit Alliance */
+td.party-177 {
+  border-left-color: #d71c47;
+}
+/* Plaid Cymru */
+td.party-22 {
+  border-left-color: #348837;
+}
+/* Rejoin EU */
+td.party-1040 {
+  border-left-color: #052e88;
+}
+/* SDLP */
+td.party-31 {
+  border-left-color: #4ea268;
+}
+/* SDP */
+td.party-32 {
+  border-left-color: #c33350;
+}
+/* Sinn Fein */
+td.party-30 {
+  border-left-color: #02665f;
+}
+/* SNP */
+td.party-29 {
+  border-left-color: #fff685;
+}
+/* Trade Unionist and Socialist Coalition */
+td.party-157 {
+  border-left-color: #ec008c;
+}
+/* TUV */
+td.party-158 {
+  border-left-color: #0c3a6a;
+}
+/* UKIP */
+td.party-35 {
+  border-left-color: #722889;
+}
+/* UUP */
+td.party-38 {
+  border-left-color: #a1cdf0;
+}
+/* Women's Equality Party */
+td.party-260 {
+  border-left-color: #421c5f;
+}
+/* Workers Party of Britain */
+td.party-1042 {
+  border-left-color: #539acb;
+}
+/* Yorkshire Party */
+td.party-262 {
+  border-left-color: #16ace2;
+}
+
+
+.breadcrumb {
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item:before {
+  color: #6c757d;
+  content: "/";
+  float: left;
+  padding-right: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item:hover:before {
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+@font-face {
+  font-family: National;
+  font-display: swap;
+  src: url(/fonts/National-LFS-Book.woff2);
+  src: url(/fonts/National-LFS-Book.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: National;
+  font-display: swap;
+  font-weight: 500;
+  src: url(/fonts/National-LFS-Semibold.woff2);
+  src: url(/fonts/National-LFS-Semibold.woff2) format("woff2");
+}
+
+body {
+  background-color: #ebe9e8;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  font-family: National, Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+body main {
+  color: #4d4d4d;
+  flex: 1 0 auto;
+}
+
+body a {
+  color: #2b57ab;
+  text-decoration: underline;
+}
+
+header {
+  background-color: #373151; 
+  padding-top: 20px ;
+}
+
+@media (min-width: 992px) {
+  header .p-primary-nav {
+    position: absolute;
+    right: 15px;
+    top: -20px;
+
+  }
+}
+
+@media (min-width: 768px) {
+  header {
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+
+  header a.parliament-home svg {
+    width: calc(100% - 0.25rem);
+
+  }
+
+  header .product-header {
+    margin-top: 20px;
+    padding: 20px 0;
+
+  }
+
+  header .title {
+    font-size: 2.3rem;
+    line-height: 1.1;
+  }
+}
+
+header a.parliament-home {
+  display: inline-block;
+  padding: 2px;
+}
+
+header a.parliament-home svg {
+  width: 159px;
+}
+
+header a,
+header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+header .product-header {
+  border-top: 1px solid #625a75;
+  margin-top: 5px;
+  padding: 20px 0;
+}
+
+header .product-header .title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+header #site-title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+footer {
+  background-color: #373151;
+  color: #fff;
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 10px 0;
+}
+
+footer a,
+footer a:hover {
+  color: #fff;
+}
+
+a.skip-to-content {
+  border: none;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.context-nav {
+  background-color: #625a75;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 5px 0;
+  position: relative;
+}
+
+.context-nav .container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.context-nav .container:not(.default-width) {
+  width: 100%;
+}
+
+.context-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.context-nav a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.context-nav a:hover {
+  color: #fff;
+}
+
+.context-nav a:focus {
+  box-shadow: 0 0 0 2px #96dcbe;
+  color: #373151;
+  outline: none;
+}
+
+.context-nav .breadcrumb {
+  background-color: transparent;
+  border-radius: 0;
+  display: block;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  text-overflow: clip;
+  width: 100%;
+}
+
+.context-nav .breadcrumb li {
+  display: inline;
+  margin-right: 5px;
+}
+
+.context-nav .breadcrumb li:after {
+  content: ">";
+  font-size: 20px;
+  font-weight: 900;
+  margin-left: 7px;
+}
+
+.context-nav .breadcrumb li:last-child:after {
+  display: none;
+}
+
+main .inner-content {
+  background-color: #fff;
+  padding: 1.5rem;
+  padding-top: 2rem;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+a.csv {
+  background-image: url("/csv.png");
+  background-repeat: no-repeat;
+  display: block;
+  height: 32px;
+  width: 32px;
+}
+
+a.csv abbr {
+  visibility: hidden;
+}
+
+#cartogram {
+  height: 630px;
+  max-width: 600px;
+  width: 95%;
+  border: none;
+}
+
+img#schema {
+  width: 90%;
+}
+
+/* edit this after all theads contains ths */
+table thead tr td:first-child {
+  border-left: 0.8em solid #006e45;
+}
+
+table thead tr th:first-child {
+  border-left: 0.8em solid #006e45;
+}
