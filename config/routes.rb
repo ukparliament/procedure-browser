@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index', as: :home
   
+  get 'step-types' => 'step_type#index', as: :step_type_list
+  get 'step-types/:step_type' => 'step_type#show', as: :step_type_show
+  
   get 'steps' => 'step#index', as: :step_list
   get 'steps/:step' => 'step#show', as: :step_show
 end
