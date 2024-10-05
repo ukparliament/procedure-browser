@@ -14,4 +14,8 @@ class Step
   def id
     self.identifier.split( '/' ).last
   end
+  
+  def step_type_id
+    self.step_type_identifier.split( '/' ).last
+  end
 end
