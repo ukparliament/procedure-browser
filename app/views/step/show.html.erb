@@ -2,7 +2,7 @@
 
 <%= content_tag( 'p', @step.description ) if @step.description %>
 
-<div id="notes">
+<div id="librarian-notes">
 	<%= content_tag( 'h2', 'Librarian notes' ) %>
 	<%= content_tag( 'p', "Scope note: #{@step.scope_note}" ) if @step.scope_note %>
 	<%= content_tag( 'p', "Link note: #{@step.link_note}" ) if @step.link_note %>
