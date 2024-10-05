@@ -1,1 +1,3 @@
 <%= content_tag( 'p', @step_type.description ) if @step_type.description %>
+
+<%= render :partial => 'common/identifier', :object => @step_type %>
