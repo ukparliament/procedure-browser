@@ -31,9 +31,11 @@ nav#header-nav a:hover {
 	border-bottom-color: #fff;
 }
 
-
 /* nav active */
 body.section-steps nav#header-nav a.steps {
+	border-bottom-color: #fff;
+}
+body.section-step-types nav#header-nav a.step-types {
 	border-bottom-color: #fff;
 }
 
