@@ -22,9 +22,6 @@ module GET_STEP
     # We take the one and only row from the CSV ...
     csv.take( 1 ).each do |row|
     
-    
-    puts row
-    
       # ... and create a new step object.
       step = Step.new
       step.identifier = row['Step']
