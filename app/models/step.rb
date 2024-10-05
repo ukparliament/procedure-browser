@@ -18,4 +18,12 @@ class Step
   def step_type_id
     self.step_type_identifier.split( '/' ).last
   end
+  
+  def has_librarian_notes?
+    has_librarian_notes = false
+    if self.scope_note || self.link_note || self.date_note || self.publication_name || self.publication_url
+      has_librarian_notes = true
+    end
+    has_librarian_notes
+  end
 end
