@@ -1,6 +1,6 @@
-<%= content_tag( 'p', @step.description ) if @step.description %>
+<%= content_tag( 'p', "A step of type #{@step.step_type_label}." ) %>
 
-<%= content_tag( 'p', "Step type: #{@step.step_type_label}" ) %>
+<%= content_tag( 'p', @step.description ) if @step.description %>
 
 <div id="notes">
 	<%= content_tag( 'h2', 'Librarian notes' ) %>
