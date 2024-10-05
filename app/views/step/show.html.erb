@@ -1,4 +1,4 @@
-<%= content_tag( 'p', "A step of type #{@step.step_type_label}." ) %>
+<%= content_tag( 'p', "A step of type #{link_to( @step.step_type_label, step_type_show_url( :step_type => @step.step_type_id ) )}.".html_safe ) %>
 
 <%= content_tag( 'p', @step.description ) if @step.description %>
 
