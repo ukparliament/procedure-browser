@@ -4,7 +4,7 @@ require 'sparql/get/response'
 
 module GET_STEP_TYPE_STEPS
 
-  Sparql::Get::StepTypesStep = true
+  Sparql::Get::StepTypeStep = true
   
   # We include the step type steps query and SPARQL response modules.
   include STEP_TYPE_STEPS_QUERY
