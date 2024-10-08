@@ -10,6 +10,7 @@ class Step
   attr_accessor :publication_url
   attr_accessor :step_type_identifier
   attr_accessor :step_type_label
+  attr_accessor :step_type_description
   
   def id
     self.identifier.split( '/' ).last
