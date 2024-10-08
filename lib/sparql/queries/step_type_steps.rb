@@ -9,14 +9,17 @@ module STEP_TYPE_STEPS_QUERY
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      SELECT ?StepType ?stepTypeName ?procedureStep ?procedureStepName WHERE {
+      SELECT ?StepType ?stepTypeName ?procedureStep ?procedureStepName ?stepTypeDescription WHERE {
 
         ?StepType a :ProcedureStepType;
                   :name ?stepTypeName;
                   :procedureStepTypeHasProcedureStep ?procedureStep.
+                  
+        OPTIONAL { ?StepType :procedureStepTypeDescription ?stepTypeDescription }
                   ?procedureStep :name ?procedureStepName.
         Filter (?StepType in (id:#{step_type_id}))
       }
+       order by asc(UCASE(str(?procedureStepName)))
     "
   end
 end
