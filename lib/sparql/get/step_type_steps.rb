@@ -29,6 +29,9 @@ module GET_STEP_TYPE_STEPS
       step = Step.new
       step.identifier = row['procedureStep']
       step.label = row['procedureStepName']
+      step.step_type_identifier = row['StepType']
+      step.step_type_label = row['stepTypeName']
+      step.step_type_description = row['stepTypeDescription']
     
       # ... and add it to the array of steps.
       steps << step
