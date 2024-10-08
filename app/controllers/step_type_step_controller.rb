@@ -10,8 +10,12 @@ class StepTypeStepController < ApplicationController
 
   def index
     step_type_id = params[:step_type]
-    @step_type = get_step_type( step_type_id )
     @step_type_steps = get_step_type_steps( step_type_id )
+    
+    @step_type = StepType.new
+    @step_type.identifier = @step_type_steps.first.step_type_identifier
+    @step_type.label = @step_type_steps.first.step_type_label
+    @step_type.description = @step_type_steps.first.step_type_description
   
     @page_title = "#{@step_type.label} steps"
     @description = "Steps of type #{@step_type.label}."
