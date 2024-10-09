@@ -27,12 +27,16 @@ module GET_STEP_TYPE_STEPS
   
       # ... we create a new step object ...
       step = Step.new
-      step.identifier = row['procedureStep']
-      step.label = row['procedureStepName']
+      step.identifier = row['Step']
+      step.label = row['StepName']
       step.step_type_identifier = row['StepType']
       step.step_type_label = row['stepTypeName']
       step.step_type_description = row['stepTypeDescription']
-    
+      step.legislature_identifier = row['legislature']
+      step.legislature_label = row['legislatureName']
+      step.commons_identifier = row['CommonsId']
+      step.lords_identifier = row['LordsId']
+      
       # ... and add it to the array of steps.
       steps << step
     end
