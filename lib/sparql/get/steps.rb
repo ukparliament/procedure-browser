@@ -29,7 +29,13 @@ module GET_STEPS
       step = Step.new
       step.identifier = row['Step']
       step.label = row['stepName']
-    
+      step.step_type_identifier = row['stepType']
+      step.step_type_label = row['stepTypeName']
+      step.legislature_identifier = row['legislature']
+      step.legislature_label = row['legislatureName']
+      step.commons_identifier = row['CommonsId']
+      step.lords_identifier = row['LordsId']
+      
       # ... and add it to the array of steps.
       steps << step
     end
