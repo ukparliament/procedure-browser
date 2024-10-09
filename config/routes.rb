@@ -16,9 +16,17 @@ Rails.application.routes.draw do
   get 'steps' => 'step#index', as: :step_list
   get 'steps/:step' => 'step#show', as: :step_show
   
+  get 'steps/:step/work-packageable-things' => 'step_work_packageable_thing#index', as: :step_work_packageable_thing_list
+  
   get 'houses' => 'house#index', as: :house_list
   get 'house/:house' => 'house#show', as: :house_show
   
   get 'legislatures' => 'legislature#index', as: :legislature_list
   get 'legislatures/:legislature' => 'legislature#show', as: :legislature_show
+  
+  get 'procedures' => 'procedure#index', as: :procedure_list
+  get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
+  
+  get 'work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
+  get 'work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
 end
