@@ -4,7 +4,7 @@ require 'sparql/get/step_type_steps'
 
 class StepTypeController < ApplicationController
 
-  # We include the get step types and get step type modules.
+  # We include the get step types and the get step types steps modules.
   include GET_STEP_TYPES
   include GET_STEP_TYPE_STEPS
 
