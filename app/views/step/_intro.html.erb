@@ -1,0 +1,7 @@
+<%= content_tag( 'p', step_houses_and_legislature_label_with_links( intro ) ) if step_houses_and_legislature_label_with_links( intro ) %>
+
+<%= content_tag( 'p', "A step of type #{link_to( intro.step_type_label, step_type_show_url( :step_type => intro.step_type_id ) )}.".html_safe ) %>
+
+<%= content_tag( 'p', intro.description ) if intro.description %>
+
+<%= render :partial => 'step/nav' %>
