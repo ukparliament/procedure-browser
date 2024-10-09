@@ -26,5 +26,6 @@ class StepController < ApplicationController
     @crumb << { label: 'Steps', url: step_list_url }
     @crumb << { label: @step.label, url: nil }
     @section = 'steps'
+    @subsection = 'overview'
   end
 end
