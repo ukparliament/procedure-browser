@@ -16,13 +16,13 @@ module STEP_QUERY
                   :procedureStepHasProcedureStepType ?stepType.
         ?stepType :name ?stepTypeLabel.
         optional { ?Step :procedureStepDescription ?description}
-        optional {?Step  :procedureStepHasProcedureStepPublication ?publication}
+        optional {?Step  :procedureStepHasProcedureStepPublication ?publication.
+        ?publication :procedureStepPublicationName ?publicationName;
+        :procedureStepPublicationUrl ?publicationUrl.}
         optional {?Step  :procedureStepScopeNote ?scopeNote}
         optional {?Step  :procedureStepLinkNote ?linkNote}
         optional {?Step  :procedureStepDateNote ?dateNote}
-        optional {?publication :procedureStepPublicationName ?publicationName}
-        optional {?publication :procedureStepPublicationUrl ?publicationUrl.}
-        optional {?Step :procedureStepInLegislature ?legislature.
+         optional {?Step :procedureStepInLegislature ?legislature.
           ?legislature :name ?legislatureName.}
         optional {?Step :procedureStepHasHouse ?CommonsId.
               filter (?CommonsId IN (id:1AFu55Hs))}
