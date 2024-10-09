@@ -15,4 +15,10 @@ Rails.application.routes.draw do
   
   get 'steps' => 'step#index', as: :step_list
   get 'steps/:step' => 'step#show', as: :step_show
+  
+  get 'houses' => 'house#index', as: :house_list
+  get 'house/:house' => 'house#show', as: :house_show
+  
+  get 'legislatures' => 'legislature#index', as: :legislature_list
+  get 'legislatures/:legislature' => 'legislature#show', as: :legislature_show
 end
