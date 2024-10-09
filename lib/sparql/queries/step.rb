@@ -9,20 +9,25 @@ module STEP_QUERY
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      SELECT ?Step ?stepName  ?description ?scopeNote ?linkNote ?dateNote ?publicationName ?publicationUrl ?stepType ?stepTypeLabel WHERE {
+      SELECT ?Step ?stepName  ?description ?scopeNote ?linkNote ?dateNote ?publicationName ?publicationUrl ?stepType ?stepTypeLabel ?CommonsId ?LordsId ?legislature ?legislatureName WHERE {
 
         ?Step a :ProcedureStep;
                   :name ?stepName;
                   :procedureStepHasProcedureStepType ?stepType.
         ?stepType :name ?stepTypeLabel.
-        optional { ?Step :procedureStepDescription ?description;
-                  :procedureStepHasProcedureStepPublication ?publication;
-                  :procedureStepScopeNote ?scopeNote;
-                  :procedureStepLinkNote ?linkNote;
-                  :procedureStepDateNote ?dateNote.
-        ?publication :procedureStepPublicationName ?publicationName;
-                     :procedureStepPublicationUrl ?publicationUrl.}
-
+        optional { ?Step :procedureStepDescription ?description}
+        optional {?Step  :procedureStepHasProcedureStepPublication ?publication}
+        optional {?Step  :procedureStepScopeNote ?scopeNote}
+        optional {?Step  :procedureStepLinkNote ?linkNote}
+        optional {?Step  :procedureStepDateNote ?dateNote}
+        optional {?publication :procedureStepPublicationName ?publicationName}
+        optional {?publication :procedureStepPublicationUrl ?publicationUrl.}
+        optional {?Step :procedureStepInLegislature ?legislature.
+          ?legislature :name ?legislatureName.}
+        optional {?Step :procedureStepHasHouse ?CommonsId.
+              filter (?CommonsId IN (id:1AFu55Hs))}
+        optional {?Step :procedureStepHasHouse ?LordsId.
+             filter (?LordsId IN (id:WkUWUBMx))}
         filter (?Step IN (id:#{step_id}))}
     "
   end
