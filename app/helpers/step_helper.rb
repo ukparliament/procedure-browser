@@ -26,4 +26,38 @@ module StepHelper
       
     step_houses_and_legislature_label.html_safe
   end
+  
+  def step_houses_and_legislature_label( step )
+    houses_and_legislatures = []
+    step_houses_and_legislature_label = ''
+    if step.commons_identifier
+      houses_and_legislatures << 'House of Commons'
+    end
+    if step.lords_identifier
+      houses_and_legislatures << 'House of Lords'
+    end
+    if step.legislature_identifier
+      houses_and_legislatures << step.legislature_label
+    end
+    
+    houses_and_legislatures.each do |hl|
+      if hl != houses_and_legislatures.first
+        if hl != houses_and_legislatures.last
+          step_houses_and_legislature_label += ', '
+        else
+          step_houses_and_legislature_label += ' and '
+        end
+      end
+      step_houses_and_legislature_label += hl
+    end
+      
+    step_houses_and_legislature_label.html_safe
+  end
+  
+  def step_label_in_list( step )
+    step_label_in_list = step.label
+    step_label_in_list += " #{step.step_type_label}" unless step.step_type_id == 'Jwc6nqJi'
+    step_label_in_list += " (#{step_houses_and_legislature_label( step )})" unless step_houses_and_legislature_label( step ).empty?
+    step_label_in_list.html_safe
+  end
 end
