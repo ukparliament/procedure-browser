@@ -34,6 +34,10 @@ module GET_STEP
       step.publication_url = row['publicationUrl']
       step.step_type_identifier = row['stepType']
       step.step_type_label = row['stepTypeLabel']
+      step.commons_identifier = row['CommonsId']
+      step.lords_identifier = row['LordsId']
+      step.legislature_identifier = row['legislature']
+      step.legislature_label = row['legislatureName']
       
       # We return the step object.
       return step
