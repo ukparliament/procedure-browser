@@ -64,11 +64,11 @@ body.section-step-types nav#header-nav a.step-types {
 }
 
 /* subnav active */
-body.subsection-acts-of-parliament .subnav a.acts-of-parliament {
+body.subsection-overview .subnav a.overview {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
-body.subsection-orders-in-council .subnav a.orders-in-council {
+body.subsection-work-packageable-things .subnav a.work-packageable-things {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
