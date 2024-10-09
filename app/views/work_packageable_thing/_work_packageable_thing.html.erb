@@ -1,0 +1,4 @@
+<li>
+	<%= content_tag( 'p', link_to( work_packageable_thing.label, work_packageable_thing_show_url( :work_packageable_thing => work_packageable_thing.id ) ) ) %>
+	<%= content_tag( 'p', "Subject to: #{link_to( work_packageable_thing.procedure_label, procedure_show_url( :procedure => work_packageable_thing.procedure_id ) )}".html_safe ) %>
+</li>
