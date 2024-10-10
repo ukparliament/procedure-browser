@@ -13,8 +13,8 @@ class StepWorkPackageableThingController < ApplicationController
     @step = get_step( step_id )
     @step_work_packageable_things = get_step_work_packageable_things( step_id )
     
-    @page_title = "#{@step.label} - work packageable things"
-    @multiline_page_title = "#{@step.label} <span class='subhead'>Work packageable things</span>".html_safe
+    @page_title = "#{@step.label} - Papers"
+    @multiline_page_title = "#{@step.label} <span class='subhead'>Papers</span>".html_safe
     @description = "Work packageable things for #{@step.label}."
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
