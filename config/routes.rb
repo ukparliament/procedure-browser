@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get 'procedures' => 'procedure#index', as: :procedure_list
   get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
   
+  get 'work-packages' => 'work_package#index', as: :work_package_list
+  get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
+  
   get 'work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
   get 'work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
 end
