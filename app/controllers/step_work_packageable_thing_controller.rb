@@ -19,7 +19,7 @@ class StepWorkPackageableThingController < ApplicationController
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
     @crumb << { label: @step.label, url: step_show_url }
-    @crumb << { label: 'Work packageable things', url: nil }
+    @crumb << { label: 'Papers', url: nil }
     @section = 'steps'
     @subsection = 'work-packageable-things'
   end
