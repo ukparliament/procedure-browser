@@ -31,6 +31,9 @@
 		<% if @csv_url -%>
 			<link rel="alternate" href="<%= @csv_url %>" type="text/csv">
 		<% end -%>
+		<% if @rss_url -%>
+			<link rel="alternate" href="<%= @rss_url %>" type="application/rss+xml">
+		<% end -%>
 		
 		<meta property="og:locale" content="en_GB" >
 		<meta property="og:type" content="website" >
@@ -52,7 +55,7 @@
 					<%= render :partial => 'layouts/debug' %>
 					<h1><%= @multiline_page_title || @page_title || 'UK Parliament procedure browser' %></h1>
 					<%= yield %>
-					<%= render :partial => 'layouts/queries/queries', :object => @queries unless @queries.empty? %>
+					<%= render :partial => 'layouts/data/data' %>
 				</div>
 			</div>
 		</main>
