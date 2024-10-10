@@ -19,7 +19,7 @@ class StepTypeStepController < ApplicationController
   
     @page_title = "#{@step_type.label} steps"
     @description = "Steps of type #{@step_type.label}."
-    @crumb << { label: 'Step types', url: step_type_list_url }
+    @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step_type.label, url: step_type_show_url( :step_type => @step_type.id ) }
     @crumb << { label: 'Steps', url: nil }
     @section = 'step-types'
