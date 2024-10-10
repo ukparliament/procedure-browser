@@ -15,7 +15,8 @@ class StepWorkPackageableThingController < ApplicationController
     
     @page_title = "#{@step.label} - Papers"
     @multiline_page_title = "#{@step.label} <span class='subhead'>Papers</span>".html_safe
-    @description = "Work packageable things for #{@step.label}."
+    @description = "Papers for #{@step.label}."
+    @rss_url = step_work_packageable_thing_list_url( :format => 'rss' )
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
     @crumb << { label: @step.label, url: step_show_url }
