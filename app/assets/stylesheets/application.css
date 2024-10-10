@@ -629,12 +629,12 @@ ol {
   padding: 0;
 }
 
-a.csv {
-  background-image: url("/csv.png");
+a.rss {
+  background-image: url("/rss.svg");
   background-repeat: no-repeat;
   display: block;
-  height: 32px;
-  width: 32px;
+  background-size: 20px;
+  padding-left: 30px;
 }
 
 a.csv abbr {
