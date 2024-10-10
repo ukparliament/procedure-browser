@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   
   get 'steps/:step/work-packageable-things' => 'step_work_packageable_thing#index', as: :step_work_packageable_thing_list
   
+  get 'steps/:step/step-collections' => 'step_step_collection#index', as: :step_step_collection_list
+  
+  get 'step-collections' => 'step_collection#index', as: :step_collection_list
+  get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
+  
   get 'houses' => 'house#index', as: :house_list
-  get 'house/:house' => 'house#show', as: :house_show
+  get 'houses/:house' => 'house#show', as: :house_show
   
   get 'legislatures' => 'legislature#index', as: :legislature_list
   get 'legislatures/:legislature' => 'legislature#show', as: :legislature_show
