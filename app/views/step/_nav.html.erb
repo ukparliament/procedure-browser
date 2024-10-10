@@ -1,5 +1,7 @@
 <p class="subnav">
 	<%= link_to( 'Overview', step_show_url, :class => 'overview' ) %>
-	<%# Only show link to work packageable things for business steps. %>
-	<%= link_to( 'Papers', step_work_packageable_thing_list_url, :class => 'work-packageable-things' ) if nav.step_type_id == 'Jwc6nqJi' %>
+	<% if nav.step_type_id == 'Jwc6nqJi' -%>
+		<%= link_to( 'Papers', step_work_packageable_thing_list_url, :class => 'work-packageable-things' ) %>
+		<%= link_to( 'Step collections', step_step_collection_list_url, :class => 'step-collections' ) %>
+	<% end -%>
 </p>
