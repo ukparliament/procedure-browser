@@ -11,9 +11,10 @@ class StepTypeController < ApplicationController
   def index
     @step_types = get_step_types
     
-    @page_title = 'Step types'
-    @description = 'Types of procedure steps.'
-    @crumb << { label: 'Step types', url: nil }
+    @page_title = 'Steps - by type'
+    @multiline_page_title = "Steps <span class='subhead'>By type</span>".html_safe
+    @description = 'Procedure steps.'
+    @crumb << { label: 'Steps', url: nil }
     @section = 'step-types'
   end
   
@@ -27,8 +28,8 @@ class StepTypeController < ApplicationController
     @step_type.description = @step_type_steps.first.step_type_description
     
     @page_title = @step_type.label
-    @description = "#{@step_type.description}."
-    @crumb << { label: 'Step types', url: step_type_list_url }
+    @description = "Steps of type #{@step_type.label}."
+    @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step_type.label, url: nil }
     @section = 'step-types'
   end
