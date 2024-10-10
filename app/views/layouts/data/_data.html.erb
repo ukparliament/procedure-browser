@@ -1,4 +1,0 @@
-<div id="data">
-	<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>	
-	<%= render :partial => 'layouts/data/queries', :object => @queries unless @queries.empty? %>
-</div>
