@@ -6,7 +6,7 @@ module GET_STEP_WORK_PACKAGEABLE_THINGS
 
   Sparql::Get::StepWorkPackageableThings = true
   
-  # We include the step type steps query and SPARQL response modules.
+  # We include the step work packageable things query and SPARQL response modules.
   include STEP_WORK_PACKAGEABLE_THINGS_QUERY
   include GET_RESPONSE
   
