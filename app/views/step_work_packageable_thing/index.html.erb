@@ -1,9 +1,9 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
 <% if @step_work_packageable_things.empty? -%>
-	<%= content_tag( 'p', "No work packageable things for step '#{@step.label}' to show yet." ) %>
+	<%= content_tag( 'p', "No papers for step '#{@step.label}' to show yet." ) %>
 <% else -%>
 	<ol>
-		<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @step_work_packageable_things %>
+		<%= render :partial => 'work_packageable_thing', :collection => @step_work_packageable_things %>
 	</ol>
 <% end -%>
