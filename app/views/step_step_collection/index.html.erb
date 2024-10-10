@@ -1,0 +1,11 @@
+<%= render :partial => 'step/intro', :object => @step %>
+
+
+<% if @step_step_collections.empty? -%>
+	<%= content_tag( 'p', "'#{@step.label}' is not a member of any step collections." ) %>
+<% else -%>
+	<%= content_tag( 'p', "'#{@step.label}' is a member of #{@step_step_collections.size} step #{'collection'.pluralize( @step_step_collections.size )}:" ) %>
+	<ol>
+		<%= render :partial => 'step_collection', :collection => @step_step_collections %>
+	</ol>
+<% end -%>
