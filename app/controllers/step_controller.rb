@@ -23,7 +23,7 @@ class StepController < ApplicationController
     
     @page_title = @step.label
     @description = "#{@step.label}."
-    @crumb << { label: 'Step types', url: step_type_list_url }
+    @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
     @crumb << { label: @step.label, url: nil }
     @section = 'steps'
