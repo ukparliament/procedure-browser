@@ -31,6 +31,7 @@ module GET_STEP_WORK_PACKAGEABLE_THINGS
       work_packageable_thing.procedure_label = row['procedureName']
       work_packageable_thing.identifier = row['workPackagedThing']
       work_packageable_thing.label = row['workpackagedThingName']
+      work_packageable_thing.event_date = row['businessItemDate'].to_date if row['businessItemDate']
       
       # ... and add it to the array of work packageable things.
       work_packageable_things << work_packageable_thing
