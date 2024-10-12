@@ -666,7 +666,7 @@ table thead tr th:first-child {
 }
 
 
-li:has(p) {
+li:has(h2) {
 	margin-bottom: 1.5em;
 }
 li h2 {
