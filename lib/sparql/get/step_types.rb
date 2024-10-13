@@ -1,15 +1,5 @@
-# We require the module files for the steps query and the SPARQL response.
-require 'sparql/queries/step_types'
-require 'sparql/get/response'
+module Sparql::Get::StepTypes
 
-module GET_STEP_TYPES
-
-  Sparql::Get::StepTypes = true
-  
-  # We include the step types query and SPARQL response modules.
-  include STEP_TYPES_QUERY
-  include GET_RESPONSE
-  
   # A method to get an array of all step types.
   def get_step_types
   
