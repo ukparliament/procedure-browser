@@ -1,6 +1,4 @@
-module STEP_STEP_COLLECTIONS_QUERY
-
-  Sparql::Queries::StepStepCollections = true
+module Sparql::Queries::StepStepCollections
 
   # A SPARQL query to get all step collections for a step.
   def step_step_collections_query( step_id )
