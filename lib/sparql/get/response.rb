@@ -3,9 +3,7 @@ require 'uri'
 require 'net/http'
 require 'csv'
 
-module GET_RESPONSE
-
-  Sparql::Get::Response = true
+module Sparql::Get::Response
   
   # A method to get a response from SPARQL as a CSV.
   def get_sparql_response_as_csv( request_body )
