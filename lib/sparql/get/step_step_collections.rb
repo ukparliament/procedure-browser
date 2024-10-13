@@ -1,14 +1,4 @@
-# We require the module file for the step work packageable things query and the SPARQL response.
-require 'sparql/queries/step_step_collections'
-require 'sparql/get/response'
-
-module GET_STEP_STEP_COLLECTIONS
-
-  Sparql::Get::StepStepCollections = true
-  
-  # We include the step step collections query and SPARQL response modules.
-  include STEP_STEP_COLLECTIONS_QUERY
-  include GET_RESPONSE
+module Sparql::Get::StepStepCollections
   
   def get_step_step_collections( step )
     
