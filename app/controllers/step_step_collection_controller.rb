@@ -1,12 +1,12 @@
-# We require the module files for getting a step and getting work packageable things for a step.
-require 'sparql/get/step'
-require 'sparql/get/step_step_collections'
-
 class StepStepCollectionController < ApplicationController
 
-  # We include the get step and get step step collections modules.
-  include GET_STEP
-  include GET_STEP_STEP_COLLECTIONS
+  # We include modules required to get a step and the step collections for a step.
+  include Sparql::Get::Step
+  include Sparql::Queries::Step
+  include Sparql::Get::StepStepCollections
+  include Sparql::Queries::StepStepCollections
+  include Sparql::Get::Response
+
 
   def index
     step_id = params[:step]
