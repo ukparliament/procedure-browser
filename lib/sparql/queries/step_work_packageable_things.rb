@@ -1,6 +1,4 @@
-module STEP_WORK_PACKAGEABLE_THINGS_QUERY
-
-  Sparql::Queries::StepWorkPackageableThings = true
+module Sparql::Queries::StepWorkPackageableThings
 
   # A SPARQL query to get work packagaeable things for a step.
   def step_work_packageable_things_query( step_id )
