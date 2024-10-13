@@ -1,12 +1,9 @@
-# We require the module files for getting a step type and getting steps for a step type.
-require 'sparql/get/step_type'
-require 'sparql/get/step_type_steps'
-
 class StepTypeStepController < ApplicationController
 
-  # We include the get step type and get step type steps modules.
-  include GET_STEP_TYPE
-  include GET_STEP_TYPE_STEPS
+  # We include modules required to get a step type with its steps.
+  include Sparql::Get::StepTypeSteps
+  include Sparql::Queries::StepTypeSteps
+  include Sparql::Get::Response
 
   def index
     step_type_id = params[:step_type]
