@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   
   get 'steps/:step/step-collections' => 'step_step_collection#index', as: :step_step_collection_list
   
+  
+  # Stubs
+  
   get 'step-collections' => 'step_collection#index', as: :step_collection_list
   get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
   
