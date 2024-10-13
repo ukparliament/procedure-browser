@@ -1,6 +1,4 @@
-module STEP_TYPE_STEPS_QUERY
-
-  Sparql::Queries::StepTypeSteps = true
+module Sparql::Queries::StepTypeSteps
 
   # A SPARQL query to get all steps for a step type.
   def step_type_steps_query( step_type_id )
