@@ -1,12 +1,11 @@
-# We require the module files for getting steps and a step.
-require 'sparql/get/steps'
-require 'sparql/get/step'
-
 class StepController < ApplicationController
 
-  # We include the get steps and get step modules.
-  include GET_STEPS
-  include GET_STEP
+  # We include modules required to get all steps and a step.
+  include Sparql::Get::Steps
+  include Sparql::Queries::Steps
+  include Sparql::Get::Step
+  include Sparql::Queries::Step
+  include Sparql::Get::Response
   
   def index
     @steps = get_steps
