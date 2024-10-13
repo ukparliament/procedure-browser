@@ -1,14 +1,4 @@
-# We require the module files for the steps query and the SPARQL response.
-require 'sparql/queries/steps'
-require 'sparql/get/response'
-
-module GET_STEPS
-
-  Sparql::Get::Steps = true
-  
-  # We include the steps query and SPARQL response modules.
-  include STEPS_QUERY
-  include GET_RESPONSE
+module Sparql::Get::Steps
 
   # A method to get an array of all steps.
   def get_steps
