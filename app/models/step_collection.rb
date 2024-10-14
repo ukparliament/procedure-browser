@@ -15,4 +15,8 @@ class StepCollection
   def procedure_id
     self.procedure_identifier.split( '/' ).last
   end
+  
+  def house_id
+    self.house_identifier.split( '/' ).last
+  end
 end
