@@ -21,7 +21,7 @@ module Sparql::Get::StepStepCollections
       step_collection.procedure_identifier = row['procedure']
       step_collection.procedure_label = row['procedureName']
       step_collection.house_identifier = row['House']
-      step_collection.house_label = row['House']
+      step_collection.house_label = row['HouseName']
       step_collection.membership_identifier = row['stepCollectionMembership']
       
       # ... and add it to the array of step collections.
