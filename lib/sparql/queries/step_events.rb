@@ -12,7 +12,7 @@ module Sparql::Queries::StepEvents
         ?Step a :ProcedureStep;
                   :name ?stepName;
                   :procedureStepHasBusinessItem ?businessItem.
-          filter (?Step IN (id:cspzmb6w))
+          filter (?Step IN (id:#{step_id}))
         optional{ ?businessItem :businessItemDate ?businessItemDate.}
         optional {?businessItem :businessItemHasBusinessItemWebLink ?businessItemLink }
         ?businessItem :businessItemHasWorkPackage ?workPackage.
