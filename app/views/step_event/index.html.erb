@@ -1,0 +1,10 @@
+<%= render :partial => 'step/intro', :object => @step %>
+
+<% if @step_events.empty? -%>
+	<%= content_tag( 'p', "No events for step '#{@step.label}' to show." ) %>
+<% else -%>
+	<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
+	<ol>
+		<%= render :partial => 'event', :collection => @step_events %>
+	</ol>
+<% end -%>
