@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'steps' => 'step#index', as: :step_list
   get 'steps/:step' => 'step#show', as: :step_show
   
-  get 'steps/:step/work-packageable-things' => 'step_work_packageable_thing#index', as: :step_work_packageable_thing_list
+  get 'steps/:step/events' => 'step_event#index', as: :step_event_list
   
   get 'steps/:step/step-collections' => 'step_step_collection#index', as: :step_step_collection_list
   
