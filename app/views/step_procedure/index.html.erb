@@ -1,0 +1,9 @@
+<%= render :partial => 'step/intro', :object => @step %>
+
+<% if @step_procedures.empty? -%>
+	<%= content_tag( 'p', "No procedures for step '#{@step.label}' to show." ) %>
+<% else -%>
+	<ol>
+		<%= render :partial => 'procedure', :collection => @step_procedures %>
+	</ol>
+<% end -%>

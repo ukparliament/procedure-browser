@@ -1,0 +1,4 @@
+<li>
+	<%= content_tag( 'h2', link_to( procedure.label, procedure_show_url( :procedure => procedure.id ) ) ) %>
+	<%= content_tag( 'p', procedure.description ) if procedure.description %>
+</li>
