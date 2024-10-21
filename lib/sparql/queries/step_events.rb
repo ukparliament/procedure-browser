@@ -23,5 +23,4 @@ module Sparql::Queries::StepEvents
       } order by DESC(?businessItemDate)  ?workpackagedThingName
     "
   end
-
 end
