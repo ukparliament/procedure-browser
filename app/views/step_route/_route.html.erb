@@ -1,0 +1,5 @@
+<li>
+	<%= content_tag( 'h2', route_title( route ) ) %>
+	<%= content_tag( 'p', "Start date: #{route.start_on.strftime( $DATE_DISPLAY_FORMAT )}" ) if route.start_on %>
+	<%= content_tag( 'p', "End date: #{route.end_on.strftime( $DATE_DISPLAY_FORMAT )}" ) if route.end_on %>
+</li>
