@@ -1,0 +1,9 @@
+<%= render :partial => 'step/intro', :object => @step %>
+
+<% if @step_clocks.empty? -%>
+	<%= content_tag( 'p', "No clocks connected to step '#{@step.label}' to show." ) %>
+<% else -%>
+	<ol>
+		<%= render :partial => 'clock', :collection => @step_clocks %>
+	</ol>
+<% end -%>
