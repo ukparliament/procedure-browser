@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   get 'steps/:step/routes' => 'step_route#index', as: :step_route_list
   
+  get 'steps/:step/clocks' => 'step_clock#index', as: :step_clock_list
+  
   get 'steps/:step/step-collections' => 'step_step_collection#index', as: :step_step_collection_list
   
   get 'steps/:step/procedures' => 'step_procedure#index', as: :step_procedure_list
@@ -30,6 +32,9 @@ Rails.application.routes.draw do
   # Stubs
   get 'routes' => 'route#index', as: :route_list
   get 'routes/:route' => 'route#show', as: :route_show
+  
+  get 'clocks' => 'clock#index', as: :clock_list
+  get 'clocks/:clock' => 'clock#show', as: :clock_show
   
   get 'step-collections' => 'step_collection#index', as: :step_collection_list
   get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
