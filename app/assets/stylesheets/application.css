@@ -38,6 +38,9 @@ body.section-steps nav#header-nav a.steps {
 body.section-step-types nav#header-nav a.steps {
 	border-bottom-color: #fff;
 }
+body.section-step-collections nav#header-nav a.step-collections {
+	border-bottom-color: #fff;
+}
 
 .subnav {
 	border-color: #cbc9cd;
