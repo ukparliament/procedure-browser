@@ -80,6 +80,10 @@ body.subsection-step-procedures .subnav a.step-procedures {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-step-procedures-with-step-depth .subnav a.step-procedures-with-step-depth {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 
 div.debug {
