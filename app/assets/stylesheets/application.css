@@ -72,15 +72,19 @@ body.subsection-events .subnav a.events {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-routes .subnav a.routes {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 body.subsection-step-collections .subnav a.step-collections {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
-body.subsection-step-procedures .subnav a.step-procedures {
+body.subsection-procedures .subnav a.procedures {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
-body.subsection-step-procedures-with-step-depth .subnav a.step-procedures-with-step-depth {
+body.subsection-procedures-with-step-depth .subnav a.procedures-with-step-depth {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
