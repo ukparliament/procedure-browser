@@ -1,1 +1,9 @@
 <%= render :partial => 'step/intro', :object => @step %>
+
+<% if @step_routes.empty? -%>
+	<%= content_tag( 'p', "No routes connected to step '#{@step.label}' to show." ) %>
+<% else -%>
+	<ol>
+		<%= render :partial => 'route', :collection => @step_routes %>
+	</ol>
+<% end -%>
