@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   
   get 'steps/:step/procedures' => 'step_procedure#index', as: :step_procedure_list
   
+  get 'steps/:step/procedures-with-step-depth' => 'step_procedure_with_step_depth#index', as: :step_procedure_with_step_depth_list
+  
   
   # Stubs
   

@@ -1,0 +1,4 @@
+<li>
+	<%= content_tag( 'h2', "#{step.label} has step depth #{procedure.step_display_depth_value} in the #{link_to( procedure.label, procedure_show_url( :procedure => procedure.id ) )} procedure".html_safe ) %>
+	<%= content_tag( 'p', procedure.description ) if procedure.description %>
+</li>

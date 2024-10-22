@@ -1,0 +1,9 @@
+<%= render :partial => 'step/intro', :object => @step %>
+
+<% if @step_procedures_with_step_depth.empty? -%>
+	<%= content_tag( 'p', "No procedures with step depth for step '#{@step.label}' to show." ) %>
+<% else -%>
+	<ol>
+		<%= render :partial => 'procedure', :collection => @step_procedures_with_step_depth, :locals => { :step => @step } %>
+	</ol>
+<% end -%>
