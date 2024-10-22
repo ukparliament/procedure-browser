@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   
   
   # Stubs
+  get 'routes' => 'route#index', as: :route_list
+  get 'routes/:route' => 'route#show', as: :route_show
   
   get 'step-collections' => 'step_collection#index', as: :step_collection_list
   get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
