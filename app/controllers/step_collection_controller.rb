@@ -3,8 +3,8 @@ class StepCollectionController < ApplicationController
   # We include modules required to get all step collections and a step collection.
   include Sparql::Get::StepCollections
   include Sparql::Queries::StepCollections
-  #include Sparql::Get::StepCollection
-  #include Sparql::Queries::StepCollection
+  include Sparql::Get::StepCollection
+  include Sparql::Queries::StepCollection
   include Sparql::Get::Response
   
   def index
@@ -17,7 +17,13 @@ class StepCollectionController < ApplicationController
   end
   
   def show
-    @page_title = 'Coming soon'
-    render :template => 'under_construction/notice'
+    step_collection_id = params[:step_collection]
+    @step_collection = get_step_collection( step_collection_id )
+    
+    @page_title = @step_collection.label
+    @description = "#{@step_collection.label}."
+    @crumb << { label: 'Step collections', url: step_collection_list_url }
+    @crumb << { label: @step_collection.label, url: nil }
+    @section = 'step-collections'
   end
 end
