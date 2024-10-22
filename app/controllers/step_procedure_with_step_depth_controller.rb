@@ -20,6 +20,6 @@ class StepProcedureWithStepDepthController < ApplicationController
     @crumb << { label: @step.label, url: step_show_url }
     @crumb << { label: 'Procedures with step depth', url: nil }
     @section = 'steps'
-    @subsection = 'step-procedures-with-step-depth'
+    @subsection = 'procedures-with-step-depth'
   end
 end
