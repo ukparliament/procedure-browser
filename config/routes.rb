@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   
   get 'steps/:step/events' => 'step_event#index', as: :step_event_list
   
+  get 'steps/:step/routes' => 'step_route#index', as: :step_route_list
+  
   get 'steps/:step/step-collections' => 'step_step_collection#index', as: :step_step_collection_list
   
   get 'steps/:step/procedures' => 'step_procedure#index', as: :step_procedure_list
