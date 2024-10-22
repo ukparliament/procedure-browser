@@ -31,7 +31,7 @@ module RouteHelper
       houses_and_legislatures << 'House of Lords'
     end
     if route.from_step_legislature_identifier
-      houses_and_legislatures << route.route_from_step_legislature_label
+      houses_and_legislatures << route.from_step_legislature_label
     end
     
     houses_and_legislatures.each do |hl|
@@ -66,7 +66,7 @@ module RouteHelper
       houses_and_legislatures << 'House of Lords'
     end
     if route.to_step_legislature_identifier
-      houses_and_legislatures << route.route_to_step_legislature_label
+      houses_and_legislatures << route.to_step_legislature_label
     end
     
     houses_and_legislatures.each do |hl|
