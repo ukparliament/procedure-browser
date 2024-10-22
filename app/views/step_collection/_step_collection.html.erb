@@ -1,0 +1,5 @@
+<li>
+	<%= content_tag( 'h2', link_to( step_collection.label, step_collection_show_url( :step_collection => step_collection.id ) ) ) %>
+	<%= content_tag( 'p', "Procedure: #{link_to( step_collection.procedure_label, procedure_show_url( :procedure => step_collection.procedure_id ) )}.".html_safe ) if step_collection.procedure_identifier %>
+	<%= content_tag( 'p', "House: #{link_to( step_collection.house_label, house_show_url( :house => step_collection.house_id ) )}.".html_safe ) if step_collection.house_identifier %>
+</li>
