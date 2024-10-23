@@ -3,6 +3,7 @@ class Procedure
   attr_accessor :identifier
   attr_accessor :label
   attr_accessor :description
+  attr_accessor :display_order
   attr_accessor :step_display_depth_value
   
   def id
