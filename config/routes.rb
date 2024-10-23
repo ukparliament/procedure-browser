@@ -28,6 +28,13 @@ Rails.application.routes.draw do
   
   get 'steps/:step/procedures-with-step-depth' => 'step_procedure_with_step_depth#index', as: :step_procedure_with_step_depth_list
   
+  get 'step-collections' => 'step_collection#index', as: :step_collection_list
+  get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
+  
+  get 'step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
+  
+  
+  
   
   # Stubs
   get 'routes' => 'route#index', as: :route_list
@@ -36,8 +43,7 @@ Rails.application.routes.draw do
   get 'clocks' => 'clock#index', as: :clock_list
   get 'clocks/:clock' => 'clock#show', as: :clock_show
   
-  get 'step-collections' => 'step_collection#index', as: :step_collection_list
-  get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
+
   
   get 'houses' => 'house#index', as: :house_list
   get 'houses/:house' => 'house#show', as: :house_show
