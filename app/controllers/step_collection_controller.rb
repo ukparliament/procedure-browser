@@ -5,6 +5,8 @@ class StepCollectionController < ApplicationController
   include Sparql::Queries::StepCollections
   include Sparql::Get::StepCollection
   include Sparql::Queries::StepCollection
+  include Sparql::Get::StepCollectionSteps
+  include Sparql::Queries::StepCollectionSteps
   include Sparql::Get::Response
   
   def index
@@ -19,6 +21,7 @@ class StepCollectionController < ApplicationController
   def show
     step_collection_id = params[:step_collection]
     @step_collection = get_step_collection( step_collection_id )
+    @step_collection_steps = get_step_collection_steps( step_collection_id )
     
     @page_title = @step_collection.label
     @description = "#{@step_collection.label}."
