@@ -4,6 +4,6 @@
 	<%= content_tag( 'p', "No procedures for step '#{@step.label}' to show." ) %>
 <% else -%>
 	<ol>
-		<%= render :partial => 'procedure', :collection => @step_procedures %>
+		<%= render :partial => 'procedure/procedure', :collection => @step_procedures %>
 	</ol>
 <% end -%>
