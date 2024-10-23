@@ -31,5 +31,7 @@ class StepTypeController < ApplicationController
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step_type.label, url: nil }
     @section = 'step-types'
+    
+    render :template => 'step_type_step/index'
   end
 end
