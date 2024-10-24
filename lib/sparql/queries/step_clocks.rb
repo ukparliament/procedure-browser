@@ -37,7 +37,7 @@ module Sparql::Queries::StepClocks
                     filter (?EndStepCommonsId IN (id:1AFu55Hs))}
               optional {?EndStep :procedureStepHasHouse ?EndStepLordsId.
           filter (?EndStepLordsId IN (id:WkUWUBMx))}
-      }
+      } Order by ?clockLabel
     "
   end
 end
