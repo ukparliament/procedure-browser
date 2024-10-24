@@ -16,7 +16,7 @@ module Sparql::Queries::StepCollections
       optional {?StepCollection :procedureStepCollectionHasHouse ?House.
           ?House :name ?HouseName.}
 
-      }  Order by ?StepCollectionName ?procedureName ?HouseName
+      }  Order by ?stepCollectionName ?procedureName ?HouseName
     "
   end
 end
