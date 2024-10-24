@@ -37,7 +37,7 @@ module Sparql::Queries::StepRoutes
           optional {?ToStep :procedureStepInLegislature ?ToSteplegislature.
                 ?ToSteplegislature :name ?ToSteplegislatureName.}
           filter (?Step IN (id:#{step_id}))
-      }
+      } Order by ?FromStepName
     "
   end
 end
