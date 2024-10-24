@@ -27,7 +27,7 @@ module Sparql::Queries::StepCollectionSteps
             filter (?procedureStepCommonsId IN (id:1AFu55Hs))}
           optional{    ?procedureStep :procedureStepHasHouse ?procedureStepLordsId.
             filter (?procedureStepLordsId IN (id:WkUWUBMx))}
-      }
+      } Order by ?procedureStepName
                      
       
     "
