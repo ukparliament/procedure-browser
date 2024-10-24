@@ -21,7 +21,7 @@ module Sparql::Get::StepCollectionSteps
       steps << step
       step.identifier = row['procedureStep']
       step.label = row['procedureStepName']
-      step.step_type_identifier = row['procedureStepTypeName']
+      step.step_type_identifier = row['procedureStepType']
       step.step_type_label = row['procedureStepTypeName']
       step.commons_identifier = row['procedureStepCommonsId']
       step.lords_identifier = row['procedureStepLordsId']
