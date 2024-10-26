@@ -1,0 +1,2 @@
+<%= content_tag( 'p', procedure_dates( @procedure ) ) unless procedure_dates( @procedure ).empty? %>
+<%= content_tag( 'p', @procedure.description ) if @procedure.description %>
