@@ -13,4 +13,8 @@ class Procedure
   def id
     self.identifier.split( '/' ).last
   end
+  
+  def calculation_style_id
+    self.calculation_style_identifer.split( '/' ).last
+  end
 end
