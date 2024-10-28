@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   get 'clocks' => 'clock#index', as: :clock_list
   get 'clocks/:clock' => 'clock#show', as: :clock_show
   
+  get 'calculation-styles' => 'calculation_style#index', as: :calculation_style_list
+  get 'calculation-styles/:calculation_style' => 'calculation_style#show', as: :calculation_style_show
+  
 
   
   get 'houses' => 'house#index', as: :house_list
