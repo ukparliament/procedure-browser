@@ -1,6 +1,7 @@
 <%= content_tag( 'p', @step_type.description ) if @step_type.description %>
 
 <div id="steps">
+	<%= list_item_count_sentence( 'step', @step_type_steps.size ) %>
 	<ol>
 		<%= render :partial => 'step/step', :collection => @step_type_steps %>
 	</ol>
