@@ -1,8 +1,8 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<% if @step_procedures.empty? -%>
-	<%= content_tag( 'p', "No procedures for step '#{@step.label}' to show." ) %>
-<% else -%>
+<%= list_item_count_sentence( 'procedure', @step_procedures.size ) %>
+
+<% unless @step_procedures.empty? -%>
 	<ol>
 		<%= render :partial => 'procedure/procedure', :collection => @step_procedures %>
 	</ol>
