@@ -10,7 +10,7 @@ class StepController < ApplicationController
   def index
     @steps = get_steps
     
-    @page_title = 'Procedure steps'
+    @page_title = 'Steps'
     @description = 'Steps in procedures.'
     @crumb << { label: 'Steps', url: nil }
     @section = 'steps'
