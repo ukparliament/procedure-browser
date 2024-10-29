@@ -1,3 +1,5 @@
 <%= content_tag( 'p', procedure_dates( @procedure ) ) unless procedure_dates( @procedure ).empty? %>
 <%= content_tag( 'p', @procedure.description ) if @procedure.description %>
 <%= content_tag( 'p', "Follows the calculation style #{link_to( @procedure.calculation_style_label, calculation_style_show_url( :calculation_style => @procedure.calculation_style_id ) )}.".html_safe ) if @procedure.calculation_style_identifer %>
+
+<%= render :partial => 'common/identifier', :object => @procedure %>
