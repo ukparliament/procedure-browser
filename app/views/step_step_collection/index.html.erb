@@ -1,10 +1,8 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
+<%= list_item_count_sentence( 'step collection', @step_step_collections.size ) %>
 
-<% if @step_step_collections.empty? -%>
-	<%= content_tag( 'p', "'#{@step.label}' is not a member of any step collections." ) %>
-<% else -%>
-	<%= content_tag( 'p', "'#{@step.label}' is a member of #{@step_step_collections.size} step #{'collection'.pluralize( @step_step_collections.size )}:" ) %>
+<% unless @step_step_collections.empty? -%>
 	<ol>
 		<%= render :partial => 'step_collection', :collection => @step_step_collections %>
 	</ol>
