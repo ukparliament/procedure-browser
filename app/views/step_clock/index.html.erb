@@ -1,8 +1,8 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<% if @step_clocks.empty? -%>
-	<%= content_tag( 'p', "No clocks connected to step '#{@step.label}' to show." ) %>
-<% else -%>
+<%= list_item_count_sentence( 'clock', @step_clocks.size ) %>
+
+<% unless @step_clocks.empty? -%>
 	<ol>
 		<%= render :partial => 'clock', :collection => @step_clocks %>
 	</ol>
