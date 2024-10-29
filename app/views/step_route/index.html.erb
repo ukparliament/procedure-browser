@@ -1,8 +1,8 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<% if @step_routes.empty? -%>
-	<%= content_tag( 'p', "No routes connected to step '#{@step.label}' to show." ) %>
-<% else -%>
+<%= list_item_count_sentence( 'route', @step_routes.size ) %>
+
+<% unless @step_routes.empty? -%>
 	<ol>
 		<%= render :partial => 'route', :collection => @step_routes %>
 	</ol>
