@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'home#index', as: :home
   
+  get 'work-packages' => 'work_package#index', as: :work_package_list
+  get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
+  
+  get 'procedures' => 'procedure#index', as: :procedure_list
+  get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
+  
   get 'step-types' => 'step_type#index', as: :step_type_list
   get 'step-types/:step_type' => 'step_type#show', as: :step_type_show
   
@@ -33,8 +39,7 @@ Rails.application.routes.draw do
   
   get 'step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
   
-  get 'work-packages' => 'work_package#index', as: :work_package_list
-  get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
+  
   
   
   
@@ -54,9 +59,6 @@ Rails.application.routes.draw do
   
   get 'legislatures' => 'legislature#index', as: :legislature_list
   get 'legislatures/:legislature' => 'legislature#show', as: :legislature_show
-  
-  get 'procedures' => 'procedure#index', as: :procedure_list
-  get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
   
   get 'work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
   get 'work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
