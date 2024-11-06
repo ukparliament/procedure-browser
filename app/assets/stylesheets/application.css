@@ -32,6 +32,12 @@ nav#header-nav a:hover {
 }
 
 /* nav active */
+body.section-work-packages nav#header-nav a.work-packages {
+	border-bottom-color: #fff;
+}
+body.section-procedures nav#header-nav a.procedures {
+	border-bottom-color: #fff;
+}
 body.section-steps nav#header-nav a.steps {
 	border-bottom-color: #fff;
 }
@@ -39,9 +45,6 @@ body.section-step-types nav#header-nav a.steps {
 	border-bottom-color: #fff;
 }
 body.section-step-collections nav#header-nav a.step-collections {
-	border-bottom-color: #fff;
-}
-body.section-procedures nav#header-nav a.procedures {
 	border-bottom-color: #fff;
 }
 
