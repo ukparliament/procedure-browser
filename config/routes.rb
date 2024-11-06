@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   
   get 'step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
   
+  get 'work-packages' => 'work_package#index', as: :work_package_list
+  get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
+  
   
   
   
@@ -46,8 +49,6 @@ Rails.application.routes.draw do
   get 'calculation-styles' => 'calculation_style#index', as: :calculation_style_list
   get 'calculation-styles/:calculation_style' => 'calculation_style#show', as: :calculation_style_show
   
-
-  
   get 'houses' => 'house#index', as: :house_list
   get 'houses/:house' => 'house#show', as: :house_show
   
@@ -56,9 +57,6 @@ Rails.application.routes.draw do
   
   get 'procedures' => 'procedure#index', as: :procedure_list
   get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
-  
-  get 'work-packages' => 'work_package#index', as: :work_package_list
-  get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
   get 'work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
   get 'work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
