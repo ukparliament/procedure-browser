@@ -1,0 +1,4 @@
+<li>
+	<%= content_tag( 'h2', link_to( work_package.work_packageable_thing_label, work_package_show_url( :work_package => work_package.id ) ) ) %>
+	<%= work_package_description_with_markup( work_package ) %>
+</li>
