@@ -115,11 +115,10 @@ module WorkPackageHelper
     work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
     work_package_list_item_description += ', subject to the '
     work_package_list_item_description += link_to( work_package.procedure_label, procedure_show_url( :procedure => work_package.procedure_id ) )
-    work_package_list_item_description += ' procedure'
+    work_package_list_item_description += ' procedure.'
     unless work_package.calculation_style_identifier.blank?
-      work_package_list_item_description += ' according to the '
+      work_package_list_item_description += ' Scrutiny period determined by '
       work_package_list_item_description += link_to( work_package.calculation_style_label, calculation_style_show_url( :calculation_style => work_package.calculation_style_id ) )
-      work_package_list_item_description += ' clock'
     end
     work_package_list_item_description += '.'
     work_package_list_item_description = work_package_list_item_description.html_safe
@@ -131,11 +130,10 @@ module WorkPackageHelper
     work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
     work_package_list_item_description += ', subject to the '
     work_package_list_item_description += work_package.procedure_label
-    work_package_list_item_description += ' procedure'
+    work_package_list_item_description += ' procedure.'
     unless work_package.calculation_style_identifier.blank?
-      work_package_list_item_description += ' according to the '
+      work_package_list_item_description += ' Scrutiny period determined by '
       work_package_list_item_description += work_package.calculation_style_label
-      work_package_list_item_description += ' clock'
     end
     work_package_list_item_description += '.'
     work_package_list_item_description
