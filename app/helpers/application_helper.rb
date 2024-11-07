@@ -9,7 +9,6 @@ module ApplicationHelper
     end
     list_item_count_sentence += ActiveSupport::NumberHelper.number_to_delimited( number_of_things )
     list_item_count_sentence += ' '
-    #list_item_count_sentence += pluralize( number_of_things, type_of_thing )
     list_item_count_sentence += type_of_thing.pluralize( number_of_things ) 
     list_item_count_sentence += '.'
     list_item_count_sentence = content_tag( 'p', list_item_count_sentence )

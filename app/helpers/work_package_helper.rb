@@ -109,4 +109,35 @@ module WorkPackageHelper
       link_to( number.to_s, work_package_list_url( 'results-per-page' => number ) )
     end
   end
+  
+  def work_package_description_with_markup( work_package )
+    work_package_list_item_description = 'Made available on '
+    work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+    work_package_list_item_description += ', subject to the '
+    work_package_list_item_description += link_to( work_package.procedure_label, procedure_show_url( :procedure => work_package.procedure_id ) )
+    work_package_list_item_description += ' procedure'
+    unless work_package.calculation_style_identifier.blank?
+      work_package_list_item_description += ' according to the '
+      work_package_list_item_description += link_to( work_package.calculation_style_label, calculation_style_show_url( :calculation_style => work_package.calculation_style_id ) )
+      work_package_list_item_description += ' clock'
+    end
+    work_package_list_item_description += '.'
+    work_package_list_item_description = work_package_list_item_description.html_safe
+    content_tag( 'p', work_package_list_item_description )
+  end
+  
+  def work_package_description( work_package )
+    work_package_list_item_description = 'Made available on '
+    work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+    work_package_list_item_description += ', subject to the '
+    work_package_list_item_description += work_package.procedure_label
+    work_package_list_item_description += ' procedure'
+    unless work_package.calculation_style_identifier.blank?
+      work_package_list_item_description += ' according to the '
+      work_package_list_item_description += work_package.calculation_style_label
+      work_package_list_item_description += ' clock'
+    end
+    work_package_list_item_description += '.'
+    work_package_list_item_description
+  end
 end
