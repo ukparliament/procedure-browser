@@ -1,1 +1,3 @@
-<%#= render :partial => 'common/identifier', :object => @work_package %>
+<%= work_package_description_with_markup( @work_package ) %>
+
+<%= render :partial => 'common/identifier', :object => @work_package %>
