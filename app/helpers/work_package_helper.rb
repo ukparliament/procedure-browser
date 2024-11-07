@@ -119,8 +119,8 @@ module WorkPackageHelper
     unless work_package.calculation_style_identifier.blank?
       work_package_list_item_description += ' Scrutiny period determined by '
       work_package_list_item_description += link_to( work_package.calculation_style_label, calculation_style_show_url( :calculation_style => work_package.calculation_style_id ) )
+      work_package_list_item_description += '.'
     end
-    work_package_list_item_description += '.'
     work_package_list_item_description = work_package_list_item_description.html_safe
     content_tag( 'p', work_package_list_item_description )
   end
@@ -134,8 +134,8 @@ module WorkPackageHelper
     unless work_package.calculation_style_identifier.blank?
       work_package_list_item_description += ' Scrutiny period determined by '
       work_package_list_item_description += work_package.calculation_style_label
+      work_package_list_item_description += '.'
     end
-    work_package_list_item_description += '.'
     work_package_list_item_description
   end
 end
