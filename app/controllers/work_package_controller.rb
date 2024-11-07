@@ -23,7 +23,6 @@ class WorkPackageController < ApplicationController
     
     # We get the count of all work packages.
     @result_count = get_work_package_count
-    @result_count = 60
     
     # If the number of the first work package on this page exceeds the total number of work packages ...
     if ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count
@@ -35,6 +34,7 @@ class WorkPackageController < ApplicationController
     
     @page_title = 'Work packages'
     @description = 'All work packages.'
+    @rss_url = work_package_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: nil }
     @section = 'work-packages'
   end
@@ -48,12 +48,11 @@ class WorkPackageController < ApplicationController
     # We get all the events for the work package.
     @work_package_events = get_work_package_events( work_package_id )
     
-    
-    
-    #@page_title = @work_package.label
-    #@description = "Work package for #{@work_package.label}."
+    @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
+    @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
+    @description = "Work package for #{@work_package.work_packageable_thing_label}."
     @crumb << { label: 'Work packages', url: work_package_list_url }
-    #@crumb << { label: @work_package.label, url: nil }
+    #@crumb << { label: @work_package.work_packageable_thing_label, url: nil }
     @section = 'work-packages'
   end
 end
