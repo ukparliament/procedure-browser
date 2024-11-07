@@ -5,6 +5,8 @@ class WorkPackageController < ApplicationController
   include Sparql::Queries::WorkPackageCount
   include Sparql::Get::WorkPackages
   include Sparql::Queries::WorkPackages
+  include Sparql::Get::WorkPackage
+  include Sparql::Queries::WorkPackage
   include Sparql::Get::WorkPackageEvents
   include Sparql::Queries::WorkPackageEvents
   include Sparql::Get::Response
@@ -39,6 +41,11 @@ class WorkPackageController < ApplicationController
 
   def show
     work_package_id = params[:work_package]
+    
+    # We get the work package.
+    @work_package = get_work_package( work_package_id )
+    
+    # We get all the events for the work package.
     @work_package_events = get_work_package_events( work_package_id )
     
     
