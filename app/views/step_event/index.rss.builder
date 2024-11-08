@@ -7,6 +7,6 @@ xml.rss( :version => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' ) do
     xml.language( 'en-uk' )
     xml.pubDate( @step_events.first.date.rfc822 ) unless @step_events.empty?
     xml.tag!( 'atom:link', { :href => step_event_list_url( :format => 'rss' ), :rel => 'self', :type => 'application/rss+xml' } )
-    xml << render(:partial => 'event', :collection => @step_events ) unless @step_events.empty?
+    xml << render(:partial => 'event', :collection => @step_events, :locals => { :step => @step } ) unless @step_events.empty?
   end
 end

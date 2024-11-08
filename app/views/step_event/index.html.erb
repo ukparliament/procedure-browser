@@ -5,6 +5,6 @@
 <% unless @step_events.empty? -%>
 	<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
 	<ol>
-		<%= render :partial => 'event', :collection => @step_events %>
+		<%= render :partial => 'event', :collection => @step_events, :locals => { :step => @step } %>
 	</ol>
 <% end -%>
