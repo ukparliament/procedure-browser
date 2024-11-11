@@ -60,4 +60,13 @@ module StepHelper
     step_label_in_list += " (#{step_houses_and_legislature_label( step )})" unless step_houses_and_legislature_label( step ).empty?
     step_label_in_list.html_safe
   end
+  
+  def step_label_with_linked_houses_and_legislatures( step )
+    step_label_with_linked_houses_and_legislatures = step.step_label
+    unless step_houses_and_legislature_label_with_links( step ).blank?
+      step_label_with_linked_houses_and_legislatures += ' (' + step_houses_and_legislature_label_with_links( step ) + ')'
+    end
+    step_label_with_linked_houses_and_legislatures.html_safe
+  end
+    
 end
