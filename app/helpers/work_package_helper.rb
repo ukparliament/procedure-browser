@@ -142,4 +142,29 @@ module WorkPackageHelper
     end
     work_package_list_item_description
   end
+  
+  def work_package_table_of_contents( work_package_past_events, work_package_future_events, work_package_undated_events )
+    toc_links = []
+    unless work_package_past_events.empty?
+      link = { :id => 'past-events', :label => 'Events having happened' }
+      toc_links << link
+    end
+    unless work_package_future_events.empty?
+      link = { :id => 'future-events', :label => 'Events due to happen' }
+      toc_links << link
+    end
+    unless work_package_future_events.empty?
+      link = { :id => 'undated-events', :label => 'Events having no date' }
+      toc_links << link
+    end
+    work_package_table_of_contents = ''
+    if toc_links.size > 1
+      toc_links.each do |toc_link|
+        work_package_table_of_contents += link_to( toc_link[:label], :anchor => toc_link[:id] )
+        work_package_table_of_contents += ' - ' if toc_link != toc_links.last
+      end
+      work_package_table_of_contents = work_package_table_of_contents.html_safe
+      content_tag( 'p', work_package_table_of_contents )
+    end
+  end
 end
