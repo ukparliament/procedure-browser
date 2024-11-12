@@ -48,11 +48,31 @@ class WorkPackageController < ApplicationController
     # We get all the events for the work package.
     @work_package_events = get_work_package_events( work_package_id )
     
+    # We create arrays to hold past events, future events and undated events.
+    @work_package_past_events = []
+    @work_package_future_events = []
+    @work_package_undated_events = []
+    
+    # For each item in the work package events array ...
+    @work_package_events.each do |wpe|
+      if wpe.date
+        if wpe.date <= Date.today
+          @work_package_past_events << wpe
+        else
+          @work_package_future_events << wpe
+        end
+      else
+        @work_package_undated_events << wpe
+      end
+    end
+    
     @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
     @description = "Work package for #{@work_package.work_packageable_thing_label}."
     @crumb << { label: 'Work packages', url: work_package_list_url }
     #@crumb << { label: @work_package.work_packageable_thing_label, url: nil }
     @section = 'work-packages'
+    
+    render :template => 'work_package_events/index'
   end
 end
