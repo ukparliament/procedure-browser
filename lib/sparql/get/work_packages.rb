@@ -24,7 +24,7 @@ module Sparql::Get::WorkPackages
       work_package.work_packageable_thing_identifer = row['Paper']
       work_package.work_packageable_thing_label = row['Papername']
       work_package.making_available_identifier = row['laying']
-      work_package.made_available_on = row['laidDate'].to_date if row['laidDate']
+      work_package.made_available_on = row['eventDate'].to_date if row['eventDate']
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
