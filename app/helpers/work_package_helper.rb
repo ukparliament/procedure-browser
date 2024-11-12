@@ -111,9 +111,13 @@ module WorkPackageHelper
   end
   
   def work_package_description_with_markup( work_package )
-    work_package_list_item_description = 'Made available on '
-    work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
-    work_package_list_item_description += ', subject to the '
+    if work_package.made_available_on
+      work_package_list_item_description = 'Made available on '
+      work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+      work_package_list_item_description += ', subject to the '
+    else
+      work_package_list_item_description = 'Subject to the '
+    end
     work_package_list_item_description += link_to( work_package.procedure_label, procedure_show_url( :procedure => work_package.procedure_id ) )
     work_package_list_item_description += ' procedure.'
     unless work_package.calculation_style_identifier.blank?
