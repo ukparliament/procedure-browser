@@ -1,4 +1,4 @@
 <li id="event-<%= event.id %>-actualising-<%= event.step_id %>" class="event">
 	<p><%= step_label_with_linked_houses_and_legislatures( event ) %>
-	<p><%= link_to( 'link', event.link ) %>
+	<%= content_tag( 'p', "Read at #{link_to( event.link_domain, event.link )}.".html_safe ) if event.link %>
 </li>
