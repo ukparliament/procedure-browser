@@ -1,7 +1,5 @@
 <%# If this is the first and last event ... -%>
-<% if ( day_iteration.index == 0 ) and ( day_iteration.index + 1 == work_packages.size ) -%>
-		</ol>
-	</li>
+<% if ( day_iteration.index == 0 ) & ( day_iteration.index + 1 == work_packages.size ) -%>
 	<li>
 		<%= render :partial => 'work_package_events/day_header', :object => day %>
 		<ol>
