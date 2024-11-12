@@ -1,3 +1,5 @@
+require 'uri/http'
+
 class Event
   
   attr_accessor :identifier
@@ -41,5 +43,10 @@ class Event
   
   def legislature_id
     self.legislature_identifier.split( '/' ).last
+  end
+  
+  def link_domain
+    uri = URI.parse( self.link )
+    uri.host
   end
 end
