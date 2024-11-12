@@ -1,8 +1,11 @@
+<%# If this is the first event ... -%>
 <% if day_iteration.index == 0 -%>
 	<li>
 		<%= render :partial => 'work_package_events/day_header', :object => day %>
 		<ol>
 			<%= render :partial => 'work_package_events/event', :object => day %>
+			
+<%# If the date of this event is not the same as the date of the previous event is ... -%>
 <% elsif day.date != work_packages[day_iteration.index - 1].date -%>
 		</ol>
 	</li>
@@ -10,10 +13,12 @@
 		<%= render :partial => 'work_package_events/day_header', :object => day %>
 		<ol>
 			<%= render :partial => 'work_package_events/event', :object => day %>
+			
+<%# If this is the last event ... -%>
 <% elsif day_iteration.index + 1 == work_packages.size -%>
 			<%= render :partial => 'work_package_events/event', :object => day %>
-		</li>
-	</ol>
+		</ol>
+	</li>
 <% else -%>
 			<%= render :partial => 'work_package_events/event', :object => day %>
 <% end -%>
