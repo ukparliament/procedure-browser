@@ -1,7 +1,14 @@
 <%= work_package_description_with_markup( @work_package ) %>
 
+
+
+
 <div id="events">
 	<%= list_item_count_sentence( 'event', @work_package_events.size ) %>
+	
+	<%= work_package_table_of_contents( @work_package_past_events, @work_package_future_events, @work_package_undated_events ) %>
+	
+	
 	<% unless @work_package_past_events.empty? -%>
 		<div id="past-events">
 			<%= content_tag( 'h2', 'Events having happened' ) %>
