@@ -102,8 +102,8 @@ body.subsection-procedures-with-step-depth .subnav a.procedures-with-step-depth 
 	color: #4d4d4d;
 }
 
-li.day {
-	border: 1px solid #ccc;
+li.event {
+	border: 1px dotted #ccc;
 }
 
 
