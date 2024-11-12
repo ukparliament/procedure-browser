@@ -1,0 +1,34 @@
+<%= work_package_description_with_markup( @work_package ) %>
+
+<div id="events">
+	<%= list_item_count_sentence( 'event', @work_package_events.size ) %>
+	
+	<% unless @work_package_past_events.empty? -%>
+		<div id="past-events">
+			<%= content_tag( 'h2', 'Events having happened' ) %>
+			<ol>
+				<%= render :partial => 'work_package_events/day', :collection => @work_package_past_events %>
+			</ol>
+		</div>
+	<% end -%>
+	
+	<% unless @work_package_future_events.empty? -%>
+		<div id="future-events">
+			<%= content_tag( 'h2', 'Events due to happen' ) %>
+			<ol>
+				<%= render :partial => 'work_package_events/day', :collection => @work_package_past_events %>
+			</ol>
+		</div>
+	<% end -%>
+	
+	<% unless @work_package_undated_events.empty? -%>
+		<div id="undated-events">
+			<%= content_tag( 'h2', 'Events having no date' ) %>
+			<ol>
+				<%= render :partial => 'work_package_events/event', :collection => @work_package_undated_events %>
+			</ol>
+		</div>
+	<% end -%>
+</div>
+
+<%= render :partial => 'common/identifier', :object => @work_package %>
