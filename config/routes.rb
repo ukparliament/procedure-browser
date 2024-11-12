@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   
   
   # Stubs
+  get 'events' => 'event#index', as: :event_list
+  get 'events/:event' => 'event#show', as: :event_show
+  
   get 'routes' => 'route#index', as: :route_list
   get 'routes/:route' => 'route#show', as: :route_show
   
