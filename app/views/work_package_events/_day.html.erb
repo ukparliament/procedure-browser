@@ -1,5 +1,22 @@
-<li id="event-<%= day.id %>-actualising-<%= day.step_id %>" class="day">
-	<p><%= day.date.strftime( $DATE_DISPLAY_FORMAT ) %>
-	<p><%= step_label_with_linked_houses_and_legislatures( day ) %>
-	<p><%= link_to( 'link', day.link ) %>
-</li>
+<% if day_iteration.index == 0 -%>
+	<li>
+		<%= render :partial => 'work_package_events/day_header', :object => day %>
+		<ol>
+			<%= render :partial => 'work_package_events/event', :object => day %>
+			<li>event</li>
+<% elsif day.date != @work_package_events[day_iteration.index - 1].date -%>
+		</ol>
+	</li>
+	<li>
+		<%= render :partial => 'work_package_events/day_header', :object => day %>
+		<ol>
+			<%= render :partial => 'work_package_events/event', :object => day %>
+<% elsif day_iteration.index + 1 == @work_package_events.size -%>
+			<%= render :partial => 'work_package_events/event', :object => day %>
+		</li>
+	</ol>
+<% else -%>
+			<%= render :partial => 'work_package_events/event', :object => day %>
+<% end -%>
+
+
