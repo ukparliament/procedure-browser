@@ -1,4 +1,5 @@
 <li id="event-<%= event.id %>-actualising-<%= event.step_id %>" class="event">
 	<%= content_tag( 'p', event_step_label( event ) ) %>
 	<%= content_tag( 'p', "Read at #{link_to( event.link_domain, event.link )}.".html_safe ) if event.link %>
+	<%= event.identifier %>
 </li>
