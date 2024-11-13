@@ -26,7 +26,7 @@ module Sparql::Queries::WorkPackageEvents
         Optional {?eventProcedureStep:procedureStepHasHouse ?CommonsId.
               filter (?CommonsId IN (id:1AFu55Hs))}
         Optional {?eventProcedureStep :procedureStepHasHouse ?LordsId.
-          filter (?LordsId IN (id:WkUWUBMx))} }  order by ?eventDate ?depthValue
+          filter (?LordsId IN (id:WkUWUBMx))} }  order by ?eventDate ?depthValue ?event
     "
   end
 end
