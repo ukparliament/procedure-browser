@@ -1,0 +1,10 @@
+<%= content_tag( 'p', "Read the report at #{link_to( @event.link_domain, @event.link )}.".html_safe ) if @event.link %>
+
+<div id="steps">
+	<%= content_tag( 'h2', 'Steps actualised' ) %>
+	<ol>
+	<%= render :partial => 'step/event_step', :collection => @event_steps %>
+	</ol>
+</div>
+
+<%= render :partial => 'common/identifier', :object => @event %>
