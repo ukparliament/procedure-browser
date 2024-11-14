@@ -2,6 +2,7 @@ class Step
   
   attr_accessor :identifier
   attr_accessor :label
+  attr_accessor :step_label
   attr_accessor :description
   attr_accessor :scope_note
   attr_accessor :link_note
@@ -15,6 +16,8 @@ class Step
   attr_accessor :lords_identifier
   attr_accessor :legislature_identifier
   attr_accessor :legislature_label
+  attr_accessor :event_date
+  attr_accessor :event_link
   
   def id
     self.identifier.split( '/' ).last
