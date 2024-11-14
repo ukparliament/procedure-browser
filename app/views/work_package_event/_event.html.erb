@@ -1,0 +1,5 @@
+<li id="event-<%= event.first.id %>">
+	<a href="<%= event_show_url( :event => event.first.id  ) %>">
+		<%= render :partial => 'work_package_event/step', :collection => event %>
+	</a>
+</li>
