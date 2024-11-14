@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'work-packages' => 'work_package#index', as: :work_package_list
   get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
+  get 'work-packages/:work_package/events' => 'work_package_event#index', as: :work_package_event_list
+  
   get 'procedures' => 'procedure#index', as: :procedure_list
   get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
   
@@ -39,14 +41,15 @@ Rails.application.routes.draw do
   
   get 'step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
   
+  get 'events' => 'event#index', as: :event_list
+  get 'events/:event' => 'event#show', as: :event_show
+  
   
   
   
   
   
   # Stubs
-  get 'events' => 'event#index', as: :event_list
-  get 'events/:event' => 'event#show', as: :event_show
   
   get 'routes' => 'route#index', as: :route_list
   get 'routes/:route' => 'route#show', as: :route_show
