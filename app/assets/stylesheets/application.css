@@ -102,9 +102,7 @@ body.subsection-procedures-with-step-depth .subnav a.procedures-with-step-depth 
 	color: #4d4d4d;
 }
 
-li.event {
-	border: 1px dotted #ccc;
-}
+
 
 
 div.debug {
@@ -708,4 +706,13 @@ li p {
 
 #events li {
 	margin-bottom: 1em;
+}
+
+#events ol ol li a {
+	border: 1px, dotted #ccc;
+	display: block;
+	padding: .5em;
+}
+#events ol ol li a:hover {
+	background-color: #ccc;
 }
