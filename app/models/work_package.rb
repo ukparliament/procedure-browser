@@ -18,6 +18,10 @@ class WorkPackage
     self.procedure_identifier.split( '/' ).last
   end
   
+  def work_packageable_thing_id
+    self.work_packageable_thing_identifer.split( '/' ).last
+  end
+  
   def calculation_style_id
     self.calculation_style_identifier.split( '/' ).last
   end
