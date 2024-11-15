@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   
   get 'work-packages/:work_package/events/past' => 'work_package_past_event#index', as: :work_package_past_event_list
   
+  get 'work-packages/:work_package/events/future' => 'work_package_future_event#index', as: :work_package_future_event_list
+  
+  get 'work-packages/:work_package/events/undated' => 'work_package_undated_event#index', as: :work_package_undated_event_list
+  
   get 'procedures' => 'procedure#index', as: :procedure_list
   get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
   
