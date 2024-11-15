@@ -1,0 +1,11 @@
+<%= work_package_description_with_markup( @work_package ) %>
+
+<%= list_item_count_sentence( 'undated event', @work_package_events.size ) %>
+	
+<% unless @work_package_undated_events.empty? -%>
+	<ol>
+		<%= render :partial => 'work_package_event/event', :collection => @work_package_undated_events.first, :locals => { :work_packages => @work_package_undated_events } %>
+	</ol>
+<% end -%>
+
+<%= render :partial => 'common/identifier', :object => @work_package %>
