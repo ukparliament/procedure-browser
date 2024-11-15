@@ -13,7 +13,7 @@ class WorkPackagePastEventController < ApplicationController
     # We get the work package.
     @work_package = get_work_package( work_package_id )
   
-    # We get all the events for the work package.
+    # We get all the past events for the work package.
     @work_package_events = get_work_package_past_events( work_package_id )
   
     # We get an array of past events structured for display as nested lists.
