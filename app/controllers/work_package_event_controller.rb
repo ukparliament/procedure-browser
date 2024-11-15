@@ -26,10 +26,15 @@ class WorkPackageEventController < ApplicationController
     @work_package_past_events = get_past_events_for_work_package( @work_package_pertinent_past_events )
     @work_package_future_events = get_past_events_for_work_package( @work_package_pertinent_future_events )
     @work_package_undated_events = get_past_events_for_work_package( @work_package_pertinent_undated_events )
+    
+    # We create an array of dated events - past and future - in order to generate the RSS.
+    @work_package_dated_events = @work_package_past_events + @work_package_future_events
+    @work_package_dated_events.reverse!
   
     @page_title = "Events forming the work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package events</span>".html_safe
     @description = "Work package for #{@work_package.work_packageable_thing_label}."
+    @rss_url = work_package_event_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: work_package_list_url }
     @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }
     @crumb << { label: 'Events', url: nil }
