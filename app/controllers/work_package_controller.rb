@@ -62,6 +62,7 @@ class WorkPackageController < ApplicationController
     @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
     @description = "Work package for #{@work_package.work_packageable_thing_label}."
+    @rss_url = work_package_event_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: work_package_list_url }
     @crumb << { label: @work_package.work_packageable_thing_label, url: nil }
     @section = 'work-packages'
