@@ -6,6 +6,7 @@ class WorkPackagePastEventController < ApplicationController
   include Sparql::Get::WorkPackagePastEvents
   include Sparql::Queries::WorkPackagePastEvents
   include Sparql::Get::Response
+  include Timeline::Timeline
 
   def index
     work_package_id = params[:work_package]
@@ -16,9 +17,9 @@ class WorkPackagePastEventController < ApplicationController
     # We get all the past events for the work package.
     @work_package_events = get_work_package_past_events( work_package_id )
   
-    # We get an array of past events structured for display as nested lists.
-    # These are an array of days containing an array of events, containing an array of steps.
-    @work_package_past_events = get_past_events_for_work_package( @work_package_events )
+    # We construct an array of past events structured for display as nested lists.
+    # These construct an array of days containing an array of events, containing an array of steps.
+    @work_package_past_events = construct_events_array_for_work_package( @work_package_events )
   
     @page_title = "Past events forming the work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package past events</span>".html_safe

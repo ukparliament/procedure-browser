@@ -6,6 +6,7 @@ class WorkPackageEventController < ApplicationController
   include Sparql::Get::WorkPackageEvents
   include Sparql::Queries::WorkPackageEvents
   include Sparql::Get::Response
+  include Timeline::Timeline
 
   def index
     work_package_id = params[:work_package]
@@ -17,15 +18,15 @@ class WorkPackageEventController < ApplicationController
     @work_package_events = get_work_package_events( work_package_id )
   
     # We get arrays of pertinent past events, future events and undated events.
-    @work_package_pertinent_past_events = get_pertinent_events( @work_package_events, 'past' )
-    @work_package_pertinent_future_events = get_pertinent_events( @work_package_events, 'future' )
-    @work_package_pertinent_undated_events = get_pertinent_events( @work_package_events, 'undated' )
+    @work_package_pertinent_past_events = get_pertinent_events_of_type( @work_package_events, 'past' )
+    @work_package_pertinent_future_events = get_pertinent_events_of_type( @work_package_events, 'future' )
+    @work_package_pertinent_undated_events = get_pertinent_events_of_type( @work_package_events, 'undated' )
   
-    # We get arrays of past events, future events and undated events structured for display as nested lists.
+    # We construct arrays of past events, future events and undated events structured for display as nested lists.
     # These are an array of days containing an array of events, containing an array of steps.
-    @work_package_past_events = get_past_events_for_work_package( @work_package_pertinent_past_events )
-    @work_package_future_events = get_past_events_for_work_package( @work_package_pertinent_future_events )
-    @work_package_undated_events = get_past_events_for_work_package( @work_package_pertinent_undated_events )
+    @work_package_past_events = construct_events_array_for_work_package( @work_package_pertinent_past_events )
+    @work_package_future_events = construct_events_array_for_work_package( @work_package_pertinent_future_events )
+    @work_package_undated_events = construct_events_array_for_work_package( @work_package_pertinent_undated_events )
     
     # We create an array of dated events - past and future - in order to generate the RSS.
     @work_package_dated_events = @work_package_past_events + @work_package_future_events

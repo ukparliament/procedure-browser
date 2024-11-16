@@ -10,6 +10,7 @@ class WorkPackageController < ApplicationController
   include Sparql::Get::WorkPackageEvents
   include Sparql::Queries::WorkPackageEvents
   include Sparql::Get::Response
+  include Timeline::Timeline
 
   def index
   
@@ -49,15 +50,15 @@ class WorkPackageController < ApplicationController
     @work_package_events = get_work_package_events( work_package_id )
     
     # We get arrays of pertinent past events, future events and undated events.
-    @work_package_pertinent_past_events = get_pertinent_events( @work_package_events, 'past' )
-    @work_package_pertinent_future_events = get_pertinent_events( @work_package_events, 'future' )
-    @work_package_pertinent_undated_events = get_pertinent_events( @work_package_events, 'undated' )
+    @work_package_pertinent_past_events = get_pertinent_events_of_type( @work_package_events, 'past' )
+    @work_package_pertinent_future_events = get_pertinent_events_of_type( @work_package_events, 'future' )
+    @work_package_pertinent_undated_events = get_pertinent_events_of_type( @work_package_events, 'undated' )
     
-    # We get arrays of past events, future events and undated events structured for display as nested lists.
+    # We construct arrays of past events, future events and undated events structured for display as nested lists.
     # These are an array of days containing an array of events, containing an array of steps.
-    @work_package_past_events = get_past_events_for_work_package( @work_package_pertinent_past_events )
-    @work_package_future_events = get_past_events_for_work_package( @work_package_pertinent_future_events )
-    @work_package_undated_events = get_past_events_for_work_package( @work_package_pertinent_undated_events )
+    @work_package_past_events = construct_events_array_for_work_package( @work_package_pertinent_past_events )
+    @work_package_future_events = construct_events_array_for_work_package( @work_package_pertinent_future_events )
+    @work_package_undated_events = construct_events_array_for_work_package( @work_package_pertinent_undated_events )
     
     @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
@@ -69,104 +70,4 @@ class WorkPackageController < ApplicationController
     
     render :template => 'work_package_event/index'
   end
-end
-
-# A method to get pertinent events of a type.
-def get_pertinent_events( work_package_events, type )
-
-  # We create an array to hold pertinent events.
-  pertinent_events = []
-  
-  # For each item in the work package events array ...
-  work_package_events.each do |event|
-  
-    # We check the type ...
-    case type
-    
-      # ... and when the type is 'past' events ...
-      when 'past'
-    
-        # ... if the event has a date and the date is today or earlier ...
-        if ( event.date ) && ( event.date <= Date.today )
-      
-          # ... we add the event to the array of pertinent events.
-          pertinent_events << event
-        end
-    
-      # Otherwise, if the type is 'future' events ...
-      when 'future'
-      
-        # ... if the event has a date and the date is later than today ...
-        if ( event.date ) && ( event.date > Date.today )
-    
-          # ... we add the event to the array of pertinent events.
-          pertinent_events << event
-        end
-          
-      # Otherwise, if the type is 'undated' events ...
-      when 'undated'
-    
-        # ... if the event has no date ...
-        unless event.date
-    
-          # ... we add the event to the array of pertinent events.
-          pertinent_events << event
-        end
-    end
-  end
-  
-  # We return the pertinent events array.
-  pertinent_events
-end
-
-# A method to get past events for a work package.
-def get_past_events_for_work_package( pertinent_events )
-
-  # We create an array to hold dates for a event list view of a work package.
-  dates = []
-  
-  # For each pertinent event ...
-  pertinent_events.each_with_index do |pertinent_event, index|
-  
-    # ... if this is the first pertinent event ...
-    if index == 0
-    
-      # ... we know it's a new step for a new event on a new date.
-      # We create a new array of steps inside a new array of events and add the events array to the dates array.
-      dates << Array[Array[pertinent_event]]
-      
-    # Otherwise, if this is not the first pertinent event ...
-    else
-      
-      # ... if this event has a different date to the preceding event ...
-      if pertinent_event.date != pertinent_events[index - 1].date
-    
-        # ... we know it's a new step for a new event on a new date.
-        # We create a new array of steps inside a new array of events and add the events array to the dates array.
-        dates << Array[Array[pertinent_event]]
-        
-      # Otherwise, if this event has the same date as the preceding event ...
-      else
-        
-        # ... if this event has a different identifier to the preceding event ...
-        if pertinent_event.identifier != pertinent_events[index - 1].identifier
-        
-          # ... we know it's a new step for a new event on an existing date.
-          # We create a new array of events containing the new step and add it to the last date.
-          dates.last << Array[pertinent_event]
-          
-        # Otherwise, if this event has the same identifier as the preceding event ...
-        else
-        
-          # ... we know this is a new step for an existing event on an existing date.
-          # We add the event to the last event array of the last date.
-          dates.last.last << pertinent_event
-        end
-      end
-    end
-    
-  end
-  
-  # We return the array of events for a work package.
-  dates
 end
