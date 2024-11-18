@@ -16,6 +16,7 @@ class Step
   attr_accessor :lords_identifier
   attr_accessor :legislature_identifier
   attr_accessor :legislature_label
+  attr_accessor :event_identifier
   attr_accessor :event_date
   attr_accessor :event_link
   
