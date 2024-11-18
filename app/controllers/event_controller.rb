@@ -13,6 +13,7 @@ class EventController < ApplicationController
     @event_steps = get_event_steps( event_id )
     
     @event = Event.new
+    @event.identifier = @event_steps.first.event_identifier
     @event.date = @event_steps.first.event_date
     @event.link = @event_steps.first.event_link
     
