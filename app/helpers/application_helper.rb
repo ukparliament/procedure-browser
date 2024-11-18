@@ -13,4 +13,15 @@ module ApplicationHelper
     list_item_count_sentence += '.'
     list_item_count_sentence = content_tag( 'p', list_item_count_sentence )
   end
+  
+  def class_display_label( object )
+    class_display_label = ''
+    words = object.class.name.split /(?=[A-Z])/
+    words.each do |word|
+      word.downcase! if word != words[0]
+      class_display_label += word
+      class_display_label += ' ' unless word == words.last
+    end
+    class_display_label
+  end
 end
