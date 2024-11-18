@@ -8,3 +8,5 @@
 		<%= render :partial => 'event', :collection => @step_events, :locals => { :step => @step } %>
 	</ol>
 <% end -%>
+
+<%= render :partial => 'common/identifier', :object => @step %>
