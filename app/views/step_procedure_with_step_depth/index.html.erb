@@ -7,3 +7,5 @@
 		<%= render :partial => 'procedure', :collection => @step_procedures_with_step_depth, :locals => { :step => @step } %>
 	</ol>
 <% end -%>
+
+<%= render :partial => 'common/identifier', :object => @step %>
