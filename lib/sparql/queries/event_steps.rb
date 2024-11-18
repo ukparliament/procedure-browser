@@ -6,7 +6,7 @@ module Sparql::Queries::EventSteps
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX : <https://id.parliament.uk/schema/>
         PREFIX id: <https://id.parliament.uk/>
-        SELECT ?step ?stepName ?eventDate ?url ?legislature ?legislatureName ?CommonsId ?LordsId WHERE {
+        SELECT ?event ?step ?stepName ?eventDate ?url ?legislature ?legislatureName ?CommonsId ?LordsId WHERE {
         ?event a :BusinessItem;
                :businessItemHasProcedureStep ?step.
           optional {?event :date ?eventDate.}
