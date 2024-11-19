@@ -25,5 +25,6 @@ class ProcedureController < ApplicationController
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: @procedure.label, url: nil }
     @section = 'procedures'
+    @subsection = 'overview'
   end
 end
