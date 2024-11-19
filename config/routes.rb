@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   
   get 'procedures/:procedure/step-types' => 'procedure_step_type#index', as: :procedure_step_type_list
   
+  get 'procedures/:procedure/steps' => 'procedure_step#index', as: :procedure_step_list
+  
   
   
   
