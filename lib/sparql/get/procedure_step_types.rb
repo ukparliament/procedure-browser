@@ -8,7 +8,7 @@ module Sparql::Get::ProcedureStepTypes
     # We get the SPARQL response as a CSV.
     #csv = get_sparql_response_as_csv( request_body )
     
-    # We construct an array to hold the events.
+    # We construct an array to hold the step types.
     step_types = []
   
     # For each row in the CSV ...
