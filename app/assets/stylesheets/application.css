@@ -109,6 +109,10 @@ body.subsection-steps .subnav a.steps {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-work-packages .subnav a.work-packages {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 
 
