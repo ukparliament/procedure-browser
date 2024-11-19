@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   
   get 'procedures/:procedure/routes' => 'procedure_route#index', as: :procedure_route_list
   
+  get 'procedures/:procedure/clocks' => 'procedure_clock#index', as: :procedure_clock_list
+  
   
   
   
