@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'procedures' => 'procedure#index', as: :procedure_list
   get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
   
+  get 'procedures/:procedure/work-packages' => 'procedure_work_package#index', as: :procedure_work_package_list
+  
   get 'procedures/:procedure/step-types' => 'procedure_step_type#index', as: :procedure_step_type_list
   
   get 'procedures/:procedure/steps' => 'procedure_step#index', as: :procedure_step_list
@@ -31,14 +33,6 @@ Rails.application.routes.draw do
   get 'procedures/:procedure/clocks' => 'procedure_clock#index', as: :procedure_clock_list
   
   get 'procedures/:procedure/step-collections' => 'procedure_step_collection#index', as: :procedure_step_collection_list
-  
-  
-  
-  
-  
-  
-  
-  
   
   get 'step-types' => 'step_type#index', as: :step_type_list
   get 'step-types/:step_type' => 'step_type#show', as: :step_type_show
