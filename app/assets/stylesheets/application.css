@@ -38,6 +38,9 @@ body.section-work-packages nav#header-nav a.work-packages {
 body.section-procedures nav#header-nav a.procedures {
 	border-bottom-color: #fff;
 }
+body.section-calculation-styles nav#header-nav a.calculation-styles {
+	border-bottom-color: #fff;
+}
 body.section-steps nav#header-nav a.steps {
 	border-bottom-color: #fff;
 }
