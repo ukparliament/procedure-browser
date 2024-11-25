@@ -4,7 +4,7 @@ module Sparql::Get::WorkPackages
   def get_work_packages( page_number, results_per_page )
   
     # We calculate the result offset.
-    result_offset = ( ( page_number - 1) * results_per_page ) + 1
+    result_offset = ( ( page_number - 1) * results_per_page )
 
     # We get the all work packages query passing parameters for the number of results per page and the result offset.
     request_body = work_packages_query( results_per_page, result_offset )
