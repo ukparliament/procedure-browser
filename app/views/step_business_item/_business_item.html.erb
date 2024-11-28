@@ -1,0 +1,9 @@
+<li>
+	<%= content_tag( 'h2', link_to( business_item.work_packageable_thing_label, work_package_show_url( :work_package => business_item.work_package_id, :anchor => "business-item-#{business_item.id}-actualising-#{step.id}" ) ) ) %>
+	<%= content_tag( 'p', step_business_item_description( business_item ) ) %>
+</li>
+
+
+
+
+
