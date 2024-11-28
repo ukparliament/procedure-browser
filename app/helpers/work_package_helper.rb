@@ -145,17 +145,17 @@ module WorkPackageHelper
     work_package_list_item_description
   end
   
-  def work_package_table_of_contents( work_package_past_events, work_package_future_events, work_package_undated_events )
+  def work_package_table_of_contents( work_package_past_business_items, work_package_future_business_items, work_package_undated_business_items )
     toc_links = []
-    unless work_package_past_events.empty?
+    unless work_package_past_business_items.empty?
       link = { :id => 'past', :label => 'Business items having happened' }
       toc_links << link
     end
-    unless work_package_future_events.empty?
+    unless work_package_future_business_items.empty?
       link = { :id => 'future', :label => 'Business items due to happen' }
       toc_links << link
     end
-    unless work_package_undated_events.empty?
+    unless work_package_undated_business_items.empty?
       link = { :id => 'undated', :label => 'Business items having no dates' }
       toc_links << link
     end
