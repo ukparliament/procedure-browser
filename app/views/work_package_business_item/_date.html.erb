@@ -1,0 +1,6 @@
+<li id="date-<%= date.first.first.date %>">
+	<%= content_tag( 'h3', date.first.first.date.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+	<ol>
+		<%= render :partial => 'work_package_business_item/business_item', :collection => date %>
+	</ol>
+</li>

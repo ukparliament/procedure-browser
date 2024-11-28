@@ -1,0 +1,5 @@
+<li id="business-item-<%= business_item.first.id %>">
+	<a href="<%= business_item_show_url( :business_item => business_item.first.id  ) %>">
+		<%= render :partial => 'work_package_business_item/step', :collection => business_item %>
+	</a>
+</li>
