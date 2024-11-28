@@ -1,8 +1,13 @@
 module StepClockHelper
 
   def step_clock_description( clock )
-    clock_description = clock.day_count
-    clock_description += ' days from '
+    clock_description = ''
+    if clock.day_count
+      clock_description += clock.day_count
+      clock_description += ' days from '
+    else
+      clock_description += 'From '
+    end
     clock_description += step_clock_from_step_label( clock )
     clock_description += ' to '
     clock_description += step_clock_to_step_label( clock )
