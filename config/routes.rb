@@ -11,13 +11,18 @@ Rails.application.routes.draw do
   get 'work-packages' => 'work_package#index', as: :work_package_list
   get 'work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
-  get 'work-packages/:work_package/events' => 'work_package_event#index', as: :work_package_event_list
+  get 'work-packages/:work_package/business-items' => 'work_package_business_item#index', as: :work_package_business_item_list
   
-  get 'work-packages/:work_package/events/past' => 'work_package_past_event#index', as: :work_package_past_event_list
+  get 'work-packages/:work_package/business-items/past' => 'work_package_past_business_item#index', as: :work_package_past_business_item_list
   
-  get 'work-packages/:work_package/events/future' => 'work_package_future_event#index', as: :work_package_future_event_list
+  get 'work-packages/:work_package/business-items/future' => 'work_package_future_business_item#index', as: :work_package_future_business_item_list
   
-  get 'work-packages/:work_package/events/undated' => 'work_package_undated_event#index', as: :work_package_undated_event_list
+  get 'work-packages/:work_package/business-items/undated' => 'work_package_undated_business_item#index', as: :work_package_undated_business_item_list
+  
+  get 'business-items' => 'business_item#index', as: :business_item_list
+  get 'business-items/:business_item' => 'business_item#show', as: :business_item_show
+  
+  get 'business-items/:business_item/steps' => 'business_item_step#index', as: :business_item_step_list
   
   get 'procedures' => 'procedure#index', as: :procedure_list
   get 'procedures/:procedure' => 'procedure#show', as: :procedure_show
@@ -42,7 +47,7 @@ Rails.application.routes.draw do
   get 'steps' => 'step#index', as: :step_list
   get 'steps/:step' => 'step#show', as: :step_show
   
-  get 'steps/:step/events' => 'step_event#index', as: :step_event_list
+  get 'steps/:step/business-items' => 'step_business_item#index', as: :step_business_item_list
   
   get 'steps/:step/routes' => 'step_route#index', as: :step_route_list
   
@@ -58,10 +63,6 @@ Rails.application.routes.draw do
   get 'step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
   
   get 'step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
-  
-  get 'events' => 'event#index', as: :event_list
-  get 'events/:event' => 'event#show', as: :event_show
-  
   
   
   
