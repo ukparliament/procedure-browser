@@ -7,8 +7,8 @@ class WorkPackageController < ApplicationController
   include Sparql::Queries::WorkPackages
   include Sparql::Get::WorkPackage
   include Sparql::Queries::WorkPackage
-  include Sparql::Get::WorkPackageEvents
-  include Sparql::Queries::WorkPackageEvents
+  include Sparql::Get::WorkPackageBusinessItems
+  include Sparql::Queries::WorkPackageBusinessItems
   include Sparql::Get::Response
   include Timeline::Timeline
 
@@ -46,28 +46,32 @@ class WorkPackageController < ApplicationController
     # We get the work package.
     @work_package = get_work_package( work_package_id )
     
-    # We get all the events for the work package.
-    @work_package_events = get_work_package_events( work_package_id )
+    # We get all the business items for the work package.
+    @work_package_business_items = get_work_package_business_items( work_package_id )
     
-    # We get arrays of pertinent past events, future events and undated events.
-    @work_package_pertinent_past_events = get_pertinent_events_of_type( @work_package_events, 'past' )
-    @work_package_pertinent_future_events = get_pertinent_events_of_type( @work_package_events, 'future' )
-    @work_package_pertinent_undated_events = get_pertinent_events_of_type( @work_package_events, 'undated' )
+    # We get arrays of pertinent past business items, future business items and undated business items.
+    @work_package_pertinent_past_business_items = get_pertinent_business_items_of_type( @work_package_business_items, 'past' )
+    @work_package_pertinent_future_business_item = get_pertinent_business_items_of_type( @work_package_business_items, 'future' )
+    @work_package_pertinent_undated_business_item = get_pertinent_business_items_of_type( @work_package_business_items, 'undated' )
     
-    # We construct arrays of past events, future events and undated events structured for display as nested lists.
-    # These are an array of days containing an array of events, containing an array of steps.
-    @work_package_past_events = construct_events_array_for_work_package( @work_package_pertinent_past_events )
-    @work_package_future_events = construct_events_array_for_work_package( @work_package_pertinent_future_events )
-    @work_package_undated_events = construct_events_array_for_work_package( @work_package_pertinent_undated_events )
+    # We construct arrays of past business items, future business items and undated business items structured for display as nested lists.
+    # These are an array of dates, containing an array of business items, containing an array of steps.
+    @work_package_past_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_past_business_items )
+    @work_package_future_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_future_business_item )
+    @work_package_undated_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_undated_business_item )
+    
+    # We know the array of business items is actually an array of actualisations, some business items actualising more than one step.
+    # We get the business item count.
+    @business_item_count = get_business_item_count( @work_package_business_items )
     
     @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
-    @description = "Work package for #{@work_package.work_packageable_thing_label}."
-    @rss_url = work_package_event_list_url( :format => 'rss' )
+    @description = "A work package for #{@work_package.work_packageable_thing_label}."
+    @rss_url = work_package_business_item_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: work_package_list_url }
     @crumb << { label: @work_package.work_packageable_thing_label, url: nil }
     @section = 'work-packages'
     
-    render :template => 'work_package_event/index'
+    render :template => 'work_package_business_item/index'
   end
 end
