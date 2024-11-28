@@ -1,6 +1,6 @@
 <p class="subnav">
 	<%= link_to( 'Overview', step_show_url, :class => 'overview' ) %>
-	<%= link_to( 'Events', step_event_list_url, :class => 'events' ) if nav.step_type_id == 'Jwc6nqJi' %>
+	<%= link_to( 'Business items', step_business_item_list_url, :class => 'business-items' ) if nav.step_type_id == 'Jwc6nqJi' %>
 	<%= link_to( 'Routes', step_route_list_url, :class => 'routes' ) %>
 	<%= link_to( 'Clocks', step_clock_list_url, :class => 'clocks' ) if nav.step_type_id == 'Jwc6nqJi' %>
 	<%= link_to( 'Step collections', step_step_collection_list_url, :class => 'step-collections' )if nav.step_type_id == 'Jwc6nqJi' %>
