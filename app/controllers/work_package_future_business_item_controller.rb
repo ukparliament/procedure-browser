@@ -18,7 +18,7 @@ class WorkPackageFutureBusinessItemController < ApplicationController
     @work_package_business_items = get_work_package_future_business_items( work_package_id )
   
     # We construct an array of future business items structured for display as nested lists.
-    # These are an array of dates, containing an array of events, containing an array of steps.
+    # These are an array of dates, containing an array of business items, containing an array of steps.
     @work_package_future_business_items = construct_business_items_array_for_work_package( @work_package_business_items )
     
     # We know the array of business items is actually an array of actualisations, some business items actualising more than one step.
