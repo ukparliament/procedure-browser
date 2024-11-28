@@ -10,9 +10,9 @@ class BusinessItemStepController < ApplicationController
     @business_item_steps = get_business_item_steps( business_item_id )
     
     @business_item = BusinessItem.new
-    @business_item.identifier = @business_item_steps.first.event_identifier
-    @business_item.date = @business_item_steps.first.event_date
-    @business_item.link = @business_item_steps.first.event_link
+    @business_item.identifier = @business_item_steps.first.business_item_identifier
+    @business_item.date = @business_item_steps.first.business_item_date
+    @business_item.link = @business_item_steps.first.business_item_link
     
     if @business_item.date
       @page_title = "Steps actualised by a business item taking place on #{@business_item.date.strftime( $DATE_DISPLAY_FORMAT )}"
