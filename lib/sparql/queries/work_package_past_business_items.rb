@@ -1,7 +1,7 @@
-module Sparql::Queries::WorkPackageFutureEvents
+module Sparql::Queries::WorkPackagePastBusinessItems
 
-  # A SPARQL query to get a work package and its future events.
-  def work_package_future_events_query( work_package_id )
+  # A SPARQL query to get a work package and its past business items.
+  def work_package_past_business_items_query( work_package_id )
     "
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX : <https://id.parliament.uk/schema/>
@@ -27,7 +27,7 @@ module Sparql::Queries::WorkPackageFutureEvents
               filter (?CommonsId IN (id:1AFu55Hs))}
         Optional {?eventProcedureStep :procedureStepHasHouse ?LordsId.
           filter (?LordsId IN (id:WkUWUBMx))} 
-      FILTER ( xsd:dateTime(?eventDate) >= now() )}    
+      FILTER ( xsd:dateTime(?eventDate) <= now() )}    
       order by ?eventDate ?depthValue
     "
   end

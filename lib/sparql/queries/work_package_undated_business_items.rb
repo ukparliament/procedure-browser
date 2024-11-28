@@ -1,7 +1,7 @@
-module Sparql::Queries::WorkPackageUndatedEvents
+module Sparql::Queries::WorkPackageUndatedBusinessItems
 
-  # A SPARQL query to get a work package and its undated events.
-  def work_package_undated_events_query( work_package_id )
+  # A SPARQL query to get a work package and its undated business items.
+  def work_package_undated_business_items_query( work_package_id )
     "
       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
