@@ -23,15 +23,15 @@ module Sparql::Get::BusinessItemSteps
       step.legislature_label = row['legislatureName']
       step.commons_identifier = row['CommonsId']
       step.lords_identifier = row['LordsId']
-      step.event_identifier = row['event']
-      step.event_date = row['eventDate'].to_date if row['eventDate']
-      step.event_link = row['url']
+      step.business_item_identifier = row['event']
+      step.business_item_date = row['eventDate'].to_date if row['eventDate']
+      step.business_item_link = row['url']
       
-      # ... and add it to the array of events.
+      # ... and add it to the array of steps.
       steps << step
     end
   
-    # We return the array of events.
+    # We return the array of steps.
     steps
   end
 end
