@@ -1,6 +1,0 @@
-<li id="date-<%= date.first.first.date %>">
-	<%= content_tag( 'h2', date.first.first.date.strftime( $DATE_DISPLAY_FORMAT ) ) %>
-	<ol>
-		<%= render :partial => 'work_package_event/event', :collection => date %>
-	</ol>
-</li>
