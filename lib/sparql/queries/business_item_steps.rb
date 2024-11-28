@@ -1,7 +1,7 @@
-module Sparql::Queries::EventSteps
+module Sparql::Queries::BusinessItemSteps
 
-  # A SPARQL query to get steps for an event.
-  def event_steps_query( event_id )
+  # A SPARQL query to get steps for a business item.
+  def business_item_steps_query( business_item_id )
     "
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
         PREFIX : <https://id.parliament.uk/schema/>
@@ -18,7 +18,7 @@ module Sparql::Queries::EventSteps
                 filter (?CommonsId IN (id:1AFu55Hs))}
           Optional {?step :procedureStepHasHouse ?LordsId.
             filter (?LordsId IN (id:WkUWUBMx))} 
-          filter (?event in (id:#{event_id}))
+          filter (?event in (id:#{business_item_id}))
       }
     "
   end

@@ -1,9 +1,9 @@
-module Sparql::Get::EventSteps
+module Sparql::Get::BusinessItemSteps
   
-  def get_event_steps( event )
+  def get_business_item_steps( business_item_id )
     
-    # We get the event steps query.
-    request_body = event_steps_query( event )
+    # We get the business item steps query.
+    request_body = business_item_steps_query( business_item_id )
     
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
