@@ -5,7 +5,6 @@ class WorkPackageableThing
   attr_accessor :procedure_label
   attr_accessor :identifier
   attr_accessor :label
-  attr_accessor :event_date
   
   def id
     self.identifier.split( '/' ).last
