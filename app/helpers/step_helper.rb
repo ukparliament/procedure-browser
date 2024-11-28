@@ -54,12 +54,6 @@ module StepHelper
     step_houses_and_legislature_label.html_safe
   end
   
-  def event_step_label( step )
-    step_label_in_list = step.step_label
-    step_label_in_list += " (#{step_houses_and_legislature_label( step )})" unless step_houses_and_legislature_label( step ).empty?
-    step_label_in_list.html_safe
-  end
-  
   def step_label_in_list( step )
     step_label_in_list = step.label
     step_label_in_list += " #{step.step_type_label}" unless step.step_type_id == 'Jwc6nqJi'
