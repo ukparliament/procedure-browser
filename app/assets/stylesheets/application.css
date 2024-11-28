@@ -80,7 +80,7 @@ body.subsection-overview .subnav a.overview {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
-body.subsection-events .subnav a.events {
+body.subsection-business-items .subnav a.business-items {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
@@ -707,15 +707,15 @@ li p {
 	margin-bottom: 0em;
 }
 
-#events li {
+#business-items li {
 	margin-bottom: 1em;
 }
 
-#events ol ol li a {
+#business-items ol li a {
 	border: 1px, dotted #ccc;
 	display: block;
 	padding: .5em;
 }
-#events ol ol li a:hover {
+#business-items ol li a:hover {
 	background-color: #ccc;
 }
