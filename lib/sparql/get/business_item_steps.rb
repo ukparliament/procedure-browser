@@ -13,19 +13,27 @@ module Sparql::Get::BusinessItemSteps
   
     # For each row in the CSV ...
     csv.each do |row|
-  
+    
       # ... we create a new step object ...
       step = Step.new
-      step.identifier = row['step']
-      step.label = row['stepName']
-      step.step_label = row['stepName']
+      step.identifier = row['businessItemstep']
+      step.label = row['businessItemStepName']
+      step.step_label = row['businessItemStepName']
       step.legislature_identifier = row['legislature']
       step.legislature_label = row['legislatureName']
       step.commons_identifier = row['CommonsId']
       step.lords_identifier = row['LordsId']
-      step.business_item_identifier = row['event']
-      step.business_item_date = row['eventDate'].to_date if row['eventDate']
+      step.business_item_identifier = row['businessItem']
+      step.business_item_date = row['Date'].to_date if row['Date']
       step.business_item_link = row['url']
+      step.work_package_identifier = row['workPackage']
+      step.work_package_made_available_on = row['madeAvailableDate']
+      step.work_packageable_thing_identifier = row['workPackagedThing']
+      step.work_packageable_thing_label = row['workPackagedThingLabel']
+      step.procedure_identifier = row['procedure']
+      step.procedure_label = row['procedureLabel']
+      step.calculation_style_identifier = row['calculationStyle']
+      step.calculation_style_label = row['calculationStyleLabel']
       
       # ... and add it to the array of steps.
       steps << step
