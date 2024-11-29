@@ -24,10 +24,6 @@ module Sparql::Get::WorkPackage
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
       
-      
-      
-      
-      
       # We return the work package object.
       return work_package
     end
