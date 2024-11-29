@@ -17,19 +17,15 @@ module Sparql::Get::WorkPackageUndatedBusinessItems
   
       # ... we create a new business item object ...
       business_item = BusinessItem.new
-      business_item.identifier = row['event']
-      business_item.date = row['eventDate'].to_date if row['eventDate']
-      business_item.link = row['eventLink']
-      business_item.step_identifier = row['eventProcedureStep']
-      business_item.step_label = row['eventProcedureStepName']
+      business_item.identifier = row['businessItem']
+      business_item.date = row['businessItemDate'].to_date if row['businessItemDate']
+      business_item.link = row['businessItemLink']
+      business_item.step_identifier = row['businessItemProcedureStep']
+      business_item.step_label = row['businessItemProcedureStepName']
       business_item.legislature_identifier = row['legislature']
       business_item.legislature_label = row['legislatureName']
       business_item.commons_identifier = row['CommonsId']
       business_item.lords_identifier = row['LordsId']
-      business_item.work_packageable_thing_identifier = row['Paper']
-      business_item.work_packageable_thing_label = row['Papername']
-      business_item.work_package_identifier = row['workPackage']
-      business_item.procedure_identifier = row['procedure']
       
       # ... and add it to the array of business items.
       business_items << business_item
