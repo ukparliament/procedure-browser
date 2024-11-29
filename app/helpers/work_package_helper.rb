@@ -131,6 +131,27 @@ module WorkPackageHelper
     content_tag( 'p', work_package_list_item_description )
   end
   
+  def work_package_description_with_markup_from_business_item( business_item )
+    work_package_list_item_description = "A #{link_to( 'work package', work_package_show_url( :work_package => business_item.work_package_id ) )} focussed on the "
+    work_package_list_item_description += link_to( business_item.work_packageable_thing_label, work_packageable_thing_show_url( :work_packageable_thing => business_item.work_packageable_thing_id ) )
+    if business_item.work_package_made_available_on
+      work_package_list_item_description += ', made available on '
+      work_package_list_item_description += business_item.work_package_made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+      work_package_list_item_description += ', subject to the '
+    else
+      work_package_list_item_description += ', subject to the '
+    end
+    work_package_list_item_description += link_to( business_item.procedure_label, procedure_show_url( :procedure => business_item.procedure_id ) )
+    work_package_list_item_description += ' procedure.'
+    unless business_item.calculation_style_identifier.blank?
+      work_package_list_item_description += ' Scrutiny period described by '
+      work_package_list_item_description += link_to( business_item.calculation_style_label, calculation_style_show_url( :calculation_style => business_item.calculation_style_id ) )
+      work_package_list_item_description += '.'
+    end
+    work_package_list_item_description = work_package_list_item_description.html_safe
+    content_tag( 'p', work_package_list_item_description )
+  end
+  
   def work_package_description( work_package )
     work_package_list_item_description = 'Made available on '
     work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
