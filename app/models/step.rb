@@ -19,6 +19,14 @@ class Step
   attr_accessor :business_item_identifier
   attr_accessor :business_item_date
   attr_accessor :business_item_link
+  attr_accessor :work_package_identifier
+  attr_accessor :work_package_made_available_on
+  attr_accessor :work_packageable_thing_identifier
+  attr_accessor :work_packageable_thing_label
+  attr_accessor :procedure_identifier
+  attr_accessor :procedure_label
+  attr_accessor :calculation_style_identifier
+  attr_accessor :calculation_style_label
   
   def id
     self.identifier.split( '/' ).last
