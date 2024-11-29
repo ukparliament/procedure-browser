@@ -719,3 +719,9 @@ li p {
 #business-items ol li a:hover {
 	background-color: #ccc;
 }
+
+.read-link {
+	background-color: #ebe9e8;
+	border: 1px, dotted #ccc;
+	padding: .5em;
+}
