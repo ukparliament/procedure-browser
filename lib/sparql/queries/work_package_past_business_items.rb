@@ -12,23 +12,23 @@ module Sparql::Queries::WorkPackagePastBusinessItems
            ?Paper :name ?Papername ;
            :workPackagedThingHasWorkPackage ?workPackage.
         filter (?workPackage IN (id:#{work_package_id}))
-           ?workPackage :workPackageHasBusinessItem ?event. 
+           ?workPackage :workPackageHasBusinessItem ?businessItem. 
            ?workPackage :workPackageHasProcedure ?procedure.
-         optional {?event :businessItemDate ?eventDate}
-        optional {?event :businessItemHasBusinessItemWebLink ?eventLink}
-       ?event :businessItemHasProcedureStep ?eventProcedureStep. 
-       ?eventProcedureStep :name ?eventProcedureStepName.
-       ?eventProcedureStep :procedureStepHasStepDisplayDepthInProcedure ?stepDepth.
+         optional {?businessItem :businessItemDate ?businessItemDate}
+        optional {?businessItem :businessItemHasBusinessItemWebLink ?businessItemLink}
+       ?businessItem :businessItemHasProcedureStep ?businessItemProcedureStep. 
+       ?businessItemProcedureStep :name ?businessItemProcedureStepName.
+       ?businessItemProcedureStep :procedureStepHasStepDisplayDepthInProcedure ?stepDepth.
         ?procedure :procedureHasStepDisplayDepthInProcedure ?stepDepth.
        ?stepDepth :stepDisplayDepthInProcedureHasDepth ?depthValue.
-        Optional {?eventProcedureStep :procedureStepInLegislature ?legislature.
+        Optional {?businessItemProcedureStep :procedureStepInLegislature ?legislature.
           ?legislature :name ?legislatureName.}
-        Optional {?eventProcedureStep:procedureStepHasHouse ?CommonsId.
+        Optional {?businessItemProcedureStep:procedureStepHasHouse ?CommonsId.
               filter (?CommonsId IN (id:1AFu55Hs))}
-        Optional {?eventProcedureStep :procedureStepHasHouse ?LordsId.
+        Optional {?businessItemProcedureStep :procedureStepHasHouse ?LordsId.
           filter (?LordsId IN (id:WkUWUBMx))} 
-      FILTER ( xsd:dateTime(?eventDate) <= now() )}    
-      order by ?eventDate ?depthValue
+      FILTER ( xsd:dateTime(?businessItemDate) <= now() )}    
+      order by ?businessItemDate ?depthValue
     "
   end
 end
