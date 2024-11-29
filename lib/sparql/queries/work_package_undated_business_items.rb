@@ -7,22 +7,22 @@ module Sparql::Queries::WorkPackageUndatedBusinessItems
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX id: <https://id.parliament.uk/>
-      SELECT ?event ?eventDate ?eventLink ?eventProcedureStep ?eventProcedureStepName ?legislature ?legislatureName ?CommonsId ?LordsId where {
+      SELECT ?businessItem ?businessItemDate ?businessItemLink ?businessItemProcedureStep ?businessItemProcedureStepName ?legislature ?legislatureName ?CommonsId ?LordsId where {
        ?Paper a :WorkPackagedThing .  
            ?Paper :name ?Papername ;
            :workPackagedThingHasWorkPackage ?workPackage.
           filter (?workPackage IN (id:#{work_package_id}))
-           ?workPackage :workPackageHasBusinessItem ?event;
+           ?workPackage :workPackageHasBusinessItem ?businessItem;
                         :workPackageHasProcedure ?procedure.
-         minus {?event :businessItemDate ?eventDate}
-        optional {?event :businessItemHasBusinessItemWebLink ?eventLink}
-       ?event :businessItemHasProcedureStep ?eventProcedureStep. 
-       ?eventProcedureStep :name ?eventProcedureStepName.
-         Optional {?eventProcedureStep :procedureStepInLegislature ?legislature.
+         minus {?businessItem :businessItemDate ?businessItemDate}
+        optional {?businessItem :businessItemHasBusinessItemWebLink ?businessItemLink}
+       ?businessItem :businessItemHasProcedureStep ?businessItemProcedureStep. 
+       ?businessItemProcedureStep :name ?businessItemProcedureStepName.
+         Optional {?businessItemProcedureStep :procedureStepInLegislature ?legislature.
           ?legislature :name ?legislatureName.}
-        Optional {?eventProcedureStep:procedureStepHasHouse ?CommonsId.
+        Optional {?businessItemProcedureStep :procedureStepHasHouse ?CommonsId.
               filter (?CommonsId IN (id:1AFu55Hs))}
-        Optional {?eventProcedureStep :procedureStepHasHouse ?LordsId.
+        Optional {?businessItemProcedureStep :procedureStepHasHouse ?LordsId.
           filter (?LordsId IN (id:WkUWUBMx))}}
  
       
