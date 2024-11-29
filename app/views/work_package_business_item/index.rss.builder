@@ -1,6 +1,6 @@
 xml.rss( :version => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' ) do
 	xml.channel do
-	    xml.title( "Events for a work package focussed on #{@work_package.work_packageable_thing_label}." )
+	    xml.title( "Business items for a work package focussed on #{@work_package.work_packageable_thing_label}." )
 	    xml.description( "Updates whenever a new business item is added." )
 		xml.link( work_package_business_item_list_url )
 	    xml.copyright( 'https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/' )
