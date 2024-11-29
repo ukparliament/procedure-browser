@@ -1,2 +1,0 @@
-class WorkPackageEventController < ApplicationController
-end
