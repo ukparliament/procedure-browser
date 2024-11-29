@@ -11,15 +11,15 @@ module Sparql::Queries::WorkPackages
          ?Paper a :WorkPackagedThing .  
              ?Paper :name ?Papername ;
              :workPackagedThingHasWorkPackage ?workPackage.
-          optional {?workPackage :workPackageHasBusinessItem ?event .
-            ?event :businessItemHasProcedureStep ?step;
-                   :businessItemDate ?eventDate.
+          optional {?workPackage :workPackageHasBusinessItem ?businessItem .
+            ?businessItem :businessItemHasProcedureStep ?step;
+                   :businessItemDate ?businessItemDate.
             filter (?step in (id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB))}
             ?workPackage :workPackageHasProcedure ?procedure.
           ?procedure :name ?procedureName.
          optional { ?workPackage :workPackageHasCalculationStyle ?calculationStyle. 
             ?calculationStyle :name ?calculationStyleName. }
-        } Order by desc (?eventDate)
+        } Order by desc (?businessItemDate)
 
         LIMIT #{limit} OFFSET #{offset}
       "
