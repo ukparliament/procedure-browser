@@ -6,20 +6,22 @@ module Sparql::Get::ProcedureStepTypes
     request_body = procedure_step_types_query( procedure )
     
     # We get the SPARQL response as a CSV.
-    #csv = get_sparql_response_as_csv( request_body )
+    csv = get_sparql_response_as_csv( request_body )
     
     # We construct an array to hold the step types.
     step_types = []
   
     # For each row in the CSV ...
-    #csv.each do |row|
+    csv.each do |row|
   
       # ... we create a new step type object ...
-      #step_type = StepType.new
+      step_type = StepType.new
+      step_type.identifier = row['stepType']
+      step_type.label = row['stepTypeLabel']
       
       # ... and add it to the array of step types.
-      #step_types << step_type
-    #end
+      step_types << step_type
+    end
   
     # We return the array of step types.
     step_types
