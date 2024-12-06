@@ -1,0 +1,8 @@
+<%= render :partial => 'procedure/intro', :object => @procedure %>
+
+<%= list_item_count_sentence( 'step', @steps.size ) %>
+<ol>
+	<%= render :partial => 'procedure_step/procedure_step', :collection => @steps %>
+</ol>
+
+<%= render :partial => 'common/identifier', :object => @procedure %>
