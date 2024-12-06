@@ -1,0 +1,8 @@
+<li>
+	<% if procedure_step.step_type_id == 'Jwc6nqJi' -%>
+		<%= link_to( step_label_in_list( procedure_step ), procedure_step_show_url( :step => procedure_step.id ) ) %> 
+	<% else -%>
+		<%= step_label_in_list( procedure_step ) %>
+	<% end -%>
+</li>
+
