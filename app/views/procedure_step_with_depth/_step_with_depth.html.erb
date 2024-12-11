@@ -1,0 +1,6 @@
+<li>
+	<%= content_tag( 'h2', link_to( step_label_in_list( step_with_depth ), procedure_step_show_url( :step => step_with_depth.id ) ) ) %>
+	
+	
+	<%= content_tag( 'p', "With step depth #{step_with_depth.depth}." ) %>
+</li>
