@@ -7,12 +7,13 @@ module Sparql::Queries::ProcedureStep
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX id: <https://id.parliament.uk/>
-      SELECT distinct ?Procedure ?ProcedureName ?step ?stepName ?legislature ?legislatureName ?CommonsId ?LordsId ?stepType ?stepTypeLabel WHERE {
+      SELECT distinct ?Procedure ?ProcedureName ?step ?stepName ?description ?legislature ?legislatureName ?CommonsId ?LordsId ?stepType ?stepTypeLabel WHERE {
         ?Procedure a :Procedure;
                    :name ?ProcedureName.
            filter (?Procedure in (id:#{procedure_id}))
         optional {  ?Procedure :procedureHasProcedureRoute ?Route.
           ?Route :procedureRouteIsFromProcedureStep|:procedureRouteIsToProcedureStep ?step.
+          optional {?step :procedureStepDescription ?description}
           ?step :name ?stepName.
         ?step :procedureStepHasProcedureStepType ?stepType.
                ?stepType :name ?stepTypeLabel.}
@@ -23,7 +24,8 @@ module Sparql::Queries::ProcedureStep
           Optional {?step :procedureStepHasHouse ?LordsId.
             filter (?LordsId IN (id:WkUWUBMx))}
         filter (?step IN (id:#{step_id}))
-        } order by ?stepName
+        } order by ?stepName 
+      
     "
   end
 end

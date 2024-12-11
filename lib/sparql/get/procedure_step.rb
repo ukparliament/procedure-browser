@@ -16,6 +16,7 @@ module Sparql::Get::ProcedureStep
       step = Step.new
       step.identifier = row['step']
       step.label = row['stepName']
+      step.description = row['description']
       step.legislature_identifier = row['legislature']
       step.legislature_label = row['legislatureName']
       step.commons_identifier = row['CommonsId']
