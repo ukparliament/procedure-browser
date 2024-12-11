@@ -1,9 +1,0 @@
-<%= render :partial => 'procedure/intro', :object => @procedure %>
-
-<%= content_tag( 'p', step_houses_and_legislature_label_with_links( @procedure_step ) ) if step_houses_and_legislature_label_with_links( @procedure_step ) %>
-
-<%= content_tag( 'p', "A step of type #{link_to( @procedure_step.step_type_label, step_type_show_url( :step_type => @procedure_step.step_type_id ) )}.".html_safe ) %>
-
-<%= content_tag( 'p', @procedure_step.description ) if @procedure_step.description %>
-
-<%= render :partial => 'common/identifier', :object => @procedure %>
