@@ -33,10 +33,13 @@ Rails.application.routes.draw do
   get 'procedures/:procedure/step-types/:step_type' => 'procedure_step_type#show', as: :procedure_step_type_show
   
   get 'procedures/:procedure/step-types/:step_type/steps' => 'procedure_step_type_step#index', as: :procedure_step_type_step_list
-  get 'procedures/:procedure/step-types/:step_type/steps/:step' => 'procedure_step_type_step#show', as: :procedure_step_type_step_show
   
   get 'procedures/:procedure/steps' => 'procedure_step#index', as: :procedure_step_list
   get 'procedures/:procedure/steps/:step' => 'procedure_step#show', as: :procedure_step_show
+  
+  get 'procedures/:procedure/steps/:step/business-items' => 'procedure_step_business_item#index', as: :procedure_step_business_item_list
+  
+  get 'procedures/:procedure/steps-with-depths' => 'procedure_step_with_depth#index', as: :procedure_step_with_depth_list
   
   get 'procedures/:procedure/routes' => 'procedure_route#index', as: :procedure_route_list
   
