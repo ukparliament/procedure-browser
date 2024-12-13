@@ -21,7 +21,7 @@ class ProcedureStepBusinessItemController < ApplicationController
     @page_title = "#{@procedure.label} - Business items actualising '#{@procedure_step.label}'"
     @multiline_page_title = "#{@procedure.label} <span class='subhead'>Business items actualising '#{@procedure_step.label}'</span>".html_safe
     @description = "Work packages subject to the #{@procedure.label} procedure, with business items actualising '#{@procedure_step.label}'."
-    
+    @rss_url = procedure_step_business_item_list_url( :format => 'rss' )
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: @procedure.label, url: procedure_show_url }
     @crumb << { label: 'Step types', url: procedure_step_type_list_url }
