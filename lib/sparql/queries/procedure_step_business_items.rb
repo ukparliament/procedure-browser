@@ -34,7 +34,7 @@ module Sparql::Queries::ProcedureStepBusinessItems
                   ?bi1 :businessItemHasProcedureStep ?madeAvailable;
                          :businessItemDate ?madeAvailableDate.
                   filter (?madeAvailable in (id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB))}
-         } order by ?stepName
+         }  order by DESC(?businessItemDate)  ?workPackagedThingName
     "
   end
 end
