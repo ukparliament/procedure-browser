@@ -17,14 +17,12 @@ module Sparql::Get::ProcedureStepBusinessItems
       # ... we create a new business item object ...
       business_item = BusinessItem.new
       business_item.identifier = row['businessItem']
-      business_item.date = row['businessItemDate']
+      business_item.date = row['businessItemDate'].to_date if row['businessItemDate']
       business_item.link = row['businessItemLink']
-      
       business_item.work_package_identifier = row['workPackage']
       business_item.work_packageable_thing_identifier = row['workPackagedThing']
       business_item.work_packageable_thing_label = row['workPackagedThingName']
-      business_item.work_package_made_available_on = row['workPackageMadeAvailableOn']
-      
+      business_item.work_package_made_available_on = row['madeAvailableDate'].to_date if row['madeAvailableDate']
       business_item.procedure_identifier = row['Procedure']
       business_item.procedure_label = row['ProcedureName']
       business_item.step_identifier = row['step']
