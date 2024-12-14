@@ -1,25 +1,33 @@
 module Sparql::Get::ProcedureWorkPackages
   
-  def get_procedure_work_packages( procedure )
+  def get_procedure_work_packages( procedure, page, results_per_page )
     
     # We get the procedure work packages query.
-    request_body = procedure_work_packages_query( procedure )
+    request_body = procedure_work_packages_query( procedure, page, results_per_page )
     
     # We get the SPARQL response as a CSV.
-    #csv = get_sparql_response_as_csv( request_body )
+    csv = get_sparql_response_as_csv( request_body )
     
     # We construct an array to hold the work packages.
     work_packages = []
   
     # For each row in the CSV ...
-    #csv.each do |row|
+    csv.each do |row|
   
       # ... we create a new work package object ...
-      #work_package = WorkPackage.new
+      work_package = WorkPackage.new
+      work_package.identifier = row['workPackage']
+      work_package.made_available_on = row['businessItemDate'].to_date if row['businessItemDate']
+      work_package.work_packageable_thing_identifer = row['workPackagedThing']
+      work_package.work_packageable_thing_label = row['workPackagedThingName']
+      work_package.procedure_identifier = row['Procedure']
+      work_package.procedure_label = row['ProcedureName']
+      work_package.calculation_style_identifier = row['calculationStyle']
+      work_package.calculation_style_label = row['calculationStyleName']
       
       # ... and add it to the array of work packages.
-      #work_packages << work_package
-    #end
+      work_packages << work_package
+    end
   
     # We return the array of work packages.
     work_packages
