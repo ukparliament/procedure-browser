@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   
   get 'procedures/:procedure/work-packages' => 'procedure_work_package#index', as: :procedure_work_package_list
   
+  get 'procedures/:procedure/calculation-styles' => 'procedure_calculation_style#index', as: :procedure_calculation_style_list
+  
   get 'procedures/:procedure/step-types' => 'procedure_step_type#index', as: :procedure_step_type_list
   get 'procedures/:procedure/step-types/:step_type' => 'procedure_step_type#show', as: :procedure_step_type_show
   
@@ -46,6 +48,13 @@ Rails.application.routes.draw do
   get 'procedures/:procedure/clocks' => 'procedure_clock#index', as: :procedure_clock_list
   
   get 'procedures/:procedure/step-collections' => 'procedure_step_collection#index', as: :procedure_step_collection_list
+  
+  get 'calculation-styles' => 'calculation_style#index', as: :calculation_style_list
+  get 'calculation-styles/:calculation_style' => 'calculation_style#show', as: :calculation_style_show
+  
+  get 'calculation-styles/:calculation_style/work-packages' => 'calculation_style_work_package#index', as: :calculation_style_work_package_index
+  
+  get 'calculation-styles/:calculation_style/procedures' => 'calculation_style_procedure#index', as: :calculation_style_procedure_index
   
   get 'step-types' => 'step_type#index', as: :step_type_list
   get 'step-types/:step_type' => 'step_type#show', as: :step_type_show
@@ -83,9 +92,6 @@ Rails.application.routes.draw do
   
   get 'clocks' => 'clock#index', as: :clock_list
   get 'clocks/:clock' => 'clock#show', as: :clock_show
-  
-  get 'calculation-styles' => 'calculation_style#index', as: :calculation_style_list
-  get 'calculation-styles/:calculation_style' => 'calculation_style#show', as: :calculation_style_show
   
   get 'houses' => 'house#index', as: :house_list
   get 'houses/:house' => 'house#show', as: :house_show
