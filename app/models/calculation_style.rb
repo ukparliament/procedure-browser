@@ -1,0 +1,2 @@
+class CalculationStyle
+end
