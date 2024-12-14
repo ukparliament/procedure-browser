@@ -8,7 +8,7 @@ class CalculationStyleController < ApplicationController
   include Sparql::Get::Response
   
   def index
-    @steps = get_calculation_styles
+    @calculation_styles = get_calculation_styles
     
     @page_title = 'Calculation styles'
     @description = 'Calculation styles as set out in legislation.'
