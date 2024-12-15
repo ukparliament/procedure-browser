@@ -53,6 +53,9 @@ body.section-step-collections nav#header-nav a.step-collections {
 body.section-routes nav#header-nav a.routes {
 	border-bottom-color: #fff;
 }
+body.section-clocks nav#header-nav a.clocks {
+	border-bottom-color: #fff;
+}
 
 .subnav {
 	border-color: #cbc9cd;
