@@ -22,7 +22,7 @@ module Sparql::Get::Routes
       routes << route
     #end
   
-    # We return the array of route.
+    # We return the array of routes.
     routes
   end
 end
