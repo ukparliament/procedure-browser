@@ -111,15 +111,12 @@ module WorkPackageHelper
   end
   
   def work_package_description_with_markup( work_package )
-    work_package_list_item_description = 'A work package focussed on the '
-    work_package_list_item_description += link_to( work_package.work_packageable_thing_label, work_packageable_thing_show_url( :work_packageable_thing => work_package.work_packageable_thing_id ) )
+    work_package_list_item_description = 'A work package'
     if work_package.made_available_on
       work_package_list_item_description += ', made available on '
       work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
-      work_package_list_item_description += ', subject to the '
-    else
-      work_package_list_item_description += ', subject to the '
     end
+    work_package_list_item_description += ', subject to the '
     work_package_list_item_description += link_to( work_package.procedure_label, procedure_show_url( :procedure => work_package.procedure_id ) )
     work_package_list_item_description += ' procedure.'
     unless work_package.calculation_style_identifier.blank?
@@ -146,6 +143,27 @@ module WorkPackageHelper
     unless business_item.calculation_style_identifier.blank?
       work_package_list_item_description += ' Scrutiny period described by '
       work_package_list_item_description += link_to( business_item.calculation_style_label, calculation_style_show_url( :calculation_style => business_item.calculation_style_id ) )
+      work_package_list_item_description += '.'
+    end
+    work_package_list_item_description = work_package_list_item_description.html_safe
+    content_tag( 'p', work_package_list_item_description )
+  end
+  
+  def work_package_description_with_work_packageable_thing_and_markup( work_package )
+    work_package_list_item_description = 'A work package focussed on the '
+    work_package_list_item_description += link_to( work_package.work_packageable_thing_label, work_packageable_thing_show_url( :work_packageable_thing => work_package.work_packageable_thing_id ) )
+    if work_package.made_available_on
+      work_package_list_item_description += ', made available on '
+      work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+      work_package_list_item_description += ', subject to the '
+    else
+      work_package_list_item_description += ', subject to the '
+    end
+    work_package_list_item_description += link_to( work_package.procedure_label, procedure_show_url( :procedure => work_package.procedure_id ) )
+    work_package_list_item_description += ' procedure.'
+    unless work_package.calculation_style_identifier.blank?
+      work_package_list_item_description += ' Scrutiny period described by '
+      work_package_list_item_description += link_to( work_package.calculation_style_label, calculation_style_show_url( :calculation_style => work_package.calculation_style_id ) )
       work_package_list_item_description += '.'
     end
     work_package_list_item_description = work_package_list_item_description.html_safe
