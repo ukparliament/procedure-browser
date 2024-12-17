@@ -10,8 +10,7 @@ module ProcedureWorkPackageHelper
   end
   
   def procedure_work_package_description_with_markup( work_package )
-    work_package_list_item_description = 'A work package focussed on the '
-    work_package_list_item_description += link_to( work_package.work_packageable_thing_label, work_packageable_thing_show_url( :work_packageable_thing => work_package.work_packageable_thing_id ) )
+    work_package_list_item_description = 'A work package'
     if work_package.made_available_on
       work_package_list_item_description += ', made available on '
       work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
