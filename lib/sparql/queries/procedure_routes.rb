@@ -35,7 +35,7 @@ module Sparql::Queries::ProcedureRoutes
           Optional {?ToStep :procedureStepHasHouse ?ToStepLordsId.
             filter (?ToStepLordsId IN (id:WkUWUBMx))}
   
-        }
+        } Order by ?FromStepName ?FromStepTypeName ?ToStepName ?ToStepTypeName
     "
   end
 end
