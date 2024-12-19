@@ -7,20 +7,22 @@ module Sparql::Get::CalculationStyles
     request_body = calculation_styles_query
   
     # We get the SPARQL response as a CSV.
-    #csv = get_sparql_response_as_csv( request_body )
+    csv = get_sparql_response_as_csv( request_body )
   
     # We construct an array to hold the calculation styles.
     calculation_styles = []
   
     # For each row in the CSV ...
-    #csv.each do |row|
+    csv.each do |row|
   
       # ... we create a new calculation style object ...
-      #calculation_style = CalculationStyle.new
+      calculation_style = CalculationStyle.new
+      calculation_style.identifier = row['CalculationStyle']
+      calculation_style.label = row['CalculationStyleName']
       
       # ... and add it to the array of steps.
-      #calculation_styles << calculation_style
-    #end
+      calculation_styles << calculation_style
+    end
   
     # We return the array of calculation styles.
     calculation_styles
