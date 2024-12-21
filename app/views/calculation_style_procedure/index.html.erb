@@ -1,0 +1,9 @@
+<%= render :partial => 'calculation_style/intro', :object => @calculation_style %>
+
+<% unless @calculation_style_procedures.empty? -%>
+	<%= list_item_count_sentence( 'procedure', @calculation_style_procedures.size ) %>
+	<ol>
+	</ol>
+<% end -%>
+
+<%= render :partial => 'common/identifier', :object => @calculation_style %>
