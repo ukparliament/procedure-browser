@@ -15,10 +15,11 @@ class CalculationStyleProcedureController < ApplicationController
     
     @calculation_style_procedures = get_calculation_style_procedures( calculation_style_id )
     
-    #@page_title = @calculation_style.label
-    #@description = "#{@calculation_style.label}."
+    @page_title = "Procedures using the '#{@calculation_style.label}' calculation style"
+    @multiline_page_title = "'#{@calculation_style.label}' calculation style <span class='subhead'>Procedures</span>".html_safe
+    @description = "Procedures using the '#{@calculation_style.label}' calculation style."
     @crumb << { label: 'Calculation styles', url: calculation_style_list_url }
-    #@crumb << { label: @calculation_style.label, url: calculation_style_show_url }
+    @crumb << { label: @calculation_style.label, url: calculation_style_show_url }
     @crumb << { label: 'Procedures', url: nil }
     @section = 'calculation-styles'
   end
