@@ -20,10 +20,10 @@ class RouteController < ApplicationController
     route_id = params[:route]
     @route = get_route( route_id )
     
-    #@page_title = 
-    #@description = 
+    @page_title = @route.title
+    @description = @route.description
     @crumb << { label: 'Routes', url: route_list_url }
-    #@crumb << { label: , url: nil }
+    @crumb << { label: @route.crumb_label, url: nil }
     @section = 'routes'
   end
 end
