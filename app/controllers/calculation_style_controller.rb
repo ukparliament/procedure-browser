@@ -20,7 +20,7 @@ class CalculationStyleController < ApplicationController
     calculation_style_id = params[:calculation_style]
     @calculation_style = get_calculation_style( calculation_style_id )
     
-    @page_title = "'#{@calculation_style.label}' calculation style."
+    @page_title = "'#{@calculation_style.label}' calculation style"
     @description = "'#{@calculation_style.label}' calculation style."
     @crumb << { label: 'Calculation styles', url: calculation_style_list_url }
     @crumb << { label: @calculation_style.label, url: nil }
