@@ -10,7 +10,9 @@ module Sparql::Queries::Routes
       select * where {
        ?Route a :ProcedureRoute;
               :procedureRouteHasProcedure ?Procedure.
-        ?Procedure :name ?procedureName. 
+        ?Procedure :name ?procedureName.
+        Optional {  ?Route :startDate ?StartDate. }
+        Optional {?Route :endDate ?EndDate.}
         ?Route :procedureRouteIsFromProcedureStep ?FromStep. 
         ?FromStep :name ?FromStepName;
                   :procedureStepHasProcedureStepType ?FromStepType. 
