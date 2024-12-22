@@ -9,7 +9,8 @@ module Sparql::Queries::CalculationStyle
       PREFIX id: <https://id.parliament.uk/>
       SELECT * WHERE {
         ?CalculationStyle a :CalculationStyle;
-                   :name ?CalculationStyleName.
+                   :name ?CalculationStyleName;
+                   :calculationStyleEggTimerId ?eggTimerId.
   filter (?CalculationStyle in (id:#{calculation_style_id}))
               
               } Order by ?CalculationStyleName
