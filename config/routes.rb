@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get 'procedures/:procedure/steps-with-depths' => 'procedure_step_with_depth#index', as: :procedure_step_with_depth_list
   
   get 'procedures/:procedure/routes' => 'procedure_route#index', as: :procedure_route_list
+  get 'procedures/:procedure/routes/checker' => 'procedure_route#checker', as: :procedure_route_checker
   
   get 'procedures/:procedure/clocks' => 'procedure_clock#index', as: :procedure_clock_list
   
