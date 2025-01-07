@@ -94,6 +94,10 @@ body.subsection-routes .subnav a.routes {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-route-checker .subnav a.route-checker {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 body.subsection-clocks .subnav a.clocks {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
