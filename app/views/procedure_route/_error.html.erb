@@ -1,0 +1,8 @@
+<%= content_tag( 'h2', error[:title] ) %>
+<%= content_tag( 'p', error[:clarification] ) %>
+<% unless error[:steps].empty? %>
+	<%= content_tag( 'p', error[:routes_listing_title] ) %>
+	<ul>
+		<%= render :partial => 'error_step', :collection => error[:steps] %>
+	</ul>
+<% end -%>
