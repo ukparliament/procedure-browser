@@ -103,7 +103,7 @@ class Route
       houses_and_legislatures << 'House of Lords'
     end
     if self.from_step_legislature_identifier
-      houses_and_legislatures << route.to_step_legislature_label
+      houses_and_legislatures << self.from_step_legislature_label
     end
     
     houses_and_legislatures.each do |hl|
@@ -130,7 +130,7 @@ class Route
       houses_and_legislatures << 'House of Lords'
     end
     if self.to_step_legislature_identifier
-      houses_and_legislatures << route.to_step_legislature_label
+      houses_and_legislatures << self.to_step_legislature_label
     end
     
     houses_and_legislatures.each do |hl|
