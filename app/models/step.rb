@@ -56,4 +56,38 @@ class Step
     end
     has_librarian_notes
   end
+  
+  def display_label
+    display_label = self.label
+    display_label += ' ' + self.step_type_label unless self.step_type_id == 'Jwc6nqJi'
+    display_label += self.house_or_legislature unless self.house_or_legislature.empty?
+    display_label
+  end
+  
+  def house_or_legislature
+    house_or_legislature = ''
+    houses_and_legislatures = []
+    if self.commons_identifier
+      houses_and_legislatures << 'House of Commons'
+    end
+    if self.lords_identifier
+      houses_and_legislatures << 'House of Lords'
+    end
+    if self.legislature_identifier
+      houses_and_legislatures << route.to_step_legislature_label
+    end
+  
+    houses_and_legislatures.each do |hl|
+      if hl != houses_and_legislatures.first
+        if hl != houses_and_legislatures.last
+          house_or_legislature += ', '
+        else
+          house_or_legislature += ' and '
+        end
+      end
+      house_or_legislature += hl
+    end
+    house_or_legislature = ' (' + house_or_legislature + ')' unless house_or_legislature.empty?
+    house_or_legislature
+  end
 end
