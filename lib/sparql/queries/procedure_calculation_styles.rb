@@ -10,8 +10,8 @@ module Sparql::Queries::ProcedureCalculationStyles
       SELECT ?procedureCalculationStyle ?procedureCalculationStyleName WHERE {
         ?Procedure a :Procedure;
                    :name ?ProcedureName.
-                optional {?Procedure :procedureHasCalculationStyle ?procedureCalculationStyle.
-        ?procedureCalculationStyle :name ?procedureCalculationStyleName. }
+          ?Procedure :procedureHasCalculationStyle ?procedureCalculationStyle.
+    ?procedureCalculationStyle :name ?procedureCalculationStyleName. 
         filter (?Procedure in (id:#{procedure_id}))
               } 
     "
