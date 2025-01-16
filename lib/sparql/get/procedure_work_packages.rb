@@ -1,9 +1,12 @@
 module Sparql::Get::ProcedureWorkPackages
   
-  def get_procedure_work_packages( procedure, page, results_per_page )
+  def get_procedure_work_packages( procedure, page_number, results_per_page )
+  
+    # We calculate the result offset.
+    result_offset = ( ( page_number - 1) * results_per_page )
     
     # We get the procedure work packages query.
-    request_body = procedure_work_packages_query( procedure, page, results_per_page )
+    request_body = procedure_work_packages_query( procedure, results_per_page, result_offset )
     
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
