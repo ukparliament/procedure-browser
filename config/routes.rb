@@ -58,9 +58,9 @@ Rails.application.routes.draw do
   get 'procedure-browser/calculation-styles' => 'calculation_style#index', as: :calculation_style_list
   get 'procedure-browser/calculation-styles/:calculation_style' => 'calculation_style#show', as: :calculation_style_show
   
-  get 'procedure-browser/calculation-styles/:calculation_style/work-packages' => 'calculation_style_work_package#index', as: :calculation_style_work_package_index
+  get 'procedure-browser/calculation-styles/:calculation_style/work-packages' => 'calculation_style_work_package#index', as: :calculation_style_work_package_list
   
-  get 'procedure-browser/calculation-styles/:calculation_style/procedures' => 'calculation_style_procedure#index', as: :calculation_style_procedure_index
+  get 'procedure-browser/calculation-styles/:calculation_style/procedures' => 'calculation_style_procedure#index', as: :calculation_style_procedure_list
   
   get 'procedure-browser/step-types' => 'step_type#index', as: :step_type_list
   get 'procedure-browser/step-types/:step_type' => 'step_type#show', as: :step_type_show
