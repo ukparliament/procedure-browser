@@ -11,9 +11,9 @@ module Sparql::Queries::CalculationStyleProcedures
         ?CalculationStyle a :CalculationStyle;
                    :name ?CalculationStyleName.
   filter (?CalculationStyle in (id:#{calculation_style_id}))
-     optional {?CalculationStyle :calculationStyleHasProcedure ?procedure.
+    ?CalculationStyle :calculationStyleHasProcedure ?procedure.
    			   ?procedure :name ?procedureName.
-  			   ?procedure :procedureDescription ?procedureDescription}
+  			   ?procedure :procedureDescription ?procedureDescription
               } Order by ?CalculationStyleName
     "
   end
