@@ -1,7 +1,7 @@
 module Sparql::Queries::ProcedureWorkPackages
 
   # A SPARQL query to get work packages for a procedure.
-  def procedure_work_packages_query( procedure_id, page, results_per_page )
+  def procedure_work_packages_query( procedure_id, limit, offset )
     "
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -22,7 +22,7 @@ module Sparql::Queries::ProcedureWorkPackages
                 ?calculationStyle :name ?calculationStyleName. }
             }     Order by desc (?businessItemDate)
 
-              LIMIT #{results_per_page} OFFSET #{page}
+              LIMIT #{limit} OFFSET #{offset}
     "
   end
 end
