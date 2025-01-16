@@ -22,5 +22,6 @@ class CalculationStyleProcedureController < ApplicationController
     @crumb << { label: @calculation_style.label, url: calculation_style_show_url }
     @crumb << { label: 'Procedures', url: nil }
     @section = 'calculation-styles'
+    @subsection = 'procedures'
   end
 end
