@@ -8,7 +8,7 @@ class ClockController < ApplicationController
   include Sparql::Get::Response
 
   def index
-    @clock = get_clocks
+    @clocks = get_clocks
     
     @page_title = 'Clocks'
     @description = 'Clocks in procedures.'
