@@ -5,6 +5,8 @@ class LegislatureController < ApplicationController
   include Sparql::Queries::Legislatures
   include Sparql::Get::Legislature
   include Sparql::Queries::Legislature
+  include Sparql::Get::LegislatureHouses
+  include Sparql::Queries::LegislatureHouses
   include Sparql::Get::Response
 
   def index
@@ -19,6 +21,7 @@ class LegislatureController < ApplicationController
   def show
     legislature_id = params[:legislature]
     @legislature = get_legislature( legislature_id )
+    @legislature_houses = get_legislature_houses( legislature_id )
     
     @page_title = @legislature.label
     @description = "#{@legislature.label}."
