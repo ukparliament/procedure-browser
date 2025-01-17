@@ -59,6 +59,9 @@ body.section-clocks nav#header-nav a.clocks {
 body.section-legislatures nav#header-nav a.legislatures {
 	border-bottom-color: #fff;
 }
+body.section-houses nav#header-nav a.houses {
+	border-bottom-color: #fff;
+}
 
 .subnav {
 	border-color: #cbc9cd;
