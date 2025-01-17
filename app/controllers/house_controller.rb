@@ -3,6 +3,8 @@ class HouseController < ApplicationController
   # We include modules required to get all legislatures and a legislature.
   include Sparql::Get::Houses
   include Sparql::Queries::Houses
+  include Sparql::Get::House
+  include Sparql::Queries::House
   include Sparql::Get::Response
 
   def index
@@ -15,7 +17,13 @@ class HouseController < ApplicationController
   end
 
   def show
-    @page_title = 'Coming soon'
-    render :template => 'under_construction/notice'
+    house_id = params[:house]
+    @house = get_house( house_id )
+    
+    @page_title = @house.label
+    @description = "#{@house.label}."
+    @crumb << { label: 'Houses', url: house_list_url }
+    @crumb << { label: @house.label, url: nil }
+    @section = 'houses'
   end
 end
