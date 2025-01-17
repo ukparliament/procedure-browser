@@ -93,6 +93,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/legislatures' => 'legislature#index', as: :legislature_list
   get 'procedure-browser/legislatures/:legislature' => 'legislature#show', as: :legislature_show
   
+  get 'procedure-browser/legislatures/:legislature/houses' => 'legislature_house#index', as: :legislature_house_index
+  
   
   # Stubs
   
