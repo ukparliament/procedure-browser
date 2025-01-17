@@ -10,9 +10,6 @@ Rails.application.routes.draw do
   
   get 'procedure-browser' => 'home#index', as: :home
   
-  
-  
-  
   get 'procedure-browser/work-packages' => 'work_package#index', as: :work_package_list
   get 'procedure-browser/work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
@@ -87,20 +84,24 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
   
-  
-  # Stubs
-  
   get 'procedure-browser/routes' => 'route#index', as: :route_list
   get 'procedure-browser/routes/:route' => 'route#show', as: :route_show
   
   get 'procedure-browser/clocks' => 'clock#index', as: :clock_list
   get 'procedure-browser/clocks/:clock' => 'clock#show', as: :clock_show
   
+  get 'procedure-browser/legislatures' => 'legislature#index', as: :legislature_list
+  get 'procedure-browser/legislatures/:legislature' => 'legislature#show', as: :legislature_show
+  
+  
+  # Stubs
+  
+  
+  
   get 'procedure-browser/houses' => 'house#index', as: :house_list
   get 'procedure-browser/houses/:house' => 'house#show', as: :house_show
   
-  get 'procedure-browser/legislatures' => 'legislature#index', as: :legislature_list
-  get 'procedure-browser/legislatures/:legislature' => 'legislature#show', as: :legislature_show
+  
   
   get 'procedure-browser/work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
   get 'procedure-browser/work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
