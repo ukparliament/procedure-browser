@@ -12,23 +12,23 @@ module Sparql::Queries::WorkPackagePastBusinessItems
            ?Paper :name ?Papername ;
            :workPackagedThingHasWorkPackage ?workPackage.
         filter (?workPackage IN (id:#{work_package_id}))
-           ?workPackage :workPackageHasBusinessItem ?businessItem. 
+           ?workPackage :workPackageHasBusinessItem ?event. 
            ?workPackage :workPackageHasProcedure ?procedure.
-         optional {?businessItem :businessItemDate ?businessItemDate}
-        optional {?businessItem :businessItemHasBusinessItemWebLink ?businessItemLink}
-       ?businessItem :businessItemHasProcedureStep ?businessItemProcedureStep. 
-       ?businessItemProcedureStep :name ?businessItemProcedureStepName.
-       ?businessItemProcedureStep :procedureStepHasStepDisplayDepthInProcedure ?stepDepth.
+         optional {?event :businessItemDate ?eventDate}
+        optional {?event :businessItemHasBusinessItemWebLink ?eventLink}
+       ?event :businessItemHasProcedureStep ?eventProcedureStep. 
+       ?eventProcedureStep :name ?eventProcedureStepName.
+      optional { ?eventProcedureStep :procedureStepHasStepDisplayDepthInProcedure ?stepDepth.
         ?procedure :procedureHasStepDisplayDepthInProcedure ?stepDepth.
-       ?stepDepth :stepDisplayDepthInProcedureHasDepth ?depthValue.
-        Optional {?businessItemProcedureStep :procedureStepInLegislature ?legislature.
+          ?stepDepth :stepDisplayDepthInProcedureHasDepth ?depthValue.}
+        Optional {?eventProcedureStep :procedureStepInLegislature ?legislature.
           ?legislature :name ?legislatureName.}
-        Optional {?businessItemProcedureStep:procedureStepHasHouse ?CommonsId.
+        Optional {?eventProcedureStep:procedureStepHasHouse ?CommonsId.
               filter (?CommonsId IN (id:1AFu55Hs))}
-        Optional {?businessItemProcedureStep :procedureStepHasHouse ?LordsId.
+        Optional {?eventProcedureStep :procedureStepHasHouse ?LordsId.
           filter (?LordsId IN (id:WkUWUBMx))} 
-      FILTER ( xsd:dateTime(?businessItemDate) <= now() )}    
-      order by ?businessItemDate ?depthValue
+      FILTER ( xsd:dateTime(?eventDate) <= now() )}    
+      order by ?eventDate ?depthValue
     "
   end
 end

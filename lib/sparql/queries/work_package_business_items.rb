@@ -7,7 +7,7 @@ module Sparql::Queries::WorkPackageBusinessItems
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX id: <https://id.parliament.uk/>
       SELECT * where {
-  
+
        ?Paper a :WorkPackagedThing .  
            ?Paper :name ?Papername ;
            :workPackagedThingHasWorkPackage ?workPackage.
@@ -18,9 +18,9 @@ module Sparql::Queries::WorkPackageBusinessItems
         optional {?businessItem :businessItemHasBusinessItemWebLink ?businessItemLink}
        ?businessItem :businessItemHasProcedureStep ?businessItemProcedureStep. 
        ?businessItemProcedureStep :name ?businessItemProcedureStepName.
-       ?businessItemProcedureStep :procedureStepHasStepDisplayDepthInProcedure ?stepDepth.
+     optional {  ?businessItemProcedureStep :procedureStepHasStepDisplayDepthInProcedure ?stepDepth.
         ?procedure :procedureHasStepDisplayDepthInProcedure ?stepDepth.
-       ?stepDepth :stepDisplayDepthInProcedureHasDepth ?depthValue.
+    ?stepDepth :stepDisplayDepthInProcedureHasDepth ?depthValue.}
         Optional {?businessItemProcedureStep :procedureStepInLegislature ?legislature.
           ?legislature :name ?legislatureName.}
         Optional {?businessItemProcedureStep :procedureStepHasHouse ?CommonsId.
