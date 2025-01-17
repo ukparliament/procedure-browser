@@ -1,1 +1,8 @@
+<% unless @legislature_houses.empty? -%>
+	<%= list_item_count_sentence( 'house', @legislature_houses.size ) %>
+	<ol>
+		<%= render :partial => 'house/house', :collection => @legislature_houses %>
+	</ol>
+<% end -%>
+
 <%= render :partial => 'common/identifier', :object => @legislature %>
