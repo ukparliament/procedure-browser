@@ -97,13 +97,12 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/legislatures/:legislature/steps' => 'legislature_step#index', as: :legislature_step_list
   
-  
-  # Stubs
-  
-  
-  
   get 'procedure-browser/houses' => 'house#index', as: :house_list
   get 'procedure-browser/houses/:house' => 'house#show', as: :house_show
+  
+  get 'procedure-browser/houses/:house/steps' => 'house_step#index', as: :house_step_list
+  
+  get 'procedure-browser/houses/:house/step-collections' => 'house_step_collection#index', as: :house_step_collection_list
   
   
   
