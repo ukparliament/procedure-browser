@@ -45,4 +45,72 @@ class Clock
   def procedure_id
     self.procedure_identifier.split( '/' ).last
   end
+  
+  def from_step_full_label
+    step_label = self.from_step_label
+    step_label += ' ' + self.from_step_type_label unless self.from_step_type_id == 'Jwc6nqJi'
+    step_label += self.from_step_house_or_legislature unless self.from_step_house_or_legislature.empty?
+    step_label
+  end
+  
+  def to_step_full_label
+    step_label = self.to_step_label
+    step_label += ' ' + self.to_step_type_label unless self.to_step_type_id == 'Jwc6nqJi'
+    step_label += self.to_step_house_or_legislature unless self.to_step_house_or_legislature.empty?
+    step_label
+  end
+  
+  def from_step_house_or_legislature
+    from_step_house_or_legislature = ''
+    houses_and_legislatures = []
+    if self.from_step_commons_identifier
+      houses_and_legislatures << 'House of Commons'
+    end
+    if self.from_step_lords_identifier
+      houses_and_legislatures << 'House of Lords'
+    end
+    if self.from_step_legislature_identifier
+      houses_and_legislatures << self.from_step_legislature_label
+    end
+    
+    houses_and_legislatures.each do |hl|
+      if hl != houses_and_legislatures.first
+        if hl != houses_and_legislatures.last
+          from_step_house_or_legislature += ', '
+        else
+          from_step_house_or_legislature += ' and '
+        end
+      end
+      from_step_house_or_legislature += hl
+    end
+    from_step_house_or_legislature = ' (' + from_step_house_or_legislature + ')' unless from_step_house_or_legislature.empty?
+    from_step_house_or_legislature
+  end
+  
+  def to_step_house_or_legislature
+    to_step_house_or_legislature = ''
+    houses_and_legislatures = []
+    if self.to_step_commons_identifier
+      houses_and_legislatures << 'House of Commons'
+    end
+    if self.to_step_lords_identifier
+      houses_and_legislatures << 'House of Lords'
+    end
+    if self.to_step_legislature_identifier
+      houses_and_legislatures << self.to_step_legislature_label
+    end
+    
+    houses_and_legislatures.each do |hl|
+      if hl != houses_and_legislatures.first
+        if hl != houses_and_legislatures.last
+          to_step_house_or_legislature += ', '
+        else
+          to_step_house_or_legislature += ' and '
+        end
+      end
+      to_step_house_or_legislature += hl
+    end
+    to_step_house_or_legislature = ' (' + to_step_house_or_legislature + ')' unless to_step_house_or_legislature.empty?
+    to_step_house_or_legislature
+  end
 end
