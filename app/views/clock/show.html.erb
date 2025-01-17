@@ -1,0 +1,8 @@
+<%= content_tag( 'p', "Day count: #{@clock.day_count}" ) if @clock.day_count %>
+
+<%= content_tag( 'p', "From: #{link_to( @clock.from_step_full_label, step_show_url( :step => @clock.from_step_id ) )}".html_safe ) %>
+<%= content_tag( 'p', "To: #{link_to( @clock.to_step_full_label, step_show_url( :step => @clock.to_step_id ) )}".html_safe ) %>
+
+<%= content_tag( 'p', "Procedure: #{link_to( @clock.procedure_label, procedure_show_url( :procedure => @clock.procedure_id ) )}".html_safe ) %>
+
+<%= render :partial => 'common/identifier', :object => @clock %>
