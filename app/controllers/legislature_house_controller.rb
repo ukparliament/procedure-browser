@@ -1,6 +1,6 @@
 class LegislatureHouseController < ApplicationController
 
-  # We include modules required to get all legislatures and a legislature.
+  # We include modules required to get a legislature and the houses in a legislature.
   include Sparql::Get::Legislature
   include Sparql::Queries::Legislature
   include Sparql::Get::LegislatureHouses
