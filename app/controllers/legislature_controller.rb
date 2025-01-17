@@ -3,8 +3,8 @@ class LegislatureController < ApplicationController
   # We include modules required to get all legislatures and a legislature.
   include Sparql::Get::Legislatures
   include Sparql::Queries::Legislatures
-  #include Sparql::Get::Legislature
-  #include Sparql::Queries::Legislature
+  include Sparql::Get::Legislature
+  include Sparql::Queries::Legislature
   include Sparql::Get::Response
 
   def index
@@ -17,7 +17,13 @@ class LegislatureController < ApplicationController
   end
 
   def show
-    @page_title = 'Coming soon'
-    render :template => 'under_construction/notice'
+    legislature_id = params[:legislature]
+    @legislature = get_legislature( legislature_id )
+    
+    @page_title = @legislature.label
+    @description = "#{@legislature.label}."
+    @crumb << { label: 'Legislatures', url: legislature_list_url }
+    @crumb << { label: @legislature.label, url: nil }
+    @section = 'legislatures'
   end
 end
