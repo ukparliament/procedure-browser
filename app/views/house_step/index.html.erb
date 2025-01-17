@@ -1,0 +1,11 @@
+<%= render :partial => 'house/intro', :object => @house %>
+
+<%= list_item_count_sentence( 'step', @house_steps.size ) %>
+
+<% unless @house_steps.empty? -%>
+	<ol>
+		<%= render :partial => 'step/step', :collection => @house_steps %>
+	</ol>
+<% end -%>
+
+<%= render :partial => 'common/identifier', :object => @house %>
