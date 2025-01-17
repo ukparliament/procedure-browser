@@ -20,10 +20,10 @@ class ClockController < ApplicationController
     clock_id = params[:clock]
     @clock = get_clock( clock_id )
     
-    #@page_title = 
-    #@description = 
+    @page_title = @clock.label
+    @description = "#{@clock.label}."
     @crumb << { label: 'Clocks', url: route_list_url }
-    #@crumb << { label: , url: nil }
+    @crumb << { label: @clock.label, url: nil }
     @section = 'clocks'
   end
 end
