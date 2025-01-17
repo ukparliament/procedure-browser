@@ -1,0 +1,9 @@
+<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
+
+<% unless @legislature_steps.empty? -%>
+	<ol>
+		<%= render :partial => 'step', :collection => @legislature_steps %>
+	</ol>
+<% end -%>
+
+<%= render :partial => 'common/identifier', :object => @legislature %>
