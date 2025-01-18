@@ -1,6 +1,6 @@
 class HouseStepController < ApplicationController
 
-  # We include modules required to get a legislature and the steps in a legislature.
+  # We include modules required to get a house and the steps in a house.
   include Sparql::Get::House
   include Sparql::Queries::House
   include Sparql::Get::HouseSteps
@@ -19,5 +19,6 @@ class HouseStepController < ApplicationController
     @crumb << { label: @house.label, url: house_show_url }
     @crumb << { label: 'Steps', url: nil }
     @section = 'houses'
+    @subsection = 'steps'
   end
 end
