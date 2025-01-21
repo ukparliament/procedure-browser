@@ -13,9 +13,9 @@ module Sparql::Queries::BusinessItemSteps
             ?workPackage :workPackageHasProcedure ?procedure;
                                         :workPackageHasWorkPackagedThing ?workPackagedThing.
             ?procedure :name ?procedureLabel.
-      ?businessItemstep :procedureStepHasStepDisplayDepthInProcedure ?businessItemStepDepth.
+optional {      ?businessItemstep :procedureStepHasStepDisplayDepthInProcedure ?businessItemStepDepth.
       ?businessItemStepDepth :stepDisplayDepthInProcedureHasProcedure ?procedure.
-      ?businessItemStepDepth :stepDisplayDepthInProcedureHasDepth ?stepDepth. 
+      ?businessItemStepDepth :stepDisplayDepthInProcedureHasDepth ?stepDepth. }
             ?workPackagedThing :name ?workPackagedThingLabel. 
             optional {?workPackage :workPackageHasCalculationStyle ?calculationStyle.
               ?calculationStyle :name ?calculationStyleLabel. }
