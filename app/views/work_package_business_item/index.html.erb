@@ -35,6 +35,4 @@
 	<% end -%>
 </div>
 
-<%= render :partial => 'qrcode/qrcode', :locals => { :title => "QR code for a work package focused on #{@work_package.work_packageable_thing_label}", :url => work_package_show_url } %>
-
 <%= render :partial => 'common/identifier', :object => @work_package %>
