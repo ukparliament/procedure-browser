@@ -23,18 +23,6 @@ module Sparql::Get::StepCollectionWorkPackages
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
       
-      
-      
-
-      #attr_accessor :making_available_identifier
-      #attr_accessor :calculation_style_identifier
-      #attr_accessor :calculation_style_label
-      
-      
-      
-      
-      	#procedureStep	procedureStepName	businessItem	businessItemDate	businessItemLink						
-      
       # ... and add it to the array of work packages.
       work_packages << work_package
     end
