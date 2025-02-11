@@ -16,9 +16,6 @@ module Sparql::Get::StepCollectionSteps
   
       # ... we create a new step object ...
       step = Step.new
-      
-      # ... and add it to the array of steps.
-      steps << step
       step.identifier = row['procedureStep']
       step.label = row['procedureStepName']
       step.step_type_identifier = row['procedureStepType']
@@ -27,6 +24,9 @@ module Sparql::Get::StepCollectionSteps
       step.lords_identifier = row['procedureStepLordsId']
       step.legislature_identifier = row['procedureSteplegislature']
       step.legislature_label = row['procedureSteplegislatureName']
+      
+      # ... and add it to the array of steps.
+      steps << step
     end
   
     # We return the array of steps.
