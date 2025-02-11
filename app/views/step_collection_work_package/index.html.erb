@@ -1,0 +1,11 @@
+<%= render :partial => 'step_collection/intro', :object => @step_collection %>
+
+<%= list_item_count_sentence( 'work package', @step_collection_work_packages.size ) %>
+
+<% unless @step_collection_work_packages.empty? %>
+	<ol>
+		<%= render :partial => 'work_package/work_package', :collection => @step_collection_work_packages %>
+	</ol>
+<% end -%>
+
+<%= render :partial => 'common/identifier', :object => @step_collection %>
