@@ -1,8 +1,6 @@
-<%= content_tag( 'p', "House: #{link_to( @step_collection.house_label, house_show_url( :house => @step_collection.house_id ) )}".html_safe ) if @step_collection.house_identifier %>
-<%= content_tag( 'p', "Procedure: #{link_to( @step_collection.procedure_label, procedure_show_url( :procedure => @step_collection.procedure_id ) )}".html_safe ) if @step_collection.procedure_identifier %>
+<%= render :partial => 'step_collection/intro', :object => @step_collection %>
 
 <%= list_item_count_sentence( 'step', @step_collection_steps.size ) %>
-
 
 <% unless @step_collection_steps.empty? %>
 	<ol>
