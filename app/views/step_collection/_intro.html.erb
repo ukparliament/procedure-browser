@@ -1,0 +1,4 @@
+<%= content_tag( 'p', "House: #{link_to( intro.house_label, house_show_url( :house => intro.house_id ) )}".html_safe ) if intro.house_identifier %>
+<%= content_tag( 'p', "Procedure: #{link_to( intro.procedure_label, procedure_show_url( :procedure => intro.procedure_id ) )}".html_safe ) if intro.procedure_identifier %>
+
+<%= render :partial => 'step_collection/nav', :object => intro %>
