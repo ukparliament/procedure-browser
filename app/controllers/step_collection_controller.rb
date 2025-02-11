@@ -28,6 +28,7 @@ class StepCollectionController < ApplicationController
     @crumb << { label: 'Step collections', url: step_collection_list_url }
     @crumb << { label: @step_collection.label, url: nil }
     @section = 'step-collections'
+    @subsection = 'steps'
     
     render :template => 'step_collection_step/index'
   end
