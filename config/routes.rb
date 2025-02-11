@@ -84,6 +84,8 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/step-collections/:step_collection/steps' => 'step_collection_step#index', as: :step_collection_step_list
   
+  get 'procedure-browser/step-collections/:step_collection/work-packages' => 'step_collection_work_package#index', as: :step_collection_work_package_list
+  
   get 'procedure-browser/routes' => 'route#index', as: :route_list
   get 'procedure-browser/routes/:route' => 'route#show', as: :route_show
   
