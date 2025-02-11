@@ -19,5 +19,6 @@ class StepCollectionStepController < ApplicationController
     @crumb << { label: @step_collection.label, url: step_collection_show_url }
     @crumb << { label: 'Steps', url: nil }
     @section = 'step-collections'
+    @subsection = 'steps'
   end
 end
