@@ -1,0 +1,2 @@
+module EnablingLegislationHelper
+end
