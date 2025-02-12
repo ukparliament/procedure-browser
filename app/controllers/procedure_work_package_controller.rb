@@ -26,8 +26,8 @@ class ProcedureWorkPackageController < ApplicationController
     # We get the count of all work packages in the procedure.
     @result_count = get_procedure_work_package_count( procedure_id )
     
-    # If the number of the first work package on this page exceeds the total number of work packages ...
-    if ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count
+    # If this is not the first page and the number of the first work package on this page exceeds the total number of work packages ...
+    if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
       raise ActionController::RoutingError.new("Not Found")
     end
     
