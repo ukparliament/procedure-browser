@@ -32,6 +32,9 @@ nav#header-nav a:hover {
 }
 
 /* nav active */
+body.section-work-packageable-things nav#header-nav a.work-packageable-things {
+	border-bottom-color: #fff;
+}
 body.section-work-packages nav#header-nav a.work-packages {
 	border-bottom-color: #fff;
 }
