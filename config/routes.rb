@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
   get 'procedure-browser/enabling-legislation/:enabling_legislation' => 'enabling_legislation#show', as: :enabling_legislation_show
   
+  get 'procedure-browser/enabling-legislation/:enabling_legislation/work-packageable-things' => 'enabling_legislation_work_packageable_thing#index', as: :enabling_legislation_work_packageable_thing_list
+  
   get 'procedure-browser/work-packages' => 'work_package#index', as: :work_package_list
   get 'procedure-browser/work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
