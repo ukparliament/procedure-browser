@@ -1,9 +1,12 @@
 module Sparql::Get::EnablingLegislationWorkPackageableThings
   
-  def get_enabling_legislation_work_packageable_things( enabling_thing_id )
+  def get_enabling_legislation_work_packageable_things( enabling_thing_id, page_number, results_per_page )
+  
+    # We calculate the result offset.
+    result_offset = ( ( page_number - 1) * results_per_page )
     
     # We get the enabling legislation work packageable things query.
-    request_body = enabling_legislation_work_packageable_things_query( enabling_thing_id )
+    request_body = enabling_legislation_work_packageable_things_query( enabling_thing_id, results_per_page, result_offset )
     
     # We get the SPARQL response as a CSV.
     #csv = get_sparql_response_as_csv( request_body )
