@@ -384,6 +384,12 @@ header #site-title {
   line-height: 1.1;
 }
 
+/* SPARQL textareas */
+#sparql textarea {
+	height: 500px;
+	width: 100%;
+}
+
 footer {
   background-color: #373151;
   color: #fff;
