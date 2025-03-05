@@ -1,9 +1,12 @@
 module Sparql::Get::StepCollectionWorkPackages
   
-  def get_step_collection_work_packages( step_collection )
+  def get_step_collection_work_packages( step_collection, page_number, results_per_page )
+  
+    # We calculate the result offset.
+    result_offset = ( ( page_number - 1) * results_per_page )
     
     # We get the step collection work packages query.
-    request_body = step_collection_work_packages_query( step_collection )
+    request_body = step_collection_work_packages_query( step_collection, results_per_page, result_offset )
     
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
