@@ -8,6 +8,7 @@ module EnablingLegislationHelper
     enabling_legislation_description_with_markup += '. An Act of Parliament gaining Royal Assent on '
     enabling_legislation_description_with_markup += enabling_legislation.date.strftime( $DATE_DISPLAY_FORMAT )
     enabling_legislation_description_with_markup += '.'
+    enabling_legislation_description_with_markup = content_tag( 'p', enabling_legislation_description_with_markup )
   end
 
   def enabling_legislation_description( enabling_legislation )
