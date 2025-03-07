@@ -34,18 +34,12 @@ class EnablingLegislationWorkPackageableThingController < ApplicationController
     # We get the set of work packageable things for an item of legislation on this page with this many results per page.
     @enabling_legislation_work_packageable_things = get_enabling_legislation_work_packageable_things( enabling_legislation, @page, @results_per_page ) 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    #@page_title = @enabling_legislation.label
-    #@description = "#{@enabling_legislation.label}."
+    @page_title = "#{@enabling_legislation.label} - work packageable things"
+    @multiline_page_title = "#{@enabling_legislation.label} <span class='subhead'>Work packageable things</span>".html_safe
+    @description = "Work packageable things enabled by #{@enabling_legislation.label}."
+    @rss_url = enabling_legislation_work_packageable_thing_list_url( :format => 'rss' )
     @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
-    #@crumb << { label: @enabling_legislation.label, url: nil }
+    @crumb << { label: @enabling_legislation.label, url: nil }
     @section = 'enabling-legislation'
   end
 end
