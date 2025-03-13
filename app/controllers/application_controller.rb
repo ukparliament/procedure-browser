@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class ApplicationController < ActionController::Base
 
   $SPARQL_REQUEST_URI = URI( 'https://api.parliament.uk/sparql' )
@@ -5,7 +7,6 @@ class ApplicationController < ActionController::Base
   $DATE_DISPLAY_FORMAT = '%-d %B %Y'
   $DEFAULT_RESULTS_PER_PAGE = 20
   
-
   before_action do
     #expires_in 3.minutes, :public => true
     create_crumb_container
