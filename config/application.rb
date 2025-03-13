@@ -39,5 +39,16 @@ module ProcedureBrowser
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # If running scaffold, don't generate all the stuff which isn't used
+    config.generators do |g|
+      g.test_framework nil
+      g.assets false
+      g.helper false
+      g.stylesheets false
+      g.javascripts false
+      g.jbuilder false
+      g.system_tests = nil
+    end
   end
 end
