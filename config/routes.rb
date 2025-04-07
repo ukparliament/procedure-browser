@@ -113,4 +113,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/houses/:house/steps' => 'house_step#index', as: :house_step_list
   
   get 'procedure-browser/houses/:house/step-collections' => 'house_step_collection#index', as: :house_step_collection_list
+
+  # Any unmatched nonsense called by a bot will gracefully show a 404
+  match '*unmatched', to: 'application#route_not_found', via: :all
 end
