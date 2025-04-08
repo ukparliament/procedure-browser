@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   $SPARQL_REQUEST_URI = URI( 'https://api.parliament.uk/sparql' )
   $SPARQL_REQUEST_HEADERS = { 'Content-Type': 'application/sparql-query' }
   $DATE_DISPLAY_FORMAT = '%-d %B %Y'
+  $CSV_DATE_DISPLAY_FORMAT = '%-d/%m/%Y'
   $DEFAULT_RESULTS_PER_PAGE = 20
 
   rescue_from ActionController::UnknownFormat, with: :unsupported_media_type
