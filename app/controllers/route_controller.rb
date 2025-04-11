@@ -19,11 +19,15 @@ class RouteController < ApplicationController
   def show
     route_id = params[:route]
     @route = get_route( route_id )
-    
-    @page_title = @route.title
-    @description = @route.description
-    @crumb << { label: 'Routes', url: route_list_url }
-    @crumb << { label: @route.crumb_label, url: nil }
-    @section = 'routes'
+
+    if @route.present?
+      @page_title = @route.title
+      @description = @route.description
+      @crumb << { label: 'Routes', url: route_list_url }
+      @crumb << { label: @route.crumb_label, url: nil }
+      @section = 'routes'
+    else
+      redirect_to "/unmatched"
+    end
   end
 end
