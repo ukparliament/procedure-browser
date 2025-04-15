@@ -7,6 +7,8 @@ class WorkPackageableThingController < ApplicationController
   include Sparql::Queries::WorkPackageableThings
   include Sparql::Get::WorkPackageableThing
   include Sparql::Queries::WorkPackageableThing
+  include Sparql::Get::WorkPackageableThingWorkPackages
+  include Sparql::Queries::WorkPackageableThingWorkPackages
   include Sparql::Get::Response
 
   def index
@@ -40,10 +42,15 @@ class WorkPackageableThingController < ApplicationController
     work_packageable_thing_id = params[:work_packageable_thing]
     @work_packageable_thing = get_work_packageable_thing( work_packageable_thing_id )
     
-    #@page_title = @work_packageable_thing.label
-    #@description = "#{@work_packageable_thing.label}."
+    # We get all work packages for this work packageable thing.
+    @work_packageable_thing_work_packages = get_work_packageable_thing_work_packages( work_packageable_thing_id )
+    
+    @page_title = @work_packageable_thing.label
+    @description = "#{@work_packageable_thing.label}."
     @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
-    #@crumb << { label: @work_packageable_thing.label, url: nil }
+    @crumb << { label: @work_packageable_thing.label, url: nil }
     @section = 'work-packageable-things'
+    
+    render :template => 'work_packageable_thing_work_package/index'
   end
 end
