@@ -1,0 +1,17 @@
+<div class="pagination-wrapper">
+
+	<%= content_tag( 'p', "Showing #{work_packageable_thing_list_pagination_result_numbers( page, results_per_page, result_count )} of #{ActiveSupport::NumberHelper.number_to_delimited( result_count )}." ) %>
+	
+	<p>
+		<% if work_packageable_thing_list_pagination_previous_link( page, results_per_page ).blank? -%>
+			Previous
+		<% else -%>
+			<%= link_to( 'Previous', work_packageable_thing_list_pagination_previous_link( page, results_per_page ) ) %>
+		<% end -%>
+		<% if work_packageable_thing_list_pagination_next_link( page, results_per_page, result_count ).blank? -%>
+			Next
+		<% else -%>
+			<%= link_to( 'Next', work_packageable_thing_list_pagination_next_link( page, results_per_page, result_count ) ) %>
+		<% end -%>
+	</p>
+</div>
