@@ -32,7 +32,6 @@ class WorkPackageableThingController < ApplicationController
     
     @page_title = 'Work packageable things'
     @description = 'All work packageable things.'
-    @rss_url = work_packageable_thing_list_url( :format => 'rss' )
     @crumb << { label: 'Work packageable things', url: nil }
     @section = 'work-packageable-things'
   end
