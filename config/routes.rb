@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
   get 'procedure-browser/work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
   
+  get 'procedure-browser/work-packageable-things/:work_packageable_thing/work-packages' => 'work_packageable_thing_work_package#index', as: :work_packageable_thing_work_package_list
+  
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
   get 'procedure-browser/enabling-legislation/:enabling_legislation' => 'enabling_legislation#show', as: :enabling_legislation_show
   
