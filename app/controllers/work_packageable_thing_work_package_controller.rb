@@ -21,5 +21,6 @@ class WorkPackageableThingWorkPackageController < ApplicationController
     @crumb << { label: @work_packageable_thing.label, url: work_packageable_thing_show_url }
     @crumb << { label: 'Work packages', url: nil }
     @section = 'work-packageable-things'
+    @subsection = 'work-packages'
   end
 end
