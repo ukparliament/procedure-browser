@@ -344,6 +344,14 @@ body.subsection-calculation-styles .subnav a.calculation-styles {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-preceding .subnav a.preceding {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-following .subnav a.following {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 a {
   overflow-wrap: break-word;
