@@ -1,0 +1,8 @@
+<%= render :partial => 'work_packageable_thing/nav' %>
+
+<%= list_item_count_sentence( 'following work packageable thing', @work_packageable_things.size ) %>
+<ol>
+	<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @work_packageable_things %>
+</ol>
+
+<%= render :partial => 'common/identifier', :object => @work_packageable_thing %>
