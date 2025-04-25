@@ -50,6 +50,7 @@ class WorkPackageableThingController < ApplicationController
     @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
     @crumb << { label: @work_packageable_thing.label, url: nil }
     @section = 'work-packageable-things'
+    @subsection = 'work-packages'
     
     render :template => 'work_packageable_thing_work_package/index'
   end
