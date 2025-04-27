@@ -12,9 +12,9 @@ class StepRouteController < ApplicationController
     @step = get_step( step_id )
     @step_routes = get_step_routes( step_id )
     
-    @page_title = "#{@step.label} - Routes"
-    @multiline_page_title = "#{@step.label} <span class='subhead'>Routes</span>".html_safe
-    @description = "Routes for #{@step.label}."
+    @page_title = "#{@step.display_label} - Routes"
+    @multiline_page_title = "#{@step.display_label} <span class='subhead'>Routes</span>".html_safe
+    @description = "Routes for #{@step.display_label}."
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
     @crumb << { label: @step.label, url: step_show_url }
