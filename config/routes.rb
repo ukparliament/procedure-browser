@@ -121,7 +121,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/houses/:house/step-collections' => 'house_step_collection#index', as: :house_step_collection_list
   
   get 'procedure-browser/meta' => 'meta#index', as: :meta_list
-  get 'procedure-browser/meta/sitemap' => 'meta#sitemap', as: :meta_site_map
+  get 'procedure-browser/meta/sitemap' => 'meta#sitemap', as: :meta_sitemap
 
   # Any unmatched nonsense called by a bot will gracefully show a 404
   match '*unmatched', to: 'application#route_not_found', via: :all
