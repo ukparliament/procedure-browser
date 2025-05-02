@@ -209,6 +209,9 @@ body.section-work-packageable-things nav#header-nav a.work-packageable-things {
 body.section-enabling-legislation nav#header-nav a.enabling-legislation {
 	border-bottom-color: #fff;
 }
+body.section-organisations-accountable-to-parliament nav#header-nav a.organisations-accountable-to-parliament {
+	border-bottom-color: #fff;
+}
 body.section-work-packages nav#header-nav a.work-packages {
 	border-bottom-color: #fff;
 }
