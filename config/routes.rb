@@ -24,6 +24,12 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/enabling-legislation/:enabling_legislation/work-packageable-things' => 'enabling_legislation_work_packageable_thing#index', as: :enabling_legislation_work_packageable_thing_list
   
+  
+  get 'procedure-browser/organisations-accountable-to-parliament' => 'organisation_accountable_to_parliament#index', as: :organisation_accountable_to_parliament_list
+  get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament' => 'organisation_accountable_to_parliament#show', as: :organisation_accountable_to_parliament_show
+  
+  
+  
   get 'procedure-browser/work-packages' => 'work_package#index', as: :work_package_list
   get 'procedure-browser/work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
