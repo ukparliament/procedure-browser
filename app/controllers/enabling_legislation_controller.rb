@@ -36,7 +36,6 @@ class EnablingLegislationController < ApplicationController
     
     @page_title = 'Enabling legislation'
     @description = 'Enabling legislation.'
-    @rss_url = enabling_legislation_list_url( :format => 'rss' )
     @crumb << { label: 'Enabling legislation', url: nil }
     @section = 'enabling-legislation'
   end
