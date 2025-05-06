@@ -109,4 +109,19 @@ module OrganisationAccountableToParliamentHelper
     end
     organisation_accountable_to_parliament_list_pagination_has_subsequent_page
   end
+  
+  # A method to display start and end dates for an organisation accountable to Parliament.
+  def organisation_accountable_to_parliament_dates_display( organisation )
+    if organisation.start_on || organisation.end_on
+      dates = ''
+      if organisation.start_on
+        dates += organisation.start_on.strftime( $DATE_DISPLAY_FORMAT )
+      end
+      dates += ' - '
+      if organisation.end_on
+        dates += organisation.end_on.strftime( $DATE_DISPLAY_FORMAT )
+      end
+      dates
+    end
+  end
 end
