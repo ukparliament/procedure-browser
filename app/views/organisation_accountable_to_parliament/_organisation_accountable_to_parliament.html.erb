@@ -1,3 +1,4 @@
 <li>
 	<%= content_tag( 'h2', link_to( organisation_accountable_to_parliament.label, organisation_accountable_to_parliament_show_url( :organisation_accountable_to_parliament => organisation_accountable_to_parliament.id ) ) ) %>
+	<%= content_tag( 'p', organisation_accountable_to_parliament_dates_display( organisation_accountable_to_parliament ) ) if organisation_accountable_to_parliament_dates_display( organisation_accountable_to_parliament ) %>
 </li>
