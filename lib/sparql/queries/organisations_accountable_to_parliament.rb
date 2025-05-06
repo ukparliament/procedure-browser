@@ -14,11 +14,12 @@ module Sparql::Queries::OrganisationsAccountableToParliament
                       }
         ?Organisations :name ?Name.
   
+        optional {?Organisations :startDate ?startDate}
+        optional {?Organisations :endDate ?endDate}
+  
       } order by ?Name
 
-      Offset #{offset} Limit #{limit}
-
-      
+      limit #{limit} offset #{offset}
     "
   end
 end
