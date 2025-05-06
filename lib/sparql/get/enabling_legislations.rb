@@ -20,7 +20,7 @@ module Sparql::Get::EnablingLegislations
   
       # ... we create a new enabling legislation object ...
       enabling_legislation = EnablingLegislation.new
-      enabling_legislation.identifier = row['Act']
+      enabling_legislation.identifier = row['EnablingThing']
       enabling_legislation.label = row['Name']
       enabling_legislation.date = row['Date'].to_date if row['Date']
       enabling_legislation.year = row['Year']
