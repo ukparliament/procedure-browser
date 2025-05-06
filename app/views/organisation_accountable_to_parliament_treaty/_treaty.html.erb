@@ -1,0 +1,8 @@
+<li>
+	<%= content_tag( 'h2', link_to( treaty.label, work_packageable_thing_show_url( :work_packageable_thing => treaty.id ) ) ) %>
+	<% if treaty.series_citation -%>
+		<%= content_tag( 'p', "Laid on #{treaty.laid_on.strftime( $DATE_DISPLAY_FORMAT )}, forming part of the #{treaty.series_citation} series." ) %>
+	<% else -%>
+		<%= content_tag( 'p', "Laid on #{treaty.laid_on.strftime( $DATE_DISPLAY_FORMAT )}." ) %>
+	<% end -%>
+</li>
