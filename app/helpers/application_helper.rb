@@ -40,6 +40,7 @@ module ApplicationHelper
       class_display_label += word
       class_display_label += ' ' unless word == words.last
     end
+    class_display_label.sub!( 'parliament', 'Parliament' )
     class_display_label
   end
 end
