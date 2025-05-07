@@ -1,21 +1,16 @@
 <div class="pagination-wrapper">
-
-NEEDS FIXING
-
 	<%= content_tag( 'p', "Showing #{work_package_list_pagination_result_numbers( page, results_per_page, result_count )} of #{ActiveSupport::NumberHelper.number_to_delimited( result_count )}." ) %>
 
 	<p>
-		<% if procedure_work_package_list_pagination_previous_link( page, results_per_page ).blank? -%>
+		<% if enabling_legislation_work_packageable_thing_list_pagination_previous_link( page, results_per_page ).blank? -%>
 			Previous
 		<% else -%>
-			<%= link_to( 'Previous', procedure_work_package_list_pagination_previous_link( page, results_per_page ) ) %>
+			<%= link_to( 'Previous', enabling_legislation_work_packageable_thing_list_pagination_previous_link( page, results_per_page ) ) %>
 		<% end -%>
-		<% if procedure_work_package_list_pagination_next_link( page, results_per_page, result_count ).blank? -%>
+		<% if enabling_legislation_work_packageable_thing_list_pagination_next_link( page, results_per_page, result_count ).blank? -%>
 			Next
 		<% else -%>
-			<%= link_to( 'Next', procedure_work_package_list_pagination_next_link( page, results_per_page, result_count ) ) %>
+			<%= link_to( 'Next', enabling_legislation_work_packageable_thing_list_pagination_next_link( page, results_per_page, result_count ) ) %>
 		<% end -%>
 	</p>
-	
-	/NEEDS FIXING
 </div>
