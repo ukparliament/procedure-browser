@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/work-packageable-things/:work_packageable_thing/work-packages' => 'work_packageable_thing_work_package#index', as: :work_packageable_thing_work_package_list
   
+  get 'procedure-browser/work-packageable-things/:work_packageable_thing/enabling-legislation' => 'work_packageable_thing_enabling_legislation#index', as: :work_packageable_thing_enabling_legislation_list
+  
   get 'procedure-browser/work-packageable-things/:work_packageable_thing/preceding' => 'work_packageable_thing_preceding#index', as: :work_packageable_thing_preceding_list
   
   get 'procedure-browser/work-packageable-things/:work_packageable_thing/following' => 'work_packageable_thing_following#index', as: :work_packageable_thing_following_list
