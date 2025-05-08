@@ -355,6 +355,10 @@ body.subsection-following .subnav a.following {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-enabling-legislation .subnav a.enabling-legislation {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 a {
   overflow-wrap: break-word;
