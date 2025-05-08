@@ -1,0 +1,8 @@
+<%= render :partial => 'work_packageable_thing/nav' %>
+
+<%= list_item_count_sentence( 'enabling legislation item', @enabling_legislation.size ) %>
+<ol>
+	<%= render :partial => 'enabling_legislation/enabling_legislation', :collection => @enabling_legislation %>
+</ol>
+
+<%= render :partial => 'common/identifier', :object => @work_packageable_thing %>
