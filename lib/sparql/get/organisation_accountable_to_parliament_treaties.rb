@@ -21,10 +21,14 @@ module Sparql::Get::OrganisationAccountableToParliamentTreaties
       treaty = Treaty.new
       treaty.identifier = row['treaty']
       treaty.label = row['TreatyName']
-      treaty.laid_on = row['businessItemDate'].to_date
-      treaty.series_citation = row['seriesCitation']
+      treaty.country_series_membership = row['treatyHasCountrySeriesMembership']
+      treaty.country_series_membership_citation = row['countrySeriesItemCitation'].strip if row['countrySeriesItemCitation']
+      treaty.european_union_series_membership = row['treatyHasEuropeanUnionSeriesMembership']
+      treaty.european_union_series_membership_citation = row['europeanSeriesItemCitation'].strip if row['europeanSeriesItemCitation']
+      treaty.miscellaneous_series_membership = row['treatyHasMiscellaneousSeriesMembership']
+      treaty.miscellaneous_series_membership_citation = row['miscSeriesItemCitation'].strip if row['miscSeriesItemCitation']
       
-      # ... and add it to the array of treaies.
+      # ... and add it to the array of treaties.
       treaties << treaty
     end
   
