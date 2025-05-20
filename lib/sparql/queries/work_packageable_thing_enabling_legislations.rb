@@ -10,15 +10,14 @@ module Sparql::Queries::WorkPackageableThingEnablingLegislations
       select ?WorkPackagedThing ?workPackagedThingName ?EnablingThing ?ActName ?RoyalAssentDate ?Year ?Number where {
         ?WorkPackagedThing a :WorkPackagedThing;
                            :name ?workPackagedThingName.
-        optional {?WorkPackagedThing :enabledBy ?EnablingThing.  
+        ?WorkPackagedThing :enabledBy ?EnablingThing.  
           Optional { ?EnablingThing :actOfParliamentName ?ActName.}
          OPTIONAL {?EnablingThing :actOfParliamentNumber ?Number}
         OPTIONAL {?EnablingThing :actOfParliamentYear ?Year}
          OPTIONAL{  ?EnablingThing :actOfParliamentRoyalAssentDate ?RoyalAssentDate}
-          OPTIONAL {?EnablingThing :actOfParliamentUrl ?URL}}
+          OPTIONAL {?EnablingThing :actOfParliamentUrl ?URL}
         filter (?WorkPackagedThing in (id:#{work_packageable_thing_id}))
       }Order by desc (?RoyalAssentDate)
-      
     "
   end
 end
