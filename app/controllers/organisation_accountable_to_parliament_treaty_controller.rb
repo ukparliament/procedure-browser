@@ -41,5 +41,6 @@ class OrganisationAccountableToParliamentTreatyController < ApplicationControlle
     @crumb << { label: @organisation_accountable_to_parliament.label, url: organisation_accountable_to_parliament_show_url }
     @crumb << { label: 'Treaties', url: nil }
     @section = 'organisations-accountable-to-parliament'
+    @subsection = 'treaties'
   end
 end
