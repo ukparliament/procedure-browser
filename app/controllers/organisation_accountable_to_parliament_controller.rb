@@ -7,8 +7,10 @@ class OrganisationAccountableToParliamentController < ApplicationController
   include Sparql::Queries::OrganisationsAccountableToParliament
   include Sparql::Get::OrganisationAccountableToParliament
   include Sparql::Queries::OrganisationAccountableToParliament
-  include Sparql::Get::OrganisationAccountableToParliamentMakingAvailableCount
-  include Sparql::Queries::OrganisationAccountableToParliamentMakingAvailableCount
+  include Sparql::Get::OrganisationAccountableToParliamentWorkPackageCount
+  include Sparql::Queries::OrganisationAccountableToParliamentWorkPackageCount
+  include Sparql::Get::OrganisationAccountableToParliamentWorkPackages
+  include Sparql::Queries::OrganisationAccountableToParliamentWorkPackages
   include Sparql::Get::Response
 
   def index
@@ -52,23 +54,26 @@ class OrganisationAccountableToParliamentController < ApplicationController
     results_per_page = params['results-per-page']
     @results_per_page = ( results_per_page || $DEFAULT_RESULTS_PER_PAGE ).to_i
     
-    # We get the count of all work packageable things made available by the organisation accountable to Parliament.
-    @result_count = get_organisation_accountable_to_parliament_making_available_count( organisation_accountable_to_parliament )
+    # We get the count of all work packages for the organisation accountable to Parliament.
+    @result_count = get_organisation_accountable_to_parliament_work_package_count( organisation_accountable_to_parliament )
     
     # If this is not the first page and the number of the first work package on this page exceeds the total number of work packages ...
     #if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
       #raise ActionController::RoutingError.new("Not Found")
     #end
     
-    # We get the set of work packageable things for an item of legislation on this page with this many results per page.
-    #@enabling_legislation_work_packageable_things = get_enabling_legislation_work_packageable_things( enabling_legislation, @page, @results_per_page ) 
+    # We get the set of work packages for an organsation accountable to Parliament on this page with this many results per page.
+    @work_packages = get_organisation_accountable_to_parliament_work_packages( organisation_accountable_to_parliament, @page, @results_per_page )
     
-    @page_title = @organisation_accountable_to_parliament.label
-    @description = "#{@organisation_accountable_to_parliament.label}."
+    @page_title = "Work packages for the #{@organisation_accountable_to_parliament.label}"
+    @multiline_page_title = "#{@organisation_accountable_to_parliament.label} <span class='subhead'>Work packages</span>".html_safe
+    @description = "Work packages for the  #{@organisation_accountable_to_parliament.label}."
+    @rss_url = organisation_accountable_to_parliament_work_package_list_url( :format => 'rss' )
     @crumb << { label: 'Organisations accountable to Parliament', url: organisation_accountable_to_parliament_list_url }
     @crumb << { label: @organisation_accountable_to_parliament.label, url: nil }
     @section = 'organisations-accountable-to-parliament'
+    @subsection = 'work-packages'
     
-    render :template => 'organisation_accountable_to_parliament_making_available/index'
+    render :template => 'organisation_accountable_to_parliament_work_package/index'
   end
 end
