@@ -16,6 +16,8 @@ module Sparql::Get::OrganisationAccountableToParliament
       organisation_accountable_to_parliament = OrganisationAccountableToParliament.new
       organisation_accountable_to_parliament.identifier = row['Organisations']
       organisation_accountable_to_parliament.label = row['Name']
+      organisation_accountable_to_parliament.start_on = row['startDate'].to_date if row['startDate']
+      organisation_accountable_to_parliament.end_on = row['endDate'].to_date if row['endDate']
       
       # We return the organisation accountable to Parliament object object.
       return organisation_accountable_to_parliament

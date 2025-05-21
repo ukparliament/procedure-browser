@@ -13,6 +13,8 @@ module Sparql::Queries::OrganisationAccountableToParliament
       ?Organisations a :ArmsLengthBody.
                       }
         ?Organisations :name ?Name.
+        optional {?Organisations :startDate ?startDate}
+        optional {?Organisations :endDate ?endDate}
         filter (?Organisations in (id:#{organisation_accountable_to_parliament_id}))
       } 
     "
