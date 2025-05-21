@@ -1,5 +1,17 @@
 module OrganisationAccountableToParliamentHelper
 
+  def organisation_accountable_to_parliament_dates( organisation_accountable_to_parliament )
+    dates = ''
+    if organisation_accountable_to_parliament.start_on
+      dates += organisation_accountable_to_parliament.start_on.strftime( $DATE_DISPLAY_FORMAT )
+      dates += ' - '
+    end
+    if organisation_accountable_to_parliament.end_on
+      dates += organisation_accountable_to_parliament.end_on.strftime( $DATE_DISPLAY_FORMAT )
+    end
+    dates = content_tag( 'p', dates ) unless dates.blank?
+  end
+
   def organisation_accountable_to_parliament_results_per_page_link( number, results_per_page )
     organisation_accountable_to_parliament_results_per_page_link = ''
     if number == results_per_page
