@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/organisations-accountable-to-parliament' => 'organisation_accountable_to_parliament#index', as: :organisation_accountable_to_parliament_list
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament' => 'organisation_accountable_to_parliament#show', as: :organisation_accountable_to_parliament_show
   
-  get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/work-packages' => 'organisation_accountable_to_parliamentwork_package#index', as: :organisation_accountable_to_parliament_work_package_list
+  get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/work-packages' => 'organisation_accountable_to_parliament_work_package#index', as: :organisation_accountable_to_parliament_work_package_list
   
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/treaties' => 'organisation_accountable_to_parliament_treaty#index', as: :organisation_accountable_to_parliament_treaty_list
   
