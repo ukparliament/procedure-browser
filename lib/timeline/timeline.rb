@@ -93,7 +93,6 @@ module Timeline::Timeline
           end
         end
       end
-    
     end
   
     # We return the array of dates for a work package.
