@@ -17,11 +17,11 @@ module Sparql::Get::WorkPackagePastBusinessItems
   
       # ... we create a new business item object ...
       business_item = BusinessItem.new
-      business_item.identifier = row['businessItem']
-      business_item.date = row['businessItemDate'].to_date if row['businessItemDate']
-      business_item.link = row['businessItemLink']
-      business_item.step_identifier = row['businessItemProcedureStep']
-      business_item.step_label = row['businessItemProcedureStepName']
+      business_item.identifier = row['event']
+      business_item.date = row['eventDate'].to_date if row['eventDate']
+      business_item.link = row['eventLink']
+      business_item.step_identifier = row['eventProcedureStep']
+      business_item.step_label = row['eventProcedureStepName']
       business_item.legislature_identifier = row['legislature']
       business_item.legislature_label = row['legislatureName']
       business_item.commons_identifier = row['CommonsId']
