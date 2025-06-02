@@ -66,7 +66,7 @@ module ProcedureWorkPackageHelper
     next_link = ''
     
     # If the list has a subsequent page ...
-    if work_package_list_pagination_has_subsequent_page( page, results_per_page, result_count )
+    if pagination_has_subsequent_page( page, results_per_page, result_count )
     
       # ... if results per page is set to the default ...
       if results_per_page == $DEFAULT_RESULTS_PER_PAGE

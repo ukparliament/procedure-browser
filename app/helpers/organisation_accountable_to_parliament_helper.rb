@@ -67,7 +67,7 @@ module OrganisationAccountableToParliamentHelper
     next_link = ''
     
     # If the list has a subsequent page ...
-    if organisation_accountable_to_parliament_list_pagination_has_subsequent_page( page, results_per_page, result_count )
+    if pagination_has_subsequent_page( page, results_per_page, result_count )
     
       # ... if results per page is set to the default ...
       if results_per_page == $DEFAULT_RESULTS_PER_PAGE
@@ -83,19 +83,6 @@ module OrganisationAccountableToParliamentHelper
       end
     end
     next_link
-  end
-  
-  # A method to determine if there is a next page.
-  def organisation_accountable_to_parliament_list_pagination_has_subsequent_page( page, results_per_page, result_count )
-    organisation_accountable_to_parliament_list_pagination_has_subsequent_page = false
-    
-    # If the total number of results exceeds the number allowed by this page ...
-    if result_count > ( page * results_per_page )
-    
-      # ... we set the has subsequent page variable to true.
-      organisation_accountable_to_parliament_list_pagination_has_subsequent_page = true
-    end
-    organisation_accountable_to_parliament_list_pagination_has_subsequent_page
   end
   
   # A method to display start and end dates for an organisation accountable to Parliament.

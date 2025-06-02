@@ -23,4 +23,17 @@ module PaginationHelper
     end
     pagination_result_numbers
   end
+  
+  # A method to determine if there is a next page.
+  def pagination_has_subsequent_page( page, results_per_page, result_count )
+    pagination_has_subsequent_page = false
+    
+    # If the total number of results exceeds the number allowed by this page ...
+    if result_count > ( page * results_per_page )
+    
+      # ... we set the has subsequent page variable to true.
+      pagination_has_subsequent_page = true
+    end
+    pagination_has_subsequent_page
+  end
 end

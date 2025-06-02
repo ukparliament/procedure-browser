@@ -54,7 +54,7 @@ module EnablingLegislationWorkPackageableThingHelper
     next_link = ''
     
     # If the list has a subsequent page ...
-    if enabling_legislation_work_packageable_thing_list_pagination_has_subsequent_page( page, results_per_page, result_count )
+    if pagination_has_subsequent_page( page, results_per_page, result_count )
     
       # ... if results per page is set to the default ...
       if results_per_page == $DEFAULT_RESULTS_PER_PAGE
@@ -70,18 +70,5 @@ module EnablingLegislationWorkPackageableThingHelper
       end
     end
     next_link
-  end
-  
-  # A method to determine if there is a next page.
-  def enabling_legislation_work_packageable_thing_list_pagination_has_subsequent_page( page, results_per_page, result_count )
-    enabling_legislation_work_packageable_thing = false
-    
-    # If the total number of results exceeds the number allowed by this page ...
-    if result_count > ( page * results_per_page )
-    
-      # ... we set the has subsequent page variable to true.
-      enabling_legislation_work_packageable_thing = true
-    end
-    enabling_legislation_work_packageable_thing
   end
 end
