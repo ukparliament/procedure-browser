@@ -51,9 +51,6 @@ class Route
     title += self.from_step_full_label
     title += ' to '
     title += self.to_step_full_label
-    title += ' as part of the '
-    title += self.procedure_label
-    title += ' procedure'
     title
   end
   
@@ -62,9 +59,7 @@ class Route
     description += self.from_step_full_label
     description += ' to '
     description += self.to_step_full_label
-    description += ' as part of the '
-    description += self.procedure_label
-    description += ' procedure.'
+    description += '.'
     description
   end
   
@@ -73,9 +68,6 @@ class Route
     crumb_label += self.from_step_full_label
     crumb_label += ' to '
     crumb_label += self.to_step_full_label
-    crumb_label += ' as part of the '
-    crumb_label += self.procedure_label
-    crumb_label += ' procedure'
     crumb_label
   end
   
