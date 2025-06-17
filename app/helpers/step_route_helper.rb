@@ -7,9 +7,6 @@ module StepRouteHelper
     route_title += route_from_step_label( route )
     route_title += ' to '
     route_title += route_to_step_label( route )
-    route_title += ' as part of the '
-    route_title += link_to( route.procedure_label, procedure_show_url( :procedure => route.procedure_id ) )
-    route_title += ' procedure'
     route_title.html_safe
   end
   
