@@ -19,8 +19,6 @@ module Sparql::Get::StepRoutes
       route.identifier = row['Route']
       route.start_on = row['startDate'].to_date if row['startDate']
       route.end_on = row['endDate'].to_date if row['endDate']
-      route.procedure_identifier = row['procedure']
-      route.procedure_label = row['procedureLabel']
       route.from_step_identifier = row['FromStep']
       route.from_step_label = row['FromStepName']
       route.from_step_type_identifier = row['FromStepType']
