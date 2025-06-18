@@ -2,10 +2,10 @@
 
 <%= list_item_count_sentence( 'work packageable thing', @result_count ) %>
 
-<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+<%= render :partial => 'results_per_page_selector_current', :locals => { :page => @page, :results_per_page => @results_per_page } %>
 
 <ol>
 	<%= render :partial => 'work_packageable_thing', :collection => @work_packageable_things, :locals => { 'work_packageable_things' => @work_packageable_things} %>
 </ol>
 
-<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+<%= render :partial => 'pagination_current', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>

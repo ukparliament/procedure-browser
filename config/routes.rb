@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'procedure-browser' => 'home#index', as: :home
   
   get 'procedure-browser/work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
+  get 'procedure-browser/work-packageable-things/before-parliament' => 'work_packageable_thing#current', as: :work_packageable_thing_current_list
   get 'procedure-browser/work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
   
   get 'procedure-browser/work-packageable-things/:work_packageable_thing/work-packages' => 'work_packageable_thing_work_package#index', as: :work_packageable_thing_work_package_list

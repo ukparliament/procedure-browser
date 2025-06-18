@@ -363,6 +363,14 @@ body.subsection-treaties .subnav a.treaties {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-all .subnav a.all {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-current .subnav a.current {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 a {
   overflow-wrap: break-word;
