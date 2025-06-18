@@ -1,0 +1,12 @@
+<%= content_tag( 'p', "From: #{link_to( @route.from_step_full_label, step_show_url( :step => @route.from_step_id ) )}".html_safe ) %>
+<%= content_tag( 'p', "To: #{link_to( @route.to_step_full_label, step_show_url( :step => @route.to_step_id ) )}".html_safe ) %>
+
+<%= content_tag( 'p', "Start date: #{@route.start_on.strftime( $DATE_DISPLAY_FORMAT )}" ) if @route.start_on %>
+<%= content_tag( 'p', "End date: #{@route.end_on.strftime( $DATE_DISPLAY_FORMAT )}" ) if @route.end_on %>
+
+<%= list_item_count_sentence( 'procedure', @procedures.size ) %>
+<ol>
+	<%= render :partial => 'procedure/procedure', :collection => @procedures %>
+</ol>
+
+<%= render :partial => 'common/identifier', :object => @route %>
