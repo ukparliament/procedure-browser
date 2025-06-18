@@ -112,6 +112,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/routes' => 'route#index', as: :route_list
   get 'procedure-browser/routes/:route' => 'route#show', as: :route_show
   
+  get 'procedure-browser/routes/:route/procedures' => 'route_procedure#index', as: :route_procedure_list
+  
   get 'procedure-browser/clocks' => 'clock#index', as: :clock_list
   get 'procedure-browser/clocks/:clock' => 'clock#show', as: :clock_show
   
