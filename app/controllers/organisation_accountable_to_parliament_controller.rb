@@ -70,7 +70,8 @@ class OrganisationAccountableToParliamentController < ApplicationController
     @page_title = 'Organisations accountable to Parliament'
     @multiline_page_title = "Organisations accountable to Parliament <span class='subhead'>Current</span>".html_safe
     @description = 'Organisations accountable to Parliament.'
-    @crumb << { label: 'Organisations accountable to Parliament', url: nil }
+    @crumb << { label: 'Organisations accountable to Parliament', url: organisation_accountable_to_parliament_list_url }
+    @crumb << { label: 'Current', url: nil }
     @section = 'organisations-accountable-to-parliament'
     @subsection = 'current'
   end
