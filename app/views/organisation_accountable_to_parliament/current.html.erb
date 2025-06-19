@@ -1,0 +1,11 @@
+<%= render :partial => 'current_nav' %>
+
+<%= list_item_count_sentence( 'organisation accountable to Parliament', @result_count ) %>
+
+<%= render :partial => 'results_per_page_selector_current', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+
+<ol>
+	<%= render :partial => 'organisation_accountable_to_parliament', :collection => @organisations_accountable_to_parliament %>
+</ol>
+
+<%= render :partial => 'pagination_current', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
