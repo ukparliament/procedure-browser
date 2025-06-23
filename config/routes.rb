@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/procedures/:procedure' => 'procedure#show', as: :procedure_show
   
   get 'procedure-browser/procedures/:procedure/work-packages' => 'procedure_work_package#index', as: :procedure_work_package_list
+    get 'procedure-browser/procedures/:procedure/work-packages/current' => 'procedure_work_package#current', as: :procedure_work_package_current_list
   
   get 'procedure-browser/procedures/:procedure/calculation-styles' => 'procedure_calculation_style#index', as: :procedure_calculation_style_list
   
