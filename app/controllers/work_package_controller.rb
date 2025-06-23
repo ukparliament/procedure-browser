@@ -5,6 +5,10 @@ class WorkPackageController < ApplicationController
   include Sparql::Queries::WorkPackageCount
   include Sparql::Get::WorkPackages
   include Sparql::Queries::WorkPackages
+  include Sparql::Get::WorkPackageCountCurrent
+  include Sparql::Queries::WorkPackageCountCurrent
+  include Sparql::Get::WorkPackagesCurrent
+  include Sparql::Queries::WorkPackagesCurrent
   include Sparql::Get::WorkPackage
   include Sparql::Queries::WorkPackage
   include Sparql::Get::WorkPackageBusinessItems
@@ -34,10 +38,43 @@ class WorkPackageController < ApplicationController
     @work_packages = get_work_packages( @page, @results_per_page )
     
     @page_title = 'Work packages'
+    @multiline_page_title = "Work packages <span class='subhead'>All</span>".html_safe
     @description = 'All work packages.'
     @rss_url = work_package_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: nil }
     @section = 'work-packages'
+    @subsection = 'all'
+  end
+
+  def current
+  
+    # We get the page number passed as a parameter.
+    page = params['page']
+    @page = ( page || "1" ).to_i
+    
+    # We get the number of results per page passed as a parameter.
+    results_per_page = params['results-per-page']
+    @results_per_page = ( results_per_page || $DEFAULT_RESULTS_PER_PAGE ).to_i
+    
+    # We get the count of all work packages.
+    @result_count = get_work_package_current_count
+    
+    # If this is not the first page and the number of the first work package on this page exceeds the total number of work packages ...
+    if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
+      raise ActionController::RoutingError.new("Not Found")
+    end
+    
+    # We get the set of work packages on this page with this many results per page.
+    @work_packages = get_work_packages_current( @page, @results_per_page )
+    
+    @page_title = 'Work packages'
+    @multiline_page_title = "Work packages <span class='subhead'>Before Parliament</span>".html_safe
+    @description = 'Work packages before Parliament.'
+    @rss_url = work_package_current_list_url( :format => 'rss' )
+    @crumb << { label: 'Work packages', url: work_package_list_url }
+    @crumb << { label: 'Before Parliament', url: nil }
+    @section = 'work-packages'
+    @subsection = 'current'
   end
 
   def show
