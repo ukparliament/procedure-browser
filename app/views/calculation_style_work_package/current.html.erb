@@ -1,0 +1,16 @@
+<%= render :partial => 'calculation_style/intro', :object => @calculation_style %>
+
+<%= list_item_count_sentence( 'work package', @result_count ) %>
+
+<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
+
+<% unless @calculation_style_work_packages.empty? -%>
+	<%= render :partial => 'calculation_style_work_package/results_per_page_selector_current', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+	<ol>
+		<%= render :partial => 'work_package/work_package', :collection => @calculation_style_work_packages, :locals => { 'work_packages' => @calculation_style_work_packages} %>
+	</ol>
+	
+	<%= render :partial => 'calculation_style_work_package/pagination_current', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+<% end -%>
+
+<%= render :partial => 'common/identifier', :object => @calculation_style %>

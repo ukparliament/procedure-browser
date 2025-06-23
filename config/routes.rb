@@ -85,6 +85,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/calculation-styles/:calculation_style' => 'calculation_style#show', as: :calculation_style_show
   
   get 'procedure-browser/calculation-styles/:calculation_style/work-packages' => 'calculation_style_work_package#index', as: :calculation_style_work_package_list
+  get 'procedure-browser/calculation-styles/:calculation_style/work-packages/current' => 'calculation_style_work_package#current', as: :calculation_style_work_package_current_list
   
   get 'procedure-browser/calculation-styles/:calculation_style/procedures' => 'calculation_style_procedure#index', as: :calculation_style_procedure_list
   
