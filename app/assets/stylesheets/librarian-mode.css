@@ -1,9 +1,9 @@
 /* Dials down the noise for non-librarians */
 /* Hides components marked as librarian-only */
-body .librarian-only {
+body .uk-parliament-procedure-browser-librarian-only {
 	display: none;
 }
 
-html body .librarian-only {
+html body .uk-parliament-procedure-browser-librarian-only {
 	display: none;
 }
