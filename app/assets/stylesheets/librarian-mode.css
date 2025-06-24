@@ -1,0 +1,9 @@
+/* Dials down the noise for non-librarians */
+/* Hides components marked as librarian-only */
+body .librarian-only {
+	display: none;
+}
+
+html body .librarian-only {
+	display: none;
+}
