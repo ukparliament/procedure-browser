@@ -5,6 +5,7 @@ class WorkPackageableThing
   attr_accessor :procedure_label
   attr_accessor :identifier
   attr_accessor :label
+  attr_accessor :uri
   
   def id
     self.identifier.split( '/' ).last
@@ -16,5 +17,10 @@ class WorkPackageableThing
   
   def work_package_id
     self.work_package_identifier.split( '/' ).last
+  end
+  
+  def uri_domain
+    uri = URI.parse( self.uri )
+    uri.host
   end
 end
