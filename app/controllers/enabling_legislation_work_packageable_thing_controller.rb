@@ -39,7 +39,9 @@ class EnablingLegislationWorkPackageableThingController < ApplicationController
     @description = "Work packageable things enabled by #{@enabling_legislation.label}."
     @rss_url = enabling_legislation_work_packageable_thing_list_url( :format => 'rss' )
     @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
-    @crumb << { label: @enabling_legislation.label, url: nil }
+    @crumb << { label: @enabling_legislation.label, url: enabling_legislation_show_url }
+    @crumb << { label: 'Work packageable things', url: nil }
     @section = 'enabling-legislation'
+    @subsection = 'work-packageable-things'
   end
 end

@@ -1,3 +1,6 @@
 <%= enabling_legislation_description_with_markup( intro ) %>
 
-<%= content_tag( 'p', "#{link_to( 'Read the enabling legislation', intro.uri )} at legislation.gov.uk.".html_safe ) if intro.uri %>
+<%= content_tag( 'p', "#{link_to( 'Read the enabling legislation', intro.uri )} at legislation.gov.uk.".html_safe ) if intro.uri
+ %>
+ 
+ <%= render :partial => 'enabling_legislation/nav' %>
