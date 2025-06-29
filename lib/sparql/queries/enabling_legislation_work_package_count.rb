@@ -14,7 +14,7 @@ module Sparql::Queries::EnablingLegislationWorkPackageCount
             OPTIONAL {?Act :actOfParliamentYear ?Year}
              OPTIONAL{  ?Act :actOfParliamentRoyalAssentDate ?Date}
             OPTIONAL {?Act :actOfParliamentUrl ?URL}
-            filter (?Act in (id:5mTFx3XA))
+            filter (?Act in (id:#{enabling_thing_id}))
             ?Act :enabling ?workPackagedThing. 
             ?workPackagedThing :name ?workPackagedThingName. 
      ?workPackagedThing :workPackagedThingHasWorkPackage ?workPackage.
