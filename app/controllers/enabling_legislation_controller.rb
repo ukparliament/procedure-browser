@@ -7,10 +7,10 @@ class EnablingLegislationController < ApplicationController
   include Sparql::Queries::EnablingLegislations
   include Sparql::Get::EnablingLegislation
   include Sparql::Queries::EnablingLegislation
-  include Sparql::Get::EnablingLegislationWorkPackageableThingCount
-  include Sparql::Queries::EnablingLegislationWorkPackageableThingCount
-  include Sparql::Get::EnablingLegislationWorkPackageableThings
-  include Sparql::Queries::EnablingLegislationWorkPackageableThings
+  include Sparql::Get::EnablingLegislationWorkPackageCountCurrent
+  include Sparql::Queries::EnablingLegislationWorkPackageCountCurrent
+  include Sparql::Get::EnablingLegislationWorkPackagesCurrent
+  include Sparql::Queries::EnablingLegislationWorkPackagesCurrent
   include Sparql::Get::Response
 
   def index
@@ -54,23 +54,26 @@ class EnablingLegislationController < ApplicationController
     results_per_page = params['results-per-page']
     @results_per_page = ( results_per_page || $DEFAULT_RESULTS_PER_PAGE ).to_i
     
-    # We get the count of all work packageable things for the item of enabling legislation.
-    @result_count = get_enabling_legislation_work_packageable_thing_count( enabling_legislation )
+    # We get the count of all work packages for the item of enabling legislation.
+    @result_count = get_enabling_legislation_work_package_count_current( enabling_legislation )
     
     # If this is not the first page and the number of the first work package on this page exceeds the total number of work packages ...
     if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
       raise ActionController::RoutingError.new("Not Found")
     end
     
-    # We get the set of work packageable things for an item of legislation on this page with this many results per page.
-    @enabling_legislation_work_packageable_things = get_enabling_legislation_work_packageable_things( enabling_legislation, @page, @results_per_page ) 
+    # We get the set of work packages for an item of legislation on this page with this many results per page.
+    @work_packages = get_enabling_legislation_work_packages_current( enabling_legislation, @page, @results_per_page ) 
     
-    @page_title = @enabling_legislation.label
-    @description = "#{@enabling_legislation.label}."
+    @page_title = "#{@enabling_legislation.label} - work packages before Parliament"
+    @multiline_page_title = "#{@enabling_legislation.label} <span class='subhead'>Work packages before Parliament</span>".html_safe
+    @description = "Work packages for instruments enabled by #{@enabling_legislation.label} currently before Parliament."
+    @rss_url = enabling_legislation_work_package_current_list_url( :format => 'rss' )
     @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
     @crumb << { label: @enabling_legislation.label, url: nil }
     @section = 'enabling-legislation'
+    @subsection = 'work-packages-current'
     
-    render :template => 'enabling_legislation_work_packageable_thing/index'
+    render :template => 'enabling_legislation_work_package/current'
   end
 end
