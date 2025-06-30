@@ -1,3 +1,9 @@
+/* Shows the librarian mode banner. */
+#mode {
+	color: yellow;
+	padding-left: .3em;
+}
+
 /* Dials down the noise for non-librarians */
 /* Hides components marked as librarian-only */
 body .uk-parliament-procedure-browser-librarian-only {
@@ -7,3 +13,4 @@ body .uk-parliament-procedure-browser-librarian-only {
 html body .uk-parliament-procedure-browser-librarian-only {
 	display: none;
 }
+
