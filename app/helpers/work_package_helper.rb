@@ -134,8 +134,11 @@ module WorkPackageHelper
   end
   
   def work_package_description( work_package )
-    work_package_list_item_description = 'Made available on '
-    work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+    work_package_list_item_description = 'A work package'
+    if work_package.made_available_on
+      work_package_list_item_description += ' made available on '
+      work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+    end
     work_package_list_item_description += ', subject to the '
     work_package_list_item_description += work_package.procedure_label
     work_package_list_item_description += ' procedure.'
