@@ -189,10 +189,6 @@ header #site-title {
   font-weight: 500;
   line-height: 1.1;
 }
-#mode {
-	color: yellow;
-	padding-left: .3em;
-}
 
 nav#header-nav {
 	padding: 1em 0 0;
@@ -384,6 +380,14 @@ body.subsection-work-packages-current .subnav a.work-packages-current {
 	color: #4d4d4d;
 }
 body.subsection-work-packageable-things .subnav a.work-packageable-things {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-treaty-work-packages .subnav a.treaty-work-packages {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-treaty-work-packages-current .subnav a.treaty-work-packages-current {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }

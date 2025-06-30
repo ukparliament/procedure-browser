@@ -11,9 +11,6 @@ class OrganisationAccountableToParliamentController < ApplicationController
   include Sparql::Queries::OrganisationsAccountableToParliamentCurrent
   include Sparql::Get::OrganisationAccountableToParliament
   include Sparql::Queries::OrganisationAccountableToParliament
-  
-  
-  
   include Sparql::Get::OrganisationAccountableToParliamentWorkPackageCountCurrent
   include Sparql::Queries::OrganisationAccountableToParliamentWorkPackageCountCurrent
   include Sparql::Get::OrganisationAccountableToParliamentWorkPackagesCurrent
