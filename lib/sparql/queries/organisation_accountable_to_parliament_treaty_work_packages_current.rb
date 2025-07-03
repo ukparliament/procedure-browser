@@ -7,7 +7,7 @@ module Sparql::Queries::OrganisationAccountableToParliamentTreatyWorkPackagesCur
           PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX id: <https://id.parliament.uk/>
-          SELECT distinct ?WorkPackage ?treaty ?TreatyName ?treatyHasCountrySeriesMembership ?countrySeriesItemCitation ?treatyHasEuropeanUnionSeriesMembership ?europeanSeriesItemCitation ?treatyHasMiscellaneousSeriesMembership ?miscSeriesItemCitation ?businessItemDate ?calculationStyle ?calculationStyleName  WHERE {
+          SELECT distinct ?WorkPackage ?procedure ?procedureName ?treaty ?TreatyName ?treatyHasCountrySeriesMembership ?countrySeriesItemCitation ?treatyHasEuropeanUnionSeriesMembership ?europeanSeriesItemCitation ?treatyHasMiscellaneousSeriesMembership ?miscSeriesItemCitation ?businessItemDate ?calculationStyle ?calculationStyleName  WHERE {
            { ?Organisations a :GovernmentOrganisation.}
            UNION {
           ?Organisations a :ArmsLengthBody.
@@ -16,6 +16,8 @@ module Sparql::Queries::OrganisationAccountableToParliamentTreatyWorkPackagesCur
                            :leadGovernmentOrganisationHasTreaty ?treaty.
             ?treaty :name ?TreatyName;
                     :workPackagedThingHasWorkPackage ?WorkPackage.
+      ?WorkPackage :workPackageHasProcedure ?procedure.
+      ?procedure :name ?procedureName.
               OPTIONAL
             {
               ?treaty :treatyHasCountrySeriesMembership ?treatyHasCountrySeriesMembership .

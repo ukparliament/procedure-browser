@@ -3,11 +3,11 @@ module Sparql::Queries::OrganisationAccountableToParliamentTreatyWorkPackages
   # A SPARQL query to get a list of all work packages for treaties lead by an organisation accountable to Parliament.
   def organisation_accountable_to_parliament_treaty_work_packages_query( organisation_accountable_to_parliament_id, limit, offset )
     "
-    PREFIX : <https://id.parliament.uk/schema/>
+      PREFIX : <https://id.parliament.uk/schema/>
           PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX id: <https://id.parliament.uk/>
-          SELECT distinct ?WorkPackage ?treaty ?TreatyName ?treatyHasCountrySeriesMembership ?countrySeriesItemCitation ?treatyHasEuropeanUnionSeriesMembership ?europeanSeriesItemCitation ?treatyHasMiscellaneousSeriesMembership ?miscSeriesItemCitation ?businessItemDate ?calculationStyle ?calculationStyleName  WHERE {
+          SELECT distinct ?WorkPackage ?procedure ?procedureName ?treaty ?TreatyName ?treatyHasCountrySeriesMembership ?countrySeriesItemCitation ?treatyHasEuropeanUnionSeriesMembership ?europeanSeriesItemCitation ?treatyHasMiscellaneousSeriesMembership ?miscSeriesItemCitation ?businessItemDate ?calculationStyle ?calculationStyleName  WHERE {
            { ?Organisations a :GovernmentOrganisation.}
            UNION {
           ?Organisations a :ArmsLengthBody.
@@ -16,6 +16,8 @@ module Sparql::Queries::OrganisationAccountableToParliamentTreatyWorkPackages
                            :leadGovernmentOrganisationHasTreaty ?treaty.
             ?treaty :name ?TreatyName;
                     :workPackagedThingHasWorkPackage ?WorkPackage.
+      ?WorkPackage :workPackageHasProcedure ?procedure.
+      ?procedure :name ?procedureName.
               OPTIONAL
             {
               ?treaty :treatyHasCountrySeriesMembership ?treatyHasCountrySeriesMembership .

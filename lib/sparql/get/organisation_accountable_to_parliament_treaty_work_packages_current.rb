@@ -23,14 +23,8 @@ module Sparql::Get::OrganisationAccountableToParliamentTreatyWorkPackagesCurrent
       work_package.work_packageable_thing_identifer = row['treaty']
       work_package.work_packageable_thing_label = row['TreatyName']
       work_package.made_available_on = row['businessItemDate'].to_date if row['businessItemDate']
-      
-      
-      # TODO: waiting on new query
-      work_package.procedure_identifier = 'beep'
-      work_package.procedure_label = 'boop'
-      
-      
-      
+      work_package.procedure_identifier = row['procedure']
+      work_package.procedure_label = row['procedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
       
