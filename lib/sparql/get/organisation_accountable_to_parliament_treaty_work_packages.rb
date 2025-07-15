@@ -19,10 +19,10 @@ module Sparql::Get::OrganisationAccountableToParliamentTreatyWorkPackages
   
       # ... we create a new work package object ...
       work_package = WorkPackage.new
-      work_package.identifier = row['WorkPackage']
+      work_package.identifier = row['workPackage']
       work_package.work_packageable_thing_identifer = row['treaty']
       work_package.work_packageable_thing_label = row['TreatyName']
-      work_package.made_available_on = row['businessItemDate'].to_date if row['businessItemDate']
+      work_package.made_available_on = row['combinedDate'].to_date if row['combinedDate']
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
