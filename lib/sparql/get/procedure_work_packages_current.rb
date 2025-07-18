@@ -20,7 +20,7 @@ module Sparql::Get::ProcedureWorkPackagesCurrent
       # ... we create a new work package object ...
       work_package = WorkPackage.new
       work_package.identifier = row['workPackage']
-      work_package.made_available_on = row['businessItemDate'].to_date if row['businessItemDate']
+      work_package.made_available_on = row['combinedDate'].to_date if row['combinedDate']
       work_package.work_packageable_thing_identifer = row['workPackagedThing']
       work_package.work_packageable_thing_label = row['workPackagedThingName']
       work_package.procedure_identifier = row['Procedure']
