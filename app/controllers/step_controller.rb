@@ -5,6 +5,8 @@ class StepController < ApplicationController
   include Sparql::Queries::Steps
   include Sparql::Get::Step
   include Sparql::Queries::Step
+  include Sparql::Get::StepBusinessItems
+  include Sparql::Queries::StepBusinessItems
   include Sparql::Get::Response
   
   def index
@@ -19,6 +21,7 @@ class StepController < ApplicationController
   def show
     step_id = params[:step]
     @step = get_step( step_id )
+    @step_business_items = get_step_business_items( step_id )
     
     @page_title = @step.display_label
     @description = "#{@step.display_label}."
@@ -26,6 +29,8 @@ class StepController < ApplicationController
     @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
     @crumb << { label: @step.label, url: nil }
     @section = 'steps'
-    @subsection = 'overview'
+    @subsection = 'business-items'
+    
+    render :template => 'step_business_item/index'
   end
 end

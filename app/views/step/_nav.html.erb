@@ -1,9 +1,8 @@
 <p class="subnav">
-	<%= link_to( 'Overview', step_show_url, :class => 'overview' ) %>
-	<%= link_to( 'Business items', step_business_item_list_url, :class => 'business-items' ) if nav.step_type_id == 'Jwc6nqJi' %>
+	<%= link_to( 'Business items', step_show_url, :class => 'business-items' ) if nav.step_type_id == 'Jwc6nqJi' %>
 	<%= link_to( 'Routes', step_route_list_url, :class => 'routes uk-parliament-procedure-browser-librarian-only' ) %>
 	<%= link_to( 'Clocks', step_clock_list_url, :class => 'clocks uk-parliament-procedure-browser-librarian-only' ) if nav.step_type_id == 'Jwc6nqJi' %>
 	<%= link_to( 'Step collections', step_step_collection_list_url, :class => 'step-collections uk-parliament-procedure-browser-librarian-only' )if nav.step_type_id == 'Jwc6nqJi' %>
-	<%= link_to( 'Procedures with step depths', step_procedure_with_step_depth_list_url, :class => 'procedures-with-step-depth uk-parliament-procedure-browser-librarian-only' )if nav.step_type_id == 'Jwc6nqJi' %>
+	<%= link_to( 'Procedures with step depths', step_procedure_with_step_depth_list_url, :class => 'procedures-with-step-depth uk-parliament-procedure-browser-librarian-only' ) if nav.step_type_id == 'Jwc6nqJi' %>
 	<%= link_to( 'Procedures', step_procedure_list_url, :class => 'procedures' ) %>
 </p>
