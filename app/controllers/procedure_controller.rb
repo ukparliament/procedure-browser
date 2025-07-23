@@ -24,7 +24,7 @@ class ProcedureController < ApplicationController
     @procedures = get_main_procedures
     
     @page_title = 'Procedures'
-    @multiline_page_title = "Procedures <span class='subhead'>Main</span>".html_safe
+    @multiline_page_title = "Procedures".html_safe
     @description = 'Procedures.'
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: 'Main', url: nil }
