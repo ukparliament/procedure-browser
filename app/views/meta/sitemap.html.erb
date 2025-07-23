@@ -9,5 +9,3 @@
 <%= content_tag( 'p', "Business steps may be in a House, both Houses or neither House. A House is in a #{link_to( 'legislature', legislature_list_url )}. A business step may also be in a legislature, or not. They may form part of a #{link_to( 'step collection', step_collection_list_url )}, which may be related to a House or a procedure.".html_safe ) %>
 
 <%= content_tag( 'p', "Business steps are #{link_to( 'one type of step', step_type_list_url )}, the other types being logical and arithmetic operators and summation steps.".html_safe ) %>
-
-<%= content_tag( 'p', "Procedures are formed from #{link_to( 'routes', route_list_url )} and clocks connecting steps.".html_safe ) %>
