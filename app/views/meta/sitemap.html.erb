@@ -6,7 +6,7 @@
 <%= content_tag( 'p', "A parliamentary work package is subject to a #{link_to( 'procedure', procedure_list_url )} and may have a #{link_to( 'calculation style', calculation_style_list_url )} set out in legislation. Work packages are formed of business items actualising one or more #{link_to( 'business steps', step_type_show_url( :step_type => 'Jwc6nqJi' ) )}.".html_safe ) %>
 
 
-<%= content_tag( 'p', "Business steps may be in a #{link_to( 'House', house_list_url )}, both Houses or neither House. A business step may also be in a #{link_to( 'legislature', legislature_list_url )}, or not. They may form part of a #{link_to( 'step collection', step_collection_list_url )}, which may be related to a House or a procedure.".html_safe ) %>
+<%= content_tag( 'p', "Business steps may be in a House, both Houses or neither House. A House is in a #{link_to( 'legislature', legislature_list_url )}. A business step may also be in a legislature, or not. They may form part of a #{link_to( 'step collection', step_collection_list_url )}, which may be related to a House or a procedure.".html_safe ) %>
 
 <%= content_tag( 'p', "Business steps are #{link_to( 'one type of step', step_type_list_url )}, the other types being logical and arithmetic operators and summation steps.".html_safe ) %>
 
