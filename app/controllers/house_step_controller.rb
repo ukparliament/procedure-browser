@@ -15,10 +15,11 @@ class HouseStepController < ApplicationController
     @page_title = "Steps in the #{@house.label}"
     @multiline_page_title = "#{@house.label} <span class='subhead'>Steps</span>".html_safe
     @description = "Steps in the #{@house.label}."
-    @crumb << { label: 'Houses', url: house_list_url }
-    @crumb << { label: @house.label, url: house_show_url }
+    @crumb << { label: 'Legislatures', url: legislature_list_url }
+    @crumb << { label: 'UK Parliament', url: legislature_show_url( :legislature => '4Mapsyb9') }
+    @crumb << { label: @house.label, url: house_show_url( :house => @house.id ) }
     @crumb << { label: 'Steps', url: nil }
-    @section = 'houses'
+    @section = 'legislatures'
     @subsection = 'steps'
   end
 end

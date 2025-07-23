@@ -15,7 +15,7 @@ class HouseController < ApplicationController
     @page_title = 'Houses'
     @description = 'Houses.'
     @crumb << { label: 'Houses', url: nil }
-    @section = 'houses'
+    @section = 'legislatures'
   end
 
   def show
@@ -25,9 +25,10 @@ class HouseController < ApplicationController
     
     @page_title = @house.label
     @description = "#{@house.label}."
-    @crumb << { label: 'Houses', url: house_list_url }
+    @crumb << { label: 'Legislatures', url: legislature_list_url }
+    @crumb << { label: 'UK Parliament', url: legislature_show_url( :legislature => '4Mapsyb9') }
     @crumb << { label: @house.label, url: nil }
-    @section = 'houses'
+    @section = 'legislatures'
     @subsection = 'steps'
     
     render :template => 'house_step/index'
