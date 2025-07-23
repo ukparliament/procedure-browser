@@ -1,8 +1,7 @@
-<%= render :partial => 'intro', :object => @step %>
+<%= render :partial => 'step/intro', :object => @step %>
 
 <% if @step.has_librarian_notes? -%>
 	<div id="librarian-notes">
-		<%= content_tag( 'h2', 'Librarian notes' ) %>
 		<%= content_tag( 'p', "Scope note: #{@step.scope_note}" ) if @step.scope_note %>
 		<%= content_tag( 'p', "Link note: #{@step.link_note}" ) if @step.link_note %>
 		<%= content_tag( 'p', "Date note: #{@step.date_note}" ) if @step.date_note %>

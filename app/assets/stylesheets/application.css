@@ -391,6 +391,10 @@ body.subsection-treaty-work-packages-current .subnav a.treaty-work-packages-curr
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-notes .subnav a.notes {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 a {
   overflow-wrap: break-word;

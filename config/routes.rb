@@ -115,6 +115,8 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/steps/:step/procedures-with-step-depth' => 'step_procedure_with_step_depth#index', as: :step_procedure_with_step_depth_list
   
+  get 'procedure-browser/steps/:step/notes' => 'step_note#index', as: :step_note_list
+  
   get 'procedure-browser/step-collections' => 'step_collection#index', as: :step_collection_list
   get 'procedure-browser/step-collections/:step_collection' => 'step_collection#show', as: :step_collection_show
   
