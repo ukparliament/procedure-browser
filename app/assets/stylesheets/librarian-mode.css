@@ -7,10 +7,10 @@
 /* Dials down the noise for non-librarians */
 /* Hides components marked as librarian-only */
 body .uk-parliament-procedure-browser-librarian-only {
-	display: none;
+	display: none !important;
 }
 
 html body .uk-parliament-procedure-browser-librarian-only {
-	display: none;
+	display: none !important;
 }
 
