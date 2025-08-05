@@ -2,10 +2,9 @@
 
 <%= list_item_count_sentence( 'business item', @step_business_items.size ) %>
 
-<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
+<%= render :partial => 'feeds/feeds' %>
 
 <% unless @step_business_items.empty? -%>
-	<%= content_tag( 'p', link_to( 'CSV', step_business_item_list_url( :format => 'csv' ) ), :class => 'csv' ) %>
 	<ol>
 		<%= render :partial => 'step_business_item/business_item', :collection => @step_business_items, :locals => { :step => @step } %>
 	</ol>
