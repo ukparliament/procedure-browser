@@ -1,6 +1,9 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
 <%= list_item_count_sentence( 'route', @procedure_routes.size ) %>
+
+<%= render :partial => 'feeds/feeds' %>
+
 <ol>
 	<%= render :partial => 'route', :collection => @procedure_routes %>
 </ol>
