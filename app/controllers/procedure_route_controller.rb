@@ -18,6 +18,7 @@ class ProcedureRouteController < ApplicationController
     @page_title = "#{@procedure.label} - Routes"
     @multiline_page_title = "#{@procedure.label} <span class='subhead'>Routes</span>".html_safe
     @description = "Routes present in #{@procedure.label}."
+    @csv_url = procedure_route_list_url( :format => 'csv' )
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: @procedure.label, url: procedure_show_url }
     @crumb << { label: 'Routes', url: nil }
