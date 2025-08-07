@@ -1,7 +1,7 @@
 module Sparql::Queries::StepBusinessItems
 
   # A SPARQL query to get business items for a step.
-  def step_business_items_query( step_id )
+  def step_business_items_query( step_id, limit, offset )
     "
       PREFIX id: <https://id.parliament.uk/>
       PREFIX : <https://id.parliament.uk/schema/>
@@ -21,6 +21,7 @@ module Sparql::Queries::StepBusinessItems
         ?procedure :name ?procedureName.
         ?workPackagedThing :name ?workpackagedThingName. 
       } order by DESC(?businessItemDate)  ?workpackagedThingName
+      limit #{limit} offset #{offset}
     "
   end
 end
