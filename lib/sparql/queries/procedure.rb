@@ -11,8 +11,6 @@ module Sparql::Queries::Procedure
         ?Procedure a :Procedure;
                    :name ?ProcedureName.
         optional {?Procedure :procedureDescription ?ProcedureDescription.}
-        optional {?Procedure :procedureHasCalculationStyle ?procedureCalculationStyle.
-        ?procedureCalculationStyle :name ?procedureCalculationStyleName. }
         filter (?Procedure in (id:#{procedure_id}))
         optional {?Procedure :startDate ?StartDate.}
         optional {?Procedure :endDate ?EndDate.} 

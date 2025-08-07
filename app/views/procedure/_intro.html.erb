@@ -1,5 +1,4 @@
 <%= content_tag( 'p', procedure_dates( intro ) ) unless procedure_dates( intro ).empty? %>
 <%= content_tag( 'p', intro.description ) if intro.description %>
-<%= content_tag( 'p', "Follows the calculation style #{link_to( intro.calculation_style_label, calculation_style_show_url( :calculation_style => intro.calculation_style_id ) )}.".html_safe ) if intro.calculation_style_identifer %>
 
 <%= render :partial => 'procedure/nav', :object => intro %>
