@@ -1,13 +1,16 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<%= list_item_count_sentence( 'business item', @step_business_items.size ) %>
+<%= list_item_count_sentence( 'business item', @result_count ) %>
 
 <%= render :partial => 'feeds/feeds' %>
 
-<% unless @step_business_items.empty? -%>
+<% unless @business_items.empty? -%>
+	<%= render :partial => 'step_business_item/results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
 	<ol>
-		<%= render :partial => 'step_business_item/business_item', :collection => @step_business_items, :locals => { :step => @step } %>
+		<%= render :partial => 'step_business_item/business_item', :collection => @business_items, :locals => { :step => @step} %>
 	</ol>
+
+	<%= render :partial => 'step_business_item/pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
 <% end -%>
 
 <%= render :partial => 'common/identifier', :object => @step %>
