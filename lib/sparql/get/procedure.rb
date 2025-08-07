@@ -19,8 +19,6 @@ module Sparql::Get::Procedure
       procedure.description = row['ProcedureDescription']
       procedure.start_on = row['StartDate'].to_date if row['StartDate']
       procedure.end_on = row['EndDate'].to_date if row['EndDate']
-      procedure.calculation_style_identifer = row['procedureCalculationStyle']
-      procedure.calculation_style_label = row['procedureCalculationStyleName']
       
       # We return the procedure object.
       return procedure
