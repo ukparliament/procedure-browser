@@ -1,12 +1,9 @@
-module Sparql::Get::StepBusinessItems
+module Sparql::Get::StepBusinessItemsAll
   
-  def get_step_business_items( step, page_number, results_per_page )
-  
-    # We calculate the result offset.
-    result_offset = ( ( page_number - 1) * results_per_page )
+  def get_step_business_items_all( step )
   
     # We get the step business items query.
-    request_body = step_business_items_query( step, results_per_page, result_offset )
+    request_body = step_business_items_all_query( step )
     
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )

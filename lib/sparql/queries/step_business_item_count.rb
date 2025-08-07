@@ -1,13 +1,13 @@
-module Sparql::Queries::StepBusinessItems
+module Sparql::Queries::StepBusinessItemCount
 
-  # A SPARQL query to get business items for a step.
-  def step_business_items_query( step_id, limit, offset )
+  # A SPARQL query to get a count of all business items for a step.
+  def step_business_item_count_query( step_id )
     "
       PREFIX id: <https://id.parliament.uk/>
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      SELECT ?businessItem ?businessItemDate ?workPackage ?procedure ?procedureName ?workPackagedThing ?workpackagedThingName WHERE {
+      SELECT (COUNT(DISTINCT ?businessItem) AS ?count) WHERE {
 
         ?Step a :ProcedureStep;
                   :name ?stepName;
@@ -20,8 +20,7 @@ module Sparql::Queries::StepBusinessItems
                      :workPackageHasWorkPackagedThing ?workPackagedThing.
         ?procedure :name ?procedureName.
         ?workPackagedThing :name ?workpackagedThingName. 
-      } order by DESC(?businessItemDate)  ?workpackagedThingName
-      limit #{limit} offset #{offset}
+      }
     "
   end
 end
