@@ -7,16 +7,23 @@ module Sparql::Queries::StepProcedures
       PREFIX : <https://id.parliament.uk/schema/>
       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      SELECT distinct ?Step ?stepName  ?procedure ?procedureLabel ?procedureDescription WHERE {
 
+      SELECT DISTINCT ?Step ?stepName ?procedure ?procedureLabel ?procedureDescription WHERE {
         ?Step a :ProcedureStep;
-                  :name ?stepName;
-                  :procedureStepIsToProcedureRoute ?procedureRoute.
-                     filter (?Step IN (id:#{step_id}))
+              :name ?stepName.
+        FILTER (?Step IN (id:#{step_id}))
+
+        {
+          ?Step :procedureStepIsFromProcedureRoute ?procedureRoute.
+        } UNION {
+          ?Step :procedureStepIsToProcedureRoute ?procedureRoute.
+        }
+
         ?procedureRoute :procedureRouteHasProcedure ?procedure.
         ?procedure :name ?procedureLabel.
-        optional {?procedure :procedureDescription ?procedureDescription.}
-         } order by ?stepName ?procedureLabel
+        OPTIONAL { ?procedure :procedureDescription ?procedureDescription. }
+      }
+      ORDER BY ?ProcedureDisplayOrder ?ProcedureName
     "
   end
 end
