@@ -16,7 +16,6 @@ module Sparql::Get::WorkPackageableThing
       work_packageable_thing = WorkPackageableThing.new
       work_packageable_thing.identifier = row['WorkPackagedThing']
       work_packageable_thing.label = row['workPackagedThingName']
-      work_packageable_thing.label = row['workPackagedThingName']
       work_packageable_thing.uri = row['webLink']
       
       # We return the work packageable thing object.
