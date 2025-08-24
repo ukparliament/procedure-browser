@@ -19,7 +19,7 @@ class WorkPackageableThingPrecedingController < ApplicationController
     @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
     @crumb << { label: @work_packageable_thing.label, url: work_packageable_thing_show_url }
     @crumb << { label: 'Preceding work packageable things', url: nil }
-    @section = 'work-packageable-things'
+    @section = 'work-packages'
     @subsection = 'preceding'
   end
 end

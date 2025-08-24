@@ -40,7 +40,7 @@ class WorkPackageableThingController < ApplicationController
     @multiline_page_title = "Work packageable things <span class='subhead'>All</span>".html_safe
     @description = 'All work packageable things.'
     @crumb << { label: 'Work packageable things', url: nil }
-    @section = 'work-packageable-things'
+    @section = 'work-packages'
     @subsection = 'all'
   end
   
@@ -70,7 +70,7 @@ class WorkPackageableThingController < ApplicationController
     @description = 'Work packageable things before Parliament.'
     @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
     @crumb << { label: 'Before Parliament', url: nil }
-    @section = 'work-packageable-things'
+    @section = 'work-packages'
     @subsection = 'current'
   end
 
@@ -85,7 +85,7 @@ class WorkPackageableThingController < ApplicationController
     @description = "#{@work_packageable_thing.label}."
     @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
     @crumb << { label: @work_packageable_thing.label, url: nil }
-    @section = 'work-packageable-things'
+    @section = 'work-packages'
     @subsection = 'work-packages'
     
     render :template => 'work_packageable_thing_work_package/index'
