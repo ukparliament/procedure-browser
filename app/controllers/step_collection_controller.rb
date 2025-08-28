@@ -10,7 +10,25 @@ class StepCollectionController < ApplicationController
   include Sparql::Get::Response
   
   def index
-    @step_collections = get_step_collections
+    step_collections = get_step_collections
+    
+    # We create an array to hold the step collections we're interested in, being the non-mechanical step collections.
+    @step_collections = []
+    
+    # For each step collection ...
+    step_collections.each do |step_collection|
+      
+      # ... if the ID is in the array of mechanical step collections ...
+      if @mechanical_step_collections.include?( step_collection.id )
+      
+        # ... we ignore it.
+      # Otherwise, if the ID is not in the array of mechanical step collections ...
+      else
+        
+        # ... we add it to the step collections array.
+        @step_collections <<  step_collection
+      end
+    end
     
     @page_title = 'Step collections'
     @description = 'Collections of steps.'

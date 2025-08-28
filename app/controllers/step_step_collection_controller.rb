@@ -11,7 +11,25 @@ class StepStepCollectionController < ApplicationController
   def index
     step_id = params[:step]
     @step = get_step( step_id )
-    @step_step_collections = get_step_step_collections( step_id )
+    step_step_collections = get_step_step_collections( step_id )
+    
+    # We create an array to hold the step collections we're interested in, being the non-mechanical step collections.
+    @step_step_collections = []
+    
+    # For each step collection ...
+    step_step_collections.each do |step_collection|
+      
+      # ... if the ID is in the array of mechanical step collections ...
+      if @mechanical_step_collections.include?( step_collection.id )
+      
+        # ... we ignore it.
+      # Otherwise, if the ID is not in the array of mechanical step collections ...
+      else
+        
+        # ... we add it to the step collections array.
+        @step_step_collections <<  step_collection
+      end
+    end
     
     @page_title = "#{@step.label} - Step collections"
     @multiline_page_title = "#{@step.label} <span class='subhead'>Step collections</span>".html_safe
