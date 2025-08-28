@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     #expires_in 3.minutes, :public => true
     create_crumb_container
     create_queries_container
+    register_mechanical_step_collections
   end
   
   def create_crumb_container
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::Base
   
   def create_queries_container
     @queries = []
+  end
+  
+  def register_mechanical_step_collections
+    @mechanical_step_collections = ['pc94WzFV', 'TRohjSuI', 'RPfsm4lC', 'Oebb7fXv']
   end
 
   # For unmatched route in routes
