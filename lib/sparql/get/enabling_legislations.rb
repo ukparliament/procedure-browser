@@ -1,13 +1,10 @@
 module Sparql::Get::EnablingLegislations
 
   # A method to get an array of all enabling legislation on this page with this many results per page.
-  def get_enabling_legislations( page_number, results_per_page )
-  
-    # We calculate the result offset.
-    result_offset = ( ( page_number - 1) * results_per_page )
+  def get_enabling_legislations
 
-    # We get the all enabling legislation query passing parameters for the number of results per page and the result offset.
-    request_body = enabling_legislations_query( results_per_page, result_offset )
+    # We get the all enabling legislation query.
+    request_body = enabling_legislations_query
   
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
