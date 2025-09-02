@@ -1,8 +1,6 @@
 class EnablingLegislationController < ApplicationController
 
   # We include modules required to get all work packages and a work package.
-  include Sparql::Get::EnablingLegislationCount
-  include Sparql::Queries::EnablingLegislationCount
   include Sparql::Get::EnablingLegislations
   include Sparql::Queries::EnablingLegislations
   include Sparql::Get::EnablingLegislation
@@ -14,28 +12,12 @@ class EnablingLegislationController < ApplicationController
   include Sparql::Get::Response
 
   def index
-  
-    # We get the page number passed as a parameter.
-    page = params['page']
-    @page = ( page || "1" ).to_i
     
-    # We get the number of results per page passed as a parameter.
-    results_per_page = params['results-per-page']
-    @results_per_page = ( results_per_page || $DEFAULT_RESULTS_PER_PAGE ).to_i
-    
-    # We get the count of all enabling legislation.
-    @result_count = get_enabling_legislation_count
-    
-    # If this is not the first page and the number of the first enabling legislation item on this page exceeds the total number of enabling legislation items ...
-    if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
-      raise ActionController::RoutingError.new("Not Found")
-    end
-    
-    # We get the set of enabling legislation items on this page with this many results per page.
-    @enabling_legislations = get_enabling_legislations( @page, @results_per_page )
+    # We get the enabling legislation items.
+    @enabling_legislations = get_enabling_legislations
     
     @page_title = 'Enabling legislation'
-    @description = 'Enabling legislation.'
+    @description = 'Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure.'
     @crumb << { label: 'Enabling legislation', url: nil }
     @section = 'enabling-legislation'
   end
