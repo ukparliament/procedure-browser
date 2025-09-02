@@ -1,12 +1,7 @@
 <%= content_tag( 'p', 'Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure.' ) %>
 
-
-<%= list_item_count_sentence( 'enabling legislation item', @result_count ) %>
-
-<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+<%= list_item_count_sentence( 'enabling legislation item', @enabling_legislations.size ) %>
 
 <ol>
 	<%= render :partial => 'enabling_legislation', :collection => @enabling_legislations %>
 </ol>
-
-<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
