@@ -1,6 +1,8 @@
 class EnablingLegislationController < ApplicationController
 
   # We include modules required to get all work packages and a work package.
+  include Sparql::Get::EnablingLegislationAtoz
+  include Sparql::Queries::EnablingLegislationAtoz
   include Sparql::Get::EnablingLegislations
   include Sparql::Queries::EnablingLegislations
   include Sparql::Get::EnablingLegislation
@@ -13,13 +15,18 @@ class EnablingLegislationController < ApplicationController
 
   def index
     
+    # We get the enabling legislation a to z.
+    @letters = get_enabling_legislation_atoz
+    
     # We get the enabling legislation items.
     @enabling_legislations = get_enabling_legislations
     
     @page_title = 'Enabling legislation'
+    @multiline_page_title = "Enabling legislation <span class='subhead'>All</span>".html_safe
     @description = 'Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure.'
     @crumb << { label: 'Enabling legislation', url: nil }
     @section = 'enabling-legislation'
+    @subsection = 'all'
   end
 
   def show
