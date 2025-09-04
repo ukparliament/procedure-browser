@@ -6,8 +6,8 @@
 	    <meta name="viewport" content="width=device-width">
 		<% if @page_title %>
 			<title>UK Parliament procedure browser: <%= @page_title %></title>
-			<meta name="twitter:title" content="UK Parliament procedure browser: <%= @page_title %>">
-			<meta property="og:title" content="UK Parliament procedure browser: <%= @page_title %>">
+			<meta name="twitter:title" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>">
+			<meta property="og:title" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>">
 		<% else -%>
 			<title>UK Parliament procedure browser</title>
 			<meta name="twitter:title" content="UK Parliament procedure browser">
@@ -15,12 +15,12 @@
 		<% end -%>
 		
 		<% if @description -%>
-			<meta name="description" content="<%= @description %>">
-			<meta property="og:description" content="<%= @description %>">
+			<meta name="description" content="<%= sanitize( @description ) %>">
+			<meta property="og:description" content="<%= sanitize ( @description ) %>">
 		<% else -%>
 			<% if @page_title %>
-				<meta name="description" content="UK Parliament procedure browser: <%= @page_title %>.">
-				<meta property="og:description" content="UK Parliament procedure browser: <%= @page_title %>.">
+				<meta name="description" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>.">
+				<meta property="og:description" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>.">
 			<% else -%>
 				<meta name="description" content="UK Parliament procedure browser.">
 				<meta property="og:description" content="UK Parliament procedure browser.">
@@ -53,7 +53,7 @@
 			<div class="inner-content container">
 				<div class="reading-width">
 					<%= render :partial => 'layouts/debug' %>
-					<h1><%= @multiline_page_title || @page_title || 'UK Parliament procedure browser' %></h1>
+					<h1><%= sanitize (@multiline_page_title || @page_title || 'UK Parliament procedure browser' ) %></h1>
 					<%= yield %>
 					<%= render :partial => 'layouts/queries/queries', :object => @queries unless @queries.empty? %>
 				</div>

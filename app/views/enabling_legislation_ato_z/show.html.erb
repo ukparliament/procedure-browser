@@ -1,0 +1,7 @@
+<%= render :partial => 'enabling_legislation/list_intro' %>
+
+<%= list_item_count_sentence( 'enabling legislation item', @enabling_legislations.size ) %>
+
+<ol>
+	<%= render :partial => 'enabling_legislation/enabling_legislation', :collection => @enabling_legislations %>
+</ol>
