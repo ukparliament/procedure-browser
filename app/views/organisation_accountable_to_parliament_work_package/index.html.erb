@@ -1,5 +1,7 @@
 <%= render :partial => 'organisation_accountable_to_parliament/intro', :object => @organisation_accountable_to_parliament %>
 
+<%= content_tag( 'p', 'All work packages resulting from papers made available to Parliament by this organisation.' ) %>
+
 <%= list_item_count_sentence( 'work package', @result_count ) %>
 
 <%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
