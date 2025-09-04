@@ -22,19 +22,20 @@ class EnablingLegislationAtoZController < ApplicationController
   
   def show
     letter = params[:letter]
+    @letter = letter
     
     # We get the enabling legislation a to z.
     @letters = get_enabling_legislation_atoz
     
     # We get the enabling legislation items starting with that letter.
-    @enabling_legislations = get_enabling_legislation_atoz_letter( letter )
+    @enabling_legislations = get_enabling_legislation_atoz_letter( @letter )
     
-    @page_title = "Enabling legislation - #{letter}"
-    @multiline_page_title = "Enabling legislation <span class='subhead'>#{letter.upcase}</span>".html_safe
-    @description = "Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure, starting with #{letter.upcase}."
+    @page_title = "Enabling legislation - #{@letter}"
+    @multiline_page_title = "Enabling legislation <span class='subhead'>#{@letter.upcase}</span>".html_safe
+    @description = "Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure, starting with #{@letter.upcase}."
     @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
     @crumb << { label: 'A to Z', url: enabling_legislation_atoz_list_url }
-    @crumb << { label: letter.upcase, url: nil }
+    @crumb << { label: @letter.upcase, url: nil }
     @section = 'enabling-legislation'
     @subsection = letter
   end
