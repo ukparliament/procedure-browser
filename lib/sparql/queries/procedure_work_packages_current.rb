@@ -10,7 +10,7 @@ module Sparql::Queries::ProcedureWorkPackagesCurrent
            SELECT distinct ?Procedure ?ProcedureName ?workPackage ?workPackagedThing ?workPackagedThingName ?combinedDate ?calculationStyle ?calculationStyleName WHERE {
              ?Procedure a :Procedure;
                         :name ?ProcedureName.
-                filter (?Procedure in (id:D00dsjR2))
+                filter (?Procedure in (id:#{procedure_id}))
              ?Procedure :procedureHasWorkPackage ?workPackage.
              ?workPackage :workPackageHasWorkPackagedThing ?workPackagedThing.
              ?workPackagedThing :name ?workPackagedThingName. 
@@ -29,7 +29,7 @@ module Sparql::Queries::ProcedureWorkPackagesCurrent
                ?stepId2 :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI}
           BIND(COALESCE(?businessItemDate, ?businessItemDate2) AS ?combinedDate)
      } Order by desc(?combinedDate) ?workPackagedThingName
-     limit 20 offset 0
+     limit #{limit} offset #{offset}
     "
   end
 end
