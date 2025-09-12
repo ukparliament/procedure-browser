@@ -1,4 +1,4 @@
 <p class="subnav">
-	<%= render :partial => 'enabling_legislation_ato_z/letter', :collection => nav %>
-	<%= link_to( 'All', enabling_legislation_list_url, :class => 'all' ) %>
+	<%= render partial: 'enabling_legislation_ato_z/letter', collection: nav, locals: { selected_letter: @selected_letter } %>
+	<%= all_letter_link %>
 </p>
