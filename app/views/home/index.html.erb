@@ -5,9 +5,9 @@
 <ul>
 	<%= content_tag( 'li', "Statutory instruments subject to procedure - not including Localism orders, Public Body orders or Statutory instruments laid by the General Synod of the Church of England." ) %>
 	<%= content_tag( 'li', "#{link_to( 'Proposed negative statutory instruments', procedure_show_url( :procedure => 'iCdMN1MW' ) )}.".html_safe ) %>
-	<%= content_tag( 'li', "Published drafts under the #{link_to( 'European Union (Withdrawal) Act 2018', 'https://www.legislation.gov.uk/ukpga/2018/16/contents' )}.".html_safe ) %>
-	<%= content_tag( 'li', "Proposals for remedial orders." ) %>
-	<%= content_tag( 'li', "Treaties subject to the #{link_to( 'Constitutional Reform and Governance Act 2010', 'https://www.legislation.gov.uk/ukpga/2010/25/contents' )}.".html_safe ) %>
+	<%= content_tag( 'li', "#{link_to( 'Published drafts under the European Union (Withdrawal) Act 2018', procedure_show_url( :procedure => 'jaKY87jt' ) )}.".html_safe ) %>
+	<%= content_tag( 'li', "#{link_to( 'Proposals for remedial orders', procedure_show_url( :procedure => 'OvnVdtXG' ) )}.".html_safe ) %>
+	<%= content_tag( 'li', "#{link_to( 'Treaties subject to the Constitutional Reform and Governance Act 2010', procedure_show_url( :procedure => 'D00dsjR2' ) )}.".html_safe ) %>
 </ul>
 
 <%= content_tag( 'p', "Statutory instruments laid before Parliament not subject to a procedure are not included. Other forms of delegated legislation are not included, even where they follow the procedures described here." ) %>
