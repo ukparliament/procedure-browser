@@ -11,11 +11,19 @@ module ProcedureWorkPackageHelper
   
   def procedure_work_package_description_with_markup( work_package )
     work_package_list_item_description = 'A work package'
+    
     if work_package.made_available_on
       work_package_list_item_description += ', made available on '
       work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
     end
     work_package_list_item_description += '.'
+
+    unless work_package.calculation_style_identifier.blank?
+      work_package_list_item_description += ' Scrutiny period described by '
+      work_package_list_item_description += link_to( work_package.calculation_style_label, calculation_style_show_url( :calculation_style => work_package.calculation_style_id ) )
+      work_package_list_item_description += '.'
+    end
+    
     work_package_list_item_description = work_package_list_item_description.html_safe
     content_tag( 'p', work_package_list_item_description )
   end

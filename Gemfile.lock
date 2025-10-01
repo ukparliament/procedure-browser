@@ -129,7 +129,7 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.25.5)
     msgpack (1.8.0)
-    net-imap (0.5.10)
+    net-imap (0.5.11)
       date
       net-protocol
     net-pop (0.1.2)
@@ -226,7 +226,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.6)
-    rubyzip (3.1.0)
+    rubyzip (3.1.1)
     securerandom (0.4.1)
     selenium-webdriver (4.35.0)
       base64 (~> 0.2)
