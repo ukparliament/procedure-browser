@@ -23,6 +23,8 @@ module Sparql::Get::WorkPackageableThingWorkPackages
       work_package.made_available_on = row['combinedDate'].to_date if row['combinedDate']
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
+      work_package.calculation_style_identifier = row['calculationStyle']
+      work_package.calculation_style_label = row['calculationStyleName']
       
       # ... and add it to the array of work packages.
       work_packages << work_package
