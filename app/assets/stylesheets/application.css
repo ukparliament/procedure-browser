@@ -531,14 +531,24 @@ li p {
 #business-items li {
 	margin-bottom: 1em;
 }
-#business-items ol li a {
+#business-items ol li {
 	border: 1px, dotted #ccc;
 	display: block;
 	padding: .5em;
 }
-#business-items ol li a:hover {
-	background-color: #ccc;
+#business-items ol li li p {
+	margin-bottom: .5em;
 }
+#business-items ol li li p:last-child {
+	margin-bottom: 0;
+}
+
+
+
+
+
+
+
 .read-link {
 	background-color: #ebe9e8;
 	border: 1px, dotted #ccc;

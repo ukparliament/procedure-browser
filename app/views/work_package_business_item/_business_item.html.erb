@@ -1,5 +1,11 @@
 <li id="business-item-<%= business_item.first.id %>">
-	<a href="<%= business_item_show_url( :business_item => business_item.first.id  ) %>">
-		<%= render :partial => 'work_package_business_item/step', :collection => business_item %>
-	</a>
+	<%= render :partial => 'work_package_business_item/step', :collection => business_item %>
+	
+	<p>
+		<% if business_item.first.link -%>
+			Read at <%= link_to( "#{business_item.first.link_domain}", business_item.first.link ) %>
+			|
+		<% end -%>
+		<%= link_to( 'Business item details', business_item_show_url( :business_item => business_item.first.id  ) ) %>
+	</p>
 </li>
