@@ -3,6 +3,9 @@
 <%= list_item_count_sentence( 'step', @step_collection_steps.size ) %>
 
 <% unless @step_collection_steps.empty? %>
+
+	<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
+	
 	<ol>
 		<%= render :partial => 'step/step', :collection => @step_collection_steps %>
 	</ol>
