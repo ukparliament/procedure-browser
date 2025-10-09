@@ -2,6 +2,9 @@
 
 <div id="steps">
 	<%= list_item_count_sentence( 'step', @step_type_steps.size ) %>
+	
+	<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
+	
 	<ol>
 		<%= render :partial => 'step/step', :collection => @step_type_steps %>
 	</ol>

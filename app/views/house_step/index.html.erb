@@ -2,6 +2,8 @@
 
 <%= list_item_count_sentence( 'step', @house_steps.size ) %>
 
+<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
+
 <% unless @house_steps.empty? -%>
 	<ol>
 		<%= render :partial => 'step/step', :collection => @house_steps %>

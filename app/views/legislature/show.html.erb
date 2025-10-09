@@ -10,6 +10,9 @@
 <% unless @legislature_steps.empty? -%>
 	<div id="steps">
 		<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
+		
+		<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
+		
 		<ol>
 			<%= render :partial => 'legislature_step/step', :collection => @legislature_steps %>
 		</ol>
