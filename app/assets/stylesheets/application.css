@@ -503,6 +503,18 @@ body.subsection-z .subnav a.z {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
+body.subsection-primary-legislation .subnav a.primary-legislation {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-secondary-legislation .subnav a.secondary-legislation {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
+body.subsection-treaty .subnav a.treaty {
+	border-bottom-color: #006e45;
+	color: #4d4d4d;
+}
 
 a {
   overflow-wrap: break-word;
