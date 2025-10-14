@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/:enabling_legislation/work-packageable-things' => 'enabling_legislation_work_packageable_thing#index', as: :enabling_legislation_work_packageable_thing_list
   
   get 'procedure-browser/organisations-accountable-to-parliament' => 'organisation_accountable_to_parliament#index', as: :organisation_accountable_to_parliament_list
-    get 'procedure-browser/organisations-accountable-to-parliament/current' => 'organisation_accountable_to_parliament#current', as: :organisation_accountable_to_parliament_current_list
+  get 'procedure-browser/organisations-accountable-to-parliament/current' => 'organisation_accountable_to_parliament#current', as: :organisation_accountable_to_parliament_current_list
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament' => 'organisation_accountable_to_parliament#show', as: :organisation_accountable_to_parliament_show
   
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/work-packages' => 'organisation_accountable_to_parliament_work_package#index', as: :organisation_accountable_to_parliament_work_package_list
@@ -44,6 +44,13 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/treaties/work-packages' => 'organisation_accountable_to_parliament_treaty_work_package#index', as: :organisation_accountable_to_parliament_treaty_work_package_list
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/treaties/work-packages/current' => 'organisation_accountable_to_parliament_treaty_work_package#current', as: :organisation_accountable_to_parliament_treaty_work_package_current_list
+  
+
+  get 'procedure-browser/work-packages/primary-legislation' => 'work_package_primary_legislation#index', as: :work_package_primary_legislation_list
+  
+  get 'procedure-browser/work-packages/secondary-legislation' => 'work_package_secondary_legislation#index', as: :work_package_secondary_legislation_list
+  
+  get 'procedure-browser/work-packages/treaties' => 'work_package_treaty#index', as: :work_package_treaty_list
   
   get 'procedure-browser/work-packages' => 'work_package#index', as: :work_package_list
   get 'procedure-browser/work-packages/current' => 'work_package#current', as: :work_package_current_list
