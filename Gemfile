@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-ruby file: '.ruby-version'
+ruby file: '.tool-versions'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.3"
+gem "rails", "~> 8.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
