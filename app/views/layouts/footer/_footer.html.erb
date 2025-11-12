@@ -1,0 +1,9 @@
+<%= render 'library_design/footer/fat_footer' do %>
+	<%= content_tag( 'li', link_to( 'Sitemap', meta_sitemap_url ) ) %>
+	<%= content_tag( 'li', link_to( 'Procedure model', 'https://ukparliament.github.io/ontologies/procedure/procedure-ontology' ) ) %>
+	<%= content_tag( 'li', link_to( 'Procedure maps', 'https://ukparliament.github.io/ontologies/procedure/maps/' ) ) %>
+	<%= content_tag( 'li', link_to( 'Design notes', 'https://ukparliament.github.io/ontologies/procedure/maps/meta/design-notes/' ) ) %>
+	<%= content_tag( 'li', link_to( 'SPARQL endpoint', 'https://api.parliament.uk/sparql' ) ) %>
+	<%= content_tag( 'li', link_to( 'Parliamentary Time', 'https://api.parliament.uk/egg-timer' ) ) %>
+	<%= content_tag( 'li', link_to( 'Contact us', 'mailto:RIIDMSMailbox@parliament.uk' ) ) %>
+<% end %>
