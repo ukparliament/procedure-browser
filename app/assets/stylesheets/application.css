@@ -1,595 +1,95 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- 
-body {
-   background-color: #ebe9e8;
-   color: #000;
-   display: flex;
-   flex-direction: column;
-   font-family: National, Arial, Helvetica, sans-serif;
-   font-size: 1.125rem;
-   line-height: 1.5;
-}
+/* This is just for app specific overrides and extras */
 
-@font-face {
-  font-family: National;
-  font-display: swap;
-  src: url(/fonts/National-LFS-Book.woff2);
-  src: url(/fonts/National-LFS-Book.woff2) format("woff2");
-}
-@font-face {
-  font-family: National;
-  font-display: swap;
-  font-weight: 500;
-  src: url(/fonts/National-LFS-Semibold.woff2);
-  src: url(/fonts/National-LFS-Semibold.woff2) format("woff2");
-}
- 
-@media (min-width: 768px) {
-   header {
-     padding-top: 20px;
-     padding-bottom: 0;
-   }
-   header a.parliament-home svg {
-     width: calc(100% - 0.25rem);
-	}
-   header .product-header {
-     margin-top: 20px;
-     padding: 20px 0;
-	}
-	header .title {
-     font-size: 2.3rem;
-     line-height: 1.1;
-   }
- }
- @media (min-width: 992px) {
-   header .p-primary-nav {
-     position: absolute;
-     right: 15px;
-     top: -20px;
-
-   }
-}
-
-a.skip-to-content {
-  border: none;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
-}
- 
-header {
-   background-color: #373151; 
-   padding-top: 20px ;
-}
-
-header a, header a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-header a.parliament-home {
-  display: inline-block;
-  padding: 2px;
-}
-header a.parliament-home svg {
-  width: 159px;
-}
-
-.context-nav {
-  background-color: #625a75;
-  color: #fff;
-  font-size: 1rem;
-  line-height: 1.4;
-  padding: 5px 0;
-  position: relative;
-}
-.context-nav .container {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-.context-nav .container:not(.default-width) {
-  width: 100%;
-}
-.context-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.context-nav a {
-  color: #fff;
-  text-decoration: underline;
-}
-.context-nav a:hover {
-  color: #fff;
-}
-.context-nav a:focus {
-  box-shadow: 0 0 0 2px #96dcbe;
-  color: #373151;
-  outline: none;
-}
-.context-nav .breadcrumb {
-  background-color: transparent;
-  border-radius: 0;
-  display: block;
-  margin: 0;
-  overflow: visible;
-  padding: 0;
-  text-overflow: clip;
-  width: 100%;
-}
-.context-nav .breadcrumb li {
-  display: inline;
-  margin-right: 5px;
-}
-.context-nav .breadcrumb li:after {
-  content: ">";
-  font-size: 20px;
-  font-weight: 900;
-  margin-left: 7px;
-}
-.context-nav .breadcrumb li:last-child:after {
-  display: none;
-}
-
-.breadcrumb {
-  border-radius: 0.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin-bottom: 1rem;
-  padding: 0.75rem 1rem;
-}
-.breadcrumb-item + .breadcrumb-item {
-  padding-left: 0.5rem;
-}
-.breadcrumb-item + .breadcrumb-item:before {
-  color: #6c757d;
-  content: "/";
-  float: left;
-  padding-right: 0.5rem;
-}
-.breadcrumb-item + .breadcrumb-item:hover:before {
-  text-decoration: underline;
-  text-decoration: none;
-}
-.breadcrumb-item.active {
-  color: #6c757d;
-}
-
-.page-header {
-  color: #fff;
-  padding: 1.5em 0;
-  border-top: 1px solid #005434;
-}
-.page-header a {
-  color: #fff;
-}
-
-header #site-title {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
-nav#header-nav {
-	padding: 1em 0 0;
-}
-nav#header-nav a {
-	border-bottom: 3px #373151 solid;
-	display: inline-block;
-	margin-right: 10px;
-}
-nav#header-nav a:hover {
-	border-bottom-color: #fff;
-}
-
-/* nav active */
-body.section-work-packageable-things nav#header-nav a.work-packageable-things {
-	border-bottom-color: #fff;
-}
-body.section-enabling-legislation nav#header-nav a.enabling-legislation {
-	border-bottom-color: #fff;
-}
-body.section-organisations-accountable-to-parliament nav#header-nav a.organisations-accountable-to-parliament {
-	border-bottom-color: #fff;
-}
-body.section-work-packages nav#header-nav a.work-packages {
-	border-bottom-color: #fff;
-}
-body.section-procedures nav#header-nav a.procedures {
-	border-bottom-color: #fff;
-}
-body.section-calculation-styles nav#header-nav a.calculation-styles {
-	border-bottom-color: #fff;
-}
-body.section-steps nav#header-nav a.steps {
-	border-bottom-color: #fff;
-}
-body.section-step-types nav#header-nav a.steps {
-	border-bottom-color: #fff;
-}
-body.section-step-collections nav#header-nav a.step-collections {
-	border-bottom-color: #fff;
-}
-body.section-routes nav#header-nav a.routes {
-	border-bottom-color: #fff;
-}
-body.section-clocks nav#header-nav a.clocks {
-	border-bottom-color: #fff;
-}
-body.section-legislatures nav#header-nav a.legislatures {
-	border-bottom-color: #fff;
-}
+/* Styling for main navigation active states */
+body.section-work-packageable-things nav#header-nav a.work-packageable-things,
+body.section-enabling-legislation nav#header-nav a.enabling-legislation,
+body.section-organisations-accountable-to-parliament nav#header-nav a.organisations-accountable-to-parliament,
+body.section-work-packages nav#header-nav a.work-packages,
+body.section-procedures nav#header-nav a.procedures,
+body.section-calculation-styles nav#header-nav a.calculation-styles,
+body.section-steps nav#header-nav a.steps,
+body.section-step-types nav#header-nav a.steps,
+body.section-step-collections nav#header-nav a.step-collections,
+body.section-routes nav#header-nav a.routes,
+body.section-clocks nav#header-nav a.clocks,
+body.section-legislatures nav#header-nav a.legislatures,
 body.section-houses nav#header-nav a.houses {
 	border-bottom-color: #fff;
 }
 
-main {
-  color: #4d4d4d;
-  flex: 1 0 auto;
-  padding: 2rem 0;
-}
 
-main a {
-  color: #2b57ab;
-  text-decoration: underline;
-}
-
-main .inner-content {
-  background-color: #fff;
-  padding: 1.5rem;
-  padding-top: 2rem;
-}
-
-div.debug {
-	border: 3px solid yellow;
-	margin: 10px;
-	padding: 10px;
-}
-
-h1 span[class="subhead"] {
-	display: block;
-	font-size: .7em;
-	font-weight: normal;
-}
-
-.subnav {
-	border-color: #cbc9cd;
-	border-style: solid;
-	border-width: 0 0 1px 0;
-	margin-bottom: 1em;
-}
-.subnav p {
-	margin: 0;
-	padding: .5em .5em 0 .5em;
-}
-.subnav a {
-	border-bottom: 4px #fff solid;
-	color: #2b57ab;
-	display: inline-block;
-	text-decoration: none;
-  	margin-right:0.2rem;
-  	padding:0 0.2rem;
-}
-.subnav a:hover {
-	border-bottom-color: #cbc9cd;
-}
-
-/* subnav active */
-body.subsection-overview .subnav a.overview {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-business-items .subnav a.business-items {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-routes .subnav a.routes {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-route-checker .subnav a.route-checker {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-clocks .subnav a.clocks {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-step-collections .subnav a.step-collections {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-procedures .subnav a.procedures {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-procedures-with-step-depth .subnav a.procedures-with-step-depth {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-step-types .subnav a.step-types {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-steps .subnav a.steps {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-work-packages .subnav a.work-packages {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-steps-with-depths .subnav a.steps-with-depths {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-calculation-styles .subnav a.calculation-styles {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-preceding .subnav a.preceding {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-following .subnav a.following {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-enabling-legislation .subnav a.enabling-legislation {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-treaties .subnav a.treaties {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-all .subnav a.all {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-current .subnav a.current {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-main .subnav a.main {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-work-packages-current .subnav a.work-packages-current {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-work-packageable-things .subnav a.work-packageable-things {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-treaty-work-packages .subnav a.treaty-work-packages {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-treaty-work-packages-current .subnav a.treaty-work-packages-current {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-notes .subnav a.notes {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-all .subnav a.all {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-a .subnav a.a {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-b .subnav a.b {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-c .subnav a.c {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-d .subnav a.d {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-e .subnav a.e {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-f .subnav a.f {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-g .subnav a.g {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-h .subnav a.h {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-i .subnav a.i {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-j .subnav a.j {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-k .subnav a.k {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-l .subnav a.l {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-m .subnav a.m {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-n .subnav a.n {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-o .subnav a.o {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-p .subnav a.p {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-q .subnav a.q {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-r .subnav a.r {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-s .subnav a.s {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-t .subnav a.t {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-u .subnav a.u {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-v .subnav a.v {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-w .subnav a.w {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-x .subnav a.x {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-y .subnav a.y {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-z .subnav a.z {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-primary-legislation .subnav a.primary-legislation {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
-body.subsection-secondary-legislation .subnav a.secondary-legislation {
-	border-bottom-color: #006e45;
-	color: #4d4d4d;
-}
+/* Styling for sub navigation active states */
+body.subsection-overview .subnav a.overview,
+body.subsection-business-items .subnav a.business-items,
+body.subsection-routes .subnav a.routes,
+body.subsection-route-checker .subnav a.route-checker,
+body.subsection-clocks .subnav a.clocks,
+body.subsection-step-collections .subnav a.step-collections,
+body.subsection-procedures-with-step-depth .subnav a.procedures-with-step-depth,
+body.subsection-procedures .subnav a.procedures,
+body.subsection-step-types .subnav a.step-types,
+body.subsection-steps .subnav a.steps,
+body.subsection-work-packages .subnav a.work-packages,
+body.subsection-steps-with-depths .subnav a.steps-with-depths,
+body.subsection-calculation-styles .subnav a.calculation-styles,
+body.subsection-preceding .subnav a.preceding,
+body.subsection-following .subnav a.following,
+body.subsection-enabling-legislation .subnav a.enabling-legislation,
+body.subsection-treaties .subnav a.treaties,
+body.subsection-all .subnav a.all,
+body.subsection-current .subnav a.current,
+body.subsection-main .subnav a.main,
+body.subsection-work-packages-current .subnav a.work-packages-current,
+body.subsection-work-packageable-things .subnav a.work-packageable-things,
+body.subsection-treaty-work-packages .subnav a.treaty-work-packages,
+body.subsection-treaty-work-packages-current .subnav a.treaty-work-packages-current,
+body.subsection-notes .subnav a.notes,
+body.subsection-all .subnav a.all,
+body.subsection-a .subnav a.a,
+body.subsection-b .subnav a.b,
+body.subsection-c .subnav a.c,
+body.subsection-d .subnav a.d,
+body.subsection-e .subnav a.e,
+body.subsection-f .subnav a.f,
+body.subsection-g .subnav a.g,
+body.subsection-h .subnav a.h,
+body.subsection-i .subnav a.i,
+body.subsection-j .subnav a.j,
+body.subsection-k .subnav a.k,
+body.subsection-l .subnav a.l,
+body.subsection-m .subnav a.m,
+body.subsection-n .subnav a.n,
+body.subsection-o .subnav a.o,
+body.subsection-p .subnav a.p,
+body.subsection-q .subnav a.q,
+body.subsection-r .subnav a.r,
+body.subsection-s .subnav a.s,
+body.subsection-t .subnav a.t,
+body.subsection-u .subnav a.u,
+body.subsection-v .subnav a.v,
+body.subsection-w .subnav a.w,
+body.subsection-x .subnav a.x,
+body.subsection-y .subnav a.y,
+body.subsection-z .subnav a.z,
+body.subsection-primary-legislation .subnav a.primary-legislation,
+body.subsection-secondary-legislation .subnav a.secondary-legislation,
 body.subsection-treaty .subnav a.treaty {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
 
-a {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
 
-p, ol {
-  clear: both;
-}
-
-ol {
-  list-style: none;
-  padding: 0;
-}
-
-li:has(h2), li:has(h3) {
-	margin-bottom: 1.5em;
-}
-li h2, li h3 {
-	font-size: 1.2em;
-	font-weight: normal;
-}
-li p {
-	margin-bottom: 0em;
-}
-#business-items li {
-	margin-bottom: 1em;
-}
-#business-items ol li {
-	border: 1px, dotted #ccc;
-	display: block;
-	padding: .5em;
-}
-#business-items ol li li p {
-	margin-bottom: .5em;
-}
-#business-items ol li li p:last-child {
-	margin-bottom: 0;
+/* Styling for the librarian mode banner, where visible */
+#mode {
+	color: yellow;
+	padding-left: .3em;
 }
 
 
-
-
-
-
-
-.read-link {
-	background-color: #ebe9e8;
-	border: 1px, dotted #ccc;
-	padding: .5em;
+/* Styling to remove librarian only components from display for non-librarians */
+body .uk-parliament-procedure-browser-librarian-only {
+	display: none !important;
 }
-a.rss {
-  background-image: url("/rss.svg");
-  background-repeat: no-repeat;
-  display: block;
-  background-size: 20px;
-  padding-left: 30px;
-}
-
-/* SPARQL textareas */
-#sparql textarea {
-	height: 500px;
-	width: 100%;
-}
-
-footer {
-  background-color: #373151;
-  color: #fff;
-  flex-shrink: 0;
-  font-size: 1rem;
-  line-height: 1.4;
-  padding: 10px 0;
-}
-
-footer a,
-footer a:hover {
-  color: #fff;
+html body .uk-parliament-procedure-browser-librarian-only {
+	display: none !important;
 }
