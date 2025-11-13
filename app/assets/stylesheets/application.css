@@ -79,6 +79,44 @@ body.subsection-treaty .subnav a.treaty {
 }
 
 
+/* Styling for a business item on a work package timeline */
+#business-items ol {
+	padding: 0;
+}
+#business-items li {
+	border: 1px, dotted #ccc;
+	margin-bottom: 1em;
+	padding: .5em;
+}
+#business-items li:last-child {
+	margin-bottom: 0;
+}
+#business-items ol li li p {
+	margin-bottom: .5em;
+}
+#business-items ol li li p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* Styling for read links */
+.read-link {
+	background-color: #ebe9e8;
+	border: 1px, dotted #ccc;
+	padding: .5em;
+}
+
+
+/* Styling for SPARQL textareas */
+#sparql {
+	margin-top: 1em;
+}
+#sparql textarea {
+	height: 500px;
+	width: 100%;
+}
+
+
 /* Styling for the librarian mode banner, where visible */
 #mode {
 	color: yellow;
