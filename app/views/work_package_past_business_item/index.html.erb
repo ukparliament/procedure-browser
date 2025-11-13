@@ -4,7 +4,7 @@
 
 <% unless @work_package_past_business_items.empty? -%>
 	<div id="business-items">
-		<ol>
+		<ol class="unnumbered">
 			<%= render :partial => 'work_package_business_item/date', :collection => @work_package_past_business_items %>
 		</ol>
 	</div>
