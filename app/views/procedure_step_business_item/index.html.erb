@@ -8,10 +8,10 @@
 
 <%= list_item_count_sentence( 'business item', @procedure_step_business_items.size ) %>
 
-<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
+<%= render :partial => 'library_design/feeds/feeds' %>
 
 <% unless @procedure_step_business_items.empty? -%>
-<ol>
+	<ol class="unnumbered">
 		<%= render :partial => 'procedure_step_business_item/business_item', :collection => @procedure_step_business_items %>
 	</ol>
 <% end -%>
