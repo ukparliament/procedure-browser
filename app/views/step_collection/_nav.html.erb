@@ -1,5 +1,5 @@
-<p class="subnav">
+<%= render 'library_design/subnav/subnav' do %>
 	<%= link_to( 'Steps', step_collection_show_url, :class => 'steps' ) %>
 	<%= link_to( 'Work packages before Parliament', step_collection_work_package_current_list_url, :class => 'work-packages-current' ) %>
 	<%= link_to( 'All work packages', step_collection_work_package_list_url, :class => 'work-packages' ) %>
-</p>
+<% end %>
