@@ -3,7 +3,7 @@
 <%= list_item_count_sentence( 'clock', @step_clocks.size ) %>
 
 <% unless @step_clocks.empty? -%>
-	<ol>
+	<ol class="unnumbered">
 		<%= render :partial => 'clock', :collection => @step_clocks %>
 	</ol>
 <% end -%>
