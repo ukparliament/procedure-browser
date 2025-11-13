@@ -3,7 +3,7 @@
 <%= list_item_count_sentence( 'procedure', @calculation_style_procedures.size ) %>
 
 <% unless @calculation_style_procedures.empty? -%>
-	<ol>
+	<ol class="unnumbered">
 		<%= render :partial => 'procedure/procedure', :collection => @calculation_style_procedures %>
 	</ol>
 <% end -%>
