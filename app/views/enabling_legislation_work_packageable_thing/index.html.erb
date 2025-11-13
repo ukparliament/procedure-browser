@@ -5,7 +5,7 @@
 <% unless @enabling_legislation_work_packageable_things.empty? -%>
 
 	<%= render :partial => 'enabling_legislation_work_packageable_thing/results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
-	<ol>
+	<ol class="unnumbered">
 		<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @enabling_legislation_work_packageable_things %>
 	</ol>
 	
