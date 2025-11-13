@@ -11,6 +11,7 @@
 				<%= render 'library_design/debug/debug' -%>
 				<h1><%= @multiline_page_title || @page_title || $SITE_TITLE %></h1>
 				<%= yield %>
+				<%= render :partial => 'layouts/queries/queries', :object => @queries unless @queries.empty? %>
 			</div>
 		</main>
 		<%= render 'layouts/footer/footer' %>
