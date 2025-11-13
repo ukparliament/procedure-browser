@@ -3,7 +3,7 @@
 <%= list_item_count_sentence( 'route', @step_routes.size ) %>
 
 <% unless @step_routes.empty? -%>
-	<ol>
+	<ol class="unnumbered">
 		<%= render :partial => 'route', :collection => @step_routes %>
 	</ol>
 <% end -%>
