@@ -1,7 +1,7 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
 <%= list_item_count_sentence( 'step', @procedure_steps_with_depths.size ) %>
-<ol>
+<ol class="unnumbered">
 	<%= render :partial => 'step_with_depth', :collection => @procedure_steps_with_depths %>
 </ol>
 

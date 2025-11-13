@@ -1,7 +1,7 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
 <%= list_item_count_sentence( 'step', @procedure_steps.size ) %>
-<ol>
+<ol class="unnumbered link-list">
 	<%= render :partial => 'procedure_step', :collection => @procedure_steps %>
 </ol>
 
