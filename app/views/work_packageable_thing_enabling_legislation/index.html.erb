@@ -1,7 +1,7 @@
 <%= render :partial => 'work_packageable_thing/intro', :object => @work_packageable_thing %>
 
 <%= list_item_count_sentence( 'enabling legislation item', @enabling_legislation.size ) %>
-<ol>
+<ol class="unnumbered">
 	<%= render :partial => 'enabling_legislation/enabling_legislation', :collection => @enabling_legislation %>
 </ol>
 

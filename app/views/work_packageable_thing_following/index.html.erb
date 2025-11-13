@@ -1,7 +1,7 @@
 <%= render :partial => 'work_packageable_thing/intro', :object => @work_packageable_thing %>
 
 <%= list_item_count_sentence( 'following work packageable thing', @work_packageable_things.size ) %>
-<ol>
+<ol class="unnumbered">
 	<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @work_packageable_things %>
 </ol>
 
