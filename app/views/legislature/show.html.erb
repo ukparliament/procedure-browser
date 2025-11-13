@@ -1,7 +1,7 @@
 <% unless @legislature_houses.empty? -%>
 	<div id="houses">
 		<%= list_item_count_sentence( 'house', @legislature_houses.size ) %>
-		<ol>
+		<ol class="unnumbered link-list">
 			<%= render :partial => 'house/house', :collection => @legislature_houses %>
 		</ol>
 	</div>
@@ -13,7 +13,7 @@
 		
 		<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 		
-		<ol>
+		<ol class="unnumbered link-list">
 			<%= render :partial => 'legislature_step/step', :collection => @legislature_steps %>
 		</ol>
 	</div>

@@ -1,7 +1,7 @@
 <%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
 
 <% unless @legislature_steps.empty? -%>
-	<ol>
+	<ol class="unnumbered link-list">
 		<%= render :partial => 'step', :collection => @legislature_steps %>
 	</ol>
 <% end -%>
