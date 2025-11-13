@@ -3,7 +3,7 @@
 <%= list_item_count_sentence( 'step collection', @house_step_collections.size ) %>
 
 <% unless @house_step_collections.empty? -%>
-	<ol>
+	<ol class="unnumbered link-list">
 		<%= render :partial => 'step_collection/step_collection', :collection => @house_step_collections %>
 	</ol>
 <% end -%>
