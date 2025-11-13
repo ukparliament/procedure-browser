@@ -2,9 +2,9 @@
 
 <%= list_item_count_sentence( 'route', @procedure_routes.size ) %>
 
-<%= render :partial => 'feeds/feeds' %>
+<%= render :partial => 'library_design/feeds/feeds' %>
 
-<ol>
+<ol class="unnumbered">
 	<%= render :partial => 'route', :collection => @procedure_routes %>
 </ol>
 
