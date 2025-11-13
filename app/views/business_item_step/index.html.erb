@@ -4,7 +4,7 @@
 
 <div id="steps">
 	<%= content_tag( 'h2', "#{@business_item_steps.size} #{"step".pluralize( @business_item_steps.size )} actualised" ) %>
-	<ol>
+	<ol class="unnumbered link-list">
 		<%= render :partial => 'step/business_item_step', :collection => @business_item_steps %>
 	</ol>
 </div>
