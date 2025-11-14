@@ -22,7 +22,7 @@ class ClockController < ApplicationController
     
     @page_title = @clock.label
     @description = "#{@clock.label}."
-    @crumb << { label: 'Clocks', url: route_list_url }
+    @crumb << { label: 'Clocks', url: clock_list_url }
     @crumb << { label: @clock.label, url: nil }
     @section = 'clocks'
   end
