@@ -107,6 +107,15 @@ body.subsection-treaty .subnav a.treaty {
 }
 
 
+/* Styling for identifier */
+#identifier {
+	margin-top: 1em;
+}
+#identifier h2 {
+	margin-bottom: 0.3em;
+}
+
+
 /* Styling for SPARQL textareas */
 #sparql {
 	margin-top: 1em;
