@@ -1,11 +1,14 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
-<%= list_item_count_sentence( 'clock', @procedure_clocks.size ) %>
+<div class="reading-width">
 
-<% unless @procedure_clocks.empty? -%>
-	<ol class="unnumbered">
-		<%= render :partial => 'clock', :collection => @procedure_clocks %>
-	</ol>
-<% end -%>
+	<%= list_item_count_sentence( 'clock', @procedure_clocks.size ) %>
 
-<%= render :partial => 'common/identifier', :object => @procedure %>
+	<% unless @procedure_clocks.empty? -%>
+		<ol class="unnumbered">
+			<%= render :partial => 'clock', :collection => @procedure_clocks %>
+		</ol>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @procedure %>
+</div>

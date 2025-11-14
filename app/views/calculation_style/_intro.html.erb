@@ -1,3 +1,5 @@
-<%= content_tag( 'p', "See the '#{link_to( "#{intro.label}' calculation on the egg timer", "https://api.parliament.uk/egg-timer/calculator/styles?calculation-style=#{intro.egg_timer_id}" )}.".html_safe ) %>
+<div class="reading-width">
+	<%= content_tag( 'p', "See the '#{link_to( "#{intro.label}' calculation on the egg timer", "https://api.parliament.uk/egg-timer/calculator/styles?calculation-style=#{intro.egg_timer_id}" )}.".html_safe ) %>
+</div>
 
 <%= render :partial => 'calculation_style/nav' %>

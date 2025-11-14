@@ -1,9 +1,12 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
-<% if @inbound_and_outbound_route_errors.empty? %>
-	<%= content_tag( 'p', 'No errors found.' ) %>
-<% else -%>
-	<%= render :partial => 'error', :collection =>  @inbound_and_outbound_route_errors %>
-<% end -%>
+<div class="reading-width">
 
-<%= render :partial => 'common/identifier', :object => @procedure %>
+	<% if @inbound_and_outbound_route_errors.empty? %>
+		<%= content_tag( 'p', 'No errors found.' ) %>
+	<% else -%>
+		<%= render :partial => 'error', :collection =>  @inbound_and_outbound_route_errors %>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @procedure %>
+</div>

@@ -1,11 +1,14 @@
 <%= render :partial => 'current_intro' %>
 
-<%= list_item_count_sentence( 'organisation accountable to Parliament', @result_count ) %>
+<div class="reading-width">
 
-<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+	<%= list_item_count_sentence( 'organisation accountable to Parliament', @result_count ) %>
 
-<ol class="unnumbered">
-	<%= render :partial => 'organisation_accountable_to_parliament', :collection => @organisations_accountable_to_parliament %>
-</ol>
+	<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
 
-<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+	<ol class="unnumbered">
+		<%= render :partial => 'organisation_accountable_to_parliament', :collection => @organisations_accountable_to_parliament %>
+	</ol>
+
+	<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+</div>

@@ -1,15 +1,17 @@
 <%= render :partial => 'enabling_legislation/intro', :object => @enabling_legislation %>
 
-<%= list_item_count_sentence( 'work packageable thing', @result_count ) %>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'work packageable thing', @result_count ) %>
 
-<% unless @enabling_legislation_work_packageable_things.empty? -%>
+	<% unless @enabling_legislation_work_packageable_things.empty? -%>
 
-	<%= render :partial => 'enabling_legislation_work_packageable_thing/results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
-	<ol class="unnumbered">
-		<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @enabling_legislation_work_packageable_things %>
-	</ol>
+		<%= render :partial => 'enabling_legislation_work_packageable_thing/results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+		<ol class="unnumbered">
+			<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @enabling_legislation_work_packageable_things %>
+		</ol>
 	
-	<%= render :partial => 'enabling_legislation_work_packageable_thing/pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
-<% end -%>
+		<%= render :partial => 'enabling_legislation_work_packageable_thing/pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @enabling_legislation %>
+	<%= render :partial => 'common/identifier', :object => @enabling_legislation %>
+</div>

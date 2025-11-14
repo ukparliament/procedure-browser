@@ -1,13 +1,15 @@
-<%= content_tag( 'p', @step_type.description ) if @step_type.description %>
+<div class="reading-width">
+	<%= content_tag( 'p', @step_type.description ) if @step_type.description %>
 
-<div id="steps">
-	<%= list_item_count_sentence( 'step', @step_type_steps.size ) %>
+	<div id="steps">
+		<%= list_item_count_sentence( 'step', @step_type_steps.size ) %>
 	
-	<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
+		<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
 	
-	<ol class="unnumbered link-list">
-		<%= render :partial => 'step/step', :collection => @step_type_steps %>
-	</ol>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'step/step', :collection => @step_type_steps %>
+		</ol>
+	</div>
+
+	<%= render :partial => 'common/identifier', :object => @step_type %>
 </div>
-
-<%= render :partial => 'common/identifier', :object => @step_type %>

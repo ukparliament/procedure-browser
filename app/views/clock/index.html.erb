@@ -1,4 +1,6 @@
-<%= list_item_count_sentence( 'clock', @clocks.size ) %>
-<ol class="unnumbered">
-	<%= render :partial => 'clock', :collection => @clocks %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'clock', @clocks.size ) %>
+	<ol class="unnumbered">
+		<%= render :partial => 'clock', :collection => @clocks %>
+	</ol>
+</div>

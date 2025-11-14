@@ -1,3 +1,5 @@
-<%= content_tag( 'p', "Read at #{link_to( intro.uri_domain, intro.uri )}.".html_safe ) if intro.uri %>
+<div class="reading-width">
+	<%= content_tag( 'p', "Read at #{link_to( intro.uri_domain, intro.uri )}.".html_safe ) if intro.uri %>
+</div>
 
 <%= render :partial => 'work_packageable_thing/nav' %>

@@ -1,12 +1,14 @@
-<%= work_package_description_with_markup_from_business_item( @business_item ) %>
+<div class="reading-width">
+	<%= work_package_description_with_markup_from_business_item( @business_item ) %>
 
-<%= content_tag( 'p', "Read at #{link_to( @business_item.link_domain, @business_item.link )}.".html_safe, :class => 'read-link' ) if @business_item.link %>
+	<%= content_tag( 'p', "Read at #{link_to( @business_item.link_domain, @business_item.link )}.".html_safe, :class => 'read-link' ) if @business_item.link %>
 
-<div id="steps">
-	<%= content_tag( 'h2', "#{@business_item_steps.size} #{"step".pluralize( @business_item_steps.size )} actualised" ) %>
-	<ol class="unnumbered link-list">
-		<%= render :partial => 'step/business_item_step', :collection => @business_item_steps %>
-	</ol>
+	<div id="steps">
+		<%= content_tag( 'h2', "#{@business_item_steps.size} #{"step".pluralize( @business_item_steps.size )} actualised" ) %>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'step/business_item_step', :collection => @business_item_steps %>
+		</ol>
+	</div>
+
+	<%= render :partial => 'common/identifier', :object => @business_item %>
 </div>
-
-<%= render :partial => 'common/identifier', :object => @business_item %>

@@ -1,4 +1,6 @@
-<%= content_tag( 'p', procedure_dates( intro ) ) unless procedure_dates( intro ).empty? %>
-<%= content_tag( 'p', intro.description ) if intro.description %>
+<div class="reading-width">
+	<%= content_tag( 'p', procedure_dates( intro ) ) unless procedure_dates( intro ).empty? %>
+	<%= content_tag( 'p', intro.description ) if intro.description %>
+</div>
 
 <%= render :partial => 'procedure/nav', :object => intro %>

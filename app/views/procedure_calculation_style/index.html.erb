@@ -1,11 +1,13 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
-<%= list_item_count_sentence( 'calculation style', @procedure_calculation_styles.size ) %>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'calculation style', @procedure_calculation_styles.size ) %>
 
-<% unless @procedure_calculation_styles.empty? -%>
-	<ol class="unnumbered link-list">
-		<%= render :partial => 'calculation_style/calculation_style', :collection => @procedure_calculation_styles %>
-	</ol>
-<% end -%>
+	<% unless @procedure_calculation_styles.empty? -%>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'calculation_style/calculation_style', :collection => @procedure_calculation_styles %>
+		</ol>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @procedure %>
+	<%= render :partial => 'common/identifier', :object => @procedure %>
+</div>

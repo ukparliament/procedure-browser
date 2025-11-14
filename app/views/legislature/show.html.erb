@@ -1,22 +1,24 @@
-<% unless @legislature_houses.empty? -%>
-	<div id="houses">
-		<%= list_item_count_sentence( 'house', @legislature_houses.size ) %>
-		<ol class="unnumbered link-list">
-			<%= render :partial => 'house/house', :collection => @legislature_houses %>
-		</ol>
-	</div>
-<% end -%>
+<div class="reading-width">
+	<% unless @legislature_houses.empty? -%>
+		<div id="houses">
+			<%= list_item_count_sentence( 'house', @legislature_houses.size ) %>
+			<ol class="unnumbered link-list">
+				<%= render :partial => 'house/house', :collection => @legislature_houses %>
+			</ol>
+		</div>
+	<% end -%>
 
-<% unless @legislature_steps.empty? -%>
-	<div id="steps">
-		<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
+	<% unless @legislature_steps.empty? -%>
+		<div id="steps">
+			<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
 		
-		<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
+			<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 		
-		<ol class="unnumbered link-list">
-			<%= render :partial => 'legislature_step/step', :collection => @legislature_steps %>
-		</ol>
-	</div>
-<% end -%>
+			<ol class="unnumbered link-list">
+				<%= render :partial => 'legislature_step/step', :collection => @legislature_steps %>
+			</ol>
+		</div>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @legislature %>
+	<%= render :partial => 'common/identifier', :object => @legislature %>
+</div>

@@ -1,11 +1,14 @@
 <%= render :partial => 'house/intro', :object => @house %>
 
-<%= list_item_count_sentence( 'step collection', @house_step_collections.size ) %>
+<div class="reading-width">
 
-<% unless @house_step_collections.empty? -%>
-	<ol class="unnumbered link-list">
-		<%= render :partial => 'step_collection/step_collection', :collection => @house_step_collections %>
-	</ol>
-<% end -%>
+	<%= list_item_count_sentence( 'step collection', @house_step_collections.size ) %>
 
-<%= render :partial => 'common/identifier', :object => @house %>
+	<% unless @house_step_collections.empty? -%>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'step_collection/step_collection', :collection => @house_step_collections %>
+		</ol>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @house %>
+</div>

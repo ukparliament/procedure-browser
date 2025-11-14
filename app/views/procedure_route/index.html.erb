@@ -1,11 +1,14 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
-<%= list_item_count_sentence( 'route', @procedure_routes.size ) %>
+<div class="reading-width">
 
-<%= render :partial => 'library_design/feeds/feeds' %>
+	<%= list_item_count_sentence( 'route', @procedure_routes.size ) %>
 
-<ol class="unnumbered">
-	<%= render :partial => 'route', :collection => @procedure_routes %>
-</ol>
+	<%= render :partial => 'library_design/feeds/feeds' %>
 
-<%= render :partial => 'common/identifier', :object => @procedure %>
+	<ol class="unnumbered">
+		<%= render :partial => 'route', :collection => @procedure_routes %>
+	</ol>
+
+	<%= render :partial => 'common/identifier', :object => @procedure %>
+</div>

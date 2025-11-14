@@ -1,13 +1,16 @@
 <%= render :partial => 'house/intro', :object => @house %>
 
-<%= list_item_count_sentence( 'step', @house_steps.size ) %>
+<div class="reading-width">
 
-<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
+	<%= list_item_count_sentence( 'step', @house_steps.size ) %>
 
-<% unless @house_steps.empty? -%>
-	<ol class="unnumbered link-list">
-		<%= render :partial => 'step/step', :collection => @house_steps %>
-	</ol>
-<% end -%>
+	<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 
-<%= render :partial => 'common/identifier', :object => @house %>
+	<% unless @house_steps.empty? -%>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'step/step', :collection => @house_steps %>
+		</ol>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @house %>
+</div>

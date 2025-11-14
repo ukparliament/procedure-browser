@@ -1,11 +1,14 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<%= list_item_count_sentence( 'procedure', @step_procedures.size ) %>
+<div class="reading-width">
 
-<% unless @step_procedures.empty? -%>
-	<ol class="unnumbered">
-		<%= render :partial => 'procedure/procedure', :collection => @step_procedures %>
-	</ol>
-<% end -%>
+	<%= list_item_count_sentence( 'procedure', @step_procedures.size ) %>
 
-<%= render :partial => 'common/identifier', :object => @step %>
+	<% unless @step_procedures.empty? -%>
+		<ol class="unnumbered">
+			<%= render :partial => 'procedure/procedure', :collection => @step_procedures %>
+		</ol>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @step %>
+</div>
