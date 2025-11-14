@@ -5,8 +5,11 @@ ruby file: '.tool-versions'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# Modern asset management
+gem "propshaft"
+
+# For local development
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"

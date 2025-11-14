@@ -1,4 +1,4 @@
-<p class="subnav">
+<%= render 'library_design/subnav/subnav' do %>
 	<%= link_to( 'Work packages before Parliament', procedure_show_url, :class => 'work-packages-current' ) %>
 	<%= link_to( 'All work packages', procedure_work_package_list_url, :class => 'work-packages' ) %>
 	<%= link_to( 'Calculation styles', procedure_calculation_style_list_url, :class => 'calculation-styles uk-parliament-procedure-browser-librarian-only' ) %>
@@ -8,4 +8,4 @@
 	<%= link_to( 'Route checker', procedure_route_checker_url, :class => 'route-checker uk-parliament-procedure-browser-librarian-only' ) %>
 	<%= link_to( 'Clocks', procedure_clock_list_url, :class => 'clocks uk-parliament-procedure-browser-librarian-only' ) %>
 	<%= link_to( 'Step collections', procedure_step_collection_list_url, :class => 'step-collections uk-parliament-procedure-browser-librarian-only' ) %>
-</p>
+<% end %>

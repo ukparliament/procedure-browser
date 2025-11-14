@@ -1,6 +1,8 @@
 <%= render :partial => 'main_nav' %>
 
-<%= list_item_count_sentence( 'procedure', @procedures.size ) %>
-<ol>
-	<%= render :partial => 'procedure', :collection => @procedures %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'procedure', @procedures.size ) %>
+	<ol class="unnumbered">
+		<%= render :partial => 'procedure', :collection => @procedures %>
+	</ol>
+</div>

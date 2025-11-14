@@ -1,6 +1,6 @@
-<p class="subnav">
+<%= render 'library_design/subnav/subnav' do %>
 	<%= link_to( 'Work packages before Parliament', organisation_accountable_to_parliament_show_url, :class => 'work-packages-current' ) %>
 	<%= link_to( 'All work packages', organisation_accountable_to_parliament_work_package_list_url, :class => 'work-packages' ) %>
 	<%= link_to( 'Treaty work packages before Parliament', organisation_accountable_to_parliament_treaty_work_package_current_list_url, :class => 'treaty-work-packages-current' ) %>
 	<%= link_to( 'All treaty work packages', organisation_accountable_to_parliament_treaty_work_package_list_url, :class => 'treaty-work-packages' ) %>
-</p>
+<% end %>

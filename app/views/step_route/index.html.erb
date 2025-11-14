@@ -1,11 +1,14 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<%= list_item_count_sentence( 'route', @step_routes.size ) %>
+<div class="reading-width">
 
-<% unless @step_routes.empty? -%>
-	<ol>
-		<%= render :partial => 'route', :collection => @step_routes %>
-	</ol>
-<% end -%>
+	<%= list_item_count_sentence( 'route', @step_routes.size ) %>
 
-<%= render :partial => 'common/identifier', :object => @step %>
+	<% unless @step_routes.empty? -%>
+		<ol class="unnumbered">
+			<%= render :partial => 'route', :collection => @step_routes %>
+		</ol>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @step %>
+</div>

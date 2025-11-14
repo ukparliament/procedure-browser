@@ -1,16 +1,19 @@
 <%= render :partial => 'step_collection/intro', :object => @step_collection %>
 
-<%= list_item_count_sentence( 'work package', @result_count ) %>
+<div class="reading-width">
 
-<%= content_tag( 'p', link_to( 'RSS', @rss_url, :class => 'rss' ) ) if @rss_url %>
+	<%= list_item_count_sentence( 'work package', @result_count ) %>
 
-<% unless @work_packages.empty? -%>
-	<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
-	<ol>
-		<%= render :partial => 'work_package/work_package', :collection => @work_packages, :locals => { 'work_packages' => @work_packages} %>
-	</ol>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+
+	<% unless @work_packages.empty? -%>
+		<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+		<ol class="unnumbered">
+			<%= render :partial => 'work_package/work_package', :collection => @work_packages, :locals => { 'work_packages' => @work_packages} %>
+		</ol>
 	
-	<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
-<% end -%>
+		<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @step_collection %>
+	<%= render :partial => 'common/identifier', :object => @step_collection %>
+</div>

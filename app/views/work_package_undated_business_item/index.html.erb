@@ -1,11 +1,15 @@
-<%= work_package_description_with_markup( @work_package ) %>
+<div class="reading-width">
+	<%= work_package_description_with_markup( @work_package ) %>
 
-<%= list_item_count_sentence_with_actualisation( 'undated business item', @business_item_count, 'step', @work_package_business_items.size ) %>
+	<%= list_item_count_sentence_with_actualisation( 'undated business item', @business_item_count, 'step', @work_package_business_items.size ) %>
 	
-<% unless @work_package_business_items.empty? -%>
-	<ol>
-		<%= render :partial => 'work_package_business_item/business_item', :collection => @work_package_undated_business_items.first %>
-	</ol>
-<% end -%>
+	<% unless @work_package_business_items.empty? -%>
+		<div id="business-items">
+			<ol class="unnumbered">
+				<%= render :partial => 'work_package_business_item/business_item', :collection => @work_package_undated_business_items.first %>
+			</ol>
+		</div>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @work_package %>
+	<%= render :partial => 'common/identifier', :object => @work_package %>
+</div>

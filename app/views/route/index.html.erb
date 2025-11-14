@@ -1,4 +1,6 @@
-<%= list_item_count_sentence( 'route', @routes.size ) %>
-<ol>
-	<%= render :partial => 'route', :collection => @routes %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'route', @routes.size ) %>
+	<ol class="unnumbered">
+		<%= render :partial => 'route', :collection => @routes %>
+	</ol>
+</div>

@@ -45,7 +45,7 @@ class StepController < ApplicationController
     # We get the set of current business items for this step on this page with this many results per page.
     @business_items = get_step_business_items( step_id, @page, @results_per_page )
     
-    @page_title = "@step.display_label - Business items"
+    @page_title = "#{@step.display_label} - Business items"
     @multiline_page_title = "#{@step.display_label} <span class='subhead'>Business items</span>".html_safe
     @description = "Business items for #{@step.display_label}."
     @rss_url = step_business_item_list_url( :format => 'rss' )

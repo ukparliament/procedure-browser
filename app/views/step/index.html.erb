@@ -1,4 +1,6 @@
-<%= list_item_count_sentence( 'step', @steps.size ) %>
-<ol>
-	<%= render :partial => 'step', :collection => @steps %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'step', @steps.size ) %>
+	<ol class="unnumbered link-list">
+		<%= render :partial => 'step', :collection => @steps %>
+	</ol>
+</div>

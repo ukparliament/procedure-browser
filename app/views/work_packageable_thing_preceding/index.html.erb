@@ -1,8 +1,10 @@
 <%= render :partial => 'work_packageable_thing/intro', :object => @work_packageable_thing %>
 
-<%= list_item_count_sentence( 'preceding work packageable thing', @work_packageable_things.size ) %>
-<ol>
-	<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @work_packageable_things %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'preceding work packageable thing', @work_packageable_things.size ) %>
+	<ol class="unnumbered">
+		<%= render :partial => 'work_packageable_thing/work_packageable_thing', :collection => @work_packageable_things %>
+	</ol>
 
-<%= render :partial => 'common/identifier', :object => @work_packageable_thing %>
+	<%= render :partial => 'common/identifier', :object => @work_packageable_thing %>
+</div>

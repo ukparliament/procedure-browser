@@ -1,8 +1,10 @@
 <%= render :partial => 'procedure/intro', :object => @procedure %>
 
-<%= list_item_count_sentence( 'step', @procedure_steps.size ) %>
-<ol>
-	<%= render :partial => 'procedure_step', :collection => @procedure_steps %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'step', @procedure_steps.size ) %>
+	<ol class="unnumbered link-list">
+		<%= render :partial => 'procedure_step', :collection => @procedure_steps %>
+	</ol>
 
-<%= render :partial => 'common/identifier', :object => @procedure %>
+	<%= render :partial => 'common/identifier', :object => @procedure %>
+</div>

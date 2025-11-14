@@ -1,64 +1,19 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-gb">
 	<head>
-		<meta charset="UTF-8">
-	    <meta name="format-detection" content="telephone=no">
-	    <meta name="viewport" content="width=device-width">
-		<% if @page_title %>
-			<title>UK Parliament procedure browser: <%= @page_title %></title>
-			<meta name="twitter:title" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>">
-			<meta property="og:title" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>">
-		<% else -%>
-			<title>UK Parliament procedure browser</title>
-			<meta name="twitter:title" content="UK Parliament procedure browser">
-			<meta property="og:title" content="UK Parliament procedure browser">
-		<% end -%>
-		
-		<% if @description -%>
-			<meta name="description" content="<%= sanitize( @description ) %>">
-			<meta property="og:description" content="<%= sanitize ( @description ) %>">
-		<% else -%>
-			<% if @page_title %>
-				<meta name="description" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>.">
-				<meta property="og:description" content="UK Parliament procedure browser: <%= sanitize( @page_title ) %>.">
-			<% else -%>
-				<meta name="description" content="UK Parliament procedure browser.">
-				<meta property="og:description" content="UK Parliament procedure browser.">
-			<% end -%>
-		<% end -%>
-		
-		<link rel="canonical" href="<%= url_for(:only_path => false, :protocol => 'https') %>">
-		<% if @csv_url -%>
-			<link rel="alternate" href="<%= @csv_url %>" type="text/csv">
-		<% end -%>
-		<% if @rss_url -%>
-			<link rel="alternate" href="<%= @rss_url %>" type="application/rss+xml">
-		<% end -%>
-		
-		<meta property="og:locale" content="en_GB" >
-		<meta property="og:type" content="website" >
-		<meta property="og:url" content="https://procedure-browser-036a79442650.herokuapp.com/" >
-		<meta property="og:site_name" content="UK Parliament procedure browsers" >
-		<meta name="twitter:card" content="summary" >
-		<meta name="twitter:site" content="@commonslibrary" >
-		<%= favicon_link_tag asset_path('favicon.ico') %>
- 		<%= stylesheet_link_tag "application" %>
-		<%= csrf_meta_tags %>
-		<%= csp_meta_tag %>
-		<%= render :partial => 'layouts/head/json_ld/crumb', :object => @crumb %>
+		<%= render :partial => 'library_design/head/head' %>
+		<%= tag( 'base', :href => 'https://api.parliament.uk/procedure-browser' )if Rails.env.production? %>
 	</head>
-	<body class="section-<%= @section %> subsection-<%= @subsection %> uk-parliament-procedure-browser">
-		<%= render :partial => 'layouts/header/header' %>
-		<main id="main-content" class="container">
+	<body class="section-<%= @section %> subsection-<%= @subsection %> brand-bicameral uk-parliament-procedure-browser">
+		<%= render 'layouts/header/header' %>
+		<main class="block block-page" id="main-content">
 			<div class="inner-content container">
-				<div class="reading-width">
-					<%= render :partial => 'layouts/debug' %>
-					<h1><%= sanitize (@multiline_page_title || @page_title || 'UK Parliament procedure browser' ) %></h1>
-					<%= yield %>
-					<%= render :partial => 'layouts/queries/queries', :object => @queries unless @queries.empty? %>
-				</div>
+				<%= render 'library_design/debug/debug' -%>
+				<%= content_tag( 'h1', @multiline_page_title || @page_title || $SITE_TITLE, :class => 'reading-width' ) %>
+				<%= yield %>
+				<%= render :partial => 'layouts/queries/queries', :object => @queries unless @queries.empty? %>
 			</div>
 		</main>
-		<%= render :partial => 'layouts/footer' %>	
+		<%= render 'layouts/footer/footer' %>
 	</body>
 </html>

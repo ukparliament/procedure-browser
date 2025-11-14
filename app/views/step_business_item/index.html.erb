@@ -1,16 +1,18 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<%= list_item_count_sentence( 'business item', @result_count ) %>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'business item', @result_count ) %>
 
-<%= render :partial => 'feeds/feeds' %>
+	<%= render :partial => 'library_design/feeds/feeds' %>
 
-<% unless @business_items.empty? -%>
-	<%= render :partial => 'step_business_item/results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
-	<ol>
-		<%= render :partial => 'step_business_item/business_item', :collection => @business_items, :locals => { :step => @step} %>
-	</ol>
+	<% unless @business_items.empty? -%>
+		<%= render :partial => 'step_business_item/results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+		<ol class="unnumbered">
+			<%= render :partial => 'step_business_item/business_item', :collection => @business_items, :locals => { :step => @step} %>
+		</ol>
 
-	<%= render :partial => 'step_business_item/pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
-<% end -%>
+		<%= render :partial => 'step_business_item/pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @step %>
+	<%= render :partial => 'common/identifier', :object => @step %>
+</div>

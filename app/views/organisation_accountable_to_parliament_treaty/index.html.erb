@@ -1,15 +1,18 @@
 <%= render :partial => 'organisation_accountable_to_parliament/intro', :object => @organisation_accountable_to_parliament %>
 
-<%= list_item_count_sentence( 'treaty', @result_count ) %>
+<div class="reading-width">
 
-<% unless @organisation_accountable_to_parliament_treaties.empty? -%>
+	<%= list_item_count_sentence( 'treaty', @result_count ) %>
 
-	<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
-	<ol>
-		<%= render :partial => 'treaty', :collection => @organisation_accountable_to_parliament_treaties, :locals => { 'treaties' => @organisation_accountable_to_parliament_treaties} %>
-	</ol>
+	<% unless @organisation_accountable_to_parliament_treaties.empty? -%>
+
+		<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+		<ol class="unnumbered">
+			<%= render :partial => 'treaty', :collection => @organisation_accountable_to_parliament_treaties, :locals => { 'treaties' => @organisation_accountable_to_parliament_treaties} %>
+		</ol>
 	
-	<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
-<% end -%>
+		<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+	<% end -%>
 
-<%= render :partial => 'common/identifier', :object => @organisation_accountable_to_parliament %>
+	<%= render :partial => 'common/identifier', :object => @organisation_accountable_to_parliament %>
+</div>

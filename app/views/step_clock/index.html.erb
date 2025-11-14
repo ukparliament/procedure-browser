@@ -1,11 +1,14 @@
 <%= render :partial => 'step/intro', :object => @step %>
 
-<%= list_item_count_sentence( 'clock', @step_clocks.size ) %>
+<div class="reading-width">
 
-<% unless @step_clocks.empty? -%>
-	<ol>
-		<%= render :partial => 'clock', :collection => @step_clocks %>
-	</ol>
-<% end -%>
+	<%= list_item_count_sentence( 'clock', @step_clocks.size ) %>
 
-<%= render :partial => 'common/identifier', :object => @step %>
+	<% unless @step_clocks.empty? -%>
+		<ol class="unnumbered">
+			<%= render :partial => 'clock', :collection => @step_clocks %>
+		</ol>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @step %>
+</div>

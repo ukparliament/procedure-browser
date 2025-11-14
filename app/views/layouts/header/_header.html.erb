@@ -1,13 +1,11 @@
-<header>
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
-	<%= render :partial => 'layouts/header/portcullis' %>
-    <%= render :partial => 'layouts/header/crumb' %>
-
-	<div class="page-header">
-		<div class="container">
-			<%= content_tag( 'span', link_to( 'Procedure Browser', home_url ), :id => 'site-title' ) %>
-			<%= content_tag( 'span', 'Librarian mode', :class => 'uk-parliament-procedure-browser-librarian-only', :id => 'mode' ) %>
-			<%= render :partial => 'layouts/header/nav' %>
-		</div>
-	</div>
-</header>
+<%= render 'library_design/header/header' do %>
+	<%= link_to( 'Work packages', work_package_current_list_url, :class => 'work-packages' )  %>
+	<%= link_to( 'Procedures', procedure_main_list_url, :class => 'procedures' )  %>
+	<%= link_to( 'Enabling legislation', enabling_legislation_atoz_show_url( :letter => 'a' ), :class => 'enabling-legislation' )  %>
+	<%= link_to( 'Organisations accountable to Parliament', organisation_accountable_to_parliament_current_list_url, :class => 'organisations-accountable-to-parliament' )  %>
+	<%= link_to( 'Calculation styles', calculation_style_list_url, :class => 'calculation-styles uk-parliament-procedure-browser-librarian-only' )  %>
+	<%= link_to( 'Steps', step_type_show_url( :step_type => 'Jwc6nqJi' ), :class => 'steps' )  %>
+	<%= link_to( 'Step collections', step_collection_list_url, :class => 'step-collections' )  %>
+	<%= link_to( 'Clocks', clock_list_url, :class => 'clocks uk-parliament-procedure-browser-librarian-only' )  %>
+	<%= link_to( 'Legislatures', legislature_list_url, :class => 'legislatures' )  %>
+<% end %>

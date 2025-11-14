@@ -1,24 +1,26 @@
-<%= content_tag( 'p', "Procedure Browser makes available data for instruments subject to parliamentary procedure, compiled by the #{link_to( 'House of Commons Library', 'https://commonslibrary.parliament.uk/')}.".html_safe ) %>
+<div class="reading-width">
+	<%= content_tag( 'p', "Procedure Browser makes available data for instruments subject to parliamentary procedure, compiled by the #{link_to( 'House of Commons Library', 'https://commonslibrary.parliament.uk/')}.".html_safe ) %>
 
-<%= content_tag( 'p', "From the beginning of the 2017-19 session, the data describes work packages for:" ) %>
+	<%= content_tag( 'p', "From the beginning of the 2017-19 session, the data describes work packages for:" ) %>
 
-<ul>
-	<%= content_tag( 'li', "Statutory instruments subject to procedure - not including Localism orders, Public Body orders or Statutory instruments laid by the General Synod of the Church of England." ) %>
-	<%= content_tag( 'li', "#{link_to( 'Proposed negative statutory instruments', procedure_show_url( :procedure => 'iCdMN1MW' ) )}.".html_safe ) %>
-	<%= content_tag( 'li', "#{link_to( 'Published drafts under the European Union (Withdrawal) Act 2018', procedure_show_url( :procedure => 'jaKY87jt' ) )}.".html_safe ) %>
-	<%= content_tag( 'li', "#{link_to( 'Proposals for remedial orders', procedure_show_url( :procedure => 'OvnVdtXG' ) )}.".html_safe ) %>
-	<%= content_tag( 'li', "#{link_to( 'Treaties subject to the Constitutional Reform and Governance Act 2010', procedure_show_url( :procedure => 'D00dsjR2' ) )}.".html_safe ) %>
-</ul>
+	<ul>
+		<%= content_tag( 'li', "Statutory instruments subject to procedure - not including Localism orders, Public Body orders or Statutory instruments laid by the General Synod of the Church of England." ) %>
+		<%= content_tag( 'li', "#{link_to( 'Proposed negative statutory instruments', procedure_show_url( :procedure => 'iCdMN1MW' ) )}.".html_safe ) %>
+		<%= content_tag( 'li', "#{link_to( 'Published drafts under the European Union (Withdrawal) Act 2018', procedure_show_url( :procedure => 'jaKY87jt' ) )}.".html_safe ) %>
+		<%= content_tag( 'li', "#{link_to( 'Proposals for remedial orders', procedure_show_url( :procedure => 'OvnVdtXG' ) )}.".html_safe ) %>
+		<%= content_tag( 'li', "#{link_to( 'Treaties subject to the Constitutional Reform and Governance Act 2010', procedure_show_url( :procedure => 'D00dsjR2' ) )}.".html_safe ) %>
+	</ul>
 
-<%= content_tag( 'p', "Statutory instruments laid before Parliament not subject to a procedure are not included. Other forms of delegated legislation are not included, even where they follow the procedures described here." ) %>
+	<%= content_tag( 'p', "Statutory instruments laid before Parliament not subject to a procedure are not included. Other forms of delegated legislation are not included, even where they follow the procedures described here." ) %>
 
-<%= content_tag( 'p', "A sample of #{link_to( 'work packages', work_package_current_list_url )} describing #{link_to( 'UK public bills', procedure_show_url( :procedure => 'pWKSg0gl' ) )} subject to legislative consent procedures in devolved legislatures has been compiled.".html_safe ) %>
+	<%= content_tag( 'p', "A sample of #{link_to( 'work packages', work_package_current_list_url )} describing #{link_to( 'UK public bills', procedure_show_url( :procedure => 'pWKSg0gl' ) )} subject to legislative consent procedures in devolved legislatures has been compiled.".html_safe ) %>
 
-<%= content_tag( 'p', "#{link_to( 'Procedures listed', procedure_main_list_url )} and the #{link_to( 'steps within those procedures', step_type_show_url( :step_type => 'Jwc6nqJi' ) )} are limited to those procedures and steps appearing in the work packages described or with the potential to appear in those work packages.".html_safe ) %>
+	<%= content_tag( 'p', "#{link_to( 'Procedures listed', procedure_main_list_url )} and the #{link_to( 'steps within those procedures', step_type_show_url( :step_type => 'Jwc6nqJi' ) )} are limited to those procedures and steps appearing in the work packages described or with the potential to appear in those work packages.".html_safe ) %>
 
-<%= content_tag( 'p', "The list of #{link_to( 'enabling legislation', enabling_legislation_atoz_show_url( :letter => 'a' ) )} is confined to Acts of the UK Parliament where those Acts have enabled one or more statutory instruments subject to parliamentary procedure since the beginning of the 2017-19 session.".html_safe ) %>
+	<%= content_tag( 'p', "The list of #{link_to( 'enabling legislation', enabling_legislation_atoz_show_url( :letter => 'a' ) )} is confined to Acts of the UK Parliament where those Acts have enabled one or more statutory instruments subject to parliamentary procedure since the beginning of the 2017-19 session.".html_safe ) %>
 
-<%= content_tag( 'p', "#{link_to( 'Organisations', organisation_accountable_to_parliament_current_list_url )} either laying instruments subject to parliamentary procedure or leading treaties subject to parliamentary procedure are listed.".html_safe ) %>
+	<%= content_tag( 'p', "#{link_to( 'Organisations', organisation_accountable_to_parliament_current_list_url )} either laying instruments subject to parliamentary procedure or leading treaties subject to parliamentary procedure are listed.".html_safe ) %>
+</div>
 
 
 

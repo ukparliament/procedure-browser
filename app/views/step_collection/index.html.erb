@@ -1,4 +1,6 @@
-<%= list_item_count_sentence( 'step collection', @step_collections.size ) %>
-<ol>
-	<%= render :partial => 'step_collection', :collection => @step_collections %>
-</ol>
+<div class="reading-width">
+	<%= list_item_count_sentence( 'step collection', @step_collections.size ) %>
+	<ol class="unnumbered">
+		<%= render :partial => 'step_collection', :collection => @step_collections %>
+	</ol>
+</div>

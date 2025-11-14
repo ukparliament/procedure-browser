@@ -1,11 +1,14 @@
 <%= render :partial => 'current_nav' %>
 
-<%= list_item_count_sentence( 'work packageable thing', @result_count ) %>
+<div class="reading-width">
 
-<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
+	<%= list_item_count_sentence( 'work packageable thing', @result_count ) %>
 
-<ol>
-	<%= render :partial => 'work_packageable_thing', :collection => @work_packageable_things, :locals => { 'work_packageable_things' => @work_packageable_things} %>
-</ol>
+	<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
 
-<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+	<ol class="unnumbered">
+		<%= render :partial => 'work_packageable_thing', :collection => @work_packageable_things, :locals => { 'work_packageable_things' => @work_packageable_things} %>
+	</ol>
+
+	<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
+</div>
