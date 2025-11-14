@@ -9,7 +9,7 @@ class StepNoteController < ApplicationController
     step_id = params[:step]
     @step = get_step( step_id )
   
-    @page_title = '@step.display_label = Notes'
+    @page_title = "#{@step.display_label} - Notes"
     @multiline_page_title = "#{@step.label} <span class='subhead'>Notes</span>".html_safe
     @description = "Notes for #{@step.display_label}."
     @crumb << { label: 'Steps', url: step_type_list_url }
