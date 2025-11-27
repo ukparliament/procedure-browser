@@ -9,7 +9,7 @@ gem "rails", "~> 8.1"
 gem "propshaft"
 
 # For local development
-gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.0"
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.2"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"

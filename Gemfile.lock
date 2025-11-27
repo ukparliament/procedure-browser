@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/ukparliament/design-assets.git
-  revision: 3116555328909afce1feb2e7b6e95529b2df88a0
-  tag: 0.6.0
+  revision: d2bb4e71f3afa545d2e60c850bed35428eab1531
+  tag: 0.6.2
   glob: library_design/*.gemspec
   specs:
-    library_design (0.6.0)
+    library_design (0.6.2)
       rack-cors (~> 3.0.0)
 
 GEM
