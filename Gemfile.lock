@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/ukparliament/design-assets.git
-  revision: 3116555328909afce1feb2e7b6e95529b2df88a0
-  tag: 0.6.0
+  revision: d2bb4e71f3afa545d2e60c850bed35428eab1531
+  tag: 0.6.2
   glob: library_design/*.gemspec
   specs:
-    library_design (0.6.0)
+    library_design (0.6.2)
       rack-cors (~> 3.0.0)
 
 GEM
@@ -84,8 +84,8 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    addressable (2.8.8)
+      public_suffix (>= 2.0.2, < 8.0)
     base64 (0.3.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
@@ -102,7 +102,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.4)
+    connection_pool (2.5.5)
     crass (1.0.6)
     csv (3.3.5)
     date (3.5.0)
@@ -140,7 +140,7 @@ GEM
     matrix (0.4.3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.1)
+    minitest (5.26.2)
     msgpack (1.8.0)
     net-imap (0.5.12)
       date
@@ -175,7 +175,7 @@ GEM
     psych (5.2.6)
       date
       stringio
-    public_suffix (6.0.2)
+    public_suffix (7.0.0)
     puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -221,7 +221,7 @@ GEM
       tsort (>= 0.2)
       zeitwerk (~> 2.6)
     rake (13.3.1)
-    rdoc (6.15.1)
+    rdoc (6.16.0)
       erb
       psych (>= 4.0.0)
       tsort
