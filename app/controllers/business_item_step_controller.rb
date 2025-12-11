@@ -36,6 +36,7 @@ class BusinessItemStepController < ApplicationController
       @description = "Steps for a business item as part of a work package for #{@business_item.work_packageable_thing_label}."
       @crumb << { label: 'Business item', url: business_item_show_url }
     end
+    @canonical_url = business_item_show_url
     @crumb << { label: 'Steps', url: nil }
     @section = 'work-packages'
   end

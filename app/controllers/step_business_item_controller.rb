@@ -42,6 +42,7 @@ class StepBusinessItemController < ApplicationController
         @page_title = "#{@step.display_label} - Business items"
         @multiline_page_title = "#{@step.display_label} <span class='subhead'>Business items</span>".html_safe
         @description = "Business items for #{@step.display_label}."
+        @canonical_url = step_show_url
         @rss_url = step_business_item_list_url( :format => 'rss' )
         @csv_url = step_business_item_list_url( :format => 'csv' )
         @crumb << { label: 'Steps', url: step_type_list_url }
