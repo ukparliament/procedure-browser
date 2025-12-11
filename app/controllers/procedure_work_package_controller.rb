@@ -77,6 +77,7 @@ class ProcedureWorkPackageController < ApplicationController
     @page_title = "#{@procedure.label} - Work packages"
     @multiline_page_title = "#{@procedure.label} <span class='subhead'>Work packages before Parliament</span>".html_safe
     @description = "Work packages subject to #{@procedure.label} currently before Parliament."
+    @canonical_url = procedure_show_url
     @rss_url = procedure_work_package_current_list_url( :format => 'rss' )
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: @procedure.label, url: procedure_show_url }

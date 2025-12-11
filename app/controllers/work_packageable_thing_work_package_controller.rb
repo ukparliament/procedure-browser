@@ -17,6 +17,7 @@ class WorkPackageableThingWorkPackageController < ApplicationController
     @page_title = "#{@work_packageable_thing.label} - work packages"
     @multiline_page_title = "#{@work_packageable_thing.label} <span class='subhead'>Work packages</span>".html_safe
     @description = "Work packages for #{@work_packageable_thing.label}."
+    @canonical_url = work_packageable_thing_show_url
     @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
     @crumb << { label: @work_packageable_thing.label, url: work_packageable_thing_show_url }
     @crumb << { label: 'Work packages', url: nil }

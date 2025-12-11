@@ -39,6 +39,7 @@ class WorkPackageBusinessItemController < ApplicationController
     @page_title = "Business items forming the work package for #{@work_package.work_packageable_thing_label}"
     @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package business items</span>".html_safe
     @description = "Business items forming the work package for #{@work_package.work_packageable_thing_label}."
+    @canonical_url = work_package_show_url
     @rss_url = work_package_business_item_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: work_package_list_url }
     @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }

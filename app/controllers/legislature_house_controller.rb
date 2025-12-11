@@ -15,6 +15,7 @@ class LegislatureHouseController < ApplicationController
     @page_title = "Houses in the #{@legislature.label}"
     @multiline_page_title = "#{@legislature.label} <span class='subhead'>Houses</span>".html_safe
     @description = "Houses in the #{@legislature.label}."
+    @canonical_url = legislature_show_url
     @crumb << { label: 'Legislatures', url: legislature_list_url }
     @crumb << { label: @legislature.label, url: legislature_show_url }
     @crumb << { label: 'Houses', url: nil }

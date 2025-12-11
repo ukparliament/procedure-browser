@@ -15,6 +15,7 @@ class RouteProcedureController < ApplicationController
     
     @page_title = @route.title
     @description = @route.description
+    @canonical_url = route_show_url
     @crumb << { label: 'Routes', url: route_list_url }
     @crumb << { label: @route.crumb_label, url: route_show_url }
     @crumb << { label: 'Procedures', url: nil }

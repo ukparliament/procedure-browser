@@ -15,6 +15,7 @@ class HouseStepController < ApplicationController
     @page_title = "Steps in the #{@house.label}"
     @multiline_page_title = "#{@house.label} <span class='subhead'>Steps</span>".html_safe
     @description = "Steps in the #{@house.label}."
+    @canonical_url = house_show_url
     @crumb << { label: 'Legislatures', url: legislature_list_url }
     @crumb << { label: 'UK Parliament', url: legislature_show_url( :legislature => '4Mapsyb9') }
     @crumb << { label: @house.label, url: house_show_url( :house => @house.id ) }

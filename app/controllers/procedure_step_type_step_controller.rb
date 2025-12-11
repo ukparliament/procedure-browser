@@ -20,6 +20,7 @@ class ProcedureStepTypeStepController < ApplicationController
     @page_title = "#{@procedure.label} - #{@step_type.label}"
     @multiline_page_title = "#{@procedure.label} <span class='subhead'>#{@step_type.label}</span>".html_safe
     @description = "Steps of type '#{@step_type.label}' in the #{@procedure.label} procedure."
+    @canonical_url = procedure_step_type_show_url
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: @procedure.label, url: procedure_show_url }
     @crumb << { label: 'Step types', url: procedure_step_type_list_url }

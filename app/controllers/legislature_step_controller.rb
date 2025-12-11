@@ -14,6 +14,7 @@ class LegislatureStepController < ApplicationController
     
     @page_title = "Steps in the #{@legislature.label}"
     @multiline_page_title = "#{@legislature.label} <span class='subhead'>Steps</span>".html_safe
+    @canonical_url = legislature_show_url
     @description = "Steps in the #{@legislature.label}."
     @crumb << { label: 'Legislatures', url: legislature_list_url }
     @crumb << { label: @legislature.label, url: legislature_show_url }

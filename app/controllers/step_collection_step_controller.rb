@@ -15,6 +15,7 @@ class StepCollectionStepController < ApplicationController
     @page_title = "#{@step_collection.label} - Steps"
     @multiline_page_title = "#{@step_collection.label} <span class='subhead'>Steps</span>".html_safe
     @description = "Steps in the '#{@step_collection.label}' step collection."
+    @canonical_url = step_collection_show_url
     @crumb << { label: 'Step collections', url: step_collection_list_url }
     @crumb << { label: @step_collection.label, url: step_collection_show_url }
     @crumb << { label: 'Steps', url: nil }

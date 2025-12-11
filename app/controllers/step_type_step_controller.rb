@@ -17,6 +17,7 @@ class StepTypeStepController < ApplicationController
     @page_title = "#{@step_type.label} - steps"
     @multiline_page_title = "#{@step_type.label} <span class='subhead'>Steps</span>".html_safe
     @description = "Steps of type #{@step_type.label}."
+    @canonical_url = step_type_show_url
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step_type.label, url: step_type_show_url( :step_type => @step_type.id ) }
     @crumb << { label: 'Steps', url: nil }
