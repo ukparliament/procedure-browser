@@ -10,4 +10,28 @@
 	<%= content_tag( 'p', "#{link_to( 'Business steps', step_type_show_url( :step_type => 'Jwc6nqJi' ) )} may be in a #{link_to( 'House', legislature_show_url( :legislature => '4Mapsyb9' ))}, both Houses or neither House. A House is in a #{link_to( 'legislature', legislature_list_url )}. A business step may also be in a legislature, or not. They may form part of a #{link_to( 'step collection', step_collection_list_url )}, which may be related to a House or a procedure.".html_safe ) %>
 
 	<%= content_tag( 'p', "Business steps are #{link_to( 'one type of step', step_type_list_url )}, the other types being logical and arithmetic operators and summation steps.".html_safe ) %>
+	
+	
+	<div class="librarian-mode">
+		<%= content_tag( 'h2', 'Librarian mode' ) %>
+		<%= content_tag( 'p', "Some views of this website are suppressed in browsers with #{link_to( 'CSS', 'https://en.wikipedia.org/wiki/CSS' )} turned on. You can enable these views by installing the client-side CSS shown below. This has been tested using #{link_to( 'Stylus', 'https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne' )} in the Chrome browser. It should work in other browsers enabling client-side CSS, though no guarantees are given.".html_safe ) %>
+		<pre class="overflow-auto">
+			<code>
+/* A user stylesheet to overide author CSS, making components marked as librarian-only visible */
+body header .uk-parliament-procedure-browser-librarian-only {
+	display: inline-block !important;
+}
+body main .uk-parliament-procedure-browser-librarian-only {
+	display: inline-block !important;
+}
+
+
+/* Places a yellow stripe down the left of the page to indicate librarian mode */
+body.uk-parliament-procedure-browser {
+	background: yellow;
+	padding-left: 1em;
+}
+			</code>
+		</pre>
+	</div>
 </div>
