@@ -28,6 +28,7 @@ class LegislatureController < ApplicationController
     
     @page_title = @legislature.label
     @description = "#{@legislature.label}."
+    @csv_url = legislature_step_list_url( :format => 'csv' ) unless @legislature_steps.empty?
     @crumb << { label: 'Legislatures', url: legislature_list_url }
     @crumb << { label: @legislature.label, url: nil }
     @section = 'legislatures'
