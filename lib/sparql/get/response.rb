@@ -14,7 +14,17 @@ module Sparql::Get::Response
     # We get the response from the SPARQL query.
     response = Net::HTTP.post( $SPARQL_REQUEST_URI, request_body, $SPARQL_REQUEST_HEADERS )
     
+    # Let's make sure the response body is actually UTF-8
+    body = convert_response_body_to_utf_8(response)
+
     # We parse the body of the response as CSV.
-    CSV.parse( response.body, headers: true )
+    CSV.parse( body, headers: true )
+  end
+
+  private
+
+  def convert_response_body_to_utf_8(response)
+    body = response.body
+    body.force_encoding('UTF-8').encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
   end
 end
