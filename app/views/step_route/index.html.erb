@@ -2,11 +2,13 @@
 
 <div class="reading-width">
 
-	<%= list_item_count_sentence( 'route', @step_routes.size ) %>
+	<%= list_item_count_sentence( 'route', @routes.size ) %>
+	
+	<%= render :partial => 'library_design/feeds/feeds' %>
 
-	<% unless @step_routes.empty? -%>
+	<% unless @routes.empty? -%>
 		<ol class="unnumbered">
-			<%= render :partial => 'route', :collection => @step_routes %>
+			<%= render :partial => 'route', :collection => @routes %>
 		</ol>
 	<% end -%>
 
