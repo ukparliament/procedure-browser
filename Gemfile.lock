@@ -140,7 +140,7 @@ GEM
     matrix (0.4.3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.2)
+    minitest (5.27.0)
     msgpack (1.8.0)
     net-imap (0.5.12)
       date
