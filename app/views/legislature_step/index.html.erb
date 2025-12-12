@@ -1,10 +1,12 @@
 <div class="reading-width">
 
-	<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
+	<%= list_item_count_sentence( 'step', @steps.size ) %>
+	
+	<%= render :partial => 'library_design/feeds/feeds' %>
 
-	<% unless @legislature_steps.empty? -%>
+	<% unless @steps.empty? -%>
 		<ol class="unnumbered link-list">
-			<%= render :partial => 'step', :collection => @legislature_steps %>
+			<%= render :partial => 'step', :collection => @steps %>
 		</ol>
 	<% end -%>
 

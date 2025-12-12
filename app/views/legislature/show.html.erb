@@ -11,6 +11,8 @@
 	<% unless @legislature_steps.empty? -%>
 		<div id="steps">
 			<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
+			
+			<%= render :partial => 'library_design/feeds/feeds' %>
 		
 			<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 		
