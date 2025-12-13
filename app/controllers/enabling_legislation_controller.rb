@@ -15,18 +15,25 @@ class EnablingLegislationController < ApplicationController
 
   def index
     
-    # We get the enabling legislation a to z.
-    @letters = get_enabling_legislation_atoz
-    
     # We get the enabling legislation items.
     @enabling_legislations = get_enabling_legislations
     
-    @page_title = 'Enabling legislation'
-    @multiline_page_title = "Enabling legislation <span class='subhead'>All</span>".html_safe
-    @description = 'Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure.'
-    @crumb << { label: 'Enabling legislation', url: nil }
-    @section = 'enabling-legislation'
-    @subsection = 'all'
+    respond_to do |format|
+      format.csv
+      format.html {
+      
+        # We get the enabling legislation a to z.
+        @letters = get_enabling_legislation_atoz
+        
+        @page_title = 'Enabling legislation'
+        @multiline_page_title = "Enabling legislation <span class='subhead'>All</span>".html_safe
+        @description = 'Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure.'
+        @csv_url = enabling_legislation_list_url( :format => 'csv' )
+        @crumb << { label: 'Enabling legislation', url: nil }
+        @section = 'enabling-legislation'
+        @subsection = 'all'
+      }
+    end
   end
 
   def show
