@@ -1,14 +1,16 @@
 <%= render :partial => 'step_collection/intro', :object => @step_collection %>
 
 <div class="reading-width">
-	<%= list_item_count_sentence( 'step', @step_collection_steps.size ) %>
+	<%= list_item_count_sentence( 'step', @steps.size ) %>
+	
+	<%= render :partial => 'library_design/feeds/feeds' %>
 
-	<% unless @step_collection_steps.empty? %>
+	<% unless @steps.empty? %>
 
 		<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
 	
 		<ol class="unnumbered link-list">
-			<%= render :partial => 'step/step', :collection => @step_collection_steps %>
+			<%= render :partial => 'step/step', :collection => @steps %>
 		</ol>
 	<% end -%>
 
