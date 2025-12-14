@@ -39,10 +39,11 @@ class StepCollectionController < ApplicationController
   def show
     step_collection_id = params[:step_collection]
     @step_collection = get_step_collection( step_collection_id )
-    @step_collection_steps = get_step_collection_steps( step_collection_id )
+    @steps = get_step_collection_steps( step_collection_id )
     
     @page_title = @step_collection.label
     @description = "#{@step_collection.label}."
+    @csv_url = step_collection_step_list_url( :format => 'csv' )
     @crumb << { label: 'Step collections', url: step_collection_list_url }
     @crumb << { label: @step_collection.label, url: nil }
     @section = 'step-collections'
