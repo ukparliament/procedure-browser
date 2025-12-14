@@ -12,12 +12,14 @@ class LegislatureStepController < ApplicationController
     @legislature = get_legislature( legislature_id )
     @steps = get_legislature_steps( legislature_id )
     
+    @page_title = "Steps in the #{@legislature.label}"
+    
     respond_to do |format|
       format.csv {
+        response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
         render :template => 'step/index'
       }
       format.html {
-        @page_title = "Steps in the #{@legislature.label}"
         @multiline_page_title = "#{@legislature.label} <span class='subhead'>Steps</span>".html_safe
         @canonical_url = legislature_show_url
         @csv_url = legislature_step_list_url( :format => 'csv' )

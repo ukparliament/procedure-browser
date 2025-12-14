@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
+  def csv_title_from_page_title( page_title )
+    page_title.downcase.gsub( ' ', '-' ).gsub( '---', '-' )
+  end
 
   def render_404
     render file: "public/404.html", status: :not_found, layout: false

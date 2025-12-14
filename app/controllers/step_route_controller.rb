@@ -12,12 +12,14 @@ class StepRouteController < ApplicationController
     @step = get_step( step_id )
     @routes = get_step_routes( step_id )
     
+    @page_title = "#{@step.display_label} - Routes"
+    
     respond_to do |format|
       format.csv {
+        response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
         render :template => 'route/index'
       }
-      format.html{
-        @page_title = "#{@step.display_label} - Routes"
+      format.html {
         @multiline_page_title = "#{@step.display_label} <span class='subhead'>Routes</span>".html_safe
         @description = "Routes for #{@step.display_label}."
         @csv_url = step_route_list_url( :step => @step.id, :format => 'csv' )

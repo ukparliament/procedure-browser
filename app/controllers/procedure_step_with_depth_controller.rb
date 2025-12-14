@@ -13,12 +13,21 @@ class ProcedureStepWithDepthController < ApplicationController
     @procedure_steps_with_depths = get_procedure_steps_with_depths( procedure_id )
     
     @page_title = "#{@procedure.label} - Steps with depths"
-    @multiline_page_title = "#{@procedure.label} <span class='subhead'>Steps with depths</span>".html_safe
-    @description = "Steps present in #{@procedure.label} with depths."
-    @crumb << { label: 'Procedures', url: procedure_list_url }
-    @crumb << { label: @procedure.label, url: procedure_show_url }
-    @crumb << { label: 'Steps with depths', url: nil }
-    @section = 'procedures'
-    @subsection = 'steps-with-depths'
+    
+    respond_to do |format|
+      format.csv {
+        response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
+      }
+      format.html {
+        @multiline_page_title = "#{@procedure.label} <span class='subhead'>Steps with depths</span>".html_safe
+        @description = "Steps present in #{@procedure.label} with depths."
+        @csv_url = procedure_step_with_depth_list_url( :format => 'csv' )
+        @crumb << { label: 'Procedures', url: procedure_list_url }
+        @crumb << { label: @procedure.label, url: procedure_show_url }
+        @crumb << { label: 'Steps with depths', url: nil }
+        @section = 'procedures'
+        @subsection = 'steps-with-depths'
+      }
+    end
   end
 end
