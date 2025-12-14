@@ -2,13 +2,15 @@
 
 <div class="reading-width">
 
-	<%= list_item_count_sentence( 'step', @house_steps.size ) %>
+	<%= list_item_count_sentence( 'step', @steps.size ) %>
+	
+	<%= render :partial => 'library_design/feeds/feeds' %>
 
 	<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 
-	<% unless @house_steps.empty? -%>
+	<% unless @steps.empty? -%>
 		<ol class="unnumbered link-list">
-			<%= render :partial => 'step/step', :collection => @house_steps %>
+			<%= render :partial => 'step/step', :collection => @steps %>
 		</ol>
 	<% end -%>
 

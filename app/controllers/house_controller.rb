@@ -21,10 +21,11 @@ class HouseController < ApplicationController
   def show
     house_id = params[:house]
     @house = get_house( house_id )
-    @house_steps = get_house_steps( house_id )
+    @steps = get_house_steps( house_id )
     
     @page_title = @house.label
     @description = "#{@house.label}."
+    @csv_url = house_step_list_url( :format => 'csv' ) unless @steps.empty?
     @crumb << { label: 'Legislatures', url: legislature_list_url }
     @crumb << { label: 'UK Parliament', url: legislature_show_url( :legislature => '4Mapsyb9') }
     @crumb << { label: @house.label, url: nil }
