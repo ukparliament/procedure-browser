@@ -3,6 +3,9 @@
 <div class="reading-width">
 
 	<%= list_item_count_sentence( 'step', @procedure_steps_with_depths.size ) %>
+	
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	
 	<ol class="unnumbered">
 		<%= render :partial => 'step_with_depth', :collection => @procedure_steps_with_depths %>
 	</ol>
