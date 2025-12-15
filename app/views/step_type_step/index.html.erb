@@ -2,12 +2,14 @@
 	<%= content_tag( 'p', @step_type.description ) if @step_type.description %>
 
 	<div id="steps">
-		<%= list_item_count_sentence( 'step', @step_type_steps.size ) %>
+		<%= list_item_count_sentence( 'step', @steps.size ) %>
+		
+		<%= render :partial => 'library_design/feeds/feeds' %>
 	
 		<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
 	
 		<ol class="unnumbered link-list">
-			<%= render :partial => 'step/step', :collection => @step_type_steps %>
+			<%= render :partial => 'step/step', :collection => @steps %>
 		</ol>
 	</div>
 

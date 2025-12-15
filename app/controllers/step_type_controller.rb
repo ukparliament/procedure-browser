@@ -19,15 +19,16 @@ class StepTypeController < ApplicationController
   
   def show
     step_type_id = params[:step_type]
-    @step_type_steps = get_step_type_steps( step_type_id )
+    @steps = get_step_type_steps( step_type_id )
     
     @step_type = StepType.new
-    @step_type.identifier = @step_type_steps.first.step_type_identifier
-    @step_type.label = @step_type_steps.first.step_type_label
-    @step_type.description = @step_type_steps.first.step_type_description
+    @step_type.identifier = @steps.first.step_type_identifier
+    @step_type.label = @steps.first.step_type_label
+    @step_type.description = @steps.first.step_type_description
     
     @page_title = @step_type.label
     @description = "Steps of type #{@step_type.label}."
+    @csv_url = step_type_step_list_url( :format => 'csv' )
     @crumb << { label: 'Steps', url: step_type_list_url }
     @crumb << { label: @step_type.label, url: nil }
     @section = 'step-types'
