@@ -17,6 +17,8 @@ class StepBusinessItemController < ApplicationController
     step_id = params[:step]
     @step = get_step( step_id )
     
+    @page_title = "#{@step.display_label} - Business items"
+    
     respond_to do |format|
       format.html {
         
@@ -39,7 +41,6 @@ class StepBusinessItemController < ApplicationController
         # We get the set of current business items for this step on this page with this many results per page.
         @business_items = get_step_business_items( step_id, @page, @results_per_page )
 
-        @page_title = "#{@step.display_label} - Business items"
         @multiline_page_title = "#{@step.display_label} <span class='subhead'>Business items</span>".html_safe
         @description = "Business items for #{@step.display_label}."
         @canonical_url = step_show_url
@@ -52,6 +53,7 @@ class StepBusinessItemController < ApplicationController
         @subsection = 'business-items'
       }
       format.csv {
+        response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
         @business_items = get_step_business_items_all( step_id )
       }
       format.rss {
