@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/a-z' => 'enabling_legislation_ato_z#index', as: :enabling_legislation_atoz_list
   get 'procedure-browser/enabling-legislation/a-z/:letter' => 'enabling_legislation_ato_z#show', as: :enabling_legislation_atoz_show
   
+  get 'procedure-browser/enabling-legislation/lookup' => 'enabling_legislation_lookup#index', as: :enabling_legislation_lookup_list
+  
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
   get 'procedure-browser/enabling-legislation/:enabling_legislation' => 'enabling_legislation#show', as: :enabling_legislation_show
   
