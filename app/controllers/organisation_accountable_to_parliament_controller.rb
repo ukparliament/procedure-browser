@@ -21,10 +21,6 @@ class OrganisationAccountableToParliamentController < ApplicationController
 
   def index
   
-    
-    
-    
-    
     respond_to do |format|
       format.csv {
         @organisations_accountable_to_parliament = get_organisations_accountable_to_parliament_all
