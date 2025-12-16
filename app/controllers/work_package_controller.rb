@@ -11,6 +11,8 @@ class WorkPackageController < ApplicationController
   include Sparql::Queries::WorkPackageCountCurrent
   include Sparql::Get::WorkPackagesCurrent
   include Sparql::Queries::WorkPackagesCurrent
+  include Sparql::Get::WorkPackagesCurrentAll
+  include Sparql::Queries::WorkPackagesCurrentAll
   include Sparql::Get::WorkPackage
   include Sparql::Queries::WorkPackage
   include Sparql::Get::WorkPackageBusinessItems
@@ -20,8 +22,6 @@ class WorkPackageController < ApplicationController
 
   def index
   
-    
-    
     # The results returned depend upon the format requested ...
     # ... so we respond to different formats.
     respond_to do |format|
@@ -68,33 +68,44 @@ class WorkPackageController < ApplicationController
   
   def current
   
-    # We get the page number passed as a parameter.
-    page = params['page']
-    @page = ( page || "1" ).to_i
+    @page_title = 'Work packages before Parliament'
+  
+    respond_to do |format|
+      format.csv {
+        @work_packages = get_work_packages_current_all
+        response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
+        render :template => 'work_package/index'
+      }
+      format.any( :html, :rss ) {
+        # We get the page number passed as a parameter.
+        page = params['page']
+        @page = ( page || "1" ).to_i
     
-    # We get the number of results per page passed as a parameter.
-    results_per_page = params['results-per-page']
-    @results_per_page = ( results_per_page || $DEFAULT_RESULTS_PER_PAGE ).to_i
+        # We get the number of results per page passed as a parameter.
+        results_per_page = params['results-per-page']
+        @results_per_page = ( results_per_page || $DEFAULT_RESULTS_PER_PAGE ).to_i
     
-    # We get the count of all work packages.
-    @result_count = get_work_package_current_count
+        # We get the count of all work packages.
+        @result_count = get_work_package_current_count
     
-    # If this is not the first page and the number of the first work package on this page exceeds the total number of work packages ...
-    if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
-      raise ActionController::RoutingError.new("Not Found")
+        # If this is not the first page and the number of the first work package on this page exceeds the total number of work packages ...
+        if @page != 1 && ( ( ( @page - 1 ) * @results_per_page ) + 1 > @result_count )
+          raise ActionController::RoutingError.new("Not Found")
+        end
+    
+        # We get the set of work packages on this page with this many results per page.
+        @work_packages = get_work_packages_current( @page, @results_per_page )
+    
+        @multiline_page_title = "Work packages <span class='subhead'>Before Parliament</span>".html_safe
+        @description = 'Work packages before Parliament.'
+        @csv_url = work_package_current_list_url( :format => 'csv' )
+        @rss_url = work_package_current_list_url( :format => 'rss' )
+        @crumb << { label: 'Work packages', url: work_package_list_url }
+        @crumb << { label: 'Before Parliament', url: nil }
+        @section = 'work-packages'
+        @subsection = 'current'
+      }
     end
-    
-    # We get the set of work packages on this page with this many results per page.
-    @work_packages = get_work_packages_current( @page, @results_per_page )
-    
-    @page_title = 'Work packages'
-    @multiline_page_title = "Work packages <span class='subhead'>Before Parliament</span>".html_safe
-    @description = 'Work packages before Parliament.'
-    @rss_url = work_package_current_list_url( :format => 'rss' )
-    @crumb << { label: 'Work packages', url: work_package_list_url }
-    @crumb << { label: 'Before Parliament', url: nil }
-    @section = 'work-packages'
-    @subsection = 'current'
   end
 
   def show
