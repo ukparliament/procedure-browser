@@ -65,6 +65,7 @@ class EnablingLegislationController < ApplicationController
     @multiline_page_title = "#{@enabling_legislation.label} <span class='subhead'>Work packages before Parliament</span>".html_safe
     @description = "Work packages for instruments enabled by #{@enabling_legislation.label} currently before Parliament."
     @rss_url = enabling_legislation_work_package_current_list_url( :format => 'rss' )
+    @csv_url = enabling_legislation_work_package_current_list_url( :format => 'csv' )
     @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
     @crumb << { label: @enabling_legislation.label, url: nil }
     @section = 'enabling-legislation'
