@@ -117,6 +117,7 @@ class OrganisationAccountableToParliamentController < ApplicationController
     @multiline_page_title = "#{@organisation_accountable_to_parliament.label} <span class='subhead'>Work packages before Parliament</span>".html_safe
     @description = "Work packages for the #{@organisation_accountable_to_parliament.label} currently before Parliament."
     @rss_url = organisation_accountable_to_parliament_work_package_current_list_url( :format => 'rss' )
+    @csv_url = organisation_accountable_to_parliament_work_package_current_list_url( :format => 'csv' )
     @crumb << { label: 'Organisations accountable to Parliament', url: organisation_accountable_to_parliament_list_url }
     @crumb << { label: @organisation_accountable_to_parliament.label, url: nil }
     @section = 'organisations-accountable-to-parliament'
