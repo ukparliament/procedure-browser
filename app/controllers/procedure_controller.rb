@@ -62,6 +62,7 @@ class ProcedureController < ApplicationController
     @page_title = @procedure.label
     @description = @procedure.description
     @rss_url = procedure_work_package_current_list_url( :format => 'rss' )
+    @csv_url = procedure_work_package_current_list_url( :format => 'csv' )
     @crumb << { label: 'Procedures', url: procedure_list_url }
     @crumb << { label: @procedure.label, url: nil }
     @section = 'procedures'
