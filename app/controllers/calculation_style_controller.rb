@@ -50,6 +50,7 @@ class CalculationStyleController < ApplicationController
     @multiline_page_title = "'#{@calculation_style.label}' calculation style <span class='subhead'>Work packages before Parliament</span>".html_safe
     @description = "Work packages using the '#{@calculation_style.label}' calculation style currently before Parliament."
     @rss_url = calculation_style_work_package_current_list_url( :format => 'rss' )
+    @csv_url = calculation_style_work_package_current_list_url( :format => 'csv' )
     @crumb << { label: 'Calculation styles', url: calculation_style_list_url }
     @crumb << { label: @calculation_style.label, url: nil }
     @section = 'calculation-styles'
