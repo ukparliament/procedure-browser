@@ -44,7 +44,7 @@ class CalculationStyleController < ApplicationController
     end
     
     # We get the set of work packages with this calculation style on this page with this many results per page.
-    @calculation_style_work_packages = get_calculation_style_work_packages_current( @calculation_style.id, @page, @results_per_page )
+    @work_packages = get_calculation_style_work_packages_current( @calculation_style.id, @page, @results_per_page )
     
     @page_title = "Work packages with the '#{@calculation_style.label}' calculation style currently before Parliament"
     @multiline_page_title = "'#{@calculation_style.label}' calculation style <span class='subhead'>Work packages before Parliament</span>".html_safe
