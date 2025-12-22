@@ -2,12 +2,12 @@
 
 <div class="reading-width">
 
-	<%= list_item_count_sentence( 'route', @procedure_routes.size ) %>
+	<%= list_item_count_sentence( 'route', @routes.size ) %>
 
 	<%= render :partial => 'library_design/feeds/feeds' %>
 
 	<ol class="unnumbered">
-		<%= render :partial => 'route', :collection => @procedure_routes %>
+		<%= render :partial => 'route', :collection => @routes %>
 	</ol>
 
 	<%= render :partial => 'common/identifier', :object => @procedure %>
