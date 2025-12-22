@@ -13,17 +13,10 @@ class EnablingLegislationLookupController < ApplicationController
     # We attempt to find an item of legislation with this URI.
     legislation = get_enabling_legislation_by_uri( legislation_gov_uk_uri )
     
-    # If the legislation item doesn't exist, the response module will return an empty array.
-    # If the legislation item is an empty array ...
-    if legislation.kind_of?( Array ) and legislation.empty?
+    # If we find an item of legislation with this URI ...
+    if legislation
     
-      # ... we raise a 404.
-      render_404
-    
-    # Otherwise, we know we've found the item of legislation ...
-    else
-    
-      # ... so we redirect to the list of instruments before Parliament enabled by that legislation.
+      # ... we redirect to the list of instruments before Parliament enabled by that legislation.
       redirect_to enabling_legislation_show_url( :enabling_legislation => legislation.id ), :status => 301
     end
   end
