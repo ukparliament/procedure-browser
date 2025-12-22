@@ -18,7 +18,7 @@ class EnablingLegislationLookupController < ApplicationController
     if legislation.kind_of?( Array ) and legislation.empty?
     
       # ... we raise a 404.
-      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+      render_404
     
     # Otherwise, we know we've found the item of legislation ...
     else
