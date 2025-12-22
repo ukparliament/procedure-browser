@@ -1,1 +1,1 @@
-"<%= business_item.work_packageable_thing_label %>",<%= business_item.work_package_identifier %>,<%= business_item.date.strftime( $CSV_DATE_DISPLAY_FORMAT)  %>,<%= business_item.identifier %>,"<%= business_item.procedure_label %>",<%= business_item.procedure_identifier %>
+"<%= raw business_item.work_packageable_thing_label %>",<%= business_item.work_package_identifier %>,<%= business_item.date.strftime( $CSV_DATE_DISPLAY_FORMAT)  %>,<%= business_item.identifier %>,"<%= raw business_item.procedure_label %>",<%= business_item.procedure_identifier %>
