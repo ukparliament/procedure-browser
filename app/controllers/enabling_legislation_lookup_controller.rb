@@ -17,7 +17,7 @@ class EnablingLegislationLookupController < ApplicationController
     if legislation
     
       # ... we redirect to the list of instruments before Parliament enabled by that legislation.
-      redirect_to enabling_legislation_show_path( :enabling_legislation => legislation.id ), :status => 301
+      redirect_to enabling_legislation_show_path( legislation.id )
     end
   end
 end

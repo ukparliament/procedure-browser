@@ -1,5 +1,4 @@
 module Sparql::Get::EnablingLegislationByUri
-puts 'purs'
 
   # A method to get an item of enabling legislation by its legislation.gov.uk URI.
   def get_enabling_legislation_by_uri( enabling_legislation_uri )
