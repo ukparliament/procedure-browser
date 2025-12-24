@@ -23,7 +23,6 @@ class EnablingLegislationLookupController < ApplicationController
     puts request.domain
     puts '====='
     puts Rails.application.routes.default_url_options[:host]
-    puts routes.default_url_options[:host]
     puts "**********"
     
       # ... we redirect to the list of instruments before Parliament enabled by that legislation.
