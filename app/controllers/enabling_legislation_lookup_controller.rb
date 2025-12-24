@@ -16,15 +16,6 @@ class EnablingLegislationLookupController < ApplicationController
     # If we find an item of legislation with this URI ...
     if legislation
     
-    puts "**********"
-    puts enabling_legislation_show_path( legislation.id )
-    puts enabling_legislation_show_url( legislation.id )
-    puts request.base_url
-    puts request.domain
-    puts '====='
-    puts Rails.application.routes.default_url_options[:host]
-    puts "**********"
-    
       # ... we redirect to the list of instruments before Parliament enabled by that legislation.
       redirect_to enabling_legislation_show_path( legislation.id )
     end
