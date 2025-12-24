@@ -60,6 +60,7 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   
   routes.default_url_options[:host] ||= "api.parliament.uk"
+  Rails.application.routes.default_url_options[:host] = 'api.parliament.uk'
   
   
   config.asset_host = ENV.fetch("ASSET_HOST", "https://procedure-browser-159b715822a4.herokuapp.com/")
