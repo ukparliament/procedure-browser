@@ -21,18 +21,22 @@ class StepTypeController < ApplicationController
     step_type_id = params[:step_type]
     @steps = get_step_type_steps( step_type_id )
     
-    @step_type = StepType.new
-    @step_type.identifier = @steps.first.step_type_identifier
-    @step_type.label = @steps.first.step_type_label
-    @step_type.description = @steps.first.step_type_description
+    # If we find steps for a step type with this identifier ...
+    if @steps
     
-    @page_title = @step_type.label
-    @description = "Steps of type #{@step_type.label}."
-    @csv_url = step_type_step_list_url( :format => 'csv' )
-    @crumb << { label: 'Steps', url: step_type_list_url }
-    @crumb << { label: @step_type.label, url: nil }
-    @section = 'step-types'
+      @step_type = StepType.new
+      @step_type.identifier = @steps.first.step_type_identifier
+      @step_type.label = @steps.first.step_type_label
+      @step_type.description = @steps.first.step_type_description
     
-    render :template => 'step_type_step/index'
+      @page_title = @step_type.label
+      @description = "Steps of type #{@step_type.label}."
+      @csv_url = step_type_step_list_url( :format => 'csv' )
+      @crumb << { label: 'Steps', url: step_type_list_url }
+      @crumb << { label: @step_type.label, url: nil }
+      @section = 'step-types'
+    
+      render :template => 'step_type_step/index'
+    end
   end
 end
