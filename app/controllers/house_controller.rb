@@ -21,17 +21,22 @@ class HouseController < ApplicationController
   def show
     house_id = params[:house]
     @house = get_house( house_id )
-    @steps = get_house_steps( house_id )
     
-    @page_title = @house.label
-    @description = "#{@house.label}."
-    @csv_url = house_step_list_url( :format => 'csv' ) unless @steps.empty?
-    @crumb << { label: 'Legislatures', url: legislature_list_url }
-    @crumb << { label: 'UK Parliament', url: legislature_show_url( :legislature => '4Mapsyb9') }
-    @crumb << { label: @house.label, url: nil }
-    @section = 'legislatures'
-    @subsection = 'steps'
+    # If we find a house with this identifier ...
+    if @house
     
-    render :template => 'house_step/index'
+      @steps = get_house_steps( house_id )
+    
+      @page_title = @house.label
+      @description = "#{@house.label}."
+      @csv_url = house_step_list_url( :format => 'csv' ) unless @steps.empty?
+      @crumb << { label: 'Legislatures', url: legislature_list_url }
+      @crumb << { label: 'UK Parliament', url: legislature_show_url( :legislature => '4Mapsyb9') }
+      @crumb << { label: @house.label, url: nil }
+      @section = 'legislatures'
+      @subsection = 'steps'
+    
+      render :template => 'house_step/index'
+    end
   end
 end
