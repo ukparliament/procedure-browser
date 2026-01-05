@@ -114,32 +114,36 @@ class WorkPackageController < ApplicationController
     # We get the work package.
     @work_package = get_work_package( work_package_id )
     
-    # We get all the business items for the work package.
-    @work_package_business_items = get_work_package_business_items( work_package_id )
+    # If we find a work package with this identifier ...
+    if @work_package
     
-    # We get arrays of pertinent past business items, future business items and undated business items.
-    @work_package_pertinent_past_business_items = get_pertinent_business_items_of_type( @work_package_business_items, 'past' )
-    @work_package_pertinent_future_business_item = get_pertinent_business_items_of_type( @work_package_business_items, 'future' )
-    @work_package_pertinent_undated_business_item = get_pertinent_business_items_of_type( @work_package_business_items, 'undated' )
+      # ... we get all the business items for the work package.
+      @work_package_business_items = get_work_package_business_items( work_package_id )
     
-    # We construct arrays of past business items, future business items and undated business items structured for display as nested lists.
-    # These are an array of dates, containing an array of business items, containing an array of steps.
-    @work_package_past_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_past_business_items )
-    @work_package_future_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_future_business_item )
-    @work_package_undated_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_undated_business_item )
+      # We get arrays of pertinent past business items, future business items and undated business items.
+      @work_package_pertinent_past_business_items = get_pertinent_business_items_of_type( @work_package_business_items, 'past' )
+      @work_package_pertinent_future_business_item = get_pertinent_business_items_of_type( @work_package_business_items, 'future' )
+      @work_package_pertinent_undated_business_item = get_pertinent_business_items_of_type( @work_package_business_items, 'undated' )
     
-    # We know the array of business items is actually an array of actualisations, some business items actualising more than one step.
-    # We get the business item count.
-    @business_item_count = get_business_item_count( @work_package_business_items )
+      # We construct arrays of past business items, future business items and undated business items structured for display as nested lists.
+      # These are an array of dates, containing an array of business items, containing an array of steps.
+      @work_package_past_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_past_business_items )
+      @work_package_future_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_future_business_item )
+      @work_package_undated_business_items = construct_business_items_array_for_work_package( @work_package_pertinent_undated_business_item )
     
-    @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
-    @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
-    @description = "A work package for #{@work_package.work_packageable_thing_label}."
-    @rss_url = work_package_business_item_list_url( :format => 'rss' )
-    @crumb << { label: 'Work packages', url: work_package_list_url }
-    @crumb << { label: @work_package.work_packageable_thing_label, url: nil }
-    @section = 'work-packages'
+      # We know the array of business items is actually an array of actualisations, some business items actualising more than one step.
+      # We get the business item count.
+      @business_item_count = get_business_item_count( @work_package_business_items )
     
-    render :template => 'work_package_business_item/index'
+      @page_title = "Work package for #{@work_package.work_packageable_thing_label}"
+      @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Work package</span>".html_safe
+      @description = "A work package for #{@work_package.work_packageable_thing_label}."
+      @rss_url = work_package_business_item_list_url( :format => 'rss' )
+      @crumb << { label: 'Work packages', url: work_package_list_url }
+      @crumb << { label: @work_package.work_packageable_thing_label, url: nil }
+      @section = 'work-packages'
+    
+      render :template => 'work_package_business_item/index'
+    end
   end
 end

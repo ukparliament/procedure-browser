@@ -10,15 +10,20 @@ class LegislatureHouseController < ApplicationController
   def index
     legislature_id = params[:legislature]
     @legislature = get_legislature( legislature_id )
-    @legislature_houses = get_legislature_houses( legislature_id )
     
-    @page_title = "Houses in the #{@legislature.label}"
-    @multiline_page_title = "#{@legislature.label} <span class='subhead'>Houses</span>".html_safe
-    @description = "Houses in the #{@legislature.label}."
-    @canonical_url = legislature_show_url
-    @crumb << { label: 'Legislatures', url: legislature_list_url }
-    @crumb << { label: @legislature.label, url: legislature_show_url }
-    @crumb << { label: 'Houses', url: nil }
-    @section = 'legislatures'
+    # If we find a legislature with this identifier ...
+    if @legislature
+    
+      @legislature_houses = get_legislature_houses( legislature_id )
+    
+      @page_title = "Houses in the #{@legislature.label}"
+      @multiline_page_title = "#{@legislature.label} <span class='subhead'>Houses</span>".html_safe
+      @description = "Houses in the #{@legislature.label}."
+      @canonical_url = legislature_show_url
+      @crumb << { label: 'Legislatures', url: legislature_list_url }
+      @crumb << { label: @legislature.label, url: legislature_show_url }
+      @crumb << { label: 'Houses', url: nil }
+      @section = 'legislatures'
+    end
   end
 end

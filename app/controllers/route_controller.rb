@@ -22,14 +22,18 @@ class RouteController < ApplicationController
     route_id = params[:route]
     @route = get_route( route_id )
     
-    @procedures = get_route_procedures( route_id )
+    # If we find a route with this identifier ...
+    if @route
     
-    @page_title = @route.title
-    @description = @route.description
-    @crumb << { label: 'Routes', url: route_list_url }
-    @crumb << { label: @route.crumb_label, url: nil }
-    @section = 'routes'
+      @procedures = get_route_procedures( route_id )
     
-    render :template => 'route_procedure/index'
+      @page_title = @route.title
+      @description = @route.description
+      @crumb << { label: 'Routes', url: route_list_url }
+      @crumb << { label: @route.crumb_label, url: nil }
+      @section = 'routes'
+    
+      render :template => 'route_procedure/index'
+    end
   end
 end

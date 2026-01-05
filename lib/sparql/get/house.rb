@@ -9,18 +9,32 @@ module Sparql::Get::House
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
     
-    # We take the one and only row from the CSV ...
-    csv.take( 1 ).each do |row|
-    
-      # ... and create a new house object.
-      house = House.new
-      house.identifier = row['House']
-      house.label = row['HouseName']
-      house.legislature_identifier = row['Legislature']
-      house.legislature_label = row['LegislatureName']
+    # If the house doesn't exist, the csv will be an empty array.
+    # If the array is an empty array ...
+    if csv.empty?
       
-      # We return the house object.
-      return house
+      # ... we render a 404 ...
+      render_404
+      
+      # ... and return nil.
+      return nil
+      
+    # Otherwise, if the CSV is not an empty array ...
+    else
+    
+      # ... we take the one and only row from the CSV ...
+      csv.take( 1 ).each do |row|
+    
+        # ... and create a new house object.
+        house = House.new
+        house.identifier = row['House']
+        house.label = row['HouseName']
+        house.legislature_identifier = row['Legislature']
+        house.legislature_label = row['LegislatureName']
+      
+        # We return the house object.
+        return house
+      end
     end
   end
 end

@@ -23,14 +23,19 @@ class LegislatureController < ApplicationController
   def show
     legislature_id = params[:legislature]
     @legislature = get_legislature( legislature_id )
-    @legislature_houses = get_legislature_houses( legislature_id )
-    @legislature_steps = get_legislature_steps( legislature_id )
     
-    @page_title = @legislature.label
-    @description = "#{@legislature.label}."
-    @csv_url = legislature_step_list_url( :format => 'csv' ) unless @legislature_steps.empty?
-    @crumb << { label: 'Legislatures', url: legislature_list_url }
-    @crumb << { label: @legislature.label, url: nil }
-    @section = 'legislatures'
+    # If we find a legislature with this identifier ...
+    if @legislature
+    
+      @legislature_houses = get_legislature_houses( legislature_id )
+      @legislature_steps = get_legislature_steps( legislature_id )
+    
+      @page_title = @legislature.label
+      @description = "#{@legislature.label}."
+      @csv_url = legislature_step_list_url( :format => 'csv' ) unless @legislature_steps.empty?
+      @crumb << { label: 'Legislatures', url: legislature_list_url }
+      @crumb << { label: @legislature.label, url: nil }
+      @section = 'legislatures'
+    end
   end
 end

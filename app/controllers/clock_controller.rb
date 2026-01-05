@@ -20,10 +20,14 @@ class ClockController < ApplicationController
     clock_id = params[:clock]
     @clock = get_clock( clock_id )
     
-    @page_title = @clock.label
-    @description = "#{@clock.label}."
-    @crumb << { label: 'Clocks', url: clock_list_url }
-    @crumb << { label: @clock.label, url: nil }
-    @section = 'clocks'
+    # If we find a clock with this identifier ...
+    if @clock
+    
+      @page_title = @clock.label
+      @description = "#{@clock.label}."
+      @crumb << { label: 'Clocks', url: clock_list_url }
+      @crumb << { label: @clock.label, url: nil }
+      @section = 'clocks'
+    end
   end
 end

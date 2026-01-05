@@ -9,16 +9,30 @@ module Sparql::Get::ProcedureStepType
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
     
-    # We take the one and only row from the CSV ...
-    csv.take( 1 ).each do |row|
-    
-      # ... and create a new step type object.
-      step_type = StepType.new
-      step_type.identifier = row['stepType']
-      step_type.label = row['stepTypeLabel']
+    # If the step typ doesn't exist in the procedure, the csv will be an empty array.
+    # If the array is an empty array ...
+    if csv.empty?
       
-      # We return the step type object.
-      return step_type
+      # ... we render a 404 ...
+      render_404
+      
+      # ... and return nil.
+      return nil
+      
+    # Otherwise, if the CSV is not an empty array ...
+    else
+    
+      # ... we take the one and only row from the CSV ...
+      csv.take( 1 ).each do |row|
+    
+        # ... and create a new step type object.
+        step_type = StepType.new
+        step_type.identifier = row['stepType']
+        step_type.label = row['stepTypeLabel']
+      
+        # We return the step type object.
+        return step_type
+      end
     end
   end
 end

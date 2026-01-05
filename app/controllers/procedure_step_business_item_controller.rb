@@ -13,23 +13,31 @@ class ProcedureStepBusinessItemController < ApplicationController
     procedure_id = params[:procedure]
     @procedure = get_procedure( procedure_id )
     
-    step_id = params[:step]
-    @procedure_step = get_procedure_step( procedure_id, step_id )
+    # If we find a procedure with this identifier ...
+    if @procedure
     
-    @procedure_step_business_items = get_procedure_step_business_items( procedure_id, step_id )
+      step_id = params[:step]
+      @procedure_step = get_procedure_step( procedure_id, step_id )
+      
+      # If we find a step with this identifier in this procedure ...
+      if @procedure_step
+      
+        @procedure_step_business_items = get_procedure_step_business_items( procedure_id, step_id )
     
-    @page_title = "#{@procedure.label} - Business items actualising '#{@procedure_step.label}'"
-    @multiline_page_title = "#{@procedure.label} <span class='subhead'>Business items actualising '#{@procedure_step.label}'</span>".html_safe
-    @description = "Work packages subject to the #{@procedure.label} procedure, with business items actualising '#{@procedure_step.label}'."
-    @canonical_url = procedure_step_show_url
-    @rss_url = procedure_step_business_item_list_url( :format => 'rss' )
-    @crumb << { label: 'Procedures', url: procedure_list_url }
-    @crumb << { label: @procedure.label, url: procedure_show_url }
-    @crumb << { label: 'Step types', url: procedure_step_type_list_url }
-    @crumb << { label: @procedure_step.step_type_label, url: procedure_step_type_show_url( :step_type => @procedure_step.step_type_id ) }
-    @crumb << { label: @procedure_step.label, url: procedure_step_show_url }
-    @crumb << { label: 'Business items', url: nil }
-    @section = 'procedures'
-    @subsection = 'steps'
+        @page_title = "#{@procedure.label} - Business items actualising '#{@procedure_step.label}'"
+        @multiline_page_title = "#{@procedure.label} <span class='subhead'>Business items actualising '#{@procedure_step.label}'</span>".html_safe
+        @description = "Work packages subject to the #{@procedure.label} procedure, with business items actualising '#{@procedure_step.label}'."
+        @canonical_url = procedure_step_show_url
+        @rss_url = procedure_step_business_item_list_url( :format => 'rss' )
+        @crumb << { label: 'Procedures', url: procedure_list_url }
+        @crumb << { label: @procedure.label, url: procedure_show_url }
+        @crumb << { label: 'Step types', url: procedure_step_type_list_url }
+        @crumb << { label: @procedure_step.step_type_label, url: procedure_step_type_show_url( :step_type => @procedure_step.step_type_id ) }
+        @crumb << { label: @procedure_step.label, url: procedure_step_show_url }
+        @crumb << { label: 'Business items', url: nil }
+        @section = 'procedures'
+        @subsection = 'steps'
+      end
+    end
   end
 end

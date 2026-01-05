@@ -13,15 +13,19 @@ class CalculationStyleProcedureController < ApplicationController
     calculation_style_id = params[:calculation_style]
     @calculation_style = get_calculation_style( calculation_style_id )
     
-    @calculation_style_procedures = get_calculation_style_procedures( calculation_style_id )
+    # If we find a calculation style with this identifier ...
+    if @calculation_style
     
-    @page_title = "Procedures using the '#{@calculation_style.label}' calculation style"
-    @multiline_page_title = "'#{@calculation_style.label}' calculation style <span class='subhead'>Procedures</span>".html_safe
-    @description = "Procedures using the '#{@calculation_style.label}' calculation style."
-    @crumb << { label: 'Calculation styles', url: calculation_style_list_url }
-    @crumb << { label: @calculation_style.label, url: calculation_style_show_url }
-    @crumb << { label: 'Procedures', url: nil }
-    @section = 'calculation-styles'
-    @subsection = 'procedures'
+      @calculation_style_procedures = get_calculation_style_procedures( calculation_style_id )
+    
+      @page_title = "Procedures using the '#{@calculation_style.label}' calculation style"
+      @multiline_page_title = "'#{@calculation_style.label}' calculation style <span class='subhead'>Procedures</span>".html_safe
+      @description = "Procedures using the '#{@calculation_style.label}' calculation style."
+      @crumb << { label: 'Calculation styles', url: calculation_style_list_url }
+      @crumb << { label: @calculation_style.label, url: calculation_style_show_url }
+      @crumb << { label: 'Procedures', url: nil }
+      @section = 'calculation-styles'
+      @subsection = 'procedures'
+    end
   end
 end
