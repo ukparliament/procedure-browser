@@ -9,18 +9,32 @@ module Sparql::Get::OrganisationAccountableToParliament
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
     
-    # We take the one and only row from the CSV ...
-    csv.take( 1 ).each do |row|
-    
-      # ... and create a new organisation accountable to Parliament object.
-      organisation_accountable_to_parliament = OrganisationAccountableToParliament.new
-      organisation_accountable_to_parliament.identifier = row['Organisations']
-      organisation_accountable_to_parliament.label = row['Name']
-      organisation_accountable_to_parliament.start_on = row['startDate'].to_date if row['startDate']
-      organisation_accountable_to_parliament.end_on = row['endDate'].to_date if row['endDate']
+    # If the organisation accountable to Parliament doesn't exist, the csv will be an empty array.
+    # If the array is an empty array ...
+    if csv.empty?
       
-      # We return the organisation accountable to Parliament object object.
-      return organisation_accountable_to_parliament
+      # ... we render a 404 ...
+      render_404
+      
+      # ... and return nil.
+      return nil
+      
+    # Otherwise, if the CSV is not an empty array ...
+    else
+    
+      # We take the one and only row from the CSV ...
+      csv.take( 1 ).each do |row|
+    
+        # ... and create a new organisation accountable to Parliament object.
+        organisation_accountable_to_parliament = OrganisationAccountableToParliament.new
+        organisation_accountable_to_parliament.identifier = row['Organisations']
+        organisation_accountable_to_parliament.label = row['Name']
+        organisation_accountable_to_parliament.start_on = row['startDate'].to_date if row['startDate']
+        organisation_accountable_to_parliament.end_on = row['endDate'].to_date if row['endDate']
+      
+        # We return the organisation accountable to Parliament object object.
+        return organisation_accountable_to_parliament
+      end
     end
   end
 end
