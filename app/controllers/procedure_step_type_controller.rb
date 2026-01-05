@@ -36,19 +36,29 @@ class ProcedureStepTypeController < ApplicationController
     step_type_id = params[:step_type]
     
     @procedure = get_procedure( procedure_id )
-    @step_type = get_procedure_step_type( procedure_id, step_type_id )
-    @steps = get_procedure_step_type_steps( procedure_id, step_type_id )
     
-    @page_title = "#{@procedure.label} - #{@step_type.label}"
-    @multiline_page_title = "#{@procedure.label} <span class='subhead'>#{@step_type.label}</span>".html_safe
-    @description = "Steps of type '#{@step_type.label}' in the #{@procedure.label} procedure."
-    @crumb << { label: 'Procedures', url: procedure_list_url }
-    @crumb << { label: @procedure.label, url: procedure_show_url }
-    @crumb << { label: 'Step types', url: procedure_step_type_list_url }
-    @crumb << { label: @step_type.label, url: nil }
-    @section = 'procedures'
-    @subsection = 'steps'
+    # If we find a procedure with this identifier ...
+    if @procedure
     
-    render :template => 'procedure_step_type_step/index'
+      @step_type = get_procedure_step_type( procedure_id, step_type_id )
+    
+      # If we find a step type with this identifier in this procedure ...
+      if @step_type
+      
+        @steps = get_procedure_step_type_steps( procedure_id, step_type_id )
+    
+        @page_title = "#{@procedure.label} - #{@step_type.label}"
+        @multiline_page_title = "#{@procedure.label} <span class='subhead'>#{@step_type.label}</span>".html_safe
+        @description = "Steps of type '#{@step_type.label}' in the #{@procedure.label} procedure."
+        @crumb << { label: 'Procedures', url: procedure_list_url }
+        @crumb << { label: @procedure.label, url: procedure_show_url }
+        @crumb << { label: 'Step types', url: procedure_step_type_list_url }
+        @crumb << { label: @step_type.label, url: nil }
+        @section = 'procedures'
+        @subsection = 'steps'
+    
+        render :template => 'procedure_step_type_step/index'
+      end
+    end
   end
 end
