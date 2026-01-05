@@ -9,23 +9,37 @@ module Sparql::Get::WorkPackage
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
     
-    # We take the one and only row from the CSV ...
-    csv.take( 1 ).each do |row|
-    
-      # ... and create a new work package object.
-      work_package = WorkPackage.new
-      work_package.identifier = row['workPackage']
-      work_package.work_packageable_thing_identifer = row['Paper']
-      work_package.work_packageable_thing_label = row['Papername']
-      work_package.making_available_identifier = row['laying']
-      work_package.made_available_on = row['laidDate'].to_date if row['laidDate']
-      work_package.procedure_identifier = row['procedure']
-      work_package.procedure_label = row['procedureName']
-      work_package.calculation_style_identifier = row['calculationStyle']
-      work_package.calculation_style_label = row['calculationStyleName']
+    # If the work packageable thing doesn't exist, the csv will be an empty array.
+    # If the array is an empty array ...
+    if csv.empty?
       
-      # We return the work package object.
-      return work_package
+      # ... we render a 404 ...
+      render_404
+      
+      # ... and return nil.
+      return nil
+      
+    # Otherwise, if the CSV is not an empty array ...
+    else
+    
+      # We take the one and only row from the CSV ...
+      csv.take( 1 ).each do |row|
+    
+        # ... and create a new work package object.
+        work_package = WorkPackage.new
+        work_package.identifier = row['workPackage']
+        work_package.work_packageable_thing_identifer = row['Paper']
+        work_package.work_packageable_thing_label = row['Papername']
+        work_package.making_available_identifier = row['laying']
+        work_package.made_available_on = row['laidDate'].to_date if row['laidDate']
+        work_package.procedure_identifier = row['procedure']
+        work_package.procedure_label = row['procedureName']
+        work_package.calculation_style_identifier = row['calculationStyle']
+        work_package.calculation_style_label = row['calculationStyleName']
+      
+        # We return the work package object.
+        return work_package
+      end
     end
   end
 end
