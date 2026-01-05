@@ -13,32 +13,36 @@ class StepStepCollectionController < ApplicationController
     @step = get_step( step_id )
     step_step_collections = get_step_step_collections( step_id )
     
-    # We create an array to hold the step collections we're interested in, being the non-mechanical step collections.
-    @step_step_collections = []
+    # If we find a step with this identifier ...
+    if @step
     
-    # For each step collection ...
-    step_step_collections.each do |step_collection|
+      # ... we create an array to hold the step collections we're interested in, being the non-mechanical step collections.
+      @step_step_collections = []
+    
+      # For each step collection ...
+      step_step_collections.each do |step_collection|
       
-      # ... if the ID is in the array of mechanical step collections ...
-      if @mechanical_step_collections.include?( step_collection.id )
+        # ... if the ID is in the array of mechanical step collections ...
+        if @mechanical_step_collections.include?( step_collection.id )
       
-        # ... we ignore it.
-      # Otherwise, if the ID is not in the array of mechanical step collections ...
-      else
+          # ... we ignore it.
+        # Otherwise, if the ID is not in the array of mechanical step collections ...
+        else
         
-        # ... we add it to the step collections array.
-        @step_step_collections <<  step_collection
+          # ... we add it to the step collections array.
+          @step_step_collections <<  step_collection
+        end
       end
-    end
     
-    @page_title = "#{@step.label} - Step collections"
-    @multiline_page_title = "#{@step.label} <span class='subhead'>Step collections</span>".html_safe
-    @description = "Step collections containing #{@step.label}."
-    @crumb << { label: 'Steps', url: step_type_list_url }
-    @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
-    @crumb << { label: @step.label, url: step_show_url }
-    @crumb << { label: 'Step collections', url: nil }
-    @section = 'steps'
-    @subsection = 'step-collections'
+      @page_title = "#{@step.label} - Step collections"
+      @multiline_page_title = "#{@step.label} <span class='subhead'>Step collections</span>".html_safe
+      @description = "Step collections containing #{@step.label}."
+      @crumb << { label: 'Steps', url: step_type_list_url }
+      @crumb << { label: @step.step_type_label, url: step_type_show_url( :step_type => @step.step_type_id ) }
+      @crumb << { label: @step.label, url: step_show_url }
+      @crumb << { label: 'Step collections', url: nil }
+      @section = 'steps'
+      @subsection = 'step-collections'
+    end
   end
 end
