@@ -10,15 +10,20 @@ class ProcedureStepCollectionController < ApplicationController
   def index
     procedure_id = params[:procedure]
     @procedure = get_procedure( procedure_id )
-    @procedure_step_collections = get_procedure_step_collections( procedure_id )
     
-    @page_title = "#{@procedure.label} - Step collections"
-    @multiline_page_title = "#{@procedure.label} <span class='subhead'>Step collections</span>".html_safe
-    @description = "Step collections for #{@procedure.label}."
-    @crumb << { label: 'Procedures', url: procedure_list_url }
-    @crumb << { label: @procedure.label, url: procedure_show_url }
-    @crumb << { label: 'Step collections', url: nil }
-    @section = 'procedures'
-    @subsection = 'step-collections'
+    # If we find a procedure with this identifier ...
+    if @procedure
+      
+      @procedure_step_collections = get_procedure_step_collections( procedure_id )
+    
+      @page_title = "#{@procedure.label} - Step collections"
+      @multiline_page_title = "#{@procedure.label} <span class='subhead'>Step collections</span>".html_safe
+      @description = "Step collections for #{@procedure.label}."
+      @crumb << { label: 'Procedures', url: procedure_list_url }
+      @crumb << { label: @procedure.label, url: procedure_show_url }
+      @crumb << { label: 'Step collections', url: nil }
+      @section = 'procedures'
+      @subsection = 'step-collections'
+    end
   end
 end

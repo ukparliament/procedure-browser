@@ -10,15 +10,20 @@ class ProcedureClockController < ApplicationController
   def index
     procedure_id = params[:procedure]
     @procedure = get_procedure( procedure_id )
-    @procedure_clocks = get_procedure_clocks( procedure_id )
     
-    @page_title = "#{@procedure.label} - Clocks"
-    @multiline_page_title = "#{@procedure.label} <span class='subhead'>Clocks</span>".html_safe
-    @description = "Clocks present in #{@procedure.label}."
-    @crumb << { label: 'Procedures', url: procedure_list_url }
-    @crumb << { label: @procedure.label, url: procedure_show_url }
-    @crumb << { label: 'Clocks', url: nil }
-    @section = 'procedures'
-    @subsection = 'clocks'
+    # If we find a procedure with this identifier ...
+    if @procedure
+
+      @procedure_clocks = get_procedure_clocks( procedure_id )
+    
+      @page_title = "#{@procedure.label} - Clocks"
+      @multiline_page_title = "#{@procedure.label} <span class='subhead'>Clocks</span>".html_safe
+      @description = "Clocks present in #{@procedure.label}."
+      @crumb << { label: 'Procedures', url: procedure_list_url }
+      @crumb << { label: @procedure.label, url: procedure_show_url }
+      @crumb << { label: 'Clocks', url: nil }
+      @section = 'procedures'
+      @subsection = 'clocks'
+    end
   end
 end
