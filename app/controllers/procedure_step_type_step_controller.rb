@@ -20,7 +20,7 @@ class ProcedureStepTypeStepController < ApplicationController
     
       @step_type = get_procedure_step_type( procedure_id, step_type_id )
     
-      # If we find a step type with this identifier ...
+      # If we find a step type with this identifier in this procedure ...
       if @step_type
         @step_type = get_procedure_step_type( procedure_id, step_type_id )
         @steps = get_procedure_step_type_steps( procedure_id, step_type_id )
