@@ -11,15 +11,20 @@ class WorkPackageableThingFollowingController < ApplicationController
     work_packageable_thing_id = params[:work_packageable_thing]
     @work_packageable_thing = get_work_packageable_thing( work_packageable_thing_id )
     
-    @work_packageable_things = get_work_packageable_thing_following( work_packageable_thing_id )
+    # If we find a work packageable thing with this identifier ...
+    if @work_packageable_thing
     
-    @page_title = "#{@work_packageable_thing.label} - following work packageable things"
-    @multiline_page_title = "#{@work_packageable_thing.label} <span class='subhead'>Following work packageable things</span>".html_safe
-    @description = "Following work packageable things for #{@work_packageable_thing.label}."
-    @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
-    @crumb << { label: @work_packageable_thing.label, url: work_packageable_thing_show_url }
-    @crumb << { label: 'Following work packageable things', url: nil }
-    @section = 'work-packages'
-    @subsection = 'following'
+      # ... we get any following work packageable things for this work packageable thing.
+      @work_packageable_things = get_work_packageable_thing_following( work_packageable_thing_id )
+    
+      @page_title = "#{@work_packageable_thing.label} - following work packageable things"
+      @multiline_page_title = "#{@work_packageable_thing.label} <span class='subhead'>Following work packageable things</span>".html_safe
+      @description = "Following work packageable things for #{@work_packageable_thing.label}."
+      @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
+      @crumb << { label: @work_packageable_thing.label, url: work_packageable_thing_show_url }
+      @crumb << { label: 'Following work packageable things', url: nil }
+      @section = 'work-packages'
+      @subsection = 'following'
+    end
   end
 end

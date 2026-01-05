@@ -78,16 +78,20 @@ class WorkPackageableThingController < ApplicationController
     work_packageable_thing_id = params[:work_packageable_thing]
     @work_packageable_thing = get_work_packageable_thing( work_packageable_thing_id )
     
-    # We get all work packages for this work packageable thing.
-    @work_packageable_thing_work_packages = get_work_packageable_thing_work_packages( work_packageable_thing_id )
+    # If we find a work packageable thing with this identifier ...
+    if @work_packageable_thing
     
-    @page_title = @work_packageable_thing.label
-    @description = "#{@work_packageable_thing.label}."
-    @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
-    @crumb << { label: @work_packageable_thing.label, url: nil }
-    @section = 'work-packages'
-    @subsection = 'work-packages'
+      # .. we get all work packages for this work packageable thing.
+      @work_packageable_thing_work_packages = get_work_packageable_thing_work_packages( work_packageable_thing_id )
     
-    render :template => 'work_packageable_thing_work_package/index'
+      @page_title = @work_packageable_thing.label
+      @description = "#{@work_packageable_thing.label}."
+      @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
+      @crumb << { label: @work_packageable_thing.label, url: nil }
+      @section = 'work-packages'
+      @subsection = 'work-packages'
+    
+      render :template => 'work_packageable_thing_work_package/index'
+    end
   end
 end
