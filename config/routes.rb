@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/work-packageable-things/:work_packageable_thing/following' => 'work_packageable_thing_following#index', as: :work_packageable_thing_following_list
   
   get 'procedure-browser/enabling-legislation/a-z' => 'enabling_legislation_ato_z#index', as: :enabling_legislation_atoz_list
-  get 'procedure-browser/enabling-legislation/a-z/:letter' => 'enabling_legislation_ato_z#show', as: :enabling_legislation_atoz_show
+  get 'procedure-browser/enabling-legislation/a-z/:letter' => 'enabling_legislation_ato_z#show', as: :enabling_legislation_atoz_show, constraints: { letter: /[a-z]+/ }
   
   # This route exists to enable looking up a legislation item by its legislation.gov.uk URI.
   # In time, it may be expanded to include lookups by wikidata ID and by year and chapter.
