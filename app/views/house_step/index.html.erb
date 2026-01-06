@@ -1,18 +1,18 @@
 <%= render :partial => 'house/intro', :object => @house %>
 
-<div class="reading-width">
-
-	<%= list_item_count_sentence( 'step', @steps.size ) %>
+<%= list_item_count_sentence( 'step', @steps.size ) %>
 	
-	<%= render :partial => 'library_design/feeds/feeds' %>
+<%= render :partial => 'library_design/feeds/feeds' %>
 
-	<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
+<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 
-	<% unless @steps.empty? -%>
-		<ol class="unnumbered link-list">
-			<%= render :partial => 'step/step', :collection => @steps %>
-		</ol>
-	<% end -%>
+<% unless @steps.empty? -%>
+	<table class="table">
+		<%= render :partial => 'step/step_list_table_head' %>
+		<tbody>
+			<%= render :partial => 'step/step_list_table_row', :collection => @steps %>
+		</tbody>
+	</table>
+<% end -%>
 
-	<%= render :partial => 'common/identifier', :object => @house %>
-</div>
+<%= render :partial => 'common/identifier', :object => @house %>
