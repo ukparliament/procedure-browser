@@ -1,0 +1,4 @@
+<tr>
+	<%= content_tag( 'td', link_to( step_label_in_list( step_list_table_row ), step_show_url( :step => step_list_table_row.id ) ) ) %>
+	<%= content_tag( 'td', step_list_table_row.actualisation_count, :class => 'number' ) %>
+</tr>
