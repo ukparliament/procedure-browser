@@ -28,6 +28,7 @@ class Step
   attr_accessor :calculation_style_identifier
   attr_accessor :calculation_style_label
   attr_accessor :depth
+  attr_accessor :actualisation_count
   
   def id
     self.identifier.split( '/' ).last
