@@ -9,6 +9,8 @@ class WorkPackage
   attr_accessor :procedure_label
   attr_accessor :calculation_style_identifier
   attr_accessor :calculation_style_label
+  attr_accessor :has_committee_concerns
+  attr_accessor :has_motion_tabled
   
   def id
     self.identifier.split( '/' ).last
