@@ -17,6 +17,7 @@ module Sparql::Get::CalculationStyleWorkPackagesAll
       # ... we create a new work package object ...
       work_package = WorkPackage.new
       work_package.identifier = row['workPackage']
+      work_package.calculation_style_label = row['CalculationStyleName']
       work_package.work_packageable_thing_identifer = row['workPackagedThing']
       work_package.work_packageable_thing_label = row['workPackagedThingName']
       work_package.procedure_identifier = row['procedure']
