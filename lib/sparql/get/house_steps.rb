@@ -22,6 +22,7 @@ module Sparql::Get::HouseSteps
       step.step_type_label = row['StepTypeName']
       step.commons_identifier = row['StepCommonsId']
       step.lords_identifier = row['StepLordsId']
+      step.actualisation_count = row['biCount'].to_i
       																	
       # ... and add it to the array of steps.
       steps << step
