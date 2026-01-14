@@ -21,7 +21,7 @@ class HouseStepController < ApplicationController
       respond_to do |format|
         format.csv {
           response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
-          render :template => 'step/index'
+          render :template => 'step/index_with_actualisation_count'
         }
         format.html {
           @multiline_page_title = "#{@house.label} <span class='subhead'>Steps</span>".html_safe
