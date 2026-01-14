@@ -27,4 +27,10 @@ class WorkPackage
   def calculation_style_id
     self.calculation_style_identifier.split( '/' ).last
   end
+  
+  def is_flagged?
+    is_flagged = false
+    is_flagged = true if self.has_committee_concerns or self.has_motion_tabled
+    is_flagged
+  end
 end
