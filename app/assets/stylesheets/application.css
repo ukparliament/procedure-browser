@@ -107,6 +107,15 @@ body.subsection-treaty .subnav a.treaty {
 }
 
 
+/* Styling for flags on work package lists */
+.flags p {
+	font-weight: bold;
+}
+.flags p::before {
+	content: "→ ";
+}
+
+
 /* Styling for identifier */
 #identifier {
 	margin-top: 1em;
