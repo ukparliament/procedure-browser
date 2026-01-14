@@ -3,32 +3,66 @@ module Sparql::Queries::WorkPackagesCurrentAll
   # A SPARQL query to get current work package.
   def work_packages_current_all_query
     "
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-             PREFIX : <https://id.parliament.uk/schema/>
-             PREFIX id: <https://id.parliament.uk/>
-              SELECT ?Paper ?Papername ?workPackage ?businessItem ?step ?combinedDate ?procedure ?procedureName ?calculationStyle ?calculationStyleName where {
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX :     <https://id.parliament.uk/schema/>
+    PREFIX id:   <https://id.parliament.uk/>
 
-  
-              ?Paper a :WorkPackagedThing .  
-                  ?Paper :name ?Papername ;
-                  :workPackagedThingHasWorkPackage ?workPackage.
-              optional {   ?workPackage :workPackageHasBusinessItem ?businessItem .
-                ?businessItem :businessItemHasProcedureStep ?step;
-                       :businessItemDate ?businessItemDate.
-         filter (?step in (id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB))}
-         optional {    ?workPackage :workPackageHasBusinessItem ?businessItem2 .
-                ?businessItem2 :businessItemHasProcedureStep ?step2;
-                               :businessItemDate ?businessItemDate2.
-         filter (?step2 in (id:AmYrFxwO))}
-                 ?workPackage :workPackageHasProcedure ?procedure.
-               ?procedure :name ?procedureName.
-              optional { ?workPackage :workPackageHasCalculationStyle ?calculationStyle. 
-                 ?calculationStyle :name ?calculationStyleName. }
-        MINUS {  ?workPackage   :workPackageHasBusinessItem ?bi2.
-       ?bi2 :businessItemHasProcedureStep ?stepId2.
-          ?stepId2 :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI}
-     BIND(COALESCE(?businessItemDate, ?businessItemDate2) AS ?combinedDate)
-     } Order by desc(?combinedDate) ?Papername
+    SELECT
+      ?Paper ?Papername ?workPackage ?businessItem ?step ?combinedDate
+      ?procedure ?procedureName ?calculationStyle ?calculationStyleName
+      (BOUND(?stepId3) AS ?hasCommitteeConcernsFlag)   
+     (BOUND(?stepId4) AS ?hasMotionTabledFlag)  
+    WHERE {
+      ?Paper a :WorkPackagedThing ;
+             :name ?Papername ;
+             :workPackagedThingHasWorkPackage ?workPackage .
+
+      OPTIONAL {
+        ?workPackage :workPackageHasBusinessItem ?businessItem .
+        ?businessItem :businessItemHasProcedureStep ?step ;
+                      :businessItemDate ?businessItemDate .
+        FILTER (?step IN (id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB))
+      }
+
+      OPTIONAL {
+        ?workPackage :workPackageHasBusinessItem ?businessItem2 .
+        ?businessItem2 :businessItemHasProcedureStep ?step2 ;
+                       :businessItemDate ?businessItemDate2 .
+        FILTER (?step2 IN (id:AmYrFxwO))
+      }
+
+      ?workPackage :workPackageHasProcedure ?procedure .
+      ?procedure :name ?procedureName .
+
+      OPTIONAL {
+        ?workPackage :workPackageHasCalculationStyle ?calculationStyle .
+        ?calculationStyle :name ?calculationStyleName .
+      }
+
+      OPTIONAL {
+        ?workPackage :workPackageHasBusinessItem ?bi3 .
+        ?bi3 :businessItemHasProcedureStep ?stepId3 .
+        ?stepId3 :procedureStepHasProcedureStepCollectionMembership/
+                 :procedureStepCollectionMembershipHasProcedureStepCollection id:7CBVQcZF
+      }
+
+        OPTIONAL {
+        ?workPackage :workPackageHasBusinessItem ?bi4 .
+        ?bi4 :businessItemHasProcedureStep ?stepId4 .
+        ?stepId4 :procedureStepHasProcedureStepCollectionMembership/
+                 :procedureStepCollectionMembershipHasProcedureStepCollection id:l3g2umNB
+      }
+
+      MINUS {
+        ?workPackage :workPackageHasBusinessItem ?bi2 .
+        ?bi2 :businessItemHasProcedureStep ?stepId2 .
+        ?stepId2 :procedureStepHasProcedureStepCollectionMembership/
+                 :procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI
+      }
+
+      BIND(COALESCE(?businessItemDate, ?businessItemDate2) AS ?combinedDate)
+    }
+    ORDER BY DESC(?combinedDate) ?Papername
     "
   end
 end

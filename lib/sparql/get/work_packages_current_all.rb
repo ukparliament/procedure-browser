@@ -26,6 +26,16 @@ module Sparql::Get::WorkPackagesCurrentAll
       work_package.procedure_label = row['procedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
+      if row['hasCommitteeConcernsFlag'] == 'true'
+        work_package.has_committee_concerns = true
+      else
+        work_package.has_committee_concerns = false
+      end
+      if row['hasMotionTabledFlag'] == 'true'
+        work_package.has_motion_tabled = true
+      else
+        work_package.has_motion_tabled = false
+      end
       
       # ... and add it to the array of work packages.
       work_packages << work_package
