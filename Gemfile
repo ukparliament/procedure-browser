@@ -8,6 +8,10 @@ gem "rails", "~> 8.1"
 # Modern asset management
 gem "propshaft"
 
+# Database
+gem "pg"
+gem "annotaterb"
+
 # For local development
 gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.10"
 
