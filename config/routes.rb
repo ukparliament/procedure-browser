@@ -168,6 +168,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/meta' => 'meta#index', as: :meta_list
   get 'procedure-browser/meta/sitemap' => 'meta#sitemap', as: :meta_sitemap
   get 'procedure-browser/meta/cookies' => 'meta#cookies', as: :meta_cookies
+  get 'procedure-browser/meta/bookmarklets' => 'meta#bookmarklets', as: :meta_bookmarklets
 
   # Any unmatched nonsense called by a bot will gracefully show a 404
   match '*unmatched', to: 'application#route_not_found', via: :all
