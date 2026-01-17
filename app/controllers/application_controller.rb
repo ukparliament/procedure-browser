@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     @mechanical_step_collections = ['pc94WzFV', 'TRohjSuI', 'RPfsm4lC', 'Oebb7fXv']
   end
 
+  def default_url_options
+    { host: "api.parliament.uk" } if Rails.env.production?
+  end
+
   # For unmatched route in routes
   def route_not_found
     render file: "public/404.html", status: :not_found, layout: false

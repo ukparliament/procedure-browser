@@ -15,7 +15,12 @@ class EnablingLegislationLookupController < ApplicationController
     
     # If we find an item of legislation with this URI ...
     if legislation
-    
+
+      Rails.logger.info "*" * 80
+      Rails.logger.info "Here is some debug info"
+      Rails.logger.info enabling_legislation_show_path( legislation.id )
+      Rails.logger.info enabling_legislation_show_url( legislation.id )
+
       # ... we redirect to the list of instruments before Parliament enabled by that legislation.
       redirect_to enabling_legislation_show_path( legislation.id )
     end
