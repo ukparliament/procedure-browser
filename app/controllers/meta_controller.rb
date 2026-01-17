@@ -21,4 +21,11 @@ class MetaController < ApplicationController
     
     render 'library_design/meta/cookies'
   end
+
+  def bookmarklets
+    @page_title = 'Bookmarklets'
+    @description = 'Bookmarklets.'
+    @crumb << { label: 'Meta', url: meta_list_url }
+    @crumb << { label: 'Bookmarklets', url: nil }
+  end
 end
