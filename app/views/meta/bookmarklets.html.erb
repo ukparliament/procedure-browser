@@ -1,0 +1,5 @@
+<p>Drag the 'Enabled instruments before Parliament' link to your bookmarks bar.</p>
+
+<p><a href="javascript:(function()%7B%0Avar%20url%20%3D%20document.URL%20%3B%0A%0Aif%20(window.location.origin%20%3D%3D%20%27https%3A%2F%2Fwww.legislation.gov.uk%27%20%26%26%20window.location.pathname.split(%27%2F%27)%5B1%5D%20%3D%3D%20%27ukpga%27%20)%0A%0A%09window.location.href%20%3D%27https%3A%2F%2Fapi.parliament.uk%2Fprocedure-browser%2Fenabling-legislation%2Flookup%3Flegislation-gov-uk-uri%3D%27%20%2B%20window.location.origin%20%2B%20%27%2Fid%2Fukpga%2F%27%20%2B%20window.location.pathname.split(%27%2F%27)%5B2%5D%20%2B%20%27%2F%27%20%2B%20window.location.pathname.split(%27%2F%27)%5B3%5D%3B%0A%0Aelse%20%7Balert(%27Sorry.%20This%20URL%20is%20not%20flippable.%27)%7D%3B%7D)()%3B">Enabled instruments before Parliament</a>
+
+<%= content_tag( 'p', "Navigate to any page under a UK Public General Act on #{link_to( 'legislation.gov.uk', 'https://www.legislation.gov.uk/' )}, click the bookmarklet in your bookmarks bar and you'll be taken to list of instruments enabled by that Act currently before Parliament.".html_safe ) %>
