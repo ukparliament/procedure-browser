@@ -11,6 +11,7 @@ gem "propshaft"
 # Database
 gem "pg"
 gem "annotaterb"
+gem "pg_search"
 
 # For local development
 gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.10"

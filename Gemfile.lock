@@ -174,6 +174,9 @@ GEM
     pg (1.6.3-arm64-darwin)
     pg (1.6.3-x86_64-darwin)
     pg (1.6.3-x86_64-linux)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -305,6 +308,7 @@ DEPENDENCIES
   jbuilder
   library_design!
   pg
+  pg_search
   propshaft
   puma
   rails (~> 8.1)
