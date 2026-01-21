@@ -11,6 +11,18 @@
 #  updated_at :datetime         not null
 #
 class OrganisationAccountableToParliament < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:label, :identifier]
+  pg_search_scope :kinda_matching,
+                  against: :text,
+                  using: {
+                    tsearch: {dictionary: "english"}
+                  }
+  # pg_search_scope :literally_matching,
+  #                 against: :text,
+  #                 using: {
+  #                   tsearch: {dictionary: "simple"}
+  #                 }
 
   self.table_name = "organisations_accountable_to_parliament"
 
