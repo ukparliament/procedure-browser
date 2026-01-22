@@ -1,5 +1,19 @@
-<%= render 'search_field' %>
+<%= form_tag(organisation_accountable_to_parliament_current_list_search_path, method: :get, id: "search-form") do %>
+  <div class="p-form__form-group pb-3">
+    <div class="p-form__input--with-button">
+      <%= text_field_tag :search, params[:search], placeholder: 'Search', type: 'search', aria_label: 'Search', class: 'p-form__input' %>
+      <%= button_tag(type: 'submit', class: "btn btn-secondary") do %>
+        Search
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
+<% if @search_term %>
+  <p>You searched for <b><%= @search_term %></b> and there were <%= @result_count %> results.</p>
+<% end %>
+
+<%= params %>
 <%= render 'current_intro' %>
 
 <div class="reading-width">

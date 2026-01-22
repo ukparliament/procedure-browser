@@ -13,16 +13,14 @@
 class OrganisationAccountableToParliament < ApplicationRecord
   include PgSearch::Model
   multisearchable against: [:label, :identifier]
-  pg_search_scope :kinda_matching,
-                  against: :text,
+  pg_search_scope :fuzzy_search,
+                  against: [:label, :identifier],
                   using: {
-                    tsearch: {dictionary: "english"}
+                    tsearch: {
+                      prefix: true,
+                      dictionary: "english"
+                    }
                   }
-  # pg_search_scope :literally_matching,
-  #                 against: :text,
-  #                 using: {
-  #                   tsearch: {dictionary: "simple"}
-  #                 }
 
   self.table_name = "organisations_accountable_to_parliament"
 
