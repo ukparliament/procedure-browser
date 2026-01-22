@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   
   mount LibraryDesign::Engine => "/library_design"
 
-  get '/search/', to: 'searches#index', as: :search
-
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -45,6 +43,8 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/organisations-accountable-to-parliament' => 'organisation_accountable_to_parliament#index', as: :organisation_accountable_to_parliament_list
   get 'procedure-browser/organisations-accountable-to-parliament/current' => 'organisation_accountable_to_parliament#current', as: :organisation_accountable_to_parliament_current_list
+  get 'procedure-browser/organisations-accountable-to-parliament/current_search' => 'organisation_accountable_to_parliament#current_search', as: :organisation_accountable_to_parliament_current_list_search
+
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament' => 'organisation_accountable_to_parliament#show', as: :organisation_accountable_to_parliament_show
   
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/work-packages' => 'organisation_accountable_to_parliament_work_package#index', as: :organisation_accountable_to_parliament_work_package_list

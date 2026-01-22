@@ -87,6 +87,22 @@ class OrganisationAccountableToParliamentController < ApplicationController
     @section = 'organisations-accountable-to-parliament'
     @subsection = 'current'
   end
+
+  def current_search
+    @search_term = params[:search]
+
+    # We get the set of organisation accountable to Parliament items on this page with this many results per page.
+    @organisations_accountable_to_parliament = OrganisationAccountableToParliament.fuzzy_search(@search_term)
+    @result_count = @organisations_accountable_to_parliament.size
+
+    @page_title = 'Organisations accountable to Parliament'
+    @multiline_page_title = "Organisations accountable to Parliament <span class='subhead'>Current</span>".html_safe
+    @description = 'Organisations accountable to Parliament.'
+    @crumb << { label: 'Organisations accountable to Parliament', url: organisation_accountable_to_parliament_list_url }
+    @crumb << { label: 'Current', url: nil }
+    @section = 'organisations-accountable-to-parliament'
+    @subsection = 'current'
+  end
   
   def show
   
