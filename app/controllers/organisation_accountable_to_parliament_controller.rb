@@ -113,7 +113,7 @@ class OrganisationAccountableToParliamentController < ApplicationController
     @search_term = params[:search]
 
     # We get the set of organisation accountable to Parliament items on this page with this many results per page.
-    @organisations_accountable_to_parliament = OrganisationAccountableToParliament.fuzzy_search(@search_term)
+    @organisations_accountable_to_parliament = OrganisationAccountableToParliament.current.fuzzy_search(@search_term)
     @result_count = @organisations_accountable_to_parliament.size
 
     @page_title = 'Organisations accountable to Parliament'

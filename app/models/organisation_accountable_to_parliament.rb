@@ -24,6 +24,8 @@ class OrganisationAccountableToParliament < ApplicationRecord
 
   self.table_name = "organisations_accountable_to_parliament"
 
+  scope :current, -> { where(end_on: nil) }
+
   def id
     identifier.split( '/' ).last
   end
