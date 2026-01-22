@@ -12,6 +12,18 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
     - uses: actions/checkout@v6
     - name: Set up Ruby
@@ -19,7 +31,6 @@ jobs:
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Setup the Rails application
       env:
@@ -27,5 +38,7 @@ jobs:
       run: |
         bundle config set deployment false
         bundle install --jobs 4 --retry 3
+        cp config/database.github.yml config/database.yml
+        bundle exec rails db:setup
     - name: Run tests
       run: bundle exec rspec
