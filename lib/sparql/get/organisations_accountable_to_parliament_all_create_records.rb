@@ -14,13 +14,15 @@ module Sparql::Get::OrganisationsAccountableToParliamentAll
   
     # For each row in the CSV ...
     csv.each do |row|
-  
-      # ... we create a new organisation accountable to Parliament object ...
-      organisation_accountable_to_parliament = OrganisationAccountableToParliament.new
-      organisation_accountable_to_parliament.identifier = row['Organisations']
-      organisation_accountable_to_parliament.label = row['Name']
-      organisation_accountable_to_parliament.start_on = row['startDate'].to_date if row['startDate']
-      organisation_accountable_to_parliament.end_on = row['endDate'].to_date if row['endDate']
+      start_on = row['startDate'].to_date if row['startDate']
+      end_on = row['endDate'].to_date if row['endDate']
+
+      organisation_accountable_to_parliament = OrganisationAccountableToParliament.where(
+        identifier: row['Organisations'],
+        label: row['Name'],
+        start_on: start_on,
+        end_on: end_on
+      ).first_or_create!
 
       # ... and add it to the array of organisations accountable to Parliament.
       organisations_accountable_to_parliament << organisation_accountable_to_parliament
