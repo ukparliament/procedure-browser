@@ -1,4 +1,4 @@
-module Sparql::Get::OrganisationsAccountableToParliamentAll
+module Sparql::Get::OrganisationsAccountableToParliamentAllCreateRecords
 
   # A method to get an array of all organisations accountable to Parliament.
   def get_organisations_accountable_to_parliament_all
