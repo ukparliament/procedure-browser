@@ -35,8 +35,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Add for exception notification
-gem "rollbar"
-
+# gem "rollbar"
+gem "appsignal"
 # Add log rage
 gem "lograge"
 

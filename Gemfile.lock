@@ -90,6 +90,9 @@ GEM
     annotaterb (4.20.0)
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
+    appsignal (4.8.1)
+      logger
+      rack (>= 2.0.0)
     base64 (0.3.0)
     bigdecimal (4.0.1)
     bindex (0.8.1)
@@ -250,7 +253,6 @@ GEM
     request_store (1.7.0)
       rack (>= 1.4)
     rexml (3.4.4)
-    rollbar (3.7.0)
     rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
@@ -309,6 +311,7 @@ PLATFORMS
 DEPENDENCIES
   amazing_print
   annotaterb
+  appsignal
   bootsnap
   capybara
   csv
@@ -322,7 +325,6 @@ DEPENDENCIES
   propshaft
   puma
   rails (~> 8.1)
-  rollbar
   rspec-rails
   selenium-webdriver
   tzinfo-data
