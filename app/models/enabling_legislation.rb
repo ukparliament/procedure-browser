@@ -24,7 +24,7 @@ class EnablingLegislation < ApplicationRecord
                     }
                   }
 
-  def id
+  def display_id
     identifier.split( '/' ).last
   end
 end
