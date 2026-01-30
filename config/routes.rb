@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/lookup' => 'enabling_legislation_lookup#index', as: :enabling_legislation_lookup_list
   
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
+  get 'procedure-browser/enabling-legislation/search' => 'enabling_legislation#index_search', as: :enabling_legislation_list_search
+
   get 'procedure-browser/enabling-legislation/:enabling_legislation' => 'enabling_legislation#show', as: :enabling_legislation_show
   
   get 'procedure-browser/enabling-legislation/:enabling_legislation/work-packages' => 'enabling_legislation_work_package#index', as: :enabling_legislation_work_package_list
@@ -87,7 +89,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/procedures/:procedure' => 'procedure#show', as: :procedure_show
   
   get 'procedure-browser/procedures/:procedure/work-packages' => 'procedure_work_package#index', as: :procedure_work_package_list
-    get 'procedure-browser/procedures/:procedure/work-packages/current' => 'procedure_work_package#current', as: :procedure_work_package_current_list
+  get 'procedure-browser/procedures/:procedure/work-packages/current' => 'procedure_work_package#current', as: :procedure_work_package_current_list
   
   get 'procedure-browser/procedures/:procedure/calculation-styles' => 'procedure_calculation_style#index', as: :procedure_calculation_style_list
   
