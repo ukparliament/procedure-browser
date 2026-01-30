@@ -1,36 +1,71 @@
-class WorkPackage
-  
-  attr_accessor :identifier
-  attr_accessor :work_packageable_thing_identifer
-  attr_accessor :work_packageable_thing_label
-  attr_accessor :making_available_identifier
-  attr_accessor :made_available_on
-  attr_accessor :procedure_identifier
-  attr_accessor :procedure_label
-  attr_accessor :calculation_style_identifier
-  attr_accessor :calculation_style_label
-  attr_accessor :has_committee_concerns
-  attr_accessor :has_motion_tabled
-  
+# == Schema Information
+#
+# Table name: work_packages
+#
+#  id                               :bigint           not null, primary key
+#  calculation_style_identifier     :text
+#  calculation_style_label          :text
+#  has_committee_concerns           :text
+#  has_motion_tabled                :text
+#  identifier                       :text
+#  made_available_on                :date
+#  making_available_identifier      :text
+#  procedure_identifier             :text
+#  procedure_label                  :text
+#  work_packageable_thing_identifer :text
+#  work_packageable_thing_label     :text
+#  created_at                       :datetime         not null
+#  updated_at                       :datetime         not null
+#
+class WorkPackage < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [
+                    :identifier,
+                    :work_packageable_thing_identifer,
+                    :work_packageable_thing_label,
+                    :making_available_identifier,
+                    :procedure_identifier,
+                    :procedure_label,
+                    :calculation_style_identifier,
+                    :calculation_style_label
+                  ]
+  pg_search_scope :fuzzy_search,
+                   against: [
+                    :identifier,
+                    :work_packageable_thing_identifer,
+                    :work_packageable_thing_label,
+                    :making_available_identifier,
+                    :procedure_identifier,
+                    :procedure_label,
+                    :calculation_style_identifier,
+                    :calculation_style_label
+                  ],
+                  using: {
+                    tsearch: {
+                      prefix: true,
+                      dictionary: "english"
+                    }
+                  }
+
   def id
-    self.identifier.split( '/' ).last
+    identifier.split( '/' ).last
   end
   
   def procedure_id
-    self.procedure_identifier.split( '/' ).last
+    procedure_identifier.split( '/' ).last
   end
   
   def work_packageable_thing_id
-    self.work_packageable_thing_identifer.split( '/' ).last
+    work_packageable_thing_identifer.split( '/' ).last
   end
   
   def calculation_style_id
-    self.calculation_style_identifier.split( '/' ).last
+    calculation_style_identifier.split( '/' ).last
   end
   
   def is_flagged?
-    is_flagged = false
-    is_flagged = true if self.has_committee_concerns or self.has_motion_tabled
-    is_flagged
+    return true if has_committee_concerns || has_motion_tabled
+
+    false
   end
 end

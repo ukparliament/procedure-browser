@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/work-packages/treaties' => 'work_package_treaty#index', as: :work_package_treaty_list
   
   get 'procedure-browser/work-packages' => 'work_package#index', as: :work_package_list
+  get 'procedure-browser/work-packages/search' => 'work_package#index_search', as: :work_package_list_search
+
   get 'procedure-browser/work-packages/current' => 'work_package#current', as: :work_package_current_list
   get 'procedure-browser/work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
