@@ -1,16 +1,22 @@
 namespace :load do
+
+  desc "Load everything"
+  task all: [:organisations, :enabling_legislations, :work_packages, :steps]
+
   desc "load organisations"
   task organisations: :environment do
     include Sparql::Get::OrganisationsAccountableToParliamentAll
     include Sparql::Queries::OrganisationsAccountableToParliamentAll
     include Sparql::Get::Response
 
+    pp "Load organisations"
     @queries = []
 
     OrganisationAccountableToParliament.delete_all
 
-    orgs = get_organisations_accountable_to_parliament_all
-    orgs.each { |organisation| organisation.save }
+    get_organisations_accountable_to_parliament_all.each(&:save)
+
+    pp "Loaded organisations"
   end
 
   desc "load enabling legislation"
@@ -20,12 +26,13 @@ namespace :load do
     include Sparql::Queries::EnablingLegislations
     include Sparql::Get::Response
 
+    pp "Load enabling legislations"
     @queries = []
 
     EnablingLegislation.delete_all
 
-    enabling_legislations = get_enabling_legislations
-    enabling_legislations.each { |enabling_legislation| enabling_legislation.save }
+    get_enabling_legislations.each(&:save)
+    pp "Loaded enabling legislations"
   end
 
   desc "load work packages"
@@ -33,27 +40,30 @@ namespace :load do
     include Sparql::Get::WorkPackagesAll
     include Sparql::Queries::WorkPackagesAll
     include Sparql::Get::Response
-    include Timeline::Timeline
+
+    pp "Load work packages"
 
     @queries = []
 
     WorkPackage.delete_all
 
-    work_packages = get_work_packages_all
-    work_packages.each { |work_package| work_package.save }
+    get_work_packages_all.each(&:save)
+    pp "Loaded work packages"
   end
 
   desc "load steps"
   task steps: :environment do
-    include Sparql::Get::OrganisationsAccountableToParliamentAll
-    include Sparql::Queries::OrganisationsAccountableToParliamentAll
+    include Sparql::Get::Steps
+    include Sparql::Queries::Steps
     include Sparql::Get::Response
+
+    pp "Load steps"
 
     @queries = []
 
-    OrganisationAccountableToParliament.delete_all
+    Step.delete_all
 
-    orgs = get_organisations_accountable_to_parliament_all
-    orgs.each { |organisation| organisation.save }
+    get_steps.each(&:save)
+    pp "Loaded steps"
   end
 end
