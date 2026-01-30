@@ -41,7 +41,7 @@ class WorkPackage < ApplicationRecord
                    against: SEARCH_ON,
                   using: {
                     tsearch: {
-                      column: :search_vector,
+                      tsvector_column: "search_vector",
                       prefix: true,
                       dictionary: "english"
                     }
