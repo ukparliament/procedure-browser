@@ -18,12 +18,12 @@ namespace :load do
 
     include Sparql::Get::EnablingLegislations
     include Sparql::Queries::EnablingLegislations
-    include Sparql::Get::EnablingLegislation
-    include Sparql::Queries::EnablingLegislation
-    include Sparql::Get::EnablingLegislationWorkPackageCountCurrent
-    include Sparql::Queries::EnablingLegislationWorkPackageCountCurrent
-    include Sparql::Get::EnablingLegislationWorkPackagesCurrent
-    include Sparql::Queries::EnablingLegislationWorkPackagesCurrent
+    # include Sparql::Get::EnablingLegislation
+    # include Sparql::Queries::EnablingLegislation
+    # include Sparql::Get::EnablingLegislationWorkPackageCountCurrent
+    # include Sparql::Queries::EnablingLegislationWorkPackageCountCurrent
+    # include Sparql::Get::EnablingLegislationWorkPackagesCurrent
+    # include Sparql::Queries::EnablingLegislationWorkPackagesCurrent
     include Sparql::Get::Response
 
     @queries = []
@@ -36,16 +36,31 @@ namespace :load do
 
   desc "load work packages"
   task work_packages: :environment do
-    include Sparql::Get::OrganisationsAccountableToParliamentAll
-    include Sparql::Queries::OrganisationsAccountableToParliamentAll
+    # include Sparql::Get::WorkPackageCount
+    # include Sparql::Queries::WorkPackageCount
+    # include Sparql::Get::WorkPackages
+    # include Sparql::Queries::WorkPackages
+    include Sparql::Get::WorkPackagesAll
+    include Sparql::Queries::WorkPackagesAll
+    # include Sparql::Get::WorkPackageCountCurrent
+    # include Sparql::Queries::WorkPackageCountCurrent
+    # include Sparql::Get::WorkPackagesCurrent
+    # include Sparql::Queries::WorkPackagesCurrent
+    # include Sparql::Get::WorkPackagesCurrentAll
+    # include Sparql::Queries::WorkPackagesCurrentAll
+    # include Sparql::Get::WorkPackage
+    # include Sparql::Queries::WorkPackage
+    # include Sparql::Get::WorkPackageBusinessItems
+    # include Sparql::Queries::WorkPackageBusinessItems
     include Sparql::Get::Response
+    include Timeline::Timeline
 
     @queries = []
 
-    OrganisationAccountableToParliament.delete_all
+    WorkPackage.delete_all
 
-    orgs = get_organisations_accountable_to_parliament_all
-    orgs.each { |organisation| organisation.save }
+    work_packages = get_work_packages_all
+    work_packages.each { |work_package| work_package.save }
   end
 
   desc "load steps"

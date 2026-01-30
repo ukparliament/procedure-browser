@@ -65,6 +65,28 @@ class WorkPackageController < ApplicationController
       }
     end
   end
+
+  def index_search
+    @search_term = params[:search]
+
+    @work_packages = WorkPackage.fuzzy_search(@search_term)
+    @result_count = @work_packages.size
+    @results_per_page = @result_count
+
+    # We set the page meta information.
+    @page_title = 'Work packages'
+    @multiline_page_title = "Work packages <span class='subhead'>All</span>".html_safe
+    @description = 'All work packages.'
+    @rss_url = work_package_list_url( :format => 'rss' )
+    @csv_url = work_package_list_url( :format => 'csv' )
+    @crumb << { label: 'Work packages', url: nil }
+    @section = 'work-packages'
+    @subsection = 'all'
+
+    @page = 1
+
+    render :index
+  end
   
   def current
   
