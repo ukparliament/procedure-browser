@@ -141,6 +141,66 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: steps; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.steps (
+    id bigint NOT NULL,
+    identifier text,
+    label text,
+    step_label text,
+    description text,
+    scope_note text,
+    link_note text,
+    date_note text,
+    publication_name text,
+    publication_url text,
+    step_type_identifier text,
+    step_type_label text,
+    step_type_description text,
+    commons_identifier text,
+    lords_identifier text,
+    legislature_identifier text,
+    legislature_label text,
+    business_item_identifier text,
+    business_item_date text,
+    business_item_link text,
+    work_package_identifier text,
+    work_package_made_available_on text,
+    work_packageable_thing_identifier text,
+    work_packageable_thing_label text,
+    procedure_identifier text,
+    procedure_label text,
+    calculation_style_identifier text,
+    calculation_style_label text,
+    depth text,
+    actualisation_count text,
+    search_vector tsvector,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: steps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.steps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: steps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.steps_id_seq OWNED BY public.steps.id;
+
+
+--
 -- Name: work_packages; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -204,6 +264,13 @@ ALTER TABLE ONLY public.pg_search_documents ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: steps id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.steps ALTER COLUMN id SET DEFAULT nextval('public.steps_id_seq'::regclass);
+
+
+--
 -- Name: work_packages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -251,6 +318,14 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: steps steps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.steps
+    ADD CONSTRAINT steps_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: work_packages work_packages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -280,6 +355,13 @@ CREATE INDEX index_pg_search_documents_on_searchable ON public.pg_search_documen
 
 
 --
+-- Name: index_steps_on_search_vector; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_steps_on_search_vector ON public.steps USING gin (search_vector);
+
+
+--
 -- Name: index_work_packages_on_search_vector; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -301,6 +383,13 @@ CREATE TRIGGER tsvectorupdate_organisations BEFORE INSERT OR UPDATE ON public.or
 
 
 --
+-- Name: steps tsvectorupdate_steps; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER tsvectorupdate_steps BEFORE INSERT OR UPDATE ON public.steps FOR EACH ROW EXECUTE FUNCTION tsvector_update_trigger('search_vector', 'pg_catalog.english', 'identifier', 'label', 'step_label', 'description', 'scope_note', 'link_note', 'date_note', 'publication_name', 'publication_url', 'step_type_identifier', 'step_type_label', 'step_type_description', 'commons_identifier', 'lords_identifier', 'legislature_identifier', 'legislature_label', 'business_item_identifier', 'business_item_date', 'business_item_link', 'work_package_identifier', 'work_package_made_available_on', 'work_packageable_thing_identifier', 'work_packageable_thing_label', 'procedure_identifier', 'procedure_label', 'calculation_style_identifier', 'calculation_style_label', 'depth', 'actualisation_count');
+
+
+--
 -- Name: work_packages tsvectorupdate_work_packages; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -314,6 +403,7 @@ CREATE TRIGGER tsvectorupdate_work_packages BEFORE INSERT OR UPDATE ON public.wo
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260130135554'),
 ('20260130120901'),
 ('20260130114439'),
 ('20260130102234'),
