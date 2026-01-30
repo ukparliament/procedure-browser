@@ -49,5 +49,8 @@ module ProcedureBrowser
       g.jbuilder false
       g.system_tests = nil
     end
+
+    # Dump schenma as SQL
+    config.active_record.schema_format = :sql
   end
 end

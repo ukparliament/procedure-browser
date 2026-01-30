@@ -12,36 +12,36 @@
 #  making_available_identifier      :text
 #  procedure_identifier             :text
 #  procedure_label                  :text
+#  search_vector                    :tsvector
 #  work_packageable_thing_identifer :text
 #  work_packageable_thing_label     :text
 #  created_at                       :datetime         not null
 #  updated_at                       :datetime         not null
 #
+# Indexes
+#
+#  index_work_packages_on_search_vector  (search_vector) USING gin
+#
 class WorkPackage < ApplicationRecord
   include PgSearch::Model
-  multisearchable against: [
-                    :identifier,
-                    :work_packageable_thing_identifer,
-                    :work_packageable_thing_label,
-                    :making_available_identifier,
-                    :procedure_identifier,
-                    :procedure_label,
-                    :calculation_style_identifier,
-                    :calculation_style_label
-                  ]
+
+  SEARCH_ON = [
+                :identifier,
+                :work_packageable_thing_identifer,
+                :work_packageable_thing_label,
+                :making_available_identifier,
+                :procedure_identifier,
+                :procedure_label,
+                :calculation_style_identifier,
+                :calculation_style_label
+              ]
+
+  multisearchable against: SEARCH_ON
   pg_search_scope :fuzzy_search,
-                   against: [
-                    :identifier,
-                    :work_packageable_thing_identifer,
-                    :work_packageable_thing_label,
-                    :making_available_identifier,
-                    :procedure_identifier,
-                    :procedure_label,
-                    :calculation_style_identifier,
-                    :calculation_style_label
-                  ],
+                   against: SEARCH_ON,
                   using: {
                     tsearch: {
+                      column: :search_vector,
                       prefix: true,
                       dictionary: "english"
                     }
