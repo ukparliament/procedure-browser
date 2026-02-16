@@ -124,7 +124,9 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/step-types' => 'step_type#index', as: :step_type_list
   get 'procedure-browser/step-types/:step_type' => 'step_type#show', as: :step_type_show
-  
+  get 'procedure-browser/step-types/:step_type/search' => 'step_type#search', as: :step_type_search
+
+
   get 'procedure-browser/step-types/:step_type/steps' => 'step_type_step#index', as: :step_type_step_list
   
   get 'procedure-browser/steps' => 'step#index', as: :step_list
