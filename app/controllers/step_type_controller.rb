@@ -22,7 +22,7 @@ class StepTypeController < ApplicationController
     @steps = get_step_type_steps( step_type_id )
     
     # If we find steps for a step type with this identifier ...
-    set_up_rest_of_page if @steps
+    set_up_rest_of_page
   end
 
   def search
@@ -34,16 +34,21 @@ class StepTypeController < ApplicationController
     @steps = Step.where(step_type_identifier: step_type_identifier).fuzzy_search(@search_term)
     @result_count = @steps.size
 
-    set_up_rest_of_page if @steps
+    set_up_rest_of_page
   end
 
   private
 
   def set_up_rest_of_page
     @step_type = StepType.new
-    @step_type.identifier = @steps.first.step_type_identifier
-    @step_type.label = @steps.first.step_type_label
-    @step_type.description = @steps.first.step_type_description
+
+    if @steps.any?
+      @step_type.identifier = @steps.first.step_type_identifier
+      @step_type.label = @steps.first.step_type_label
+      @step_type.description = @steps.first.step_type_description
+    else
+      @step_type.label = "Nothing found searching for #{@search_term}."
+    end
 
     @page_title = @step_type.label
     @description = "Steps of type #{@step_type.label}."
