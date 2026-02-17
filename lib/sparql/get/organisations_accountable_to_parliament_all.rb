@@ -21,7 +21,7 @@ module Sparql::Get::OrganisationsAccountableToParliamentAll
       organisation_accountable_to_parliament.label = row['Name']
       organisation_accountable_to_parliament.start_on = row['startDate'].to_date if row['startDate']
       organisation_accountable_to_parliament.end_on = row['endDate'].to_date if row['endDate']
-      
+
       # ... and add it to the array of organisations accountable to Parliament.
       organisations_accountable_to_parliament << organisation_accountable_to_parliament
     end

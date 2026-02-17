@@ -2,7 +2,7 @@
 <html lang="en-gb">
 	<head>
 		<%= render :partial => 'library_design/head/head' %>
-		<%= tag( 'base', :href => 'https://api.parliament.uk/procedure-browser' )if Rails.env.production? %>
+		<%= tag( 'base', :href => 'https://procedure-browser-test.shedcode.co.uk' ) if Rails.env.production? %>
 	</head>
 	<body class="section-<%= @section %> subsection-<%= @subsection %> brand-bicameral uk-parliament-procedure-browser">
 		<%= render 'layouts/header/header' %>

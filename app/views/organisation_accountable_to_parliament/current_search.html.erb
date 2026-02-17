@@ -1,0 +1,17 @@
+
+<%= render 'layouts/search/form', path: organisation_accountable_to_parliament_current_list_search_path %>
+
+<% if @search_term %>
+  <p>You searched for <b><%= @search_term %></b></p>
+<% end %>
+
+<%= render 'current_intro' %>
+
+<div class="reading-width">
+
+	<%= list_item_count_sentence( 'organisation accountable to Parliament', @result_count ) %>
+
+	<ol class="unnumbered">
+		<%= render partial: 'organisation_accountable_to_parliament', collection: @organisations_accountable_to_parliament %>
+	</ol>
+</div>

@@ -14,6 +14,21 @@ class StepController < ApplicationController
   def index
     @steps = get_steps
     
+    set_upsteps_index_crumbs
+  end
+
+  def index_search
+    @search_term = params[:search]
+
+    @steps = Step.fuzzy_search(@search_term)
+    @result_count = @steps.size
+
+    set_upsteps_index_crumbs
+
+    render :index
+  end
+
+  def set_upsteps_index_crumbs
     @page_title = 'Steps'
     @description = 'Steps in procedures.'
     @crumb << { label: 'Steps', url: nil }

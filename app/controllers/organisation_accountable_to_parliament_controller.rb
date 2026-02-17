@@ -58,6 +58,27 @@ class OrganisationAccountableToParliamentController < ApplicationController
     end
   end
 
+  def index_search
+    @search_term = params[:search]
+
+    # We get the set of organisation accountable to Parliament items on this page with this many results per page.
+    @organisations_accountable_to_parliament = OrganisationAccountableToParliament.fuzzy_search(@search_term)
+    @result_count = @organisations_accountable_to_parliament.size
+
+    respond_to do |format|
+      format.csv {}
+      format.html {
+        @page_title = 'Organisations accountable to Parliament'
+        @multiline_page_title = "Organisations accountable to Parliament <span class='subhead'>All</span>".html_safe
+        @description = 'Organisations accountable to Parliament.'
+        @csv_url = organisation_accountable_to_parliament_list_url( :format => 'csv' )
+        @crumb << { label: 'Organisations accountable to Parliament', url: nil }
+        @section = 'organisations-accountable-to-parliament'
+        @subsection = 'all'
+      }
+    end
+  end
+
   def current
   
     # We get the page number passed as a parameter.
@@ -79,6 +100,22 @@ class OrganisationAccountableToParliamentController < ApplicationController
     # We get the set of organisation accountable to Parliament items on this page with this many results per page.
     @organisations_accountable_to_parliament = get_organisations_accountable_to_parliament_current( @page, @results_per_page )
     
+    @page_title = 'Organisations accountable to Parliament'
+    @multiline_page_title = "Organisations accountable to Parliament <span class='subhead'>Current</span>".html_safe
+    @description = 'Organisations accountable to Parliament.'
+    @crumb << { label: 'Organisations accountable to Parliament', url: organisation_accountable_to_parliament_list_url }
+    @crumb << { label: 'Current', url: nil }
+    @section = 'organisations-accountable-to-parliament'
+    @subsection = 'current'
+  end
+
+  def current_search
+    @search_term = params[:search]
+
+    # We get the set of organisation accountable to Parliament items on this page with this many results per page.
+    @organisations_accountable_to_parliament = OrganisationAccountableToParliament.current.fuzzy_search(@search_term)
+    @result_count = @organisations_accountable_to_parliament.size
+
     @page_title = 'Organisations accountable to Parliament'
     @multiline_page_title = "Organisations accountable to Parliament <span class='subhead'>Current</span>".html_safe
     @description = 'Organisations accountable to Parliament.'

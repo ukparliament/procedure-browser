@@ -1,0 +1,11 @@
+<%# locals: (path:) -%>
+
+<%= form_tag(path, method: :get, id: "search-form") do %>
+  <div class="p-form__form-group pb-3">
+    <div class="p-form__input--with-button">
+      <input type="search" name="search" id="search" value="" placeholder="Search" aria_label="Search" class="p-form__input">
+      <%#= text_field_tag :search, params[:search], placeholder: 'Search', type: 'search', aria_label: 'Search', class: 'p-form__input' %>
+      <button class="btn btn-secondary" type="submit">Search</button>
+    </div>
+  </div>
+<% end %>
