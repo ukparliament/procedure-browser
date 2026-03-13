@@ -9,9 +9,12 @@
 
 		<%= content_tag( 'p', 'A step forms part of a procedure to which a work package may be subject.' ) %>
 	
-		<ol class="unnumbered link-list">
-			<%= render :partial => 'step/step', :collection => @steps %>
-		</ol>
+		<table class="table">
+			<%= render :partial => 'step/step_list_table_head' %>
+			<tbody>
+				<%= render :partial => 'step/step_list_table_row', :collection => @steps %>
+			</tbody>
+		</table>
 	<% end -%>
 
 	<%= render :partial => 'common/identifier', :object => @step_collection %>

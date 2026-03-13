@@ -24,6 +24,7 @@ module Sparql::Get::StepCollectionSteps
       step.lords_identifier = row['procedureStepLordsId']
       step.legislature_identifier = row['procedureSteplegislature']
       step.legislature_label = row['procedureSteplegislatureName']
+      step.actualisation_count = row['biCount'].to_i
       
       # ... and add it to the array of steps.
       steps << step
