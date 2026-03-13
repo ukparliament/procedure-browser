@@ -28,11 +28,11 @@ class LegislatureController < ApplicationController
     if @legislature
     
       @legislature_houses = get_legislature_houses( legislature_id )
-      @legislature_steps = get_legislature_steps( legislature_id )
+      @steps = get_legislature_steps( legislature_id )
     
       @page_title = @legislature.label
       @description = "#{@legislature.label}."
-      @csv_url = legislature_step_list_url( :format => 'csv' ) unless @legislature_steps.empty?
+      @csv_url = legislature_step_list_url( :format => 'csv' ) unless @steps.empty?
       @crumb << { label: 'Legislatures', url: legislature_list_url }
       @crumb << { label: @legislature.label, url: nil }
       @section = 'legislatures'

@@ -8,17 +8,20 @@
 		</div>
 	<% end -%>
 
-	<% unless @legislature_steps.empty? -%>
+	<% unless @steps.empty? -%>
 		<div id="steps">
-			<%= list_item_count_sentence( 'step', @legislature_steps.size ) %>
+			<%= list_item_count_sentence( 'step', @steps.size ) %>
 			
 			<%= render :partial => 'library_design/feeds/feeds' %>
 		
 			<%= content_tag( 'p', 'Steps listed are limited to those steps appearing in the work packages described or with the potential to appear in those work packages.' ) %>
 		
-			<ol class="unnumbered link-list">
-				<%= render :partial => 'legislature_step/step', :collection => @legislature_steps %>
-			</ol>
+			<table class="table">
+				<%= render :partial => 'step/step_list_table_head' %>
+				<tbody>
+					<%= render :partial => 'step/step_list_table_row', :collection => @steps %>
+				</tbody>
+			</table>
 		</div>
 	<% end -%>
 
