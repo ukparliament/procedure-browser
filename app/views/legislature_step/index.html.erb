@@ -3,11 +3,14 @@
 	<%= list_item_count_sentence( 'step', @steps.size ) %>
 	
 	<%= render :partial => 'library_design/feeds/feeds' %>
-
+	
 	<% unless @steps.empty? -%>
-		<ol class="unnumbered link-list">
-			<%= render :partial => 'step', :collection => @steps %>
-		</ol>
+		<table class="table">
+			<%= render :partial => 'step/step_list_table_head' %>
+			<tbody>
+				<%= render :partial => 'step/step_list_table_row', :collection => @steps %>
+			</tbody>
+		</table>
 	<% end -%>
 
 	<%= render :partial => 'common/identifier', :object => @legislature %>

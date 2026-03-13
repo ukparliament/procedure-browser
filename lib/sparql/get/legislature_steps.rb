@@ -20,6 +20,7 @@ module Sparql::Get::LegislatureSteps
       step.label = row['StepName']
       step.step_type_identifier = row['StepType']
       step.step_type_label = row['StepTypeName']
+      step.actualisation_count = row['biCount'].to_i
       																	
       # ... and add it to the array of steps.
       steps << step
