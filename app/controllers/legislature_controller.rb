@@ -27,8 +27,19 @@ class LegislatureController < ApplicationController
     # If we find a legislature with this identifier ...
     if @legislature
     
+      # We get an array of Houses in the legislature, if any.
       @legislature_houses = get_legislature_houses( legislature_id )
-      @steps = get_legislature_steps( legislature_id )
+      
+      # We create an empty array of steps.
+      @steps = []
+      
+      # The UK Parliament has two Houses but no steps directly associated.
+      # Therefore, if the array of houses is empty ...
+      if @legislature_houses.empty?
+      
+        # ... we get the array of steps in the legislature.
+        @steps = get_legislature_steps( legislature_id )
+      end
     
       @page_title = @legislature.label
       @description = "#{@legislature.label}."
