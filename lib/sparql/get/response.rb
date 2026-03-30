@@ -6,10 +6,31 @@ require 'csv'
 module Sparql::Get::Response
   
   # A method to get a response from SPARQL as a CSV.
-  def get_sparql_response_as_csv( request_body )
-    # We add the SPARQL query request body to the array of queries.
-    @queries << request_body
-  
+  def get_sparql_response_as_csv( request )
+    # We add the SPARQL query request to the array of queries.
+    @queries << request
+    
+    # If the request is an array ...
+    # ... we know the array is formed of a title, a link and the query ...
+    if request.kind_of?( Array )
+    
+      # ... so we set the request body to the third item in the array, being the query.
+      request_body = request[2]
+    
+    # Otherwise, if the request is a string ...
+    # ... we know the request is formed of the request body ...
+    elsif  request.kind_of?( String )
+    
+      # ... so we set up the request body to be the request string.
+      request_body = request
+      
+    # Otherwise, if the request is neither a string nor an array ...
+    else
+    
+      # ... we raise an error.
+      raise 'error'
+    end
+    
     # We get the response from the SPARQL query.
     response = call_api(request_body)
 
