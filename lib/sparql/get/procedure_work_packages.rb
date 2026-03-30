@@ -16,7 +16,7 @@ module Sparql::Get::ProcedureWorkPackages
   
     # For each row in the CSV ...
     csv.each do |row|
-  
+    
       # ... we create a new work package object ...
       work_package = WorkPackage.new
       work_package.identifier = row['workPackage']
@@ -27,6 +27,16 @@ module Sparql::Get::ProcedureWorkPackages
       work_package.procedure_label = row['ProcedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
+      if row['hasCommitteeConcernsFlag'] == 'true'
+        work_package.has_committee_concerns = true
+      else
+        work_package.has_committee_concerns = false
+      end
+      if row['hasMotionTabledFlag'] == 'true'
+        work_package.has_motion_tabled = true
+      else
+        work_package.has_motion_tabled = false
+      end
       
       # ... and add it to the array of work packages.
       work_packages << work_package
