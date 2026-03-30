@@ -32,6 +32,9 @@ module Sparql::Queries::OrganisationAccountableToParliamentWorkPackagesCurrentAl
                    ?businessItem2 :businessItemHasProcedureStep ?step2;
                                   :businessItemDate ?businessItemDate2.
             filter (?step2 in (id:AmYrFxwO))}
+     MINUS {  ?workPackage   :workPackageHasBusinessItem ?bi2.
+            ?bi2 :businessItemHasProcedureStep ?stepId2.
+              ?stepId2 :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI}
      OPTIONAL {
         ?workPackage :workPackageHasBusinessItem ?bi3 .
         ?bi3 :businessItemHasProcedureStep ?stepId3 .
@@ -47,6 +50,7 @@ module Sparql::Queries::OrganisationAccountableToParliamentWorkPackagesCurrentAl
       }
           BIND(COALESCE(?businessItemDate, ?businessItemDate2) AS ?combinedDate)
         } Order by desc(?combinedDate)
+
     "
   end
 end
