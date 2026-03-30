@@ -1,1 +1,17 @@
-<%= content_tag( 'textarea', query ) %>
+<%# If the query is an array ... %>
+<%# ... we know the array is formed of a title, a link and the query ... %>
+<% if query.kind_of?( Array ) -%>
+
+	<%= content_tag( 'h3', link_to( query[0], query[1] ) ) %>
+	<%= content_tag( 'textarea', query[2] ) %>
+
+<%# Otherwise, if the query is a string ... %>
+<%# ... we know the query is formed of the request body ... %>
+<% elsif query.kind_of?( String ) -%>
+
+	<%= content_tag( 'textarea', query ) %>
+<% end -%>
+
+
+
+
