@@ -23,6 +23,16 @@ module Sparql::Get::CalculationStyleWorkPackagesCurrentAll
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
       work_package.made_available_on = row['combinedDate'].to_date if row['combinedDate']
+      if row['hasCommitteeConcernsFlag'] == 'true'
+        work_package.has_committee_concerns = true
+      else
+        work_package.has_committee_concerns = false
+      end
+      if row['hasMotionTabledFlag'] == 'true'
+        work_package.has_motion_tabled = true
+      else
+        work_package.has_motion_tabled = false
+      end
       
       # ... and add it to the array of work packages.
       work_packages << work_package
