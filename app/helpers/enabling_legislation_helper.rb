@@ -1,9 +1,9 @@
 module EnablingLegislationHelper
   def enabling_legislation_description_with_markup( enabling_legislation )
     enabling_legislation_description_with_markup = ''
-    enabling_legislation_description_with_markup += enabling_legislation.year
+    enabling_legislation_description_with_markup += enabling_legislation.year.to_s
     enabling_legislation_description_with_markup += ' c. '
-    enabling_legislation_description_with_markup += enabling_legislation.act_number
+    enabling_legislation_description_with_markup += enabling_legislation.act_number.to_s
     enabling_legislation_description_with_markup += '. An Act of Parliament gaining Royal Assent on '
     enabling_legislation_description_with_markup += enabling_legislation.date.strftime( $DATE_DISPLAY_FORMAT )
     enabling_legislation_description_with_markup += '.'
