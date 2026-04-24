@@ -2,11 +2,11 @@
 
 	<div class="flags">
 
-		<% if work_package_flags.has_committee_concerns -%>
+		<% if work_package_flags.has_committee_concerns? -%>
 			<%= content_tag( 'p', 'Committee concerns raised.' ) %>
 		<% end -%>
 
-		<% if work_package_flags.has_motion_tabled -%>
+		<% if work_package_flags.has_motion_tabled? -%>
 			<%= content_tag( 'p', 'Member intervention motion tabled.' ) %>
 		<% end -%>
 	</div>
