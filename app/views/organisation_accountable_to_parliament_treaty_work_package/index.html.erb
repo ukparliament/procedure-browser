@@ -2,7 +2,7 @@
 
 <div class="reading-width">
 
-	<%= content_tag( 'p', 'All treaty work packages led by this organisation.' ) %>
+	<%= content_tag( 'p', "All treaty work packages led by #{@organisation_accountable_to_parliament.label}." ) %>
 
 	<%= list_item_count_sentence( 'work package', @result_count ) %>
 
