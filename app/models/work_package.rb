@@ -64,7 +64,7 @@ class WorkPackage < ApplicationRecord
   end
   
   def is_flagged?
-    return true if has_committee_concerns || has_motion_tabled
+    return true if has_committee_concerns? || has_motion_tabled?
 
     false
   end
