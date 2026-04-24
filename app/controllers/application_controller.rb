@@ -1,18 +1,7 @@
 require 'open-uri'
 
 class ApplicationController < ActionController::Base
-
   include LibraryDesign::Crumbs
-
-  $SITE_TITLE = 'Procedure Browser'
-  $SPARQL_REQUEST_URI = URI( 'https://api.parliament.uk/sparql' )
-  $SPARQL_REQUEST_HEADERS = { 'Content-Type': 'application/sparql-query' }
-  $DATE_DISPLAY_FORMAT = '%-d %B %Y'
-  $CSV_DATE_DISPLAY_FORMAT = '%-d/%m/%Y'
-  $DEFAULT_RESULTS_PER_PAGE = 20
-  
-  $TOGGLE_PORTCULLIS = ENV.fetch( "TOGGLE_PORTCULLIS", 'off' )
-  $HAS_LIBRARIAN_MODE = ENV.fetch( "HAS_LIBRARIAN_MODE", 'false' )
 
   rescue_from ActionController::UnknownFormat, with: :unsupported_media_type
 
