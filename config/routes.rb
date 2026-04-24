@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/lookup' => 'enabling_legislation_lookup#index', as: :enabling_legislation_lookup_list
   
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
+  get 'procedure-browser/enabling-legislation/search' => 'enabling_legislation#index_search', as: :enabling_legislation_list_search
+
   get 'procedure-browser/enabling-legislation/:enabling_legislation' => 'enabling_legislation#show', as: :enabling_legislation_show
   
   get 'procedure-browser/enabling-legislation/:enabling_legislation/work-packages' => 'enabling_legislation_work_package#index', as: :enabling_legislation_work_package_list
@@ -42,7 +44,12 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/:enabling_legislation/work-packageable-things' => 'enabling_legislation_work_packageable_thing#index', as: :enabling_legislation_work_packageable_thing_list
   
   get 'procedure-browser/organisations-accountable-to-parliament' => 'organisation_accountable_to_parliament#index', as: :organisation_accountable_to_parliament_list
+  get 'procedure-browser/organisations-accountable-to-parliament/search' => 'organisation_accountable_to_parliament#index_search', as: :organisation_accountable_to_parliament_list_search
+
+
   get 'procedure-browser/organisations-accountable-to-parliament/current' => 'organisation_accountable_to_parliament#current', as: :organisation_accountable_to_parliament_current_list
+  get 'procedure-browser/organisations-accountable-to-parliament/current/search' => 'organisation_accountable_to_parliament#current_search', as: :organisation_accountable_to_parliament_current_list_search
+
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament' => 'organisation_accountable_to_parliament#show', as: :organisation_accountable_to_parliament_show
   
   get 'procedure-browser/organisations-accountable-to-parliament/:organisation_accountable_to_parliament/work-packages' => 'organisation_accountable_to_parliament_work_package#index', as: :organisation_accountable_to_parliament_work_package_list
@@ -61,6 +68,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/work-packages/treaties' => 'work_package_treaty#index', as: :work_package_treaty_list
   
   get 'procedure-browser/work-packages' => 'work_package#index', as: :work_package_list
+  get 'procedure-browser/work-packages/search' => 'work_package#index_search', as: :work_package_list_search
+
   get 'procedure-browser/work-packages/current' => 'work_package#current', as: :work_package_current_list
   get 'procedure-browser/work-packages/:work_package' => 'work_package#show', as: :work_package_show
   
@@ -82,7 +91,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/procedures/:procedure' => 'procedure#show', as: :procedure_show
   
   get 'procedure-browser/procedures/:procedure/work-packages' => 'procedure_work_package#index', as: :procedure_work_package_list
-    get 'procedure-browser/procedures/:procedure/work-packages/current' => 'procedure_work_package#current', as: :procedure_work_package_current_list
+  get 'procedure-browser/procedures/:procedure/work-packages/current' => 'procedure_work_package#current', as: :procedure_work_package_current_list
   
   get 'procedure-browser/procedures/:procedure/calculation-styles' => 'procedure_calculation_style#index', as: :procedure_calculation_style_list
   
@@ -115,10 +124,14 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/step-types' => 'step_type#index', as: :step_type_list
   get 'procedure-browser/step-types/:step_type' => 'step_type#show', as: :step_type_show
-  
+  get 'procedure-browser/step-types/:step_type/search' => 'step_type#search', as: :step_type_search
+
+
   get 'procedure-browser/step-types/:step_type/steps' => 'step_type_step#index', as: :step_type_step_list
   
   get 'procedure-browser/steps' => 'step#index', as: :step_list
+  get 'procedure-browser/steps/search' => 'step#index_search', as: :step_list_search
+
   get 'procedure-browser/steps/:step' => 'step#show', as: :step_show
   
   get 'procedure-browser/steps/:step/business-items' => 'step_business_item#index', as: :step_business_item_list

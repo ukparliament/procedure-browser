@@ -1,5 +1,4 @@
 module EnablingLegislationHelper
-
   def enabling_legislation_description_with_markup( enabling_legislation )
     enabling_legislation_description_with_markup = ''
     enabling_legislation_description_with_markup += enabling_legislation.year

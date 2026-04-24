@@ -8,6 +8,13 @@ gem "rails", "~> 8.1"
 # Modern asset management
 gem "propshaft"
 
+# Database
+gem "pg"
+gem "annotaterb"
+
+# Added for Postgres text search
+gem "pg_search"
+
 # For local development
 gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.10"
 
@@ -28,7 +35,13 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Add for exception notification
-gem "rollbar"
+# gem "rollbar"
+gem "appsignal"
+# Add log rage
+gem "lograge"
+
+# Add amazing print
+gem "amazing_print"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -38,11 +51,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-  # gem "stackprof"
-  # gem "memory_profiler"
 end
 
 group :test do

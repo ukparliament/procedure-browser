@@ -36,6 +36,28 @@ class EnablingLegislationController < ApplicationController
     end
   end
 
+  def index_search
+    @search_term = params[:search]
+
+    @enabling_legislations = EnablingLegislation.fuzzy_search(@search_term)
+    @result_count = @enabling_legislations.size
+
+    respond_to do |format|
+      format.csv {}
+      format.html {
+        @page_title = 'Enabling legislation'
+        @multiline_page_title = "Enabling legislation <span class='subhead'>All</span>".html_safe
+        @description = 'Legislation delegating powers, enabling one or more instruments subject to parliamentary procedure.'
+        @csv_url = enabling_legislation_list_url( :format => 'csv' )
+        @crumb << { label: 'Enabling legislation', url: nil }
+        @section = 'enabling-legislation'
+        @subsection = 'all'
+      }
+    end
+
+    render :index
+  end
+
   def show
   
     # We get the enabling legislation.

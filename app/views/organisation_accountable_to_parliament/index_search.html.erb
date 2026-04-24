@@ -8,11 +8,8 @@
 	
 	<%= render :partial => 'library_design/feeds/feeds' %>
 
-	<%= render :partial => 'results_per_page_selector', :locals => { :page => @page, :results_per_page => @results_per_page } %>
-
 	<ol class="unnumbered">
 		<%= render :partial => 'organisation_accountable_to_parliament', :collection => @organisations_accountable_to_parliament %>
 	</ol>
 
-	<%= render :partial => 'pagination', :locals => { :page => @page, :results_per_page => @results_per_page, :result_count => @result_count } %>
 </div>
