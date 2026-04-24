@@ -5,8 +5,8 @@
 #  id                               :bigint           not null, primary key
 #  calculation_style_identifier     :text
 #  calculation_style_label          :text
-#  has_committee_concerns           :text
-#  has_motion_tabled                :text
+#  has_committee_concerns           :boolean          default(FALSE)
+#  has_motion_tabled                :boolean          default(FALSE)
 #  identifier                       :text
 #  made_available_on                :date
 #  making_available_identifier      :text

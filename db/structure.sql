@@ -215,8 +215,8 @@ CREATE TABLE public.work_packages (
     procedure_label text,
     calculation_style_identifier text,
     calculation_style_label text,
-    has_committee_concerns text,
-    has_motion_tabled text,
+    has_committee_concerns boolean DEFAULT false,
+    has_motion_tabled boolean DEFAULT false,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     search_vector tsvector
@@ -403,6 +403,7 @@ CREATE TRIGGER tsvectorupdate_work_packages BEFORE INSERT OR UPDATE ON public.wo
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260424165215'),
 ('20260130135554'),
 ('20260130120901'),
 ('20260130114439'),
