@@ -26,16 +26,52 @@ module Sparql::Get::WorkPackagesAll
       work_package.procedure_label = row['procedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
-      #if row['hasCommitteeConcernsFlag'] == 'true'
-      #  work_package.has_committee_concerns = true
-      #else
-      #  work_package.has_committee_concerns = false
-      #end
-      #if row['hasMotionTabledFlag'] == 'true'
-      #  work_package.has_motion_tabled = true
-      #else
-      #  work_package.has_motion_tabled = false
-      #end
+      
+      # If the query returns the committee concerns flag ...
+      if row['hasCommitteeConcernsFlag']
+      
+        # ... if the committee concerns flag is 'true' ...
+        if row['hasCommitteeConcernsFlag'] == 'true'
+        
+          # ... we set the committee concerns flag to true.
+          work_package.has_committee_concerns = true
+        
+        # Otherwise, if the committee concerns flag is not 'true' ...
+        else
+        
+          # ... we set the committee concerns flag to false.
+          work_package.has_committee_concerns = false
+        end
+        
+      # Otherwise, if the query does not return the committee concerns flag ...
+      else
+      
+        # ... we set the committee concerns flag to nil.
+        work_package.has_committee_concerns = nil
+      end
+      
+      # If the query returns the motions tabled flag ...
+      if row['hasMotionTabledFlag']
+      
+        # ... if the motions tabled flag is 'true' ...
+        if row['hasMotionTabledFlag'] == 'true'
+        
+          # ... we set the motions tabled flag to true.
+          work_package.has_motion_tabled = true
+        
+        # Otherwise, if the motions tabled flag is not 'true' ...
+        else
+        
+          # ... we set the motions tabled flag to false.
+          work_package.has_motion_tabled = false
+        end
+        
+      # Otherwise, if the query does not return the motions tabled flag ...
+      else
+      
+        # ... we set the motions tabled flag to nil.
+        work_package.has_motion_tabled = nil
+      end
       
       # ... and add it to the array of work packages.
       work_packages << work_package
