@@ -39,6 +39,10 @@ module Sparql::Get::Response
 
     # We parse the body of the response as CSV.
     CSV.parse(body, headers: true)
+
+  rescue CSV::MalformedCSVError => e
+    Rails.logger.error "API returns body: #{body}"
+    raise
   end
 
   def call_api(request_body)
