@@ -3,11 +3,11 @@ module Sparql::Queries::EnablingLegislationWorkPackagesCurrent
   # A SPARQL query to get current work packages enabled by an item of legislation.
   def enabling_legislation_work_packages_current_query( enabling_thing_id, limit, offset )
     "
-    PREFIX : <https://id.parliament.uk/schema/>
+      PREFIX : <https://id.parliament.uk/schema/>
                PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                PREFIX id: <https://id.parliament.uk/>
-               SELECT ?workPackage ?workPackagedThing ?workPackagedThingName ?combinedDate ?procedure ?procedureName ?calculationStyle ?calculationStyleName (BOUND(?stepId3) AS ?hasCommitteeConcernsFlag)   
+               SELECT distinct ?workPackage ?workPackagedThing ?workPackagedThingName ?combinedDate ?procedure ?procedureName ?calculationStyle ?calculationStyleName (BOUND(?stepId3) AS ?hasCommitteeConcernsFlag)   
       (BOUND(?stepId4) AS ?hasMotionTabledFlag)  WHERE {
                 ?Act a :ActOfParliament.
                  ?Act :actOfParliamentName ?Name.
@@ -52,6 +52,7 @@ module Sparql::Queries::EnablingLegislationWorkPackagesCurrent
                
                limit #{limit} offset #{offset}
     
+      
     "
   end
 end
