@@ -36,4 +36,8 @@ class EnablingLegislation < ApplicationRecord
   def display_id
     identifier.split( '/' ).last
   end
+  
+  def id
+    identifier.split( '/' ).last
+  end
 end
