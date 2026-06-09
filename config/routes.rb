@@ -13,6 +13,13 @@ Rails.application.routes.draw do
   get 'procedure-browser' => 'home#index', as: :home
   
   get 'procedure-browser/work-packageable-things' => 'work_packageable_thing#index', as: :work_packageable_thing_list
+  
+  # This route exists to enable looking up an instrument by its legislation.gov.uk URI.
+  # In time, it may be expanded to include lookups by wikidata ID.
+  # Because it doesn't identify a resource, but rather returns either a 404 or a 301, it uses a query string paramater.
+  # And because Smethurst doesn't like visible underscores in URLs, the parameter is hyphen separated.
+  get 'procedure-browser/work-packageable-things/lookup' => 'work_packageable_thing_lookup#index', as: :work_packageable_thing_lookup_list
+  
   get 'procedure-browser/work-packageable-things/before-parliament' => 'work_packageable_thing#current', as: :work_packageable_thing_current_list
   get 'procedure-browser/work-packageable-things/:work_packageable_thing' => 'work_packageable_thing#show', as: :work_packageable_thing_show
   
@@ -27,10 +34,10 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/a-z' => 'enabling_legislation_ato_z#index', as: :enabling_legislation_atoz_list
   get 'procedure-browser/enabling-legislation/a-z/:letter' => 'enabling_legislation_ato_z#show', as: :enabling_legislation_atoz_show, constraints: { letter: /[a-z]+/ }
   
-  # This route exists to enable looking up a legislation item by its legislation.gov.uk URI.
+  # This route exists to enable looking up an enabling Act by its legislation.gov.uk URI.
   # In time, it may be expanded to include lookups by wikidata ID and by year and chapter.
   # Because it doesn't identify a resource, but rather returns either a 404 or a 301, it uses a query string paramater.
-  # And because MS doesn't like visible underscores in URLs, the parameter is hyphen separated.
+  # And because Smethurst doesn't like visible underscores in URLs, the parameter is hyphen separated.
   get 'procedure-browser/enabling-legislation/lookup' => 'enabling_legislation_lookup#index', as: :enabling_legislation_lookup_list
   
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
