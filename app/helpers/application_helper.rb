@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def list_item_count_sentence_with_actualisation( first_type_of_thing, first_number_of_things, second_type_of_thing, second_number_of_things  )
     list_item_count_sentence = 'There '
     if first_number_of_things == 1
@@ -17,7 +17,7 @@ module ApplicationHelper
     list_item_count_sentence += '.'
     list_item_count_sentence = content_tag( 'p', list_item_count_sentence )
   end
-  
+
   def class_display_label( object )
     class_display_label = ''
     words = object.class.name.split /(?=[A-Z])/
@@ -28,5 +28,10 @@ module ApplicationHelper
     end
     class_display_label.sub!( 'parliament', 'Parliament' )
     class_display_label
+  end
+
+  def bookmarklet_href(filename = "bookmarklet.js")
+    path = Rails.root.join("public/#{filename}")
+    "javascript:#{ERB::Util.url_encode(File.read(path))}"
   end
 end
