@@ -13,10 +13,7 @@ module Sparql::Get::WorkPackageableThingByUri
     # If the array is an empty array ...
     if csv.empty?
       
-      # ... we render a 404 ...
-      render_404
-      
-      # ... and return nil.
+      # ... we return nil.
       return nil
       
     # Otherwise, if the CSV is not an empty array ...
