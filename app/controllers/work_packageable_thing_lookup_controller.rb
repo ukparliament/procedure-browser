@@ -18,6 +18,20 @@ class WorkPackageableThingLookupController < ApplicationController
     
       # ... we redirect to the work packageable thing.
       redirect_to work_packageable_thing_show_path( work_packageable_thing.id )
+      
+    # Otherwise, if we do not find a work packageable thing with this URI ...
+    else
+      
+      # ... we set the not found page meta information ...
+      @page_title = 'Work packageable thing not found'
+      @multiline_page_title = "Work packageable thing <span class='subhead'>Not found</span>".html_safe
+      @description = 'We were unable to find that work packageable thing.'
+      @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
+      @crumb << { label: 'Not found', url: nil }
+      @section = 'work-packages'
+      
+      # ... and render the not found template, returning a status code of 404.
+      render template: "work_packageable_thing_lookup/not_found", status: :not_found, layout: true
     end
   end
 end
