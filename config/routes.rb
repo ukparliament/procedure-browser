@@ -185,6 +185,8 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/houses/:house/step-collections' => 'house_step_collection#index', as: :house_step_collection_list
   
+  get 'procedure-browser/lookup' => 'lookup#index', as: :lookup_list
+  
   get 'procedure-browser/meta' => 'meta#index', as: :meta_list
   get 'procedure-browser/meta/sitemap' => 'meta#sitemap', as: :meta_sitemap
   get 'procedure-browser/meta/cookies' => 'meta#cookies', as: :meta_cookies
