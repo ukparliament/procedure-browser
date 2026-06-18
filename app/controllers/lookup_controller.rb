@@ -24,8 +24,8 @@ class LookupController < ApplicationController
         # ... and redirect to the enabling legislation lookup URL.
         redirect_to enabling_legislation_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
         
-      # Otherwise, if the second item in the array is 'uksi' *or* 'ukdsi' ...
-      elsif path_items[1] == 'uksi' or path_items[1] == 'ukdsi'
+      # Otherwise, if the second item in the array is 'uksi' *or* 'ukdsi' or 'nisr' ...
+      elsif ( path_items[1] == 'uksi' ) or ( path_items[1] == 'ukdsi' ) or  ( path_items[1] == 'nisr' )
       
         # ... we know we're looking for a made statutory instrument or a draft statutory instrument ...
         # ... so we redirect to the work package thing lookup URI.
