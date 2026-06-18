@@ -27,8 +27,8 @@ module Sparql::Get::Legislature
     
         # ... and create a new legislature object.
         legislature = Legislature.new
-        legislature.identifier = row['Legislature']
-        legislature.label = row['LegislatureName']
+        legislature.identifier = row['legislature']
+        legislature.label = row['legislatureName']
       
         # We return the legislature object.
         return legislature
