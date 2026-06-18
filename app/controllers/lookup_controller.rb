@@ -30,6 +30,17 @@ class LookupController < ApplicationController
         # ... we know we're looking for a made statutory instrument or a draft statutory instrument ...
         # ... so we redirect to the work package thing lookup URI.
         redirect_to work_packageable_thing_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
+        
+      # Otherwise, if the second item is neither 'ukpga', 'uksi', 'ukdsi' or 'nisr' ...
+      else
+      
+        # ... we set the not found page meta information ...
+        @page_title = 'Not found'
+        @description = 'We were unable to find that record.'
+        @crumb << { label: 'Not found', url: nil }
+      
+        # ... and render the not found template, returning a status code of 404.
+        render template: "lookup/not_found", status: :not_found, layout: true
       end
     end
   end
