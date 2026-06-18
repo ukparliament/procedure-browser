@@ -2,7 +2,20 @@
 <%# ... we know the array is formed of a title, a link and the query ... %>
 <% if query.kind_of?( Array ) -%>
 
-	<%= content_tag( 'h3', link_to( query[0], query[1] ) ) %>
+	<%# If the link is blank ... %>
+	<% if query[1].blank? %>
+	
+		<%# ... we display the title as an h3 %>
+		<%= content_tag( 'h3', query[0] ) %>
+		
+	<%# Otherwise, if the link is not blank ... %>
+	<% else -%>
+	
+		<%# ... we display the title as an h3 with a link %>
+		<%= content_tag( 'h3', link_to( query[0], query[1] ) ) %>
+	<% end -%>
+
+	<%# We display the query in a textarea %>
 	<%= content_tag( 'textarea', query[2] ) %>
 
 <%# Otherwise, if the query is a string ... %>
@@ -11,7 +24,3 @@
 
 	<%= content_tag( 'textarea', query ) %>
 <% end -%>
-
-
-
-
