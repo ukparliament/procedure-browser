@@ -2,26 +2,30 @@ module Sparql::Queries::Legislatures
 
   # A SPARQL query to get all legislatures.
   def legislatures_query
-    [ 
+    [
   
       # The title of the SPARQL query.
-      'A full list of legislatures',
+      'A list of legislatures',
     
       # The link to the SPARQL query.
-      'https://api.parliament.uk/s/fdba8abc',
+      'https://api.parliament.uk/s/454fe00f',
     
       # The SPARQL query.
       "
+        # We declare the Parliament namespace.
         PREFIX : <https://id.parliament.uk/schema/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX id: <https://id.parliament.uk/>
+        
+        # We select all properties returned.
         SELECT *
-        # An example of a SPARQL comment.
+        
+        # We find all the legislatures and get their name.
         WHERE {
-          ?Legislature a :Legislature ;
-          :name ?LegislatureName.
+          ?legislature a :Legislature ;
+          :name ?legislatureName.
         }
-        ORDER BY ?LegislatureName
+        
+        # We order by the name of the legislature.
+        ORDER BY ?legislatureName
       "
     ]
   end
