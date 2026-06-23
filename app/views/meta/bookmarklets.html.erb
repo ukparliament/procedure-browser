@@ -1,11 +1,26 @@
-<%= content_tag( 'p', "A bookmarket providing links from #{link_to( 'legislation.gov.uk', 'https://legislation.gov.uk' )} to Procedure Browser.".html_safe ) %>
+<div class="reading-width">
+	<%= content_tag( 'p', "A bookmarket providing links from #{link_to( 'legislation.gov.uk', 'https://legislation.gov.uk' )} to Procedure Browser.".html_safe ) %>
+	
+	<div class="highlight highlight-info">
+		<%= content_tag( 'p', link_to( "Legislation to Parliament", bookmarklet_href ) ) %>
+	</div>
+	
+	<ul>
+		<%= content_tag( 'li', "Drag the 'Legislation to Parliament' link to your bookmarks bar." ) %>
+		<%= content_tag( 'li', "Navigate to any page under a UK Public General Act on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar. You'll be taken to a list of instruments enabled by that Act currently before Parliament, on Procedure Browser.".html_safe ) %>
+		<%= content_tag( 'li', "Navigate to any page under a statutory instrument on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar and you'll be taken to that instrument on Procedure Browser. This works for any made statutory instrument, draft statutory instrument or Northern Ireland Statutory Rule, providing it has been laid before Parliament and is subject to parliamentary procedure.".html_safe ) %>
+	</ul>
+	
+	<%= content_tag( 'p', "Alternatively, enter the legislation.gov.uk URL of an Act or instrument into the form below and click the 'lookup' button" ) %>
 
-<%= content_tag( 'p', "Drag the 'Legislation to Parliament' link to your bookmarks bar." ) %>
-
-<div class="reading-width highlight highlight-info">
-	<%= content_tag( 'p', link_to( "Legislation to Parliament", bookmarklet_href ) ) %>
+	<%= form_with url: '/procedure-browser/lookup', :html => {:class => 'form-p'}, method: :get do |form| %>
+		<fieldset class="p-form__fieldset p-3 my-3 border rounded">
+	  		<legend class="p-form__fieldset-legend">legislation.gov.uk lookup</legend>
+			<%= form.label 'legislation-gov-uk-uri'.to_sym, "URL:" %>
+			<%= form.search_field 'legislation-gov-uk-uri'.to_sym, :class => 'p-form__input' %>
+			<div class="mt-2">
+			 	<button type="submit" class="btn btn-primary margin-top-lg">Lookup</button>
+			 </div>
+		</fieldset>
+	<% end %>
 </div>
-
-<%= content_tag( 'p', "Navigate to any page under a UK Public General Act on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar and you'll be taken to a list of instruments enabled by that Act currently before Parliament.".html_safe ) %>
-
-<%= content_tag( 'p', "Navigate to any page under a statutory instrument on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar and you'll be taken to that instrument on Procedure Browser. This works for any made statutory instrument, draft statutory instrument or Northern Ireland Statutory Rule, providing it has been laid before Parliament and is subject to parliamentary procedure.".html_safe ) %>
