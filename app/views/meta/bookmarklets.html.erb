@@ -11,7 +11,7 @@
 		<%= content_tag( 'li', "Navigate to any page under a statutory instrument on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar and you'll be taken to that instrument on Procedure Browser. This works for any made statutory instrument, draft statutory instrument or Northern Ireland Statutory Rule, providing it has been laid before Parliament and is subject to parliamentary procedure.".html_safe ) %>
 	</ul>
 	
-	<%= content_tag( 'p', "Alternatively, enter the legislation.gov.uk URL of an Act or instrument into the form below and click the 'lookup' button" ) %>
+	<%= content_tag( 'p', "Alternatively, enter the legislation.gov.uk URL of an Act or instrument into the form below and click the 'lookup' button." ) %>
 
 	<%= form_with url: '/procedure-browser/lookup', :html => {:class => 'form-p'}, method: :get do |form| %>
 		<fieldset class="p-form__fieldset p-3 my-3 border rounded">
