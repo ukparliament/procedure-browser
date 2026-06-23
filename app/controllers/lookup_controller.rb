@@ -42,6 +42,17 @@ class LookupController < ApplicationController
         # ... and render the not found template, returning a status code of 404.
         render template: "lookup/not_found", status: :not_found, layout: true
       end
+      
+    # Otherwise, if the host of the URI passed as a parameter is not www.legislation.gov.uk
+    else  
+      
+      # ... we set the not found page meta information ...
+      @page_title = 'Not found'
+      @description = 'We were unable to find that record.'
+      @crumb << { label: 'Not found', url: nil }
+  
+      # ... and render the not found template, returning a status code of 404.
+      render template: "lookup/not_found", status: :not_found, layout: true
     end
   end
 end
