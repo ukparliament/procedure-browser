@@ -1,4 +1,5 @@
 <%= render 'library_design/subnav/subnav' do %>
 	<%= render :partial => 'enabling_legislation_ato_z/letter', :collection => nav %>
 	<%= link_to( 'All', enabling_legislation_list_url, :class => 'all' ) %>
+	<%= link_to( 'Legislation enabling instruments currently before Parliament', enabling_legislation_current_url, :class => 'current' ) %>
 <% end %>
