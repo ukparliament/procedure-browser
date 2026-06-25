@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/enabling-legislation/lookup' => 'enabling_legislation_lookup#index', as: :enabling_legislation_lookup_list
   
   get 'procedure-browser/enabling-legislation' => 'enabling_legislation#index', as: :enabling_legislation_list
+  get 'procedure-browser/enabling-legislation/current' => 'enabling_legislation#current', as: :enabling_legislation_current
   get 'procedure-browser/enabling-legislation/search' => 'enabling_legislation#index_search', as: :enabling_legislation_list_search
 
   get 'procedure-browser/enabling-legislation/:enabling_legislation' => 'enabling_legislation#show', as: :enabling_legislation_show
