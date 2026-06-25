@@ -5,6 +5,8 @@ class EnablingLegislationController < ApplicationController
   include Sparql::Queries::EnablingLegislationAtoz
   include Sparql::Get::EnablingLegislations
   include Sparql::Queries::EnablingLegislations
+  include Sparql::Get::EnablingLegislationsCurrent
+  include Sparql::Queries::EnablingLegislationsCurrent
   include Sparql::Get::EnablingLegislation
   include Sparql::Queries::EnablingLegislation
   include Sparql::Get::EnablingLegislationWorkPackageCountCurrent
@@ -32,6 +34,33 @@ class EnablingLegislationController < ApplicationController
         @crumb << { label: 'Enabling legislation', url: nil }
         @section = 'enabling-legislation'
         @subsection = 'all'
+      }
+    end
+  end
+  
+  def current
+    
+    # We get the current enabling legislation items ...
+    # ... being items of legislation enabling instruments currently before Parliament.
+    @enabling_legislations = get_enabling_legislations_current
+    
+    respond_to do |format|
+      format.csv {
+      render :template => 'enabling_legislation/index'
+      }
+      format.html {
+      
+        # We get the enabling legislation a to z.
+        @letters = get_enabling_legislation_atoz
+        
+        @page_title = 'Legislation enabling instruments currently before Parliament'
+        @multiline_page_title = "Enabling legislation <span class='subhead'>Legislation enabling instruments currently before Parliament</span>".html_safe
+        @description = 'Legislation enabling instruments currently before Parliament.'
+        @csv_url = enabling_legislation_current_url( :format => 'csv' )
+        @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
+        @crumb << { label: 'Current', url: nil }
+        @section = 'enabling-legislation'
+        @subsection = 'current'
       }
     end
   end
