@@ -8,7 +8,7 @@ module Sparql::Queries::EnablingLegislationAtoz
       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
       PREFIX id: <https://id.parliament.uk/>
 
-      SELECT ?FirstLetter (COUNT(DISTINCT ?EnablingThing) AS ?Count)
+      SELECT ?FirstLetter
       WHERE {
         ?EnablingThing a :EnablingThing;
                        :enabling ?EnabledThing.
