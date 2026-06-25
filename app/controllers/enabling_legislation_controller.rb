@@ -51,7 +51,7 @@ class EnablingLegislationController < ApplicationController
       format.html {
       
         # We get the enabling legislation a to z.
-        #@letters = get_enabling_legislation_atoz
+        @letters = get_enabling_legislation_atoz
         
         @page_title = 'Legislation enabling instruments currently before Parliament'
         @multiline_page_title = "Enabling legislation <span class='subhead'>Legislation enabling instruments currently before Parliament</span>".html_safe
@@ -60,7 +60,7 @@ class EnablingLegislationController < ApplicationController
         @crumb << { label: 'Enabling legislation', url: enabling_legislation_list_url }
         @crumb << { label: 'Current', url: nil }
         @section = 'enabling-legislation'
-        @subsection = 'all'
+        @subsection = 'current'
       }
     end
   end
