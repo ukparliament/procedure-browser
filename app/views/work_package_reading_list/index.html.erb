@@ -1,5 +1,13 @@
 <div class="reading-width">
 	<%= work_package_description_with_work_packageable_thing_and_markup( @work_package ) %>
+	
+	<% if @business_items.empty? -%>
+		<%= content_tag( 'p', 'The reading list is currently empty.' ) %>
+	<% else -%>
+		<ol class="unnumbered">
+			<%= render :partial => 'business_item', :collection => @business_items %>
+		</ol>
+	<% end -%>
 
 	<%= render :partial => 'common/identifier', :object => @work_package %>
 </div>
