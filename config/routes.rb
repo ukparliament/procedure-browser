@@ -88,6 +88,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/work-packages/:work_package/business-items/future' => 'work_package_future_business_item#index', as: :work_package_future_business_item_list
   
   get 'procedure-browser/work-packages/:work_package/business-items/undated' => 'work_package_undated_business_item#index', as: :work_package_undated_business_item_list
+
+  get 'procedure-browser/work-packages/:work_package/reading-list' => 'work_package_reading_list#index', as: :work_package_reading_list_list
   
   get 'procedure-browser/business-items' => 'business_item#index', as: :business_item_list
   get 'procedure-browser/business-items/:business_item' => 'business_item#show', as: :business_item_show
