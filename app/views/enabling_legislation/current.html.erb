@@ -1,0 +1,14 @@
+<%= render 'layouts/search/form', path: enabling_legislation_list_search_path %>
+
+<%= render :partial => 'current_list_intro' %>
+
+<div class="reading-width">
+
+	<%= list_item_count_sentence( 'enabling legislation item', @enabling_legislations.size ) %>
+	
+	<%= render :partial => 'library_design/feeds/feeds' %>
+
+	<ol class="unnumbered">
+		<%= render :partial => 'enabling_legislation', :collection => @enabling_legislations %>
+	</ol>
+</div>
