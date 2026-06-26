@@ -1,0 +1,6 @@
+<div class="reading-width highlight highlight-info">
+	<%= content_tag( 'p', "Read the #{link_to( 'legislation', legislation_links.work_packageable_thing_link )}.".html_safe ) %>
+	<% if !legislation_links.explanatory_memorandum_link.blank? -%>
+		<%= content_tag( 'p', "Read the #{link_to( 'Explanatory Memorandum', legislation_links.explanatory_memorandum_link )}.".html_safe ) %>
+	<% end -%>
+</div>

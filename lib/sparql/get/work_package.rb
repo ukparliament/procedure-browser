@@ -28,14 +28,15 @@ module Sparql::Get::WorkPackage
         # ... and create a new work package object.
         work_package = WorkPackage.new
         work_package.identifier = row['workPackage']
-        work_package.work_packageable_thing_identifer = row['Paper']
-        work_package.work_packageable_thing_label = row['Papername']
+        work_package.work_packageable_thing_identifer = row['paper']
+        work_package.work_packageable_thing_label = row['paperName']
         work_package.making_available_identifier = row['laying']
         work_package.made_available_on = row['laidDate'].to_date if row['laidDate']
         work_package.procedure_identifier = row['procedure']
         work_package.procedure_label = row['procedureName']
         work_package.calculation_style_identifier = row['calculationStyle']
         work_package.calculation_style_label = row['calculationStyleName']
+        work_package.work_packageable_thing_link = row['workPackagedThingWebLink'] if row['workPackagedThingWebLink']
       
         # We return the work package object.
         return work_package
