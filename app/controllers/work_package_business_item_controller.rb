@@ -48,6 +48,7 @@ class WorkPackageBusinessItemController < ApplicationController
       @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }
       @crumb << { label: 'Business items', url: nil }
       @section = 'work-packages'
+      @subsection = 'timeline'
     end
   end
 end
