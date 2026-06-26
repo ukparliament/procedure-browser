@@ -1,0 +1,15 @@
+<div class="reading-width">
+	<%= work_package_description_with_work_packageable_thing_and_markup( @work_package ) %>
+	
+	<%= render :partial => 'work_package/nav' %>
+	
+	<% if @business_items.empty? -%>
+		<%= content_tag( 'p', 'The reading list is currently empty.' ) %>
+	<% else -%>
+		<%= list_item_count_sentence( 'document', @business_items.size ) %>
+		<%= render :partial => 'library_design/feeds/feeds' %>
+		<%= render :partial => 'business_item', :collection => @business_items %>
+	<% end -%>
+
+	<%= render :partial => 'common/identifier', :object => @work_package %>
+</div>
