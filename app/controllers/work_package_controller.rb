@@ -164,6 +164,7 @@ class WorkPackageController < ApplicationController
       @crumb << { label: 'Work packages', url: work_package_list_url }
       @crumb << { label: @work_package.work_packageable_thing_label, url: nil }
       @section = 'work-packages'
+      @subsection = 'timeline'
     
       render :template => 'work_package_business_item/index'
     end
