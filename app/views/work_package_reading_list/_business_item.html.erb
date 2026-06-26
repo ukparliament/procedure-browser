@@ -1,4 +1,14 @@
-<li>
-	<%= content_tag( 'p', link_to( business_item_step_label( business_item ), business_item.link ) ) %><%= content_tag( 'p', business_item.date.strftime( $DATE_DISPLAY_FORMAT ) ) %>
-</li>
-
+<a href="<%= business_item.link %>" class="card">
+	<div class="card-inner">
+		<div class="content">
+			<%= content_tag( 'div', business_item_step_label( business_item ), :class => 'primary-info' ) %>
+		</div>
+		<div class="info">
+			<div class="info-inner">
+				<div class="indicators-left">
+					<%= content_tag( 'div', business_item.date.strftime( $DATE_DISPLAY_FORMAT ), :class => 'indicator indicator-label' ) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>
