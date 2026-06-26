@@ -19,6 +19,8 @@ body.section-houses nav#header-nav a.houses {
 
 
 /* Styling for sub navigation active states */
+body.subsection-timeline .subnav a.timeline,
+body.subsection-reading-list .subnav a.reading-list,
 body.subsection-overview .subnav a.overview,
 body.subsection-business-items .subnav a.business-items,
 body.subsection-routes .subnav a.routes,
