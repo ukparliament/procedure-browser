@@ -25,5 +25,6 @@ class WorkPackageReadingListController < ApplicationController
     @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }
     @crumb << { label: 'Reading list', url: work_package_show_url }
     @section = 'work-packages'
+    @subsection = 'reading-list'
   end
 end
