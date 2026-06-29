@@ -1,0 +1,22 @@
+<div class="reading-width highlight highlight-info">
+
+	<%# If the work package is subject to the treaty procedure ... %>
+	<% if source_links.procedure_id == 'D00dsjR2' %>
+	
+		<%# ... we display a link to the treaty. %>
+		<%= content_tag( 'p', "Read the #{link_to( 'treaty', source_links.work_packageable_thing_link )}.".html_safe ) %>
+	
+	<%# Otherwise, if the work package is not subject to the treaty procedure ... %>
+	<% else -%>
+	
+		<%# ... we display a link to the legislation. %>
+		<%= content_tag( 'p', "Read the #{link_to( 'legislation', source_links.work_packageable_thing_link )}.".html_safe ) %>
+	<% end -%>
+
+	<%# If the explanatory memorandum link is not blank ... %>
+	<% if !source_links.explanatory_memorandum_link.blank? -%>
+	
+		<%# ... we display a link to the explanatory memorandum. %>
+		<%= content_tag( 'p', "Read the #{link_to( 'Explanatory Memorandum', source_links.explanatory_memorandum_link )}.".html_safe ) %>
+	<% end -%>
+</div>
