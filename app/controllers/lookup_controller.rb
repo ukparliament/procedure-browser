@@ -19,16 +19,42 @@ class LookupController < ApplicationController
       
         # ... we know we're looking for a public general Act ...
         # ... so we construct the ID-based legsilation.gov.uk URI for the Act ...
-        legislation_gov_uk_uri = lookup_uri.scheme + '://' + lookup_uri.host + '/id/' + path_items[1] + '/' + path_items[2] + '/'  + path_items[3]
+        legislation_gov_uk_uri = lookup_uri.scheme
+        legislation_gov_uk_uri += '://'
+        legislation_gov_uk_uri += lookup_uri.host
+        legislation_gov_uk_uri += '/id/'
+        legislation_gov_uk_uri += path_items[1]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[2]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[3]
         
         # ... and redirect to the enabling legislation lookup URL.
         redirect_to enabling_legislation_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
         
-      # Otherwise, if the second item in the array is 'uksi' *or* 'ukdsi' or 'nisr' ...
+      # Otherwise, if the first item in the array is 'uksi' *or* 'ukdsi' or 'nisr' ...
       elsif ( path_items[1] == 'uksi' ) or ( path_items[1] == 'ukdsi' ) or  ( path_items[1] == 'nisr' )
       
-        # ... we know we're looking for a made statutory instrument or a draft statutory instrument ...
-        # ... so we redirect to the work package thing lookup URI.
+        # ... we know we're looking for a made statutory instrument, a draft statutory instrument or a Northern Ireland Statutory Rule ...
+        # We start to construct the lookup URL.
+        legislation_gov_uk_uri = lookup_uri.scheme
+        legislation_gov_uk_uri += '://'
+        legislation_gov_uk_uri += lookup_uri.host
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[1]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[2]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[3]
+        
+        # If the first item in the array is 'uksi' or 'nisr' ...
+        if ( path_items[1] == 'uksi' ) or ( path_items[1] == 'nisr' )
+          
+          # ... we add '/made' to the URL.
+          legislation_gov_uk_uri += '/made'
+        end
+        
+        # ... we redirect to the work package thing lookup URI.
         redirect_to work_packageable_thing_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
         
       # Otherwise, if the second item is neither 'ukpga', 'uksi', 'ukdsi' or 'nisr' ...
