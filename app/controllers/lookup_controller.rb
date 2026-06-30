@@ -18,7 +18,7 @@ class LookupController < ApplicationController
       if path_items[1] == 'ukpga'
       
         # ... we know we're looking for a public general Act ...
-        # ... so we construct the ID-based legsilation.gov.uk URI for the Act ...
+        # ... so we construct the ID-based legislation.gov.uk URI for the Act ...
         legislation_gov_uk_uri = lookup_uri.scheme
         legislation_gov_uk_uri += '://'
         legislation_gov_uk_uri += lookup_uri.host
@@ -32,11 +32,30 @@ class LookupController < ApplicationController
         # ... and redirect to the enabling legislation lookup URL.
         redirect_to enabling_legislation_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
         
-      # Otherwise, if the first item in the array is 'uksi' *or* 'ukdsi' or 'nisr' ...
-      elsif ( path_items[1] == 'uksi' ) or ( path_items[1] == 'ukdsi' ) or  ( path_items[1] == 'nisr' )
+      # Otherwise, if the first item in the array is 'nisr' ...
+      elsif path_items[1] == 'nisr'
       
-        # ... we know we're looking for a made statutory instrument, a draft statutory instrument or a Northern Ireland Statutory Rule ...
-        # We start to construct the lookup URL.
+        # ... we know we're looking for a Northern Ireland Statutory Rule ...
+        # ... so we construct the lookup URL ....
+        legislation_gov_uk_uri = lookup_uri.scheme
+        legislation_gov_uk_uri += '://'
+        legislation_gov_uk_uri += lookup_uri.host
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[1]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[2]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[3]
+        legislation_gov_uk_uri += '/made'
+        
+        # ... and redirect to the work package thing lookup URI.
+        redirect_to work_packageable_thing_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
+        
+      # Otherwise, if the first item in the array is 'ukdsi' ...
+      elsif path_items[1] == 'ukdsi'
+      
+        # ... we know we're looking for a draft statutory instrument ...
+        # ... so we construct the lookup URL ....
         legislation_gov_uk_uri = lookup_uri.scheme
         legislation_gov_uk_uri += '://'
         legislation_gov_uk_uri += lookup_uri.host
@@ -47,14 +66,63 @@ class LookupController < ApplicationController
         legislation_gov_uk_uri += '/'
         legislation_gov_uk_uri += path_items[3]
         
-        # If the first item in the array is 'uksi' or 'nisr' ...
-        if ( path_items[1] == 'uksi' ) or ( path_items[1] == 'nisr' )
-          
-          # ... we add '/made' to the URL.
-          legislation_gov_uk_uri += '/made'
+        # ... and redirect to the work package thing lookup URI.
+        redirect_to work_packageable_thing_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
+        
+      # Otherwise, if the first item in the array is 'uksi' ...
+      elsif path_items[1] == 'uksi'
+      
+        # ... we know we're looking for what is now a made statutory instrument ...
+        # ... so we construct the lookup URL ....
+        legislation_gov_uk_uri = lookup_uri.scheme
+        legislation_gov_uk_uri += '://'
+        legislation_gov_uk_uri += lookup_uri.host
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[1]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[2]
+        legislation_gov_uk_uri += '/'
+        legislation_gov_uk_uri += path_items[3]
+        legislation_gov_uk_uri += '/made'
+        
+        # Given this is now a made statutory instrument, it may have either been:
+        # * laid as made
+        # * laid in draft and made later
+        # * laid as a type II made affirmative, in which case the URL may change once approved by Parliament.
+        
+        # We need to check if this made instrument supersedes another instrument ...
+        # ... so we get the URL of the XML description of the made instrument.
+        made_instrument_xml_url = legislation_gov_uk_uri + '/data.xml'
+        
+        # We get the XML description of the made instrument.
+        doc = Nokogiri::XML( URI.open( made_instrument_xml_url ) )
+        
+        # We set the legislation.gov.uk metadata namespace.
+        namespace = { 'ukm' => 'http://www.legislation.gov.uk/namespaces/metadata' }
+        
+        # We attempt to find the URL of the superseded draft instrument.
+        # If there is a Superseded URI in the XML ...
+        unless doc.xpath( '//ukm:Supersedes/@URI', namespace ).empty?
+        
+          # ... we store the URL of the superseded draft instrument.
+          superseded_draft_instrument_url = doc.xpath( '//ukm:Supersedes/@URI', namespace ).first.value
         end
         
-        # ... we redirect to the work package thing lookup URI.
+        # If there is a superseded draft instrument URL ...
+        if !superseded_draft_instrument_url.blank?
+        
+          # ... we set the legislation.gov.uk URI to the superseded draft instrument URL.
+          legislation_gov_uk_uri = superseded_draft_instrument_url
+          
+          # We substitute 'http://' with 'https://'.
+          legislation_gov_uk_uri.gsub!( 'http://', 'https://' )
+          
+          # We update the legislation.gov.uk URL from the non-information resource, ID-based URI to the information resource URL ...
+          # ... by substituting '/id/' for '/'.
+          legislation_gov_uk_uri.gsub!( '/id/', '/' )
+        end
+        
+        # We redirect to the work package thing lookup URI.
         redirect_to work_packageable_thing_lookup_list_url( 'legislation-gov-uk-uri'.to_sym => legislation_gov_uk_uri )
         
       # Otherwise, if the second item is neither 'ukpga', 'uksi', 'ukdsi' or 'nisr' ...
@@ -70,7 +138,7 @@ class LookupController < ApplicationController
       end
       
     # Otherwise, if the host of the URI passed as a parameter is not www.legislation.gov.uk
-    else  
+    else
       
       # ... we set the not found page meta information ...
       @page_title = 'Not found'
