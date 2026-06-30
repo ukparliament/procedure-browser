@@ -32,6 +32,6 @@ class WorkPackageableThingLookupController < ApplicationController
     
       # ... and render the not found template, returning a status code of 404.
       render template: "work_packageable_thing_lookup/not_found", status: :not_found, layout: true
-    end
+    end 
   end
 end
