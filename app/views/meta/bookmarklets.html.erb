@@ -8,7 +8,7 @@
 	<ul>
 		<%= content_tag( 'li', "Drag the 'Legislation to Parliament' link to your bookmarks bar." ) %>
 		<%= content_tag( 'li', "Navigate to any page under a UK Public General Act on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar. You'll be taken to a list of instruments enabled by that Act currently before Parliament, on Procedure Browser.".html_safe ) %>
-		<%= content_tag( 'li', "Navigate to any page under a statutory instrument on #{link_to( "legislation.gov.uk", "https://www.legislation.gov.uk/" )}, click the bookmarklet in your bookmarks bar and you'll be taken to that instrument on Procedure Browser. This works for any made statutory instrument, draft statutory instrument or Northern Ireland Statutory Rule, providing it has been laid before Parliament and is subject to parliamentary procedure.".html_safe ) %>
+		<%= content_tag( 'li', "Navigate to any page under a statutory instrument on legislation.gov.uk, click the bookmarklet in your bookmarks bar and you'll be taken to that instrument on Procedure Browser. This works for any made statutory instrument, draft statutory instrument or Northern Ireland Statutory Rule, providing it has been laid before Parliament and is subject to parliamentary procedure.".html_safe ) %>
 	</ul>
 	
 	<%= content_tag( 'p', "Alternatively, enter the legislation.gov.uk URL of an Act or instrument into the form below and click the 'lookup' button." ) %>
@@ -23,4 +23,14 @@
 			 </div>
 		</fieldset>
 	<% end %>
+	
+	<div id="caveats">
+		<%= content_tag( 'h2', 'Caveats' ) %>
+		<%= content_tag( 'p', "Procedure Browser stores URLs for instruments on legislation.gov.uk to both make links to source material, and to enable this lookup service. URLs stored reflect the state of the instrument at the point at which it was laid before Parliament. There are reasons why the discoverable URL of an instrument on legislation.gov.uk might change over time:" ) %>
+		<ol>
+			<%= content_tag( 'li', "An instrument being laid before Parliament in draft may later be made. Once made, a new version of the instrument will be published on legislation.gov.uk at a new URL." ) %>
+			<%= content_tag( 'li', "A class ii made affirmative does not gain a number until approved by Parliament. Once approved, a new version of the instrument will be published on legislation.gov.uk at a new URL." ) %>
+		</ol>
+		<%= content_tag( 'p', "Where legislation.gov.uk publishes information about an instrument superseding another instrument, we are able to use that information to derive a lookup to the instrument as laid. Where that information is not published, this lookup service will not work." ) %>
+	</div>
 </div>

@@ -3,7 +3,7 @@
 	
 	<%= render :partial => 'work_package/nav' %>
 	
-	<%= render :partial => 'legislation_links', :object => @work_package if @work_package.work_packageable_thing_link %>
+	<%= render :partial => 'source_links', :object => @work_package if @work_package.work_packageable_thing_link %>
 	
 	<% if @business_items.empty? -%>
 		<%= content_tag( 'p', 'The reading list is currently empty.' ) %>

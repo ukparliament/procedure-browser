@@ -74,29 +74,34 @@ class WorkPackage < ApplicationRecord
   def explanatory_memorandum_link
     explanatory_memorandum_url = ''
     
-    # If the work package has a working packagable thing link ...
-    if self.work_packageable_thing_link
+    # If the work package is not subject to the Legislative Reform Order procedure ...
+    if self.procedure_id != 'kgFvgMIf'
     
-      # ... we parse the link into a URI.
-      uri = URI.parse( self.work_packageable_thing_link )
+    
+      # If the work package has a working packagable thing link ...
+      if self.work_packageable_thing_link
+    
+        # ... we parse the link into a URI.
+        uri = URI.parse( self.work_packageable_thing_link )
       
-      # We split the path on slashes.
-      path_parts = uri.path.split( '/' )
+        # We split the path on slashes.
+        path_parts = uri.path.split( '/' )
       
-      # If this is a legislation.gov.uk URL ...
-      if uri.host == 'www.legislation.gov.uk'
+        # If this is a legislation.gov.uk URL ...
+        if uri.host == 'www.legislation.gov.uk'
       
-        # We construct the URL of the explanatory memorandum.
-        explanatory_memorandum_url += uri.scheme
-        explanatory_memorandum_url += '://'
-        explanatory_memorandum_url += uri.host
-        explanatory_memorandum_url += '/'
-        explanatory_memorandum_url += path_parts[1]
-        explanatory_memorandum_url += '/'
-        explanatory_memorandum_url += path_parts[2]
-        explanatory_memorandum_url += '/'
-        explanatory_memorandum_url += path_parts[3]
-        explanatory_memorandum_url += '/memorandum'
+          # We construct the URL of the explanatory memorandum.
+          explanatory_memorandum_url += uri.scheme
+          explanatory_memorandum_url += '://'
+          explanatory_memorandum_url += uri.host
+          explanatory_memorandum_url += '/'
+          explanatory_memorandum_url += path_parts[1]
+          explanatory_memorandum_url += '/'
+          explanatory_memorandum_url += path_parts[2]
+          explanatory_memorandum_url += '/'
+          explanatory_memorandum_url += path_parts[3]
+          explanatory_memorandum_url += '/memorandum'
+        end
       end
     end
     explanatory_memorandum_url

@@ -23,7 +23,7 @@ class WorkPackageReadingListController < ApplicationController
     @rss_url = work_package_reading_list_list_url( :format => 'rss' )
     @crumb << { label: 'Work packages', url: work_package_list_url }
     @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }
-    @crumb << { label: 'Reading list', url: work_package_show_url }
+    @crumb << { label: 'Reading list', url: nil }
     @section = 'work-packages'
     @subsection = 'reading-list'
   end
