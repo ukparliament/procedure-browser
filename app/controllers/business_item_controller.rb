@@ -17,7 +17,7 @@ class BusinessItemController < ApplicationController
     
       @business_item = BusinessItem.new
       @business_item.identifier = @business_item_steps.first.business_item_identifier
-      @business_item.date = @business_item_steps.first.business_item_date
+      @business_item.date = @business_item_steps.first.business_item_date.to_date
       @business_item.link = @business_item_steps.first.business_item_link
       @business_item.work_package_identifier = @business_item_steps.first.work_package_identifier
       @business_item.work_packageable_thing_identifier = @business_item_steps.first.work_packageable_thing_identifier
