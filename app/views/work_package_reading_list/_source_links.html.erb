@@ -4,7 +4,7 @@
 	<% if source_links.procedure_id == 'D00dsjR2' %>
 	
 		<%# ... we display a link to the treaty. %>
-		<%= content_tag( 'p', "Read the #{link_to( 'treaty', source_links.work_packageable_thing_link )}.".html_safe ) %>
+		<%= content_tag( 'p', "Read #{link_to( 'the treaty and its explanatory memorandum', source_links.work_packageable_thing_link )}.".html_safe ) %>
 	
 	<%# Otherwise, if the work package is not subject to the treaty procedure ... %>
 	<% else -%>
