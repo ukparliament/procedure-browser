@@ -23,9 +23,9 @@ class WorkPackageableThingLookupController < ApplicationController
     else
     
       # ... we set the not found page meta information ...
-      @page_title = 'Work packageable thing not found'
-      @multiline_page_title = "Work packageable thing <span class='subhead'>Not found</span>".html_safe
-      @description = 'We were unable to find that work packageable thing.'
+      @page_title = 'Instrument not found'
+      @multiline_page_title = "Instrument <span class='subhead'>Not found</span>".html_safe
+      @description = 'We were unable to find that instrument.'
       @crumb << { label: 'Work packageable things', url: work_packageable_thing_list_url }
       @crumb << { label: 'Not found', url: nil }
       @section = 'work-packages'
