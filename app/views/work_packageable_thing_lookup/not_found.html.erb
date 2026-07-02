@@ -1,1 +1,8 @@
-<%= content_tag( 'p', 'Sorry, we were unable to find a work packageable thing from the information which was provided.' ) %>
+<%= content_tag( 'p', 'Sorry, we were unable to find an instrument from the information provided. This may be because:' ) %>
+<ul>
+	<%= content_tag( 'li', 'the instrument was never laid before Parliament' ) %>
+	<%= content_tag( 'li', 'the instrument was laid before Parliament but was not subject to procedure' ) %>
+	<%= content_tag( 'li', 'the instrument was laid before Parliament prior to the 2017-19 session' ) %>
+	<%= content_tag( 'li', 'the instrument was laid before Parliament in draft, was later made, and legislation.gov.uk has yet to publish a supersedes relationship between the URL of the made instrument and that of the earlier draft instrument' ) %>
+	<%= content_tag( 'li', 'the instrument was laid before Parliament as a class ii made affirmative, gained a new URL once approved by Parliament,  and legislation.gov.uk has yet to publish a supersedes relationship between the URL of the approved instrument and that of the instrument as laid' ) %>
+</ul>
