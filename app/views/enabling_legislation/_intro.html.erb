@@ -1,5 +1,7 @@
 <%= enabling_legislation_description_with_markup( intro ) %>
 
+<%= content_tag( 'p', 'Instruments listed here are those laid since the start of the 2017-19 session, subject to parliamentary procedure.', :class => 'reading-width' ) %>
+
 <% if intro.uri -%>
 	<div class="reading-width highlight highlight-info">
 		<%= content_tag( 'p', "#{link_to( 'Read the enabling legislation', intro.uri )} at legislation.gov.uk.".html_safe ) %>
