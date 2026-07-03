@@ -1,6 +1,9 @@
 <%= render :partial => 'enabling_legislation/intro', :object => @enabling_legislation %>
 
 <div class="reading-width">
+
+	<%= content_tag( 'p', 'Instruments listed here are those laid since the start of the 2017-19 session, subject to parliamentary procedure.' ) %>
+	
 	<%= list_item_count_sentence( 'work packageable thing', @result_count ) %>
 
 	<% unless @enabling_legislation_work_packageable_things.empty? -%>

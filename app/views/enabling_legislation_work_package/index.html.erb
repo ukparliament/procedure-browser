@@ -2,8 +2,10 @@
 
 <div class="reading-width">
 
-	<%= list_item_count_sentence( 'work package', @result_count ) %>
+	<%= content_tag( 'p', 'Instruments listed here are those laid since the start of the 2017-19 session, subject to parliamentary procedure.' ) %>
 
+	<%= list_item_count_sentence( 'work package', @result_count ) %>
+	
 	<%= render :partial => 'library_design/feeds/feeds' %>
 
 	<% unless @work_packages.empty? -%>
