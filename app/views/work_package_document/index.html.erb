@@ -5,12 +5,12 @@
 	
 	<%= render :partial => 'source_links', :object => @work_package if @work_package.work_packageable_thing_link %>
 	
-	<% if @business_items.empty? -%>
-		<%= content_tag( 'p', 'The reading list is currently empty.' ) %>
+	<% if @documents.empty? -%>
+		<%= content_tag( 'p', 'No documents are yet available.' ) %>
 	<% else -%>
-		<%= list_item_count_sentence( 'document', @business_items.size ) %>
+		<%= list_item_count_sentence( 'document', @documents.size ) %>
 		<%= render :partial => 'library_design/feeds/feeds' %>
-		<%= render :partial => 'business_item', :collection => @business_items %>
+		<%= render :partial => 'document', :collection => @documents %>
 	<% end -%>
 
 	<%= render :partial => 'common/identifier', :object => @work_package %>
