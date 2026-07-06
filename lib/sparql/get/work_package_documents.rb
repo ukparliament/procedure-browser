@@ -1,10 +1,10 @@
-module Sparql::Get::WorkPackageBusinessItemsReadingList
+module Sparql::Get::WorkPackageDocuments
 
   # A method to get all business items in a work package with a link, actualising steps in the reading list collection.
-  def get_work_package_business_items_reading_list( work_package_id )
+  def get_work_package_documents( work_package_id )
   
-    # We get the work package business items reading list query.
-    request_body = work_package_business_items_reading_list_query( work_package_id )
+    # We get the work package documents query.
+    request_body = work_package_documents_query( work_package_id )
   
     # We get the SPARQL response as a CSV.
     csv = get_sparql_response_as_csv( request_body )
