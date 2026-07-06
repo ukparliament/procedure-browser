@@ -1,7 +1,7 @@
-module Sparql::Queries::WorkPackageBusinessItemsReadingList
+module Sparql::Queries::WorkPackageDocuments
 
   # A SPARQL query to get all business items in a work package with a link, actualising steps in the reading list collection.
-  def work_package_business_items_reading_list_query( work_package_id )
+  def work_package_documents_query( work_package_id )
     [
   
       # The title of the SPARQL query.
