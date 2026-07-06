@@ -89,7 +89,10 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/work-packages/:work_package/business-items/undated' => 'work_package_undated_business_item#index', as: :work_package_undated_business_item_list
 
+  # Left in place to issue a redirect to /documents.
   get 'procedure-browser/work-packages/:work_package/reading-list' => 'work_package_reading_list#index', as: :work_package_reading_list_list
+  
+  get 'procedure-browser/work-packages/:work_package/documents' => 'work_package_document#index', as: :work_package_document_list
   
   get 'procedure-browser/business-items' => 'business_item#index', as: :business_item_list
   get 'procedure-browser/business-items/:business_item' => 'business_item#show', as: :business_item_show
