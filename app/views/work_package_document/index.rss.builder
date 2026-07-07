@@ -7,8 +7,6 @@ xml.rss( :version => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' ) do
 	    xml.language( 'en-uk' )
 	    xml.pubDate( @documents.first.date.rfc822 ) unless @documents.empty? or @documents.first.date.nil?
 	    xml.tag!( 'atom:link', { :href => work_package_document_list_url( :format => 'rss' ), :rel => 'self', :type => 'application/rss+xml' } )
-		@documents.each do |document|
-			xml << render(:partial => 'document', :collection => @documents ) unless @documents.empty?
-		end
+		xml << render( :partial => 'document', :collection => @documents ) unless @documents.empty?
 	end
 end
