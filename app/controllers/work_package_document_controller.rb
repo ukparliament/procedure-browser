@@ -16,15 +16,31 @@ class WorkPackageDocumentController < ApplicationController
     
     # We get the business items being the reading list for the work package.
     @documents = get_work_package_documents( work_package_id )
-
-    @page_title = "Documents for #{@work_package.work_packageable_thing_label}"
-    @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Documents</span>".html_safe
-    @description = "Documents for #{@work_package.work_packageable_thing_label}."
-    @rss_url = work_package_document_list_url( :format => 'rss' )
-    @crumb << { label: 'Work packages', url: work_package_list_url }
-    @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }
-    @crumb << { label: 'Documents', url: nil }
-    @section = 'work-packages'
-    @subsection = 'documents'
+    
+    # We check the format we're expected to respond with.
+    respond_to do |format|
+    
+      # If we're expected to respond with RSS ...
+      format.rss {
+      
+        # ... we reverse the documents array to list reverse chronologically.
+        @documents.reverse!
+      }
+      
+      # If we're expected to respond with HTML ...
+      format.html {
+      
+        # ... we set the page meta information.
+        @page_title = "Documents for #{@work_package.work_packageable_thing_label}"
+        @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Documents</span>".html_safe
+        @description = "Documents for #{@work_package.work_packageable_thing_label}."
+        @rss_url = work_package_document_list_url( :format => 'rss' )
+        @crumb << { label: 'Work packages', url: work_package_list_url }
+        @crumb << { label: @work_package.work_packageable_thing_label, url: work_package_show_url }
+        @crumb << { label: 'Documents', url: nil }
+        @section = 'work-packages'
+        @subsection = 'documents'
+      }
+    end
   end
 end
