@@ -20,7 +20,7 @@ module Sparql::Queries::LegislatureHouses
 	      SELECT * WHERE { 
   
 	      # We find all the legislatures and get their name.  
-      	?legislature a :Legislature ;
+      	  ?legislature a :Legislature ;
 	      :name ?legislatureName;
 
 	      # We look only for legislatures that have one or more Houses. 
@@ -29,8 +29,8 @@ module Sparql::Queries::LegislatureHouses
 	      # We look for a House's name.   
 	      ?house :name ?houseName. 
 
-	      # We filter the results to only include the legislature with ID 4Mapsyb9.
-	      FILTER (?legislature in (id:4Mapsyb9))
+	      # We filter the results to only include the legislature with ID #{legislature_id}.
+          FILTER ( ?legislature in ( id:#{legislature_id} ) )  
 	      } 
 
 	      # We order results by House name. 
