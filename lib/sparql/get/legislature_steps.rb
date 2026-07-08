@@ -15,7 +15,7 @@ module Sparql::Get::LegislatureSteps
     csv.each do |row|
   
       # ... we create a new step object ...
-      step = step.new
+      step = Step.new
       step.identifier = row['step']
       step.label = row['stepName']
       step.step_type_identifier = row['stepType']
