@@ -12,29 +12,28 @@ module Sparql::Queries::LegislatureHouses
     
       # The SPARQL query.
       "
-	      # We declare the Parliament and ID namespaces.
-	      PREFIX : <https://id.parliament.uk/schema/>
-	      PREFIX id: <https://id.parliament.uk/>
+# We declare the Parliament and ID namespaces.
+PREFIX : <https://id.parliament.uk/schema/>
+PREFIX id: <https://id.parliament.uk/>
+# We select all properties returned.
+SELECT * WHERE {
 
-	      # We select all properties returned.
-	      SELECT * WHERE {
+  # We find all the legislatures and get their name.
+  ?legislature a :Legislature ;
+  :name ?legislatureName;
   
-  	      # We find all the legislatures and get their name.
-          ?legislature a :Legislature ;
-          :name ?legislatureName;
+  # We look only for legislatures that have one or more Houses.
+  :legislatureHasHouse ?house.
+  
+  # We look for a House's name.
+  ?house :name ?houseName.
+  
+  # We filter the results to only include the legislature with ID #{legislature_id}.
+  FILTER ( ?legislature in ( id:#{legislature_id} ) )
+}
 
-  	      # We look only for legislatures that have one or more Houses. 
-  	      :legislatureHasHouse ?house. 
-
-  	      # We look for a House's name.   
-  	      ?house :name ?houseName. 
-
-  	      # We filter the results to only include the legislature with ID #{legislature_id}.
-          FILTER ( ?legislature in ( id:#{legislature_id} ) )
-	      }
-
-	      # We order results by House name. 
-	      ORDER BY ?houseName
+# We order results by House name.
+ORDER BY ?houseName
      "
     ]
   end
