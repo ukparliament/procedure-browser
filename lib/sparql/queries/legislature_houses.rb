@@ -17,21 +17,21 @@ module Sparql::Queries::LegislatureHouses
 	      PREFIX id: <https://id.parliament.uk/>
 
 	      # We select all properties returned.
-	      SELECT * WHERE { 
+	      SELECT * WHERE {
   
-	      # We find all the legislatures and get their name.
-        ?legislature a :Legislature ;
-        :name ?legislatureName;
+  	      # We find all the legislatures and get their name.
+          ?legislature a :Legislature ;
+          :name ?legislatureName;
 
-	      # We look only for legislatures that have one or more Houses. 
-	      :legislatureHasHouse ?house. 
+  	      # We look only for legislatures that have one or more Houses. 
+  	      :legislatureHasHouse ?house. 
 
-	      # We look for a House's name.   
-	      ?house :name ?houseName. 
+  	      # We look for a House's name.   
+  	      ?house :name ?houseName. 
 
-	      # We filter the results to only include the legislature with ID #{legislature_id}.
-          FILTER ( ?legislature in ( id:#{legislature_id} ) )  
-	      } 
+  	      # We filter the results to only include the legislature with ID #{legislature_id}.
+          FILTER ( ?legislature in ( id:#{legislature_id} ) )
+	      }
 
 	      # We order results by House name. 
 	      ORDER BY ?houseName
