@@ -19,9 +19,9 @@ module Sparql::Queries::LegislatureHouses
 	      # We select all properties returned.
 	      SELECT * WHERE { 
   
-	      # We find all the legislatures and get their name.  
-      	  ?legislature a :Legislature ;
-	      :name ?legislatureName;
+	      # We find all the legislatures and get their name.
+        ?legislature a :Legislature ;
+        :name ?legislatureName;
 
 	      # We look only for legislatures that have one or more Houses. 
 	      :legislatureHasHouse ?house. 
