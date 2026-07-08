@@ -1,0 +1,14 @@
+<a href="<%= document.link %>" class="card">
+	<div class="card-inner">
+		<div class="content">
+			<%= content_tag( 'div', business_item_step_label( document ), :class => 'primary-info' ) %>
+		</div>
+		<div class="info">
+			<div class="info-inner">
+				<div class="indicators-left">
+					<%= content_tag( 'div', document.date.strftime( $DATE_DISPLAY_FORMAT ), :class => 'indicator indicator-label' ) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>
