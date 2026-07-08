@@ -17,7 +17,7 @@ module Sparql::Queries::LegislatureSteps
 	      PREFIX id: <https://id.parliament.uk/>
 
 	      # We select the properties we want to appear in results. If all properties are required, an asterisk can 	be used between SELECT and WHERE instead of listing properties.
-	      SELECT ?legislature ?legislatureName ?step ?stepName ?stepType ?stepTypeName (COUNT(?businessItem) AS ?	businessItemCount)   WHERE { 
+	      SELECT ?legislature ?legislatureName ?step ?stepName ?stepType ?stepTypeName (COUNT(?businessItem) AS ?businessItemCount)   WHERE { 
 
 	      # We find all the legislatures and their name. We also specify to only show legislatures with procedure	steps.   
 	      ?legislature a :Legislature ;
