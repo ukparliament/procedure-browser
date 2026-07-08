@@ -25,7 +25,7 @@ module Sparql::Queries::LegislatureSteps
 	      :legislatureHasProcedureStep ?step. 
 
 	      # We filter the results to only include the legislature with ID #{legislature_id}.
-        FILTER ( ?legislature in ( id:#{legislature_id} ) )  
+        	FILTER ( ?legislature in ( id:#{legislature_id} ) )  
 
 	      # We specify the procedure step must have a name, a step type and that the step type also has a name. 
 	      ?step :name ?stepName;
