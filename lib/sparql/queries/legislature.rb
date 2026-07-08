@@ -8,7 +8,7 @@ module Sparql::Queries::Legislature
       'A legislature',
   
       # The link to the SPARQL query.
-      '',
+      'https://api.parliament.uk/s/f3369d88',
   
       # The SPARQL query.
       "
