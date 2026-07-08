@@ -16,8 +16,8 @@ module Sparql::Get::LegislatureHouses
   
       # ... we create a new house object ...
       house = House.new
-      house.identifier = row['House']
-      house.label = row['HouseName']
+      house.identifier = row['house']
+      house.label = row['houseName']
       																	
       # ... and add it to the array of houses.
       houses << house
