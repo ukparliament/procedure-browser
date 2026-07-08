@@ -16,11 +16,11 @@ module Sparql::Get::LegislatureSteps
   
       # ... we create a new step object ...
       step = Step.new
-      step.identifier = row['Step']
-      step.label = row['StepName']
-      step.step_type_identifier = row['StepType']
-      step.step_type_label = row['StepTypeName']
-      step.actualisation_count = row['biCount'].to_i
+      step.identifier = row['step']
+      step.label = row['stepName']
+      step.step_type_identifier = row['stepType']
+      step.step_type_label = row['stepTypeName']
+      step.actualisation_count = row['businessItemCount'].to_i
       																	
       # ... and add it to the array of steps.
       steps << step
