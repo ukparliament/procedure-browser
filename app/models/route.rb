@@ -138,4 +138,23 @@ class Route
     to_step_house_or_legislature = ' (' + to_step_house_or_legislature + ')' unless to_step_house_or_legislature.empty?
     to_step_house_or_legislature
   end
+  
+  def is_open
+    is_open = true
+    
+    # If the route has a start date and that date is later than today ...
+    if self.start_on and self.start_on > Date.today
+    
+      # ... the route is scheduled to open in the future, so is not yet open.
+      is_open = false
+    end
+    
+    # If the route has an end date and that date is earlier than today ...
+    if self.end_on and self.end_on < Date.today
+    
+      # ... the route is now closed.
+      is_open = false
+    end
+    is_open
+  end
 end

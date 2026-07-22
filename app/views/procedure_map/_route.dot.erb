@@ -1,0 +1,5 @@
+<% if route.is_open -%>
+	"<%= route.from_step_id %>"->"<%= route.to_step_id %>"
+<% else -%>
+	"<%= route.from_step_id %>"->"<%= route.to_step_id %>" [style=dashed, color=red]
+<% end -%>

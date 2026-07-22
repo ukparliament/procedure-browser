@@ -123,6 +123,8 @@ Rails.application.routes.draw do
   get 'procedure-browser/procedures/:procedure/routes' => 'procedure_route#index', as: :procedure_route_list
   get 'procedure-browser/procedures/:procedure/routes/checker' => 'procedure_route#checker', as: :procedure_route_checker
   
+  get 'procedure-browser/procedures/:procedure/map' => 'procedure_map#index', as: :procedure_map
+  
   get 'procedure-browser/procedures/:procedure/clocks' => 'procedure_clock#index', as: :procedure_clock_list
   
   get 'procedure-browser/procedures/:procedure/step-collections' => 'procedure_step_collection#index', as: :procedure_step_collection_list
