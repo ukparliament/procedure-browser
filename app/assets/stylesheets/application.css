@@ -75,7 +75,8 @@ body.subsection-y .subnav a.y,
 body.subsection-z .subnav a.z,
 body.subsection-primary-legislation .subnav a.primary-legislation,
 body.subsection-secondary-legislation .subnav a.secondary-legislation,
-body.subsection-treaty .subnav a.treaty {
+body.subsection-treaty .subnav a.treaty,
+body.subsection-procedure-map .subnav a.procedure-map {
 	border-bottom-color: #006e45;
 	color: #4d4d4d;
 }
