@@ -1,0 +1,11 @@
+<%= render :partial => 'procedure/intro', :object => @procedure %>
+
+<div class="reading-width">
+
+	<%# Robert writes some javascript to grab the .dot file and write an SVG to #graph-viz %>
+
+	<div id="graph-viz">
+	</div>
+
+	<%= render :partial => 'common/identifier', :object => @procedure %>
+</div>
