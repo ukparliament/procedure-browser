@@ -30,7 +30,7 @@ class ProcedureMapController < ApplicationController
         
         # If the user has requested HTML ...
         format.html {
-        
+          
           # ... we set the page meta information
           @page_title = "#{@procedure.label} - Procedure map"
           @multiline_page_title = "#{@procedure.label} <span class='subhead'>Procedure map</span>".html_safe
@@ -41,6 +41,9 @@ class ProcedureMapController < ApplicationController
           @crumb << { label: 'Procedure map', url: nil }
           @section = 'procedures'
           @subsection = 'procedure-map'
+          
+          @steps = get_procedure_steps( procedure_id )
+          @routes = get_procedure_routes( procedure_id )
         }
       end
     end
