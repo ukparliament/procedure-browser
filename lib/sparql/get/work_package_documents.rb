@@ -29,45 +29,30 @@ module Sparql::Get::WorkPackageDocuments
       business_item.work_packageable_thing_identifier = row['paper']
       business_item.work_packageable_thing_label = row['paperName']
       business_item.work_package_identifier = row['workPackage']
+      
       if row['hasCommitteeCorrespondenceFlag'] == 'true'
-        business_item.is_committee_correspondence = true
-      else
-        business_item.is_committee_correspondence = false
+        business_item.document_type = 'YeyqTPT6'
       end
       if row['hasGovernmentResponsesToSelectCommitteeReportsFlag'] == 'true'
-        business_item.is_government_response_to_select_commmittee_report = true
-      else
-        business_item.is_government_response_to_select_commmittee_report = false
+        business_item.document_type = 'yuLI4KIY'
       end
       if row['hasMinisterialStatementsFlag'] == 'true'
-        business_item.is_ministerial_statement = true
-      else
-        business_item.is_ministerial_statement = false
+        business_item.document_type = 'GJyoVAV5'
       end
       if row['hasCommitteeOralEvidenceSessionsFlag'] == 'true'
-        business_item.is_committee_oral_evidence_session = true
-      else
-        business_item.is_committee_oral_evidence_session = false
+        business_item.document_type = 'SHG1bKCe'
       end
       if row['hasAssociatedPapersFlag'] == 'true'
-        business_item.is_associated_paper = true
-      else
-        business_item.is_associated_paper = false
+        business_item.document_type = 'ZimrKJ0K'
       end
       if row['hasDebatesFlag'] == 'true'
-        business_item.is_debate = true
-      else
-        business_item.is_debate = false
+        business_item.document_type = 'KMGLDo11'
       end
       if row['hasCommitteeConcernsFlag'] == 'true'
-        business_item.is_committee_concerns = true
-      else
-        business_item.is_committee_concerns = false
+        business_item.document_type = '7CBVQcZF'
       end
       if row['hasProposedNegativeStatutoryInstrumentsUpgradedToAffirmativeFlag'] == 'true'
-        business_item.is_upgrade_to_affirmative = true
-      else
-        business_item.is_upgrade_to_affirmative = false
+        business_item.document_type = 'm7fzgEd2'
       end
       
       # ... and add it to the array of business items.
