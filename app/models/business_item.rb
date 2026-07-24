@@ -19,6 +19,14 @@ class BusinessItem
   attr_accessor :procedure_label
   attr_accessor :calculation_style_identifier
   attr_accessor :calculation_style_label
+  attr_accessor :is_committee_correspondence
+  attr_accessor :is_government_response_to_select_commmittee_report
+  attr_accessor :is_ministerial_statement
+  attr_accessor :is_committee_oral_evidence_session
+  attr_accessor :is_associated_paper
+  attr_accessor :is_debate
+  attr_accessor :is_committee_concerns
+  attr_accessor :is_upgrade_to_affirmative
   
   def id
     self.identifier.split( '/' ).last
