@@ -286,7 +286,7 @@ module WorkPackageHelper
     work_package_table_of_contents = ''
     if toc_links.size > 1
       toc_links.each do |toc_link|
-        work_package_table_of_contents += link_to( toc_link[:label], :anchor => toc_link[:id] )
+        work_package_table_of_contents += link_to( toc_link[:label], work_package_document_list_url( :anchor => toc_link[:id] ) )
         work_package_table_of_contents += ' - ' if toc_link != toc_links.last
       end
       work_package_table_of_contents = work_package_table_of_contents.html_safe
