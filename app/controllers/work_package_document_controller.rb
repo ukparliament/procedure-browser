@@ -43,53 +43,56 @@ class WorkPackageDocumentController < ApplicationController
         # For each document ...
         @documents.each do |document|
         
-          # ... if the document is committee correspondence ....
-          if document.is_committee_correspondence
-          
-            # ... we add the document to the committee correspondences array.
-            @committee_correspondence_documents << document
+          # We check the type of the document.
+          case document.document_type
             
-          # Otherwise, if the document is a government response to a select committee report ...
-          elsif document.is_government_response_to_select_commmittee_report
-          
-            # ... we add the document to the government response to select committee array.
-            @government_response_to_select_commmittee_documents << document
-          
-          # Otherwise, if the document is a ministerial statement ...
-          elsif document.is_ministerial_statement
-          
-            # ... we add the document to the ministerial statement array.
-            @ministerial_statement_documents << document
-          
-          # Otherwise, if the document is a committee oral evidence statement ...
-          elsif document.is_committee_oral_evidence_session
-          
-            # ... we add the document to the committee oral evidence array.
-            @committee_oral_evidence_session_documents << document
-          
-          # Otherwise, if the document is an associated paper ...
-          elsif document.is_associated_paper
-          
-            # ... we add the document to the associated paper array.
-            @associated_paper_documents << document
-          
-          # Otherwise, if the document is a debate ...
-          elsif document.is_debate
-          
-            # ... we add the document to the debate array.
-            @debate_documents << document
-          
-          # Otherwise, if the document is a committee concern ...
-          elsif document.is_committee_concerns
-          
-            # ... we add the document to the committee concern array.
-            @committee_concerns_documents << document
-          
-          # Otherwise, if the document is an upgrade to affirmative ...
-          elsif document.is_upgrade_to_affirmative
-          
-            # ... we add the document to the upgrade to affirmative array.
-            @upgrade_to_affirmative_documents << document
+            # If the document is committee correspondence ....
+            when 'YeyqTPT6'
+            
+              # ... we add the document to the committee correspondences array.
+              @committee_correspondence_documents << document
+              
+            # Otherwise, if the document is a government response to a select committee report ...
+            when 'yuLI4KIY'
+        
+              # ... we add the document to the government response to select committee array.
+              @government_response_to_select_commmittee_documents << document
+            
+            # Otherwise, if the document is a ministerial statement ...
+            when 'GJyoVAV5'
+            
+              # ... we add the document to the ministerial statement array.
+              @ministerial_statement_documents << document
+              
+            # Otherwise, if the document is a committee oral evidence statement ...
+            when 'SHG1bKCe'
+            
+              # ... we add the document to the committee oral evidence array.
+              @committee_oral_evidence_session_documents << document
+              
+            # Otherwise, if the document is an associated paper ...
+            when 'ZimrKJ0K'
+        
+              # ... we add the document to the associated paper array.
+              @associated_paper_documents << document
+              
+            # Otherwise, if the document is a debate ...
+            when 'KMGLDo11'
+        
+              # ... we add the document to the debate array.
+              @debate_documents << document
+              
+            # Otherwise, if the document is a committee concern ...
+            when '7CBVQcZF'
+            
+              # ... we add the document to the committee concern array.
+              @committee_concerns_documents << document
+              
+            # Otherwise, if the document is an upgrade to affirmative ...
+            when 'm7fzgEd2'
+            
+              # ... we add the document to the upgrade to affirmative array.
+              @upgrade_to_affirmative_documents << document
           end
         end
         
