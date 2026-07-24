@@ -27,8 +27,48 @@ module Sparql::Get::WorkPackageDocuments
       business_item.commons_identifier = row['commonsId']
       business_item.lords_identifier = row['lordsId']
       business_item.work_packageable_thing_identifier = row['paper']
-      business_item.work_packageable_thing_label = row['papername']
+      business_item.work_packageable_thing_label = row['paperName']
       business_item.work_package_identifier = row['workPackage']
+      if row['hasCommitteeCorrespondenceFlag'] == 'true'
+        business_item.is_committee_correspondence = true
+      else
+        business_item.is_committee_correspondence = false
+      end
+      if row['hasGovernmentResponsesToSelectCommitteeReportsFlag'] == 'true'
+        business_item.is_government_response_to_select_commmittee_report = true
+      else
+        business_item.is_government_response_to_select_commmittee_report = false
+      end
+      if row['hasMinisterialStatementsFlag'] == 'true'
+        business_item.is_ministerial_statement = true
+      else
+        business_item.is_ministerial_statement = false
+      end
+      if row['hasCommitteeOralEvidenceSessionsFlag'] == 'true'
+        business_item.is_committee_oral_evidence_session = true
+      else
+        business_item.is_committee_oral_evidence_session = false
+      end
+      if row['hasAssociatedPapersFlag'] == 'true'
+        business_item.is_associated_paper = true
+      else
+        business_item.is_associated_paper = false
+      end
+      if row['hasDebatesFlag'] == 'true'
+        business_item.is_debate = true
+      else
+        business_item.is_debate = false
+      end
+      if row['hasCommitteeConcernsFlag'] == 'true'
+        business_item.is_committee_concerns = true
+      else
+        business_item.is_committee_concerns = false
+      end
+      if row['hasProposedNegativeStatutoryInstrumentsUpgradedToAffirmativeFlag'] == 'true'
+        business_item.is_upgrade_to_affirmative = true
+      else
+        business_item.is_upgrade_to_affirmative = false
+      end
       
       # ... and add it to the array of business items.
       business_items << business_item
