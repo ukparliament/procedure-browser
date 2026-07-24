@@ -11,6 +11,8 @@
 		<%= list_item_count_sentence( 'document', @documents.size ) %>
 		<%= render :partial => 'library_design/feeds/feeds' %>
 		
+		<%= work_package_document_table_of_contents %>
+		
 		<% unless @associated_paper_documents.empty? -%>
 			<div id ='associated-papers' class='card-list'>
 				<%= content_tag( 'h2', 'Associated papers' ) %>
