@@ -4,10 +4,47 @@
 
 	<%= render :partial => 'library_design/feeds/feeds' %>
 
-	<%# Robert writes some javascript to grab the .dot file and write an SVG to #graph-viz %>
+<script
+      type="text/javascript"
+      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+    <style type="text/css">
+      #graph {
+        width: 100%;
+        height: 800px;
+        border: 1px solid lightgray;
+      }
+    </style>
+    
+        <div id="graph"></div>
 
-	<div id="graph-viz">
-	</div>
+<!-- 
+<% @routes.each do |route| %>
+   <code><%= route.inspect %></code>
+<%end %>
+ -->
+
+    <script type="text/javascript">
+      var nodes = new vis.DataSet([
+      <% @steps.each do |step| %>
+   		{ id: '<%= step.id %>', label: '<%= step.display_label %>' },
+	  <%end %>
+      ]);
+
+      var edges = new vis.DataSet([  
+      <% @routes.each do |route| %>
+   		{ from: '<%= route.from_step_id %>', to: '<%= route.to_step_id %>', arrows: 'to' },
+   	  <%end %>
+      ]);
+
+      var container = document.getElementById("graph");
+      var data = {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {};
+      var network = new vis.Network(container, data, options);
+    </script>
 
 	<%= render :partial => 'common/identifier', :object => @procedure %>
 </div>
