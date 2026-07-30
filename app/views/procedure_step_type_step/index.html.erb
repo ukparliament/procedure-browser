@@ -3,18 +3,17 @@
 <div class="reading-width">
 
 	<%= list_item_count_sentence( 'step', @steps.size ) %>
-	<ol class="unnumbered link-list">
-		<%= render :partial => 'procedure_step/procedure_step', :collection => @steps %>
-	</ol>
 	
-	<%# unless @steps.empty? -%>
-		<!-- table class="table" -->
-			<%#= render :partial => 'step/step_list_table_head' %>
-			<!-- tbody -->
-				<%#= render :partial => 'step/step_list_table_row', :collection => @steps %>
-			<!-- /tbody -->
-		<!-- /table -->
-	<%# end -%>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	
+	<% unless @steps.empty? -%>
+		<table class="table">
+			<%= render :partial => 'step/step_list_table_head' %>
+			<tbody>
+				<%= render :partial => 'step/step_list_table_row', :collection => @steps %>
+			</tbody>
+		</table>
+	<% end -%>
 
 	<%= render :partial => 'common/identifier', :object => @procedure %>
 </div>	
