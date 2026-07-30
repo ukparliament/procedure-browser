@@ -24,18 +24,28 @@ class ProcedureStepTypeStepController < ApplicationController
       if @step_type
         @step_type = get_procedure_step_type( procedure_id, step_type_id )
         @steps = get_procedure_step_type_steps( procedure_id, step_type_id )
-    
+        
         @page_title = "#{@procedure.label} - #{@step_type.label}"
-        @multiline_page_title = "#{@procedure.label} <span class='subhead'>#{@step_type.label}</span>".html_safe
-        @description = "Steps of type '#{@step_type.label}' in the #{@procedure.label} procedure."
-        @canonical_url = procedure_step_type_show_url
-        @crumb << { label: 'Procedures', url: procedure_list_url }
-        @crumb << { label: @procedure.label, url: procedure_show_url }
-        @crumb << { label: 'Step types', url: procedure_step_type_list_url }
-        @crumb << { label: @step_type.label, url: procedure_step_type_show_url }
-        @crumb << { label: 'Steps', url: nil }
-        @section = 'procedures'
-        @subsection = 'steps'
+        
+        respond_to do |format|
+          format.csv {
+            response.headers['Content-Disposition'] = "attachment; filename=\"#{csv_title_from_page_title ( @page_title )}.csv\""
+          render :template => 'step/index_with_actualisation_count'
+          }
+          format.html {
+            @multiline_page_title = "#{@procedure.label} <span class='subhead'>#{@step_type.label}</span>".html_safe
+            @description = "Steps of type '#{@step_type.label}' in the #{@procedure.label} procedure."
+            @canonical_url = procedure_step_type_show_url
+            @csv_url = procedure_step_type_step_list_url( :format => 'csv' )
+            @crumb << { label: 'Procedures', url: procedure_list_url }
+            @crumb << { label: @procedure.label, url: procedure_show_url }
+            @crumb << { label: 'Step types', url: procedure_step_type_list_url }
+            @crumb << { label: @step_type.label, url: procedure_step_type_show_url }
+            @crumb << { label: 'Steps', url: nil }
+            @section = 'procedures'
+            @subsection = 'steps'
+          }
+        end
       end
     end
   end
