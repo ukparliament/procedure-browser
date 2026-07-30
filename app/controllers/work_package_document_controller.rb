@@ -30,6 +30,72 @@ class WorkPackageDocumentController < ApplicationController
       # If we're expected to respond with HTML ...
       format.html {
       
+        # We create a set of arrays to hold the documents by their type.
+        @committee_correspondence_documents = []
+        @government_response_to_select_commmittee_documents = []
+        @ministerial_statement_documents = []
+        @committee_oral_evidence_session_documents = []
+        @associated_paper_documents = []
+        @debate_documents = []
+        @committee_concerns_documents = []
+        @upgrade_to_affirmative_documents = []
+        
+        # For each document ...
+        @documents.each do |document|
+        
+          # We check the type of the document.
+          case document.document_type
+            
+            # If the document is committee correspondence ....
+            when 'YeyqTPT6'
+            
+              # ... we add the document to the committee correspondences array.
+              @committee_correspondence_documents << document
+              
+            # Otherwise, if the document is a government response to a select committee report ...
+            when 'yuLI4KIY'
+        
+              # ... we add the document to the government response to select committee array.
+              @government_response_to_select_commmittee_documents << document
+            
+            # Otherwise, if the document is a ministerial statement ...
+            when 'GJyoVAV5'
+            
+              # ... we add the document to the ministerial statement array.
+              @ministerial_statement_documents << document
+              
+            # Otherwise, if the document is a committee oral evidence statement ...
+            when 'SHG1bKCe'
+            
+              # ... we add the document to the committee oral evidence array.
+              @committee_oral_evidence_session_documents << document
+              
+            # Otherwise, if the document is an associated paper ...
+            when 'ZimrKJ0K'
+        
+              # ... we add the document to the associated paper array.
+              @associated_paper_documents << document
+              
+            # Otherwise, if the document is a debate ...
+            when 'KMGLDo11'
+        
+              # ... we add the document to the debate array.
+              @debate_documents << document
+              
+            # Otherwise, if the document is a committee concern ...
+            when '7CBVQcZF'
+            
+              # ... we add the document to the committee concern array.
+              @committee_concerns_documents << document
+              
+            # Otherwise, if the document is an upgrade to affirmative ...
+            when 'm7fzgEd2'
+            
+              # ... we add the document to the upgrade to affirmative array.
+              @upgrade_to_affirmative_documents << document
+          end
+        end
+        
         # ... we set the page meta information.
         @page_title = "Documents for #{@work_package.work_packageable_thing_label}"
         @multiline_page_title = "#{@work_package.work_packageable_thing_label} <span class='subhead'>Documents</span>".html_safe

@@ -19,6 +19,7 @@ class BusinessItem
   attr_accessor :procedure_label
   attr_accessor :calculation_style_identifier
   attr_accessor :calculation_style_label
+  attr_accessor :document_type
   
   def id
     self.identifier.split( '/' ).last

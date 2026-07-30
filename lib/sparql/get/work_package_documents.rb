@@ -27,8 +27,33 @@ module Sparql::Get::WorkPackageDocuments
       business_item.commons_identifier = row['commonsId']
       business_item.lords_identifier = row['lordsId']
       business_item.work_packageable_thing_identifier = row['paper']
-      business_item.work_packageable_thing_label = row['papername']
+      business_item.work_packageable_thing_label = row['paperName']
       business_item.work_package_identifier = row['workPackage']
+      
+      if row['hasCommitteeCorrespondenceFlag'] == 'true'
+        business_item.document_type = 'YeyqTPT6'
+      end
+      if row['hasGovernmentResponsesToSelectCommitteeReportsFlag'] == 'true'
+        business_item.document_type = 'yuLI4KIY'
+      end
+      if row['hasMinisterialStatementsFlag'] == 'true'
+        business_item.document_type = 'GJyoVAV5'
+      end
+      if row['hasCommitteeOralEvidenceSessionsFlag'] == 'true'
+        business_item.document_type = 'SHG1bKCe'
+      end
+      if row['hasAssociatedPapersFlag'] == 'true'
+        business_item.document_type = 'ZimrKJ0K'
+      end
+      if row['hasDebatesFlag'] == 'true'
+        business_item.document_type = 'KMGLDo11'
+      end
+      if row['hasCommitteeConcernsFlag'] == 'true'
+        business_item.document_type = '7CBVQcZF'
+      end
+      if row['hasProposedNegativeStatutoryInstrumentsUpgradedToAffirmativeFlag'] == 'true'
+        business_item.document_type = 'm7fzgEd2'
+      end
       
       # ... and add it to the array of business items.
       business_items << business_item
