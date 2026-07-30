@@ -46,10 +46,11 @@ class ProcedureStepTypeController < ApplicationController
       if @step_type
       
         @steps = get_procedure_step_type_steps( procedure_id, step_type_id )
-    
+        
         @page_title = "#{@procedure.label} - #{@step_type.label}"
         @multiline_page_title = "#{@procedure.label} <span class='subhead'>#{@step_type.label}</span>".html_safe
         @description = "Steps of type '#{@step_type.label}' in the #{@procedure.label} procedure."
+        @csv_url = procedure_step_type_step_list_url( :format => 'csv' )
         @crumb << { label: 'Procedures', url: procedure_list_url }
         @crumb << { label: @procedure.label, url: procedure_show_url }
         @crumb << { label: 'Step types', url: procedure_step_type_list_url }
