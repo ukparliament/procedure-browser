@@ -20,7 +20,7 @@ PREFIX id: <https://id.parliament.uk/>
 SELECT DISTINCT ?procedure ?procedureName ?stepType ?stepTypeLabel ?step ?stepName ?legislature ?legislatureName ?commonsId ?lordsId (COALESCE(?rawBiCount, 0) AS ?biCount) WHERE {
 
 # We set the value of the procedure property.   
-VALUES ?procedure { id:D00dsjR2 }  
+VALUES ?procedure { id:#{procedure_id} }  
 
 # We specify that the procedure property is a procedure and look for its name.   
 ?procedure a :Procedure;
@@ -36,7 +36,7 @@ VALUES ?procedure { id:D00dsjR2 }
 ?stepType :name ?stepTypeLabel.
 
 # We limit steps to being only of the type 'Business step'.
-FILTER (?stepType in (id:Jwc6nqJi)) 
+FILTER (?stepType in (id:#{step_type_id})) 
 
 # We check to see if the step belongs to a legislature. A legislature will be Scottish Parliament, Senedd Cymru or the Northern Ireland Assembly.   
 OPTIONAL {?step :procedureStepInLegislature ?legislature .
@@ -61,7 +61,7 @@ WHERE {
 ?bi :businessItemHasWorkPackage ?wp.
 
 # We specify that the work packages must have the procedure. 
-?wp :workPackageHasProcedure id:D00dsjR2.}
+?wp :workPackageHasProcedure id:#{procedure_id}.}
 
 # We group the results by step.    
 GROUP BY ?step}
