@@ -138,6 +138,7 @@ body.subsection-procedure-map .subnav a.procedure-map {
 }
 #sparql textarea {
 	height: 500px;
+	padding: 1em;
 	width: 100%;
 }
 
