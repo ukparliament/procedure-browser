@@ -29,7 +29,7 @@ module Sparql::Get::BusinessItemSteps
     
         # ... we create a new step object ...
         step = Step.new
-        step.identifier = row['businessItemstep']
+        step.identifier = row['businessItemStep']
         step.label = row['businessItemStepName']
         step.step_label = row['businessItemStepName']
         step.legislature_identifier = row['legislature']
@@ -37,7 +37,7 @@ module Sparql::Get::BusinessItemSteps
         step.commons_identifier = row['CommonsId']
         step.lords_identifier = row['LordsId']
         step.business_item_identifier = row['businessItem']
-        step.business_item_date = row['Date'].to_date if row['Date']
+        step.business_item_date = row['date'].to_date if row['date']
         step.business_item_link = row['url']
         step.work_package_identifier = row['workPackage']
         step.work_package_made_available_on = row['madeAvailableDate']
