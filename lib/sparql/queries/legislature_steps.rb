@@ -8,7 +8,7 @@ module Sparql::Queries::LegislatureSteps
       "A list of a legislature's steps with a count of their actualisations",
     
       # The link to the SPARQL query.
-      'https://api.parliament.uk/s/876778a9',
+      'https://api.parliament.uk/s/554e7a2c',
     
       # The SPARQL query.
       "
@@ -16,10 +16,10 @@ module Sparql::Queries::LegislatureSteps
 PREFIX : <https://id.parliament.uk/schema/>
 PREFIX id: <https://id.parliament.uk/>
 
-# We select the properties we want to appear in results. If all properties are required, an asterisk can 	be used between SELECT and WHERE instead of listing properties.
-SELECT ?legislature ?legislatureName ?step ?stepName ?stepType ?stepTypeName (COUNT(?businessItem) AS ?businessItemCount)   WHERE { 
-
-	# We find all the legislatures and their name. We also specify to only show legislatures with procedure	steps.   
+# We select the properties we want to appear in results. If all properties are required, an asterisk can be used between SELECT and WHERE instead of listing properties.
+SELECT ?legislature ?legislatureName ?step ?stepName ?stepType ?stepTypeName (COUNT(?businessItem) AS ?businessItemCount) WHERE 
+{ 
+	# We find all the legislatures and their name. We also specify to show legislatures with procedure steps.   
 	?legislature a :Legislature ;
 	:name ?legislatureName;
 	:legislatureHasProcedureStep ?step.
@@ -32,7 +32,7 @@ SELECT ?legislature ?legislatureName ?step ?stepName ?stepType ?stepTypeName (CO
 	:procedureStepHasProcedureStepType ?stepType.
 	?stepType :name ?stepTypeName.
 	
-	# We specify that the legislature's procedure steps may, or may not, have been actualised in a business	item. This is then used in the SELECT line to work out a count of the number of business items that the	procedure step has been actualised in.
+	# We specify that the legislature's procedure steps may, or may not, have been actualised in a business item. This is then used in the SELECT line to work out a count of the number of business items that the procedure step has been actualised in.
 	OPTIONAL { ?step :procedureStepHasBusinessItem ?businessItem }  
 } 
 # We use GROUP BY because COUNT(?businessItem) in line 6 is an aggregate, and we want the count calculated separately for each procedure step (and its associated legislature and step type details).
