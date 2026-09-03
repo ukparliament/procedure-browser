@@ -34,8 +34,8 @@ WHERE {
   # We check to see if the step belongs to a legislature. 
   # A legislature will be Scottish Parliament, Senedd Cymru or the Northern Ireland Assembly.
   OPTIONAL {
-  ?businessItemStep :procedureStepInLegislature ?legislature.
-  ?legislature :name ?legislatureName.
+    ?businessItemStep :procedureStepInLegislature ?legislature.
+    ?legislature :name ?legislatureName.
   }
 
   # We check to see if the step belongs to the House of Commons.
