@@ -78,7 +78,7 @@ WHERE {
         FILTER (?lordsId = id:WkUWUBMx)
     }
 
-    OPTIONAL {
+
         ?businessItemProcedureStep
             :procedureStepHasProcedureStepCollectionMembership/
             :procedureStepCollectionMembershipHasProcedureStepCollection
@@ -97,7 +97,7 @@ WHERE {
 
         ?documentTypeCollection
             :name ?documentTypeCollectionName .
-    }
+
 
 }
 
