@@ -7,7 +7,7 @@ module Sparql::Queries::BusinessItemSteps
       "A list of a business item's steps",
 
       # The link to the SPARQL query.
-      'https://api.parliament.uk/s/817d61bd',
+      'https://api.parliament.uk/s/0097ecd6',
 
       # The SPARQL query.
       "
