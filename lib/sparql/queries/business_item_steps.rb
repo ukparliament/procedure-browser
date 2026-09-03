@@ -96,7 +96,7 @@ WHERE {
     # We specify the making available steps that the business item should have. 
     # Making available steps will be one of the following: 'Laid before the House of Commons', 'Notification from Department announcing the publication of the draft laid before the House of Commons', 'Bill presented' (Commons) or 'Bill presented' (Lords).
     FILTER ( ?procedureStep IN ( id:cspzmb6w, id:isWn7s3K, id:ITNO9JWr, id:otscOTzB ) )
-    }
+  }
 }
 
 # We order results by step depth.
