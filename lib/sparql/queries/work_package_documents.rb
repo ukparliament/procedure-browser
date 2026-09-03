@@ -8,7 +8,7 @@ module Sparql::Queries::WorkPackageDocuments
       'A list of business items in a work package with a link, actualising steps in the reading list collection',
     
       # The link to the SPARQL query.
-      'https://api.parliament.uk/s/560b1aca',
+      'https://api.parliament.uk/s/60f67898',
     
       # The SPARQL query.
       "
