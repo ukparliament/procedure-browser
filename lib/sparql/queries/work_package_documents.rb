@@ -8,95 +8,100 @@ module Sparql::Queries::WorkPackageDocuments
       'A list of business items in a work package with a link, actualising steps in the reading list collection',
     
       # The link to the SPARQL query.
-      'https://api.parliament.uk/s/522d9a8a',
+      'https://api.parliament.uk/s/560b1aca',
     
       # The SPARQL query.
       "
-        # We declare the Parliament and ID namespaces.
-        PREFIX : <https://id.parliament.uk/schema/>
-        PREFIX id: <https://id.parliament.uk/>
+PREFIX : <https://id.parliament.uk/schema/>
+PREFIX id: <https://id.parliament.uk/>
 
-        # We select the relevant properties we want to appear in  results.
-        SELECT ?paper ?paperName ?workPackage ?businessItem ?businessItemLink ?businessItemProcedureStep ?businessItemDate ?businessItemProcedureStepName ?legislature ?legislatureName ?commonsId ?lordsId
-        # We check to see whether procedure steps actualised in this work package belong to each of the specified step collections. EXISTS returns TRUE as soon as a matching collection is found and FALSE if no match exists.
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:YeyqTPT6 .
-        } AS ?hasCommitteeCorrespondenceFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:yuLI4KIY .
-        } AS ?hasGovernmentResponsesToSelectCommitteeReportsFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:GJyoVAV5 .
-        } AS ?hasMinisterialStatementsFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:SHG1bKCe .
-        } AS ?hasCommitteeOralEvidenceSessionsFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:ZimrKJ0K .
-        } AS ?hasAssociatedPapersFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:KMGLDo11 .
-        } AS ?hasDebatesFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:7CBVQcZF .
-        } AS ?hasCommitteeConcernsFlag)
-        (EXISTS {
-            ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:m7fzgEd2 .
-        } AS ?hasProposedNegativeStatutoryInstrumentsUpgradedToAffirmativeFlag)
+SELECT
+    ?paper
+    ?paperName
+    ?workPackage
+    ?businessItem
+    ?businessItemLink
+    ?businessItemProcedureStep
+    ?businessItemDate
+    ?businessItemProcedureStepName
+    ?legislature
+    ?legislatureName
+    ?commonsId
+    ?lordsId
+    ?documentTypeCollection
+    ?documentTypeCollectionName
 
-        WHERE {
+WHERE {
 
-        # We find all papers with a name and a work package.
-        ?paper a :WorkPackagedThing ;  
-        :name ?paperName ;
-        :workPackagedThingHasWorkPackage ?workPackage .
+    ?paper a :WorkPackagedThing ;
+           :name ?paperName ;
+           :workPackagedThingHasWorkPackage ?workPackage .
 
-        # We specify a specific work package using its ID. 
-        FILTER (?workPackage IN (id:#{work_package_id}))
+    FILTER (?workPackage IN (id:#{work_package_id}))
 
-        # We find business items associated with the work package.    
-        ?workPackage :workPackageHasBusinessItem ?businessItem .
+    ?workPackage :workPackageHasBusinessItem ?businessItem .
 
-        # We specify that business items must have a web link and that we're also looking for a business item's procedure step. 
-        ?businessItem :businessItemHasBusinessItemWebLink ?businessItemLink ;
-        :businessItemHasProcedureStep ?businessItemProcedureStep . 
+    ?businessItem
+        :businessItemHasBusinessItemWebLink ?businessItemLink ;
+        :businessItemHasProcedureStep ?businessItemProcedureStep .
 
-        # We specify that business items might have a date but it is not required. 
-        OPTIONAL {
-            ?businessItem :businessItemDate ?businessItemDate
+    OPTIONAL {
+        ?businessItem :businessItemDate ?businessItemDate .
+    }
+
+    ?businessItemProcedureStep
+        :procedureStepHasProcedureStepCollectionMembership/
+        :procedureStepCollectionMembershipHasProcedureStepCollection
+        id:Ji8bWVUj .
+
+    ?businessItemProcedureStep
+        :name ?businessItemProcedureStepName .
+
+    OPTIONAL {
+        ?businessItemProcedureStep
+            :procedureStepInLegislature ?legislature .
+
+        ?legislature :name ?legislatureName .
+    }
+
+    OPTIONAL {
+        ?businessItemProcedureStep
+            :procedureStepHasHouse ?commonsId .
+
+        FILTER (?commonsId = id:1AFu55Hs)
+    }
+
+    OPTIONAL {
+        ?businessItemProcedureStep
+            :procedureStepHasHouse ?lordsId .
+
+        FILTER (?lordsId = id:WkUWUBMx)
+    }
+
+    OPTIONAL {
+        ?businessItemProcedureStep
+            :procedureStepHasProcedureStepCollectionMembership/
+            :procedureStepCollectionMembershipHasProcedureStepCollection
+            ?documentTypeCollection .
+
+        VALUES ?documentTypeCollection {
+            id:YeyqTPT6
+            id:yuLI4KIY
+            id:GJyoVAV5
+            id:SHG1bKCe
+            id:ZimrKJ0K
+            id:KMGLDo11
+            id:7CBVQcZF
+            id:m7fzgEd2
         }
 
-        # We look for business items that are part of the 'Documents' step collection. This means only work packages that have a business item actualising a step from that step collection will appear in the results.
-        ?businessItemProcedureStep :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:Ji8bWVUj . 
+        ?documentTypeCollection
+            :name ?documentTypeCollectionName .
+    }
 
-        # We look for the names of procedure steps that are actualised by a business item. 
-        ?businessItemProcedureStep :name ?businessItemProcedureStepName .
+}
 
-        # We specify whether a procedure step belongs to a legislature and specify the results should show the legislature's name. 
-        OPTIONAL {
-            ?businessItemProcedureStep :procedureStepInLegislature ?legislature .
-            ?legislature :name ?legislatureName .
-        }
-
-        # We specify whether a procedure step belongs to the House of Commons. 
-        OPTIONAL {
-            ?businessItemProcedureStep :procedureStepHasHouse ?commonsId .
-        # We specify the House ID for the House of Commons.
-            FILTER (?commonsId IN (id:1AFu55Hs))
-        }
-
-        # We specify whether a procedure step belongs to the House of Lords.   
-        OPTIONAL {
-            ?businessItemProcedureStep :procedureStepHasHouse ?lordsId .
-        # We specify the House ID for the House of Lords.    
-            FILTER (?lordsId IN (id:WkUWUBMx))
-        }
-
-
-        }
-
-        # We order the results by business item date.  
-        ORDER BY ?businessItemDate
+ORDER BY ?businessItemDate
       "
     ]
   end
