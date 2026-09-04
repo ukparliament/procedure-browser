@@ -215,66 +215,6 @@ ALTER SEQUENCE public.steps_id_seq OWNED BY public.steps.id;
 
 
 --
--- Name: work_package_document_lists; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.work_package_document_lists (
-    id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: work_package_document_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.work_package_document_lists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: work_package_document_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.work_package_document_lists_id_seq OWNED BY public.work_package_document_lists.id;
-
-
---
--- Name: work_package_documents; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.work_package_documents (
-    id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: work_package_documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.work_package_documents_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: work_package_documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.work_package_documents_id_seq OWNED BY public.work_package_documents.id;
-
-
---
 -- Name: work_packages; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -345,20 +285,6 @@ ALTER TABLE ONLY public.steps ALTER COLUMN id SET DEFAULT nextval('public.steps_
 
 
 --
--- Name: work_package_document_lists id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.work_package_document_lists ALTER COLUMN id SET DEFAULT nextval('public.work_package_document_lists_id_seq'::regclass);
-
-
---
--- Name: work_package_documents id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.work_package_documents ALTER COLUMN id SET DEFAULT nextval('public.work_package_documents_id_seq'::regclass);
-
-
---
 -- Name: work_packages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -411,22 +337,6 @@ ALTER TABLE ONLY public.schema_migrations
 
 ALTER TABLE ONLY public.steps
     ADD CONSTRAINT steps_pkey PRIMARY KEY (id);
-
-
---
--- Name: work_package_document_lists work_package_document_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.work_package_document_lists
-    ADD CONSTRAINT work_package_document_lists_pkey PRIMARY KEY (id);
-
-
---
--- Name: work_package_documents work_package_documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.work_package_documents
-    ADD CONSTRAINT work_package_documents_pkey PRIMARY KEY (id);
 
 
 --
@@ -507,8 +417,6 @@ CREATE TRIGGER tsvectorupdate_work_packages BEFORE INSERT OR UPDATE ON public.wo
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20260902202818'),
-('20260902202200'),
 ('20260426144728'),
 ('20260424165215'),
 ('20260130135554'),
