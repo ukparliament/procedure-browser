@@ -30,47 +30,8 @@ class WorkPackageDocumentController < ApplicationController
       # If we're expected to respond with HTML ...
       format.html {
       
-        # ... we create a new work package document list ...
-        @work_package_document_list = WorkPackageDocumentList.new
-        
-        # ... containing an array of collections.
-        @work_package_document_list.work_package_document_collections = []
-      
-        # For each document ...
-        @documents.each do |document|
-        
-          #  ... if the document has a type label ...
-          if document.document_type_label
-        
-            # .. if the work package document collections array contains a collection for this document type ...
-            if @work_package_document_list.work_package_document_collections.any?{ |work_package_document_collection| work_package_document_collection.label == document.document_type_label }
-          
-              # ... we get the work package document collection for this document type ...
-              work_package_document_collection = @work_package_document_list.work_package_document_collections.select{ |work_package_document_collection| work_package_document_collection.label == document.document_type_label }.first
-            
-              # ... and add this document to the collection.
-              work_package_document_collection.documents << document
-          
-            # Otherwise, if the work package document collections array does not contain a collection for this document type ...
-            else
-          
-              # ... we create a new work package document collection ...
-              work_package_document_collection = WorkPackageDocumentCollection.new
-            
-              # ... with the label of this document type ...
-              work_package_document_collection.label = document.document_type_label
-            
-              # ... including this document ...
-              work_package_document_collection.documents = [document]
-            
-              # ... and adding it to the work package document list.
-              @work_package_document_list.work_package_document_collections << work_package_document_collection
-            end
-          end
-        end
-        
-        # We sort the work package document collections array by the labels of the collections.
-        @work_package_document_list.work_package_document_collections.sort_by!( &:label )
+        # ... we create and populate a new work package document list.
+        @work_package_document_list = create_and_populate_work_package_document_list( @documents )
         
         # We set the page meta information.
         @page_title = "Documents for #{@work_package.work_packageable_thing_label}"
@@ -84,5 +45,47 @@ class WorkPackageDocumentController < ApplicationController
         @subsection = 'documents'
       }
     end
+  end
+  
+private
+
+  # A method to create and populate a work package document list.
+  def create_and_populate_work_package_document_list( documents )
+  
+    # We create a new work package document list.
+    work_package_document_list = WorkPackageDocumentList.new
+  
+    # For each document ...
+    documents.each do |document|
+  
+      #  ... if the document has a type label ...
+      if document.document_type_label
+    
+        # ... we attempt to find a collection for this document type in the document collections array.
+        work_package_document_collection = work_package_document_list.work_package_document_collections.find{ |work_package_document_collection| work_package_document_collection.label == document.document_type_label }
+      
+        # If we fail to find a collection for this document type in the document collections array ...
+        unless work_package_document_collection
+    
+          # ... we create a new work package document collection ...
+          work_package_document_collection = WorkPackageDocumentCollection.new
+      
+          # ... with the label of this document type ...
+          work_package_document_collection.label = document.document_type_label
+      
+          # ... and adding it to the work package document list.
+          work_package_document_list.work_package_document_collections << work_package_document_collection
+        end
+        
+        # ... we add this document to the collection.
+        work_package_document_collection.documents << document
+      end
+    end
+    
+    # We sort the work package document collections array by the labels of the collections.
+    work_package_document_list.work_package_document_collections.sort_by!( &:label )
+    
+    # We return the work package document list.
+    work_package_document_list
   end
 end
