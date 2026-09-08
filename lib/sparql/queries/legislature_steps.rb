@@ -1,3 +1,5 @@
+module Sparql::Queries::LegislatureSteps
+
 # A SPARQL query to get steps in a legislature.
   def legislature_steps_query( legislature_id )
     [
