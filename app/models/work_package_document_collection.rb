@@ -9,4 +9,8 @@ class WorkPackageDocumentCollection
   def fragment_identifier
     self.label.downcase.gsub( ' ', '-' )
   end
+  
+  def initialize( attributes = {}, options = {} )
+    @documents = []
+  end
 end
