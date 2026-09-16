@@ -17,7 +17,7 @@ PREFIX id: <https://id.parliament.uk/>
 
 # We select the properties we want to appear in results. 
 # If all properties are required, an asterisk can be used between SELECT and WHERE instead of listing properties.
-SELECT ?businessItem ?workPackage ?workPackagedThing ?workPackagedThingLabel ?procedure ?procedureLabel ?calculationStyle ?calculationStyleLabel ?madeAvailableDate ?businessItemStep ?businessItemStepName ?stepDepth ?date ?url ?legislature ?legislatureName ?CommonsId ?LordsId
+SELECT ?businessItem ?workPackage ?workPackagedThing ?workPackagedThingLabel ?procedure ?procedureLabel ?calculationStyle ?calculationStyleLabel ?madeAvailableDate ?businessItemStep ?businessItemStepName ?stepDepth ?date ?url ?legislature ?legislatureName ?commonsId ?lordsId
 WHERE {
 
   # We find all business items with their work package and steps. A business item may have one or more steps.
@@ -40,14 +40,14 @@ WHERE {
 
   # We check to see if the step belongs to the House of Commons.
   OPTIONAL {
-    ?businessItemStep :procedureStepHasHouse ?CommonsId.
-    FILTER ( ?CommonsId IN ( id:1AFu55Hs ) )
+    ?businessItemStep :procedureStepHasHouse ?commonsId.
+    FILTER ( ?commonsId IN ( id:1AFu55Hs ) )
   }
 
   # We check to see if the step belongs to the House of Lords.
   OPTIONAL {
-    ?businessItemStep :procedureStepHasHouse ?LordsId.
-    FILTER ( ?LordsId IN ( id:WkUWUBMx ) )
+    ?businessItemStep :procedureStepHasHouse ?lordsId.
+    FILTER ( ?lordsId IN ( id:WkUWUBMx ) )
   }
 
   # We check to see if the business item's step has a step depth within the procedure the work package is subject to, we then get that step depth.

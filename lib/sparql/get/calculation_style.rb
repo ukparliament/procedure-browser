@@ -27,8 +27,8 @@ module Sparql::Get::CalculationStyle
     
         # ... and create a new calculation style object.
         calculation_style = CalculationStyle.new
-        calculation_style.identifier = row['CalculationStyle']
-        calculation_style.label = row['CalculationStyleName']
+        calculation_style.identifier = row['calculationStyle']
+        calculation_style.label = row['calculationStyleName']
         calculation_style.egg_timer_id = row['eggTimerId']
       
         # We return the calculation style object.
