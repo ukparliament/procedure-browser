@@ -12,6 +12,12 @@ gem "propshaft"
 gem "pg"
 gem "annotaterb"
 
+
+gem 'json', '~> 2.0'
+
+
+
+
 # Added for Postgres text search
 gem "pg_search"
 
