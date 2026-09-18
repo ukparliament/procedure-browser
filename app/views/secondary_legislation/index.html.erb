@@ -1,0 +1,43 @@
+<div class="reading-width">
+	<%= content_tag( 'p', "Secondary legislation is usually concerned with detailed changes to the law made under powers from an existing Act of Parliament. Statutory instruments form the majority of secondary legislation but it can also include Rules or Codes of Practice." ) %>
+	
+	<div id="more-information">
+		<%= content_tag( 'h2', 'Find secondary legislation' ) %>
+		<div class="card-list">
+			<a href="<%= work_package_secondary_legislation_list_url %>" class="card">
+				<div class="card-inner">
+					<div class="content">
+						<div class="primary-info">All secondary legislation</div>
+					</div>
+				</div>
+			</a>
+			<%= render :partial => 'procedure', :collection => @procedures %>
+		</div>
+	</div>
+	
+	<div id="more-information">
+		<%= content_tag( 'h2', 'More information' ) %>
+		<div class="card-list">
+			<a href="http://www.parliament.uk/about/how/laws/delegated/" class="card">
+				<div class="card-inner">
+					<div class="content">
+						<div class="primary-info">Secondary legislation and statutory instruments</div>
+						<div class="text text-secondary">
+							Find out more about secondary legislation and statutory instruments on the parliament.uk website.
+						</div>
+					</div>
+				</div>
+			</a>
+			<a href="https://guidetoprocedure.parliament.uk/collections/lA7IUL12/delegated-legislation-and-statutory-instruments" class="card">
+				<div class="card-inner">
+					<div class="content">
+						<div class="primary-info">MPs' Guide to Procedure</div>
+						<div class="text text-secondary">
+							Guidance on House of Commons secondary legislation and SI procedure for MPs and their staff.
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
