@@ -201,6 +201,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/meta/bookmarklets' => 'meta#bookmarklets', as: :meta_bookmarklets
   
   get 'procedure-browser/secondary-legislation' => 'secondary_legislation#index', as: :secondary_legislation_list
+  get 'procedure-browser/treaties' => 'treaty#index', as: :treaty_list
 
   # Any unmatched nonsense called by a bot will gracefully show a 404
   match '*unmatched', to: 'application#route_not_found', via: :all
