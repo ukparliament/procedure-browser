@@ -1,6 +1,6 @@
 class SecondaryLegislationController < ApplicationController
 
-  # We include modules required to get all routes and a routes with its steps and procedures.
+  # We include modules required to get all secondary legislation procedures.
   include Sparql::Get::SecondaryLegislationProcedures
   include Sparql::Queries::SecondaryLegislationProcedures
   include Sparql::Get::Response
@@ -10,6 +10,6 @@ class SecondaryLegislationController < ApplicationController
     
     @page_title = 'Secondary legislation'
     @description = 'Secondary legislation.'
-    @crumb << { label: 'Secondary legislation', url: nil }
+    @crumb << { label: @page_title, url: nil }
   end
 end
