@@ -1,0 +1,36 @@
+<div class="reading-width">
+	<%= content_tag( 'p', "Some text explaining what a treaty is." ) %>
+	
+	<div id="more-information">
+		<%= content_tag( 'h2', 'Find treaties' ) %>
+		<div class="card-list">
+			<%= render :partial => 'procedure', :collection => @procedures %>
+		</div>
+	</div>
+	
+	<div id="more-information">
+		<%= content_tag( 'h2', 'More information' ) %>
+		<div class="card-list">
+			<a href="#" class="card">
+				<div class="card-inner">
+					<div class="content">
+						<div class="primary-info">A link to something about treaties</div>
+						<div class="text text-secondary">
+							With some text.
+						</div>
+					</div>
+				</div>
+			</a>
+			<a href="#" class="card">
+				<div class="card-inner">
+					<div class="content">
+						<div class="primary-info">Another link to something about treaties</div>
+						<div class="text text-secondary">
+							With some more text.
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
