@@ -16,14 +16,15 @@ gem "annotaterb"
 gem "pg_search"
 
 # For local development
-gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.12"
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.14"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
 
-# Explicitly have csv and irb
+# Explicitly have csv and irb, freeze json until next version of rails
 gem "csv"
 gem "irb"
+gem 'json', '~> 2.0'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -35,7 +36,6 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 # Add for exception notification
-# gem "rollbar"
 gem "appsignal"
 # Add log rage
 gem "lograge"

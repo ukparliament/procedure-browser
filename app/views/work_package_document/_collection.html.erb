@@ -1,0 +1,4 @@
+<div id ='<%= collection.fragment_identifier %>' class='card-list'>
+	<%= content_tag( 'h2', collection.label ) %>
+	<%= render :partial => 'document', :collection => collection.documents %>
+</div>

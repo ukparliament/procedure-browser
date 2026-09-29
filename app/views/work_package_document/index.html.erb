@@ -7,67 +7,14 @@
 	
 	<% if @documents.empty? -%>
 		<%= content_tag( 'p', 'No documents are yet available.' ) %>
+		<%= render :partial => 'library_design/feeds/feeds' %>
 	<% else -%>
 		<%= list_item_count_sentence( 'document', @documents.size ) %>
 		<%= render :partial => 'library_design/feeds/feeds' %>
 		
-		<%= work_package_document_table_of_contents %>
+		<%= work_package_document_table_of_contents( @work_package_document_list ) %>
 		
-		<% unless @associated_paper_documents.empty? -%>
-			<div id ='associated-papers' class='card-list'>
-				<%= content_tag( 'h2', 'Associated papers' ) %>
-				<%= render :partial => 'document', :collection => @associated_paper_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @committee_concerns_documents.empty? -%>
-			<div id ='committee-concerns' class='card-list'>
-				<%= content_tag( 'h2', 'Committee concerns' ) %>
-				<%= render :partial => 'document', :collection => @committee_concerns_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @committee_correspondence_documents.empty? -%>
-			<div id ='committee-correspondence' class='card-list'>
-				<%= content_tag( 'h2', 'Committee correspondence' ) %>
-				<%= render :partial => 'document', :collection => @committee_correspondence_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @committee_oral_evidence_session_documents.empty? -%>
-			<div id ='committee-oral-evidence-sessions' class='card-list'>
-				<%= content_tag( 'h2', 'Committee oral evidence sessions' ) %>
-				<%= render :partial => 'document', :collection => @committee_oral_evidence_session_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @debate_documents.empty? -%>
-			<div id ='debates' class='card-list'>
-				<%= content_tag( 'h2', 'Debates' ) %>
-				<%= render :partial => 'document', :collection => @debate_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @government_response_to_select_commmittee_documents.empty? -%>
-			<div id ='government-responses-to-select-committees' class='card-list'>
-				<%= content_tag( 'h2', 'Government responses to select committees' ) %>
-				<%= render :partial => 'document', :collection => @government_response_to_select_commmittee_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @ministerial_statement_documents.empty? -%>
-			<div id='ministerial-statements' class='card-list'>
-				<%= content_tag( 'h2', 'Ministerial statements' ) %>
-				<%= render :partial => 'document', :collection => @ministerial_statement_documents %>
-			</div>
-		<% end -%>
-		
-		<% unless @upgrade_to_affirmative_documents.empty? -%>
-			<div id='proposed-negative-statutory-instrument-upgraded-to-affirmative' class='card-list'>
-				<%= content_tag( 'h2', 'Proposed negative statutory instrument upgraded to affirmative' ) %>
-				<%= render :partial => 'document', :collection => @upgrade_to_affirmative_documents %>
-			</div>
-		<% end -%>
+		<%= render :partial => 'collection', :collection => @work_package_document_list.work_package_document_collections %>
 	<% end -%>
 
 	<%= render :partial => 'common/identifier', :object => @work_package %>

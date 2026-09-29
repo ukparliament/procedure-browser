@@ -249,48 +249,22 @@ module WorkPackageHelper
   end
   
   # A method to generate a table of contents for the document list page of a work package.
-  def work_package_document_table_of_contents
+  def work_package_document_table_of_contents ( work_package_document_list )
     toc_links = []
-    unless @associated_paper_documents.empty?
-      link = { :id => 'associated-papers', :label => 'Associated papers' }
+    work_package_document_list.work_package_document_collections.each do |work_package_document_collection|
+      link = { :id => work_package_document_collection.fragment_identifier, :label => work_package_document_collection.label }
       toc_links << link
     end
-    unless @committee_concerns_documents.empty?
-      link = { :id => 'committee-concerns', :label => 'Committee concerns' }
-      toc_links << link
-    end
-    unless @committee_correspondence_documents.empty?
-      link = { :id => 'committee-correspondence', :label => 'Committee correspondence' }
-      toc_links << link
-    end
-    unless @committee_oral_evidence_session_documents.empty?
-      link = { :id => 'committee-oral-evidence-sessions', :label => 'Committee oral evidence sessions' }
-      toc_links << link
-    end
-    unless @debate_documents.empty?
-      link = { :id => 'debates', :label => 'Debates' }
-      toc_links << link
-    end
-    unless @government_response_to_select_commmittee_documents.empty?
-      link = { :id => 'government-responses-to-select-committees', :label => 'Government responses to select commmittees' }
-      toc_links << link
-    end
-    unless @ministerial_statement_documents.empty?
-      link = { :id => 'ministerial-statements', :label => 'Ministerial statements' }
-      toc_links << link
-    end
-    unless @upgrade_to_affirmative_documents.empty?
-      link = { :id => 'proposed-negative-statutory-instrument-upgraded-to-affirmative', :label => 'Proposed negative statutory instrument upgraded to affirmative' }
-      toc_links << link
-    end
+    
     work_package_table_of_contents = ''
+    
     if toc_links.size > 1
       toc_links.each do |toc_link|
         work_package_table_of_contents += link_to( toc_link[:label], work_package_document_list_url( :anchor => toc_link[:id] ) )
         work_package_table_of_contents += ' - ' if toc_link != toc_links.last
       end
       work_package_table_of_contents = work_package_table_of_contents.html_safe
-      content_tag( 'p', work_package_table_of_contents )
+      content_tag( 'p', work_package_table_of_contents,  )
     end
   end
 end
