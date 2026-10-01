@@ -27,28 +27,28 @@ module Sparql::Get::Clock
     
         # ... and create a new clock object.
         clock = Clock.new
-        clock.identifier = row['Clock']
-        clock.label = row['ClockName']
-        clock.day_count = row['DayCount']
+        clock.identifier = row['clock']
+        clock.label = row['clockName']
+        clock.day_count = row['dayCount']
         clock.procedure_identifier = row['procedure']
         clock.procedure_label = row['procedureName']
-        clock.from_step_identifier = row['StartStep']
-        clock.from_step_label = row['StartStepName']
-        clock.from_step_type_identifier = row['StartStepType']
-        clock.from_step_type_label = row['StartStepTypeName']
-        clock.from_step_legislature_identifier = row['StartSteplegislature']
-        clock.from_step_legislature_label = row['StartSteplegislatureName']
-        clock.from_step_commons_identifier = row['StartStepCommonsId']
-        clock.from_step_lords_identifier = row['StartStepLordsId']
-        clock.to_step_identifier = row['EndStep']
-        clock.to_step_label = row['EndStepName']
-        clock.to_step_type_identifier = row['EndStepType']
-        clock.to_step_type_label = row['EndStepTypeName']
-        clock.to_step_legislature_identifier = row['EndSteplegislature']
-        clock.to_step_legislature_label = row['EndSteplegislatureName']
-        clock.to_step_commons_identifier = row['EndStepCommonsId']
-        clock.to_step_lords_identifier = row['EndStepLordsId']
-      
+        clock.from_step_identifier = row['startStep']
+        clock.from_step_label = row['startStepName']
+        clock.from_step_type_identifier = row['startStepType']
+        clock.from_step_type_label = row['startStepTypeName']
+        clock.from_step_legislature_identifier = row['startSteplegislature']
+        clock.from_step_legislature_label = row['startSteplegislatureName']
+        clock.from_step_commons_identifier = row['startStepCommonsId']
+        clock.from_step_lords_identifier = row['startStepLordsId']
+        clock.to_step_identifier = row['endStep']
+        clock.to_step_label = row['endStepName']
+        clock.to_step_type_identifier = row['endStepType']
+        clock.to_step_type_label = row['endStepTypeName']
+        clock.to_step_legislature_identifier = row['endSteplegislature']
+        clock.to_step_legislature_label = row['endSteplegislatureName']
+        clock.to_step_commons_identifier = row['endStepCommonsId']
+        clock.to_step_lords_identifier = row['endStepLordsId']
+        
         # We return the clock object.
         return clock
       end
