@@ -2,39 +2,94 @@ module Sparql::Queries::Clock
 
   # A SPARQL query to get a clock.
   def clock_query( clock_id )
+    [
+      # The title of the SPARQL query.
+      "A clock",
+
+      # The link to the SPARQL query.
+      'https://api.parliament.uk/s/01a7698d',
+
+      # The SPARQL query.
+    
     "
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX : <https://id.parliament.uk/schema/>
-      PREFIX id: <https://id.parliament.uk/>
-      SELECT ?Clock ?ClockName ?DayCount ?procedure ?procedureName ?StartStep ?StartStepName ?StartStepType ?StartStepTypeName ?StartSteplegislature ?StartSteplegislatureName ?StartStepCommonsId ?StartStepLordsId ?EndStep ?EndStepName ?EndStepType ?EndStepTypeName ?EndSteplegislature ?EndSteplegislatureName ?EndStepCommonsId ?EndStepLordsId WHERE {
-        ?Clock a :Clock;
-                   :name ?ClockName;
-                   :clockFormsPartOfProcedure ?procedure;
-                   :clockHasStartProcedureStep ?StartStep;
-                   :clockHasEndProcedureStep ?EndStep. 
-  optional {?Clock :clockDayCount ?DayCount.}
-  filter (?Clock in (id:#{clock_id}))
-                   ?procedure :name ?procedureName.
-  			    ?StartStep :name ?StartStepName;
-            :procedureStepHasProcedureStepType ?StartStepType.
-  ?StartStepType :name ?StartStepTypeName. 
-    Optional {?StartStep :procedureStepInLegislature ?StartSteplegislature.
-    ?StartSteplegislature :name ?StartSteplegislatureName.}
-    Optional {?StartStep:procedureStepHasHouse ?StartStepCommonsId
-    filter (?StartStepCommonsId IN (id:1AFu55Hs))}
-    Optional {?StartStep :procedureStepHasHouse ?StartStepLordsId.
-      filter (?StartStepLordsId IN (id:WkUWUBMx))}
-     ?EndStep :name ?EndStepName;
-            :procedureStepHasProcedureStepType ?EndStepType.
-  ?EndStepType :name ?EndStepTypeName. 
-  Optional {?EndStep :procedureStepInLegislature ?EndSteplegislature.
-    ?EndSteplegislature :name ?EndSteplegislatureName.}
-    Optional {?EndStep:procedureStepHasHouse ?EndStepCommonsId
-    filter (?EndStepCommonsId IN (id:1AFu55Hs))}
-    Optional {?EndStep :procedureStepHasHouse ?EndStepLordsId.
-      filter (?EndStepLordsId IN (id:WkUWUBMx))}
-              } Order by ?ClockName ?procedureName
+# We declare the Parliament and ID namespaces.
+PREFIX : <https://id.parliament.uk/schema/>
+PREFIX id: <https://id.parliament.uk/>
+
+# We select the properties we want to appear in results.
+# If all properties are required, an asterisk can be used between SELECT and WHERE instead of listing properties.
+SELECT ?clock ?clockName ?dayCount ?procedure ?procedureName ?startStep ?startStepName ?startStepType ?startStepTypeName ?startSteplegislature ?startSteplegislatureName ?startStepCommonsId ?startStepLordsId ?endStep ?endStepName ?endStepType ?endStepTypeName ?endSteplegislature ?endSteplegislatureName ?endStepCommonsId ?endStepLordsId WHERE {
+  
+  # We find all the clocks and their names, the procedures they form part of and their start and end procedure steps. 
+  ?clock a :Clock;
+  :name ?clockName;
+  :clockFormsPartOfProcedure ?procedure;
+  :clockHasStartProcedureStep ?startStep;
+  :clockHasEndProcedureStep ?endStep. 
+  
+  # We specify that the clock may, or may not, have a day count.
+  OPTIONAL {
+    ?clock :clockDayCount ?dayCount.
+  }
+
+  # We filter the results to only include the clock with ID #{clock_id}.  
+  FILTER ( ?clock IN ( id:#{clock_id} ) )
+
+  # We specify the procedure's name 
+  ?procedure :name ?procedureName.
+
+  # We specify the start procedure step's name, step type and the step type's name.
+  ?startStep :name ?startStepName;
+  :procedureStepHasProcedureStepType ?startStepType.
+  ?startStepType :name ?startStepTypeName.
+
+  # We check to see if the start step belongs to a legislature. 
+  # A legislature will be Scottish Parliament, Senedd Cymru or the Northern Ireland Assembly.
+  OPTIONAL {
+    ?startStep :procedureStepInLegislature ?startSteplegislature.
+    ?startSteplegislature :name ?startSteplegislatureName.
+  }
+
+  # We check to see if the start step belongs to the House of Commons.
+  OPTIONAL {
+    ?startStep :procedureStepHasHouse ?startStepCommonsId
+    FILTER ( ?startStepCommonsId IN ( id:1AFu55Hs ) )
+  }
+
+  # We check to see if the start step belongs to the House of Lords.
+  OPTIONAL {
+    ?startStep :procedureStepHasHouse ?startStepLordsId.
+    FILTER ( ?startStepLordsId IN ( id:WkUWUBMx ) )
+  }
+
+  # We specify the end procedure step's name, step type and the step type's name.
+  ?endStep :name ?endStepName;
+  :procedureStepHasProcedureStepType ?endStepType.
+  ?endStepType :name ?endStepTypeName. 
+
+  # We check to see if the end step belongs to a legislature.
+  # A legislature will be Scottish Parliament, Senedd Cymru or the Northern Ireland Assembly.
+  OPTIONAL {
+    ?endStep :procedureStepInLegislature ?endSteplegislature.
+    ?endSteplegislature :name ?endSteplegislatureName.
+  }
+  
+  # We check to see if the end step belongs to the House of Commons.
+  OPTIONAL {
+    ?endStep :procedureStepHasHouse ?endStepCommonsId
+    FILTER ( ?endStepCommonsId IN ( id:1AFu55Hs ) )
+  }
+
+  # We check to see if the end step belongs to the House of Lords.  
+  OPTIONAL {
+    ?endStep :procedureStepHasHouse ?endStepLordsId.
+    FILTER ( ?endStepLordsId IN ( id:WkUWUBMx ) )
+  }
+} 
+
+# We order results by the name of the clock, and then by the name of the procedure.
+ORDER BY ?clockName ?procedureName
     "
+  ]
   end
 end
