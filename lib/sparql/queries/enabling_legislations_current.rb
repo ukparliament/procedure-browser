@@ -8,42 +8,58 @@ module Sparql::Queries::EnablingLegislationsCurrent
       'A list of legislation enabling instruments currently before Parliament',
       
       # The link to the SPARQL query.
-      '',
+      'https://api.parliament.uk/s/e504ed3a',
       
       # The SPARQL query.
       "
-        # We declare the Parliament and ID namespaces.
-        PREFIX : <https://id.parliament.uk/schema/>
-        PREFIX id: <https://id.parliament.uk/>
+# We declare the Parliament and ID namespaces.
+PREFIX : <https://id.parliament.uk/schema/>
+PREFIX id: <https://id.parliament.uk/>
 
-        # We select the relevant properties we want to appear in results.
-        SELECT DISTINCT ?enablingThing ?name ?number ?year ?date ?URL WHERE {
+# We select the relevant properties we want to appear in results.
+# If all properties are required, an asterisk can be used between SELECT and WHERE instead of listing properties.
+# We use DISTINCT to ensure that each enabling thing is only returned once, even if it enables multiple things.
+SELECT DISTINCT ?enablingThing ?name ?number ?year ?date ?URL WHERE {
   
-        # We find all enabling things that enable one or more things currently before Parliament.
-        ?enablingThing a :EnablingThing;  
-        :enabling ?enabledThing.
+  # We find all enabling things that enable one or more things currently before Parliament.
+  ?enablingThing a :EnablingThing;  
+  :enabling ?enabledThing.
 
-        # We look for the names of those enabling things.
-        ?enablingThing :actOfParliamentName ?name.
+  # We look for the names of those enabling things.
+  ?enablingThing :actOfParliamentName ?name.
 
-        # We specify that an enabling thing might have a name, number, year, date and url but is not required to have any of those properties. 
-        OPTIONAL { ?enablingThing :actOfParliamentNumber ?number. }
-        OPTIONAL { ?enablingThing :actOfParliamentYear ?year. }
-        OPTIONAL { ?enablingThing :actOfParliamentRoyalAssentDate ?date. }
-        OPTIONAL { ?enablingThing :actOfParliamentUrl ?url. }
+  # We specify that an enabling thing might have a name, number, year, date and url but is not required to have any of those properties. 
+  OPTIONAL { 
+    ?enablingThing :actOfParliamentNumber ?number. 
+  }
 
-        # We look for enabled things that have a work package.  
-        ?enabledThing :workPackagedThingHasWorkPackage ?workPackage.
+  OPTIONAL { 
+    ?enablingThing :actOfParliamentYear ?year. 
+  }
 
-        # We specify that the work package should not have a business item that actualises a step in the 'End steps' step collection. This means only work packages that have not been concluded will appear in the results. 
-        MINUS { ?workPackage :workPackageHasBusinessItem ?bi2.
-        ?bi2 :businessItemHasProcedureStep ?stepId2.
-        # We specify the id for the 'End steps' step collection.    
-        ?stepId2 :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI} 
-        }
+  OPTIONAL { 
+    ?enablingThing :actOfParliamentRoyalAssentDate ?date.
+  }
+  
+  OPTIONAL { 
+    ?enablingThing :actOfParliamentUrl ?url. 
+  }
 
-        # We order the results by name.  
-        ORDER BY ?name
+  # We look for enabled things that have a work package.  
+  ?enabledThing :workPackagedThingHasWorkPackage ?workPackage.
+
+  # We specify that the work package should not have a business item that actualises a step in the 'End steps' step collection. This means only work packages that have not been concluded will appear in the results. 
+  MINUS {
+    ?workPackage :workPackageHasBusinessItem ?bi2.
+    ?bi2 :businessItemHasProcedureStep ?stepId2.
+    # We specify the id for the 'End steps' step collection.    
+    ?stepId2 :procedureStepHasProcedureStepCollectionMembership/:procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI
+  } 
+
+  }
+
+# We order the results by name.  
+ORDER BY ?name
       "
     ]
   end

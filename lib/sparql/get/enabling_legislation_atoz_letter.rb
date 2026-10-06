@@ -17,12 +17,12 @@ module Sparql::Get::EnablingLegislationAtozLetter
   
       # ... we create a new enabling legislation object ...
       enabling_legislation = EnablingLegislation.new
-      enabling_legislation.identifier = row['EnablingThing']
-      enabling_legislation.label = row['Name']
-      enabling_legislation.date = row['Date'].to_date if row['Date']
-      enabling_legislation.year = row['Year']
-      enabling_legislation.act_number = row['Number']
-      enabling_legislation.uri = row['URL']
+      enabling_legislation.identifier = row['enablingThing']
+      enabling_legislation.label = row['name']
+      enabling_legislation.date = row['date'].to_date if row['date']
+      enabling_legislation.year = row['year']
+      enabling_legislation.act_number = row['number']
+      enabling_legislation.uri = row['url']
       
       # ... and add it to the array of enabling legislation.
       enabling_legislations << enabling_legislation

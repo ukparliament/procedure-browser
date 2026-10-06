@@ -2,22 +2,39 @@ module Sparql::Queries::EnablingLegislationAtoz
 
   # A SPARQL query to get an A to Z of enabling legislation.
   def enabling_legislation_atoz_query
-    "
-      PREFIX : <https://id.parliament.uk/schema/>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-      PREFIX id: <https://id.parliament.uk/>
+    [
+      # The title of the SPARQL query.
+      "List of letters of the beginning of enabling legislation that have enabled things",
 
-      SELECT ?FirstLetter
-      WHERE {
-        ?EnablingThing a :EnablingThing;
-                       :enabling ?EnabledThing.
-        OPTIONAL { ?EnablingThing :actOfParliamentName ?Name. }
+      # The link to the SPARQL query.
+      'https://shortener120181217063232.azurewebsites.net/s/09d57f7f',
 
-        BIND(UCASE(SUBSTR(STR(?Name), 1, 1)) AS ?FirstLetter)
-      }
-      GROUP BY ?FirstLetter
-      ORDER BY ?FirstLetter
+      # The SPARQL query.
     "
+# We declare the Parliament and ID namespaces.    
+PREFIX : <https://id.parliament.uk/schema/>
+PREFIX id: <https://id.parliament.uk/>
+
+# We select the properties we want to appear in results.
+# If all properties are required, an asterisk can be used between SELECT and WHERE instead of
+SELECT ?firstLetter WHERE {
+
+  # We find all enabling legislation and their associated enabled things.  
+  ?enablingThing a :EnablingThing;
+  :enabling ?enabledThing.
+  
+  # We specify that the enabling legislation may, or may not, have a name.
+  OPTIONAL { ?enablingThing :actOfParliamentName ?name. }
+
+  # We filter the results to only include enabling legislation with names that are not empty and only use their first letter.
+  BIND(UCASE(SUBSTR(STR(?name), 1, 1)) AS ?firstLetter)
+}
+
+# We group results by first letter of enabling legislation name and order them alphabetically.
+# This ensures that each letter is only returned once in the results.
+GROUP BY ?firstLetter
+ORDER BY ?firstLetter
+    "
+  ]
   end
 end

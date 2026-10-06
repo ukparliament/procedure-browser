@@ -17,7 +17,7 @@ module Sparql::Get::EnablingLegislationAtoz
     
       # ... we create a new letter object.
       letter = Letter.new
-      letter.letter = row['FirstLetter']
+      letter.letter = row['firstLetter']
       
       # ... and add it to the array of letters.
       letters << letter
