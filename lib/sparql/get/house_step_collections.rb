@@ -16,8 +16,8 @@ module Sparql::Get::HouseStepCollections
   
       # ... we create a new step collection object ...
       step_collection = StepCollection.new
-      step_collection.identifier = row['StepCollection']
-      step_collection.label = row['StepCollectionName']
+      step_collection.identifier = row['stepCollection']
+      step_collection.label = row['stepCollectionName']
       
       # ... and add it to the array of step collections.
       step_collections << step_collection

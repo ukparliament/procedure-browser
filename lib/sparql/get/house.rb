@@ -27,10 +27,10 @@ module Sparql::Get::House
     
         # ... and create a new house object.
         house = House.new
-        house.identifier = row['House']
-        house.label = row['HouseName']
-        house.legislature_identifier = row['Legislature']
-        house.legislature_label = row['LegislatureName']
+        house.identifier = row['house']
+        house.label = row['houseName']
+        house.legislature_identifier = row['legislature']
+        house.legislature_label = row['legislatureName']
       
         # We return the house object.
         return house
