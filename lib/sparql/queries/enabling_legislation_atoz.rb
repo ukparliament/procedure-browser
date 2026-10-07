@@ -4,7 +4,7 @@ module Sparql::Queries::EnablingLegislationAtoz
   def enabling_legislation_atoz_query
     [
       # The title of the SPARQL query.
-      "List of letters of the beginning of enabling legislation that have enabled things",
+      "List of initial letters of legislation having enabled instruments",
 
       # The link to the SPARQL query.
       'https://shortener120181217063232.azurewebsites.net/s/09d57f7f',
