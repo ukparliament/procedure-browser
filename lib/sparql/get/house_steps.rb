@@ -16,12 +16,12 @@ module Sparql::Get::HouseSteps
   
       # ... we create a new step object ...
       step = Step.new
-      step.identifier = row['Step']
-      step.label = row['StepName']
-      step.step_type_identifier = row['StepType']
-      step.step_type_label = row['StepTypeName']
-      step.commons_identifier = row['StepCommonsId']
-      step.lords_identifier = row['StepLordsId']
+      step.identifier = row['step']
+      step.label = row['stepName']
+      step.step_type_identifier = row['stepType']
+      step.step_type_label = row['stepTypeName']
+      step.commons_identifier = row['stepCommonsId']
+      step.lords_identifier = row['stepLordsId']
       step.actualisation_count = row['biCount'].to_i
       																	
       # ... and add it to the array of steps.
