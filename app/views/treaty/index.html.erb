@@ -1,6 +1,7 @@
 <div class="reading-width">
-	<%= content_tag( 'p', "A treaty is a written agreement made between two or more states that is governed by international law." ) %>
-	<%= content_tag( 'p', "In the UK it is the government that negotiates and signs treaties. Once signed, the document must be scrutinised by Parliament to confirm that the UK agrees to be bound by it. Only then may the treaty be ratified (by the government formally notifying the other parties that the UK will be bound by it from a specified date)." ) %>
+	<%= content_tag( 'p', "In the UK, treaties are negotiated and signed by the government. Agreements requiring ratification, accession or approval are subject to the #{link_to( 'treaty procedure set out in the Constitutional Reform and Governance Act 2010', 'https://www.legislation.gov.uk/ukpga/2010/25/part/2' ) } and must be laid before both Houses of Parliament.".html_safe ) %>
+	<%= content_tag( 'p', "If the House of Commons does not resolve against ratification of a treaty within 21 sitting days, or if a minister determines that the treaty be ratified without further scrutiny, the government may ratify the treaty." ) %>
+	<%= content_tag( 'p', "A minister may extend the 21 day period. If the Commons resolves against ratification, a minister may make a statement in disagreement, following which the Commons may consider for a further 21 sitting days. If the Lords resolves against ratification, a minister may make a statement that the treaty be ratified." ) %>
 	
 	<div id="more-information">
 		<%= content_tag( 'h2', 'Find treaties' ) %>
@@ -12,12 +13,22 @@
 	<div id="more-information">
 		<%= content_tag( 'h2', 'More information' ) %>
 		<div class="card-list">
-			<a href="#" class="card">
+			<a href="https://commonslibrary.parliament.uk/research-briefings/cbp-9247/" class="card">
 				<div class="card-inner">
 					<div class="content">
 						<div class="primary-info">How Parliament treats treaties</div>
 						<div class="text text-secondary">
 							How Parliament scrutinises international treaties, and its powers to delay ratification of treaties.
+						</div>
+					</div>
+				</div>
+			</a>
+			<a href="https://committees.parliament.uk/committee/448/international-agreements-committee/" class="card">
+				<div class="card-inner">
+					<div class="content">
+						<div class="primary-info">International Agreements Committee</div>
+						<div class="text text-secondary">
+							The Committee scrutinises all treaties subject to ratification that are laid before Parliament under the Constitutional Reform and Governance Act 2010 and considers other issues relating to the negotiation, conclusion and implementation of international agreements.
 						</div>
 					</div>
 				</div>
