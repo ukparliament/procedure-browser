@@ -1,6 +1,6 @@
 <div class="reading-width">
-	<%= content_tag( 'p', "In order to simplify this website, links to some views are hidden using #{link_to( 'CSS', 'https://en.wikipedia.org/wiki/CSS' )}. These links can be made visible by installing a local stylesheet:".html_safe ) %>
-			
+	<%= content_tag( 'p', "In order to make this site easier to use, some page elements are not usually visible. These elements can be made visible by installing a local stylesheet. This stylesheet is intended for use by #{link_to( 'House of Commons Library', 'https://commonslibrary.parliament.uk/' )} librarians in order to carry out their work and respond to enquiries. It has been tested in the #{link_to( 'Stylus browser extension available in the Chrome Web Store', 'https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?pli=1' )}.".html_safe ) %>
+	
 <pre class="mb-3"><%= content_tag( 'code', "/* A user stylesheet to overide author CSS, making components marked as librarian-only visible */
 body header .uk-parliament-procedure-browser-librarian-only {
 	display: inline-block !important;
@@ -15,5 +15,5 @@ body.uk-parliament-procedure-browser {
 	padding-left: 1em;
 }" ) %></pre>
 
-	<%= content_tag( 'p', "This stylesheet is intended for use by #{link_to( 'House of Commons Library', 'https://commonslibrary.parliament.uk/' )} librarians in order to carry out their work and respond to enquiries. It has been tested in the #{link_to( 'Stylus browser extension available in the Chrome Web Store', 'https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?pli=1' )}.".html_safe ) %>
+	
 </div>
