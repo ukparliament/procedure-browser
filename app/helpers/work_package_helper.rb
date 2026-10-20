@@ -75,9 +75,18 @@ module WorkPackageHelper
   
   def work_package_description_with_markup( work_package )
     work_package_list_item_description = 'A work package'
-    if work_package.made_available_on
-      work_package_list_item_description += ', made available on '
-      work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+    if work_package.laying_body_identifier
+      work_package_list_item_description += ', laid by the '
+      work_package_list_item_description += link_to( work_package.laying_body_name, organisation_accountable_to_parliament_show_url( :organisation_accountable_to_parliament => work_package.laying_body_id ) )
+      if work_package.made_available_on
+        work_package_list_item_description += ' on '
+        work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+      end
+    else
+      if work_package.made_available_on
+        work_package_list_item_description += ', made available on '
+        work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
+      end
     end
     work_package_list_item_description += ', subject to the '
     work_package_list_item_description += link_to( work_package.procedure_label, procedure_show_url( :procedure => work_package.procedure_id ) )
