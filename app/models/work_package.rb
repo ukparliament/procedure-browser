@@ -25,7 +25,7 @@
 class WorkPackage < ApplicationRecord
   include PgSearch::Model
   
-  attr_accessor :work_packageable_thing_link, :laying_body_identifier, :laying_body_name
+  attr_accessor :work_packageable_thing_link, :laying_body_identifier, :laying_body_label
 
   SEARCH_ON = [
                 :identifier,

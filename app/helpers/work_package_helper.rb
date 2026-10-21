@@ -77,7 +77,7 @@ module WorkPackageHelper
     work_package_list_item_description = 'A work package'
     if work_package.laying_body_identifier
       work_package_list_item_description += ', laid by the '
-      work_package_list_item_description += link_to( work_package.laying_body_name, organisation_accountable_to_parliament_show_url( :organisation_accountable_to_parliament => work_package.laying_body_id ) )
+      work_package_list_item_description += link_to( work_package.laying_body_label, organisation_accountable_to_parliament_show_url( :organisation_accountable_to_parliament => work_package.laying_body_id ) )
       if work_package.made_available_on
         work_package_list_item_description += ' on '
         work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )

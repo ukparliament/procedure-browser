@@ -26,7 +26,7 @@ module Sparql::Get::WorkPackageableThingWorkPackages
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
       work_package.laying_body_identifier = row['layingBody']
-      work_package.laying_body_name = row['layingBodyName']
+      work_package.laying_body_label = row['layingBodyName']
       
       # ... and add it to the array of work packages.
       work_packages << work_package
