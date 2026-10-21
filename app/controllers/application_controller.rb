@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   
   def register_mechanical_step_collections
-    @mechanical_step_collections = ['pc94WzFV', 'TRohjSuI', 'RPfsm4lC', 'Oebb7fXv']
+    @mechanical_step_collections = ['pc94WzFV', 'TRohjSuI', 'RPfsm4lC', 'Oebb7fXv', 'm7fzgEd2', '7CBVQcZF']
   end
 
   # For unmatched route in routes

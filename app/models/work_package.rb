@@ -25,7 +25,7 @@
 class WorkPackage < ApplicationRecord
   include PgSearch::Model
   
-  attr_accessor :work_packageable_thing_link
+  attr_accessor :work_packageable_thing_link, :laying_body_identifier, :laying_body_label
 
   SEARCH_ON = [
                 :identifier,
@@ -63,6 +63,10 @@ class WorkPackage < ApplicationRecord
   
   def calculation_style_id
     calculation_style_identifier.split( '/' ).last
+  end
+  
+  def laying_body_id
+    laying_body_identifier.split( '/' ).last
   end
   
   def is_flagged?
