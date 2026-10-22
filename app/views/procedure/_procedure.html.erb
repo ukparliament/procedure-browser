@@ -1,4 +1,12 @@
-<li>
-	<%= content_tag( 'h2', link_to( procedure.label, procedure_show_url( :procedure => procedure.id ) ) ) %>
-	<%= content_tag( 'p', procedure.description ) if procedure.description %>
-</li>
+<a href="<%= procedure_show_url( :procedure => procedure.id ) %>" class="card">
+	<li class="card-inner">
+		<div class="content">
+			<div class="primary-info">
+				<%= procedure.label %>
+			</div>
+			<div class="text text-secondary">
+				<%= procedure.description %>
+			</div>
+		</div>
+	</li>
+</a>
