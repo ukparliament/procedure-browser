@@ -1,6 +1,12 @@
-<li>
-	<h2>
-		<%= link_to(enabling_legislation.label, enabling_legislation_show_url(enabling_legislation: enabling_legislation.display_id)) %>
-	</h2>
-	<%= enabling_legislation_description_with_markup( enabling_legislation ) %>
-</li>
+<a href="<%= enabling_legislation_show_url(enabling_legislation: enabling_legislation.display_id) %>" class="card">
+	<li class="card-inner">
+		<div class="content">
+			<div class="primary-info">
+				<%= enabling_legislation.label %>
+			</div>
+			<div class="text text-secondary">
+				<%= enabling_legislation_description_with_markup( enabling_legislation ) %>
+			</div>
+		</div>
+	</li>
+</a>
