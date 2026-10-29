@@ -9,6 +9,15 @@ json.graph do
         json.label step.display_label
         json.metadata do
           json.step_type_id step.step_type_id
+          json.identifier step.identifier
+          json.label step.label
+          # json.description step.description
+#           json.legislature_identifier step.legislature_identifier
+#           json.legislature_label step.legislature_label
+#           json.commons_identifier step.commons_identifier
+#           json.lords_identifier step.lords_identifier
+# 		  json.step_type_identifier step.step_type_identifier
+		  json.step_type_label step.step_type_label
         end
       end
     end
@@ -20,38 +29,28 @@ json.graph do
     json.directed true
     json.metadata do
       json.is_open route.is_open
+      json.identifier route.identifier     
+#       json.start_on route.start_on     
+#       json.end_on route.end_on     
+#       json.from_step_identifier route.from_step_identifier     
+      json.from_step_label route.from_step_label     
+      json.from_step_type_identifier route.from_step_type_identifier     
+      json.from_step_type_label route.from_step_type_label     
+#       json.from_step_legislature_identifier route.from_step_legislature_identifier     
+#       json.from_step_legislature_label route.from_step_legislature_label     
+#       json.from_step_commons_identifier route.from_step_commons_identifier     
+#       json.from_step_lords_identifier route.from_step_lords_identifier     
+#       json.to_step_identifier route.to_step_identifier     
+#       json.to_step_identifier route.to_step_identifier     
+      json.to_step_label route.to_step_label     
+      json.to_step_type_identifier route.to_step_type_identifier     
+      json.to_step_type_label route.to_step_type_label     
+#       json.to_step_legislature_identifier route.to_step_legislature_identifier     
+#       json.to_step_legislature_label route.to_step_legislature_label     
+#       json.to_step_commons_identifier route.to_step_commons_identifier     
+#       json.to_step_lords_identifier route.to_step_lords_identifier     
     end
   end
 end
 
 
-# step.identifier = row['step']
-# step.label = row['stepName']
-# step.description = row['description']
-# step.legislature_identifier = row['legislature']
-# step.legislature_label = row['legislatureName']
-# step.commons_identifier = row['CommonsId']
-# step.lords_identifier = row['LordsId']
-# step.step_type_identifier = row['stepType']
-# step.step_type_label = row['stepTypeLabel']
-
-
-# route.identifier = row['Route']
-# route.start_on = row['StartDate'].to_date if row['StartDate']
-# route.end_on = row['EndDate'].to_date if row['EndDate']
-# route.from_step_identifier = row['FromStep']
-# route.from_step_label = row['FromStepName']
-# route.from_step_type_identifier = row['FromStepType']
-# route.from_step_type_label = row['FromStepTypeName']
-# route.from_step_legislature_identifier = row['FromSteplegislature']
-# route.from_step_legislature_label = row['FromSteplegislatureName']
-# route.from_step_commons_identifier = row['FromStepCommonsId']
-# route.from_step_lords_identifier = row['FromStepLordsId']
-# route.to_step_identifier = row['ToStep']
-# route.to_step_label = row['ToStepName']
-# route.to_step_type_identifier = row['ToStepType']
-# route.to_step_type_label = row['ToStepTypeName']
-# route.to_step_legislature_identifier = row['ToSteplegislature']
-# route.to_step_legislature_label = row['ToSteplegislatureName']
-# route.to_step_commons_identifier = row['ToStepCommonsId']
-# route.to_step_lords_identifier = row['ToStepLordsId']

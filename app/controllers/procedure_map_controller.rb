@@ -36,6 +36,14 @@ class ProcedureMapController < ApplicationController
           response.headers['Content-Disposition'] = "inline; filename=\"Procedure map for #{@procedure.label}.dot\""
         }
         
+        # If the user has requested JSON ...
+        format.json {
+
+          # ... we get all the steps and the routes in the procedure.
+          @steps = get_procedure_steps( procedure_id )
+          @routes = get_procedure_routes( procedure_id )
+        }
+
         # If the user has requested HTML ...
         format.html {
           
