@@ -1,5 +1,9 @@
-<div class="reading-width highlight highlight-info">
-	<%= content_tag( 'p', "Read at #{link_to( intro.uri_domain, intro.uri )}.".html_safe ) if intro.uri %>
-</div>
+<%= work_packageable_thing_description( @work_packageable_thing ) %>
+
+<% if intro.uri -%>
+	<div class="reading-width highlight highlight-info">
+		<%= content_tag( 'p', "Read at #{link_to( intro.uri_domain, intro.uri )}.".html_safe ) %>
+	</div>
+<% end -%>
 
 <%= render :partial => 'work_packageable_thing/nav' %>
