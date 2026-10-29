@@ -3,28 +3,49 @@ module Sparql::Queries::WorkPackageableThing
   # A SPARQL query to get a work packageable thing.
   def work_packageable_thing_query( work_packageable_thing_id )
     "
-      PREFIX id: <https://id.parliament.uk/>
-       PREFIX : <https://id.parliament.uk/schema/>
-       PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-       select ?workPackage ?WorkPackagedThing ?workPackagedThingName ?MadeAvailableDate ?procedure ?procedureName ?webLink ?SIprefix ?SINumber ?SIYear ?CommandPrefix ?CommandPaperNumber  where {
-         ?WorkPackagedThing a :WorkPackagedThing;
-                            :name ?workPackagedThingName;
-                            :workPackagedThingHasWorkPackage ?workPackage.
-         ?workPackage :workPackageHasProcedure ?procedure.
-         ?procedure :name ?procedureName. 
-   optional {?WorkPackagedThing :workPackagedThingHasWorkPackagedThingWebLink ?webLink.}
-   optional {?WorkPackagedThing :statutoryInstrumentPaperPrefix ?SIprefix}
-   optional {?WorkPackagedThing :statutoryInstrumentPaperNumber ?SINumber}
-   optional {?WorkPackagedThing :statutoryInstrumentPaperYear ?SIYear}
-   optional {?WorkPackagedThing :treatyCommandPaperNumber ?CommandPaperNumber}
-   optional {?WorkPackagedThing :treatyCommandPaperPrefix ?CommandPrefix}
-         optional {?workPackage :workPackageHasBusinessItem ?businessItem .
-                   ?businessItem :businessItemHasProcedureStep ?step;
-                          :businessItemDate ?MadeAvailableDate.
-                   filter (?step in (id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB))}
-   filter (?WorkPackagedThing in (id:#{work_packageable_thing_id})) }
-      
+# We declare the Parliament and ID namespaces.
+PREFIX id: <https://id.parliament.uk/>
+PREFIX : <https://id.parliament.uk/schema/>
+
+# We select the properties we want to appear in results.
+# If all properties are required, an asterisk can be used between SELECT and WHERE instead of listing properties.
+SELECT ?workPackage ?workPackagedThing ?workPackagedThingName ?procedure ?procedureName ?webLink ?siPrefix ?siNumber ?siYear ?commandPaperPrefix ?commandPaperNumber ?leadGovernmentOrganisationId ?leadGovernmentOrganisationName ?treatySeriesCitation WHERE {
+
+
+  ?workPackagedThing a :WorkPackagedThing;
+	:name ?workPackagedThingName;
+	:workPackagedThingHasWorkPackage ?workPackage.
+	?workPackage :workPackageHasProcedure ?procedure.
+	?procedure :name ?procedureName. 
+	OPTIONAL {
+    	?workPackagedThing :workPackagedThingHasWorkPackagedThingWebLink ?webLink.
+  	}
+	OPTIONAL {
+    	?workPackagedThing :statutoryInstrumentPaperPrefix ?sIprefix.
+  	}
+	OPTIONAL {
+    	?workPackagedThing :statutoryInstrumentPaperNumber ?sINumber.
+  	}
+	OPTIONAL {	
+    	?workPackagedThing :statutoryInstrumentPaperYear ?sIYear.
+  	}
+	OPTIONAL {
+    	?workPackagedThing :treatyCommandPaperNumber ?commandPaperNumber.
+  	}
+	OPTIONAL {	
+    	?workPackagedThing :treatyCommandPaperPrefix ?commandPaperPrefix.
+  	}
+	OPTIONAL {	
+    	?workPackagedThing :treatyHasLeadGovernmentOrganisation ?leadGovernmentOrganisationId.
+		  ?leadGovernmentOrganisationId :name ?leadGovernmentOrganisationName.
+  	}
+	OPTIONAL {
+    	?workPackagedThing :treatyHasSeriesMembership ?seriesMembershipId.  
+		  ?seriesMembershipId :seriesItemCitation ?treatySeriesCitation.
+  	}
+
+	FILTER ( ?workPackagedThing IN ( id:#{work_packageable_thing_id} ) ) 
+}
     "
   end
 end
