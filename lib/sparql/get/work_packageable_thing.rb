@@ -27,9 +27,17 @@ module Sparql::Get::WorkPackageableThing
     
         # ... and create a new work packageable thing object.
         work_packageable_thing = WorkPackageableThing.new
-        work_packageable_thing.identifier = row['WorkPackagedThing']
+        work_packageable_thing.identifier = row['workPackagedThing']
         work_packageable_thing.label = row['workPackagedThingName']
         work_packageable_thing.uri = row['webLink']
+        work_packageable_thing.si_prefix = row['siPrefix']
+        work_packageable_thing.si_year = row['siYear']
+        work_packageable_thing.si_number = row['siNumber']
+        work_packageable_thing.command_paper_prefix = row['commandPaperPrefix']
+        work_packageable_thing.command_paper_number = row['commandPaperNumber']
+        work_packageable_thing.lead_government_organisation_identifier = row['leadGovernmentOrganisationId']
+        work_packageable_thing.lead_government_organisation_label = row['leadGovernmentOrganisationName']
+        work_packageable_thing.treaty_series_citation = row['treatySeriesCitation']
       
         # We return the work packageable thing object.
         return work_packageable_thing

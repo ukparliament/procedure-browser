@@ -6,6 +6,14 @@ class WorkPackageableThing
   attr_accessor :identifier
   attr_accessor :label
   attr_accessor :uri
+  attr_accessor :si_prefix
+  attr_accessor :si_year
+  attr_accessor :si_number
+  attr_accessor :command_paper_prefix
+  attr_accessor :command_paper_number
+  attr_accessor :lead_government_organisation_identifier
+  attr_accessor :lead_government_organisation_label
+  attr_accessor :treaty_series_citation
   
   def id
     self.identifier.split( '/' ).last
@@ -17,6 +25,10 @@ class WorkPackageableThing
   
   def work_package_id
     self.work_package_identifier.split( '/' ).last
+  end
+  
+  def lead_government_organisation_id
+    self.lead_government_organisation_identifier.split( '/' ).last
   end
   
   def uri_domain
