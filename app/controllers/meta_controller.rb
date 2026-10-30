@@ -1,5 +1,10 @@
 class MetaController < ApplicationController
 
+  # We include modules required to get all procedures and a procedure.
+  include Sparql::Get::Procedures
+  include Sparql::Queries::Procedures
+  include Sparql::Get::Response
+
   def index
     @page_title = 'Meta'
     @description = 'Meta.'
@@ -34,6 +39,15 @@ class MetaController < ApplicationController
     @description = 'Librarian tools.'
     @crumb << { label: 'Meta', url: meta_list_url }
     @crumb << { label: 'Librarian tools', url: nil }
+  end
+
+  def maps
+    @procedures = get_procedures
+    
+    @page_title = 'Procedure maps'
+    @description = 'Procedure maps.'
+    @crumb << { label: 'Meta', url: meta_list_url }
+    @crumb << { label: 'Procedure maps', url: nil }
   end
 
   def useful_queries
