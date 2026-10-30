@@ -199,6 +199,7 @@ Rails.application.routes.draw do
   get 'procedure-browser/meta/sitemap' => 'meta#sitemap', as: :meta_sitemap
   get 'procedure-browser/meta/cookies' => 'meta#cookies', as: :meta_cookies
   get 'procedure-browser/meta/bookmarklets' => 'meta#bookmarklets', as: :meta_bookmarklets
+  get 'procedure-browser/meta/maps' => 'meta#maps', as: :meta_maps
   get 'procedure-browser/meta/librarian-tools' => 'meta#librarian_tools', as: :meta_librarian_tools
   get 'procedure-browser/meta/librarian-tools/useful-queries' => 'meta#useful_queries', as: :meta_useful_queries
   get 'procedure-browser/meta/librarian-tools/librarian-mode-styles' => 'meta#librarian_mode_styles', as: :meta_librarian_mode_styles

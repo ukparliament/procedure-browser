@@ -123,6 +123,22 @@ body.subsection-procedure-map .subnav a.procedure-map {
 	margin-bottom: 1.5em;
 }
 
+/* Styling for the hand-drawn procedure maps */
+#map {
+	margin-bottom: 2em;
+}
+#map img {
+	height: 450px;
+	width: 100%;
+}
+
+/* Styling for the graph visualisation of the procedure maps */
+#graph {
+	border: 1px solid lightgray;
+	height: 800px;
+	width: 100%;
+}
+
 /* Styling for identifier */
 #identifier {
 	margin-top: 1em;
