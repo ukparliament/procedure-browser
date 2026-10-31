@@ -1,8 +1,10 @@
 class MetaController < ApplicationController
 
   # We include modules required to get all procedures and a procedure.
-  include Sparql::Get::Procedures
-  include Sparql::Queries::Procedures
+  include Sparql::Get::ProceduresMain
+  include Sparql::Queries::ProceduresMain
+  include Sparql::Get::ProceduresComponent
+  include Sparql::Queries::ProceduresComponent
   include Sparql::Get::Response
 
   def index
@@ -42,7 +44,8 @@ class MetaController < ApplicationController
   end
 
   def maps
-    @procedures = get_procedures
+    @main_procedures = get_main_procedures
+    @component_procedures = get_component_procedures
     
     @page_title = 'Procedure maps'
     @description = 'Procedure maps.'
