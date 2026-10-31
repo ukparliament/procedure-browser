@@ -1,3 +1,18 @@
-<ol class="unnumbered link-list">
-	<%= render :partial => 'map', :collection => @procedures %>
-</ol>
+<div class="reading-width">
+	<%= content_tag( 'p', "The #{link_to( 'procedure ontology', 'https://ukparliament.github.io/ontologies/procedure/procedure-ontology' )} provides a means to describe parliamentary procedures as machine-parseable data structures, these maps being a visual depiction of those structures. Rules determining their construction and how to parse them are set out in #{link_to( 'design notes', 'https://ukparliament.github.io/ontologies/procedure/maps/meta/design-notes/' )}.".html_safe ) %>
+
+
+	<div id="procedures">
+		<%= content_tag( 'h2', 'Procedures' ) %>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'map', :collection => @main_procedures %>
+		</ol>
+	</div>
+
+	<div id="components">
+		<%= content_tag( 'h2', 'Component procedures' ) %>
+		<ol class="unnumbered link-list">
+			<%= render :partial => 'map', :collection => @component_procedures %>
+		</ol>
+	</div>
+</div>
