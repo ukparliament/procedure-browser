@@ -145,5 +145,44 @@ module WorkPackageableThingHelper
     end
     next_link
   end
+  
+  # A method to generate the work packageable thing description sentence.
+  def work_packageable_thing_description( work_packageable_thing )
+    work_packageable_thing_description = ''
+    
+    # If the work packageable thing has a treaty series citation ...
+    if work_packageable_thing.treaty_series_citation
+    
+      # ... know the work packageable thing is a treaty ...
+      # ... so we construct the treaty sentence.
+      work_packageable_thing_description += work_packageable_thing.command_paper_prefix
+      work_packageable_thing_description += ' '
+      work_packageable_thing_description += work_packageable_thing.command_paper_number
+      work_packageable_thing_description += ' ('
+      work_packageable_thing_description += work_packageable_thing.treaty_series_citation
+      work_packageable_thing_description += '), led by the '
+      work_packageable_thing_description += link_to(work_packageable_thing.lead_government_organisation_label, organisation_accountable_to_parliament_show_url( :organisation_accountable_to_parliament => work_packageable_thing.lead_government_organisation_id ) )
+      work_packageable_thing_description += '.'
+      
+    # Otherwise, if the work packageageable thing has a lead department ...
+    elsif work_packageable_thing.lead_government_organisation_label
+    
+      # ... know the work packageable thing is a negotiation for a treaty ...
+      # ... so we construct the negotiation for a treaty sentence.
+      work_packageable_thing_description += 'Led by the '
+      work_packageable_thing_description += link_to(work_packageable_thing.lead_government_organisation_label, organisation_accountable_to_parliament_show_url( :organisation_accountable_to_parliament => work_packageable_thing.lead_government_organisation_id ) )
+      work_packageable_thing_description += '.'
+    else
+    
+      # TODO: whatever needs to happen with secondary legislation.
+    end
+    
+    # If the work packageable thing description is not empty, we wrap it in a paragraph.
+    content_tag( 'p', work_packageable_thing_description ) if !work_packageable_thing_description.empty?
+    
+    
+    # We return the work packageable thing description.
+    work_packageable_thing_description.html_safe
+  end
 end
 
