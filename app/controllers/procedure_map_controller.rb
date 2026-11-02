@@ -18,6 +18,14 @@ class ProcedureMapController < ApplicationController
     
       # We check which format the user has requested.
       respond_to do |format|
+      
+        # If the user has requested JSON ...
+        format.json {
+          # ... we get all the steps and the routes in the procedure.
+          @steps = get_procedure_steps( procedure_id )
+          @routes = get_procedure_routes( procedure_id )
+#           render json: @steps
+        }
         
         # If the user has requested a .dot file.
         format.dot {

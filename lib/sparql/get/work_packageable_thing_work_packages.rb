@@ -18,13 +18,15 @@ module Sparql::Get::WorkPackageableThingWorkPackages
       # ... we create a new work package object ...
       work_package = WorkPackage.new
       work_package.identifier = row['workPackage']
-      work_package.work_packageable_thing_identifer = row['WorkPackagedThing']
+      work_package.work_packageable_thing_identifer = row['workPackagedThing']
       work_package.work_packageable_thing_label = row['workPackagedThingName']
       work_package.made_available_on = row['combinedDate'].to_date if row['combinedDate']
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
       work_package.calculation_style_identifier = row['calculationStyle']
       work_package.calculation_style_label = row['calculationStyleName']
+      work_package.laying_body_identifier = row['layingBody']
+      work_package.laying_body_label = row['layingBodyName']
       
       # ... and add it to the array of work packages.
       work_packages << work_package
