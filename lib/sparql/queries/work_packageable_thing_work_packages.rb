@@ -12,7 +12,7 @@ SELECT ?workPackage ?workPackagedThing ?workPackagedThingName ?combinedDate ?pro
 	:name ?workPackagedThingName;
 	:workPackagedThingHasWorkPackage ?workPackage.
 
-	VALUES ?workPackagedThing { id:h7Fdnj6O }
+	VALUES ?workPackagedThing { id:#{work_packageable_thing_id} }
 
   	OPTIONAL {
     	?workPackagedThing :laidThingHasLaying ?laying .
