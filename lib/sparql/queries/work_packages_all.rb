@@ -14,8 +14,8 @@ SELECT DISTINCT
     ?combinedDate
     ?procedure
     ?procedureName
-    ?calculationStyle
-    ?calculationStyleName
+    ?layingBody
+    ?layingBodyName
     ?hasCommitteeConcernsFlag
     ?hasMotionTabledFlag
 WHERE {
@@ -23,6 +23,14 @@ WHERE {
     ?Paper a :WorkPackagedThing ;
            :name ?Papername ;
            :workPackagedThingHasWorkPackage ?workPackage .
+
+
+    OPTIONAL {
+    ?Paper :laidThingHasLaying ?laying .
+    ?laying :businessItemHasProcedureStep id:cspzmb6w ;
+    :layingHasLayingBody ?layingBody .
+    ?layingBody :name ?layingBodyName .
+	}
 
     OPTIONAL {
         ?workPackage :workPackageHasBusinessItem ?businessItem .
@@ -51,11 +59,7 @@ WHERE {
 
     ?procedure :name ?procedureName .
 
-    OPTIONAL {
-        ?workPackage :workPackageHasCalculationStyle ?calculationStyle .
-        ?calculationStyle :name ?calculationStyleName .
-    }
-
+    
     BIND(
         COALESCE(?businessItemDate, ?businessItemDate2)
         AS ?combinedDate

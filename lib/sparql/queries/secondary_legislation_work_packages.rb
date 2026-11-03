@@ -14,20 +14,27 @@ SELECT DISTINCT
     ?businessItemDate
     ?procedure
     ?procedureName
-    ?calculationStyle
-    ?calculationStyleName
+    ?layingBody
+    ?layingBodyName
     ?hasCommitteeConcernsFlag
     ?hasMotionTabledFlag
 WHERE {
 
     ?Paper a :EnabledThing ;
-           :name ?Papername ;
-           :workPackagedThingHasWorkPackage ?workPackage .
+    :name ?Papername ;
+    :workPackagedThingHasWorkPackage ?workPackage .
+
+    OPTIONAL {
+        ?Paper :laidThingHasLaying ?laying .
+        ?laying :businessItemHasProcedureStep id:cspzmb6w ;
+        :layingHasLayingBody ?layingBody .
+        ?layingBody :name ?layingBodyName .
+	}      
 
     OPTIONAL {
         ?workPackage :workPackageHasBusinessItem ?businessItem .
         ?businessItem :businessItemHasProcedureStep ?step ;
-                      :businessItemDate ?businessItemDate .
+        :businessItemDate ?businessItemDate .
 
         VALUES ?step {
             id:isWn7s3K
@@ -35,16 +42,11 @@ WHERE {
                     }
     }
 
-       ?workPackage :workPackageHasProcedure ?procedure .
+    ?workPackage :workPackageHasProcedure ?procedure .
 
     ?procedure :name ?procedureName .
 
-    OPTIONAL {
-        ?workPackage :workPackageHasCalculationStyle ?calculationStyle .
-        ?calculationStyle :name ?calculationStyleName .
-    }
-
-
+   
     BIND(
         EXISTS {
             ?workPackage :workPackageHasBusinessItem ?bi3 .

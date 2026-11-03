@@ -3,66 +3,63 @@ module Sparql::Queries::WorkPackagesCurrentAll
   # A SPARQL query to get current work package.
   def work_packages_current_all_query
     "
-      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX :     <https://id.parliament.uk/schema/>
-        PREFIX id:   <https://id.parliament.uk/>
+PREFIX :     <https://id.parliament.uk/schema/>
+PREFIX id:   <https://id.parliament.uk/>
 
-        SELECT distinct
-          ?Paper ?Papername ?workPackage ?businessItem ?step ?combinedDate
-          ?procedure ?procedureName ?calculationStyle ?calculationStyleName
-          (BOUND(?stepId3) AS ?hasCommitteeConcernsFlag)   
-         (BOUND(?stepId4) AS ?hasMotionTabledFlag)  
-        WHERE {
-          ?Paper a :WorkPackagedThing ;
-                 :name ?Papername ;
-                 :workPackagedThingHasWorkPackage ?workPackage .
+SELECT DISTINCT ?Paper ?Papername ?workPackage ?businessItem ?step ?combinedDate ?procedure ?procedureName ?layingBody ?layingBodyName (BOUND(?stepId3) AS ?hasCommitteeConcernsFlag) (BOUND(?stepId4) AS ?hasMotionTabledFlag)  
+WHERE {
+  ?Paper a :WorkPackagedThing ;
+  :name ?Papername ;
+  :workPackagedThingHasWorkPackage ?workPackage .
 
-          OPTIONAL {
-            ?workPackage :workPackageHasBusinessItem ?businessItem .
-            ?businessItem :businessItemHasProcedureStep ?step ;
-                          :businessItemDate ?businessItemDate .
-            FILTER (?step IN (id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB))
-          }
+  OPTIONAL {
+    ?Paper :laidThingHasLaying ?laying .
+    ?laying :businessItemHasProcedureStep id:cspzmb6w ;
+    :layingHasLayingBody ?layingBody .
+    ?layingBody :name ?layingBodyName .
+	}       
 
-          OPTIONAL {
-            ?workPackage :workPackageHasBusinessItem ?businessItem2 .
-            ?businessItem2 :businessItemHasProcedureStep ?step2 ;
-                           :businessItemDate ?businessItemDate2 .
-            FILTER (?step2 IN (id:AmYrFxwO))
-          }
+  OPTIONAL {
+    ?workPackage :workPackageHasBusinessItem ?businessItem .
+    ?businessItem :businessItemHasProcedureStep ?step ;
+    :businessItemDate ?businessItemDate .
+    FILTER ( ?step IN ( id:isWn7s3K, id:cspzmb6w, id:ITNO9JWr, id:otscOTzB ) )
+  }
 
-          ?workPackage :workPackageHasProcedure ?procedure .
-          ?procedure :name ?procedureName .
+  OPTIONAL {
+    ?workPackage :workPackageHasBusinessItem ?businessItem2 .
+    ?businessItem2 :businessItemHasProcedureStep ?step2 ;
+    :businessItemDate ?businessItemDate2 .
+    FILTER ( ?step2 IN ( id:AmYrFxwO ) )
+  }
 
-          OPTIONAL {
-            ?workPackage :workPackageHasCalculationStyle ?calculationStyle .
-            ?calculationStyle :name ?calculationStyleName .
-          }
+  ?workPackage :workPackageHasProcedure ?procedure .
+  ?procedure :name ?procedureName .
 
-          OPTIONAL {
-            ?workPackage :workPackageHasBusinessItem ?bi3 .
-            ?bi3 :businessItemHasProcedureStep ?stepId3 .
-            ?stepId3 :procedureStepHasProcedureStepCollectionMembership/
-                     :procedureStepCollectionMembershipHasProcedureStepCollection id:7CBVQcZF
-          }
+  OPTIONAL {
+    ?workPackage :workPackageHasBusinessItem ?bi3 .
+    ?bi3 :businessItemHasProcedureStep ?stepId3 .
+    ?stepId3 :procedureStepHasProcedureStepCollectionMembership/
+    :procedureStepCollectionMembershipHasProcedureStepCollection id:7CBVQcZF
+  }
 
-            OPTIONAL {
-            ?workPackage :workPackageHasBusinessItem ?bi4 .
-            ?bi4 :businessItemHasProcedureStep ?stepId4 .
-            ?stepId4 :procedureStepHasProcedureStepCollectionMembership/
-                     :procedureStepCollectionMembershipHasProcedureStepCollection id:l3g2umNB
-          }
+  OPTIONAL {
+    ?workPackage :workPackageHasBusinessItem ?bi4 .
+    ?bi4 :businessItemHasProcedureStep ?stepId4 .
+    ?stepId4 :procedureStepHasProcedureStepCollectionMembership/
+    :procedureStepCollectionMembershipHasProcedureStepCollection id:l3g2umNB
+  }
 
-          MINUS {
-            ?workPackage :workPackageHasBusinessItem ?bi2 .
-            ?bi2 :businessItemHasProcedureStep ?stepId2 .
-            ?stepId2 :procedureStepHasProcedureStepCollectionMembership/
-                     :procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI
-          }
+  MINUS {
+    ?workPackage :workPackageHasBusinessItem ?bi2 .
+    ?bi2 :businessItemHasProcedureStep ?stepId2 .
+    ?stepId2 :procedureStepHasProcedureStepCollectionMembership/
+    :procedureStepCollectionMembershipHasProcedureStepCollection id:TRohjSuI
+  }
 
-          BIND(COALESCE(?businessItemDate, ?businessItemDate2) AS ?combinedDate)
-        }
-        ORDER BY DESC(?combinedDate) ?Papername
+  BIND(COALESCE(?businessItemDate, ?businessItemDate2) AS ?combinedDate)
+}
+ORDER BY DESC(?combinedDate) ?Papername
     "
   end
 end
