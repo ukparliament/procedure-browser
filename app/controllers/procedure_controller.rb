@@ -5,6 +5,8 @@ class ProcedureController < ApplicationController
   include Sparql::Queries::Procedures
   include Sparql::Get::ProceduresMain
   include Sparql::Queries::ProceduresMain
+  include Sparql::Get::ProceduresComponent
+  include Sparql::Queries::ProceduresComponent
   include Sparql::Get::Procedure
   include Sparql::Queries::Procedure
   include Sparql::Get::ProcedureWorkPackageCountCurrent
@@ -21,7 +23,6 @@ class ProcedureController < ApplicationController
     @description = 'Procedures.'
     @crumb << { label: 'Procedures', url: nil }
     @section = 'procedures'
-    @subsection = 'all'
   end
 
   def main
@@ -30,10 +31,21 @@ class ProcedureController < ApplicationController
     @page_title = 'Procedures'
     @multiline_page_title = "Procedures".html_safe
     @description = 'Procedures.'
-    @crumb << { label: 'Procedures', url: procedure_list_url }
-    @crumb << { label: 'Main', url: nil }
+    @crumb << { label: 'Procedures', url: nil }
     @section = 'procedures'
     @subsection = 'main'
+  end
+
+  def component
+    @procedures = get_component_procedures
+    
+    @page_title = 'Component procedures'
+    @multiline_page_title = "Component procedures".html_safe
+    @description = 'Component procedures.'
+    @crumb << { label: 'Procedures', url: procedure_main_list_url }
+    @crumb << { label: 'Components', url: nil }
+    @section = 'procedures'
+    @subsection = 'component'
   end
 
   def show

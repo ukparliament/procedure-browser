@@ -1,0 +1,8 @@
+<%= render :partial => 'main_nav' %>
+
+<div class="reading-width">
+	<%= list_item_count_sentence( 'component procedure', @procedures.size ) %>
+	<ol class="unnumbered card-list">
+		<%= render :partial => 'procedure', :collection => @procedures %>
+	</ol>
+</div>
