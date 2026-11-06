@@ -27,6 +27,8 @@ module Sparql::Get::WorkPackagesCurrent
       work_package.made_available_on = row['combinedDate'].to_date if row['combinedDate']
       work_package.procedure_identifier = row['procedure']
       work_package.procedure_label = row['procedureName']
+      work_package.calculation_style_identifier = row['calculationStyle']
+      work_package.calculation_style_label = row['calculationStyleName']
       if row['hasCommitteeConcernsFlag'] == 'true'
         work_package.has_committee_concerns = true
       else
@@ -37,14 +39,6 @@ module Sparql::Get::WorkPackagesCurrent
       else
         work_package.has_motion_tabled = false
       end
-      work_package.si_number = row['sINumber']
-      work_package.si_year = row['sIYear']
-      work_package.si_prefix = row['sIprefix']
-      work_package.command_paper_prefix = row['commandPrefix']
-      work_package.command_paper_number = row['commandPaperNumber']
-      work_package.treaty_series_citation = row['seriesCitation']
-      work_package.laying_body_identifier = row['layingBody']
-      work_package.laying_body_label = row['layingBodyName']
       
       # ... and add it to the array of work packages.
       work_packages << work_package
