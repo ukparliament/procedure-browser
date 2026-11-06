@@ -1,29 +1,5 @@
-<a href="<%= url_for( work_package_show_url( :work_package => work_package.id ) ) -%>" class="card">
-	<div class="card-inner">
-		<div class="content">
-			<div class="primary-info">
-				<%= work_package.work_packageable_thing_label %>
-			</div>
-			<div class="text text-secondary">
-				<%= work_package_description( work_package ) %>
-				<%= render :partial => 'work_package/work_package_flags', :object => work_package %>
-			</div>
-			<div class="info">
-				<div class="info-inner">
-					<div class="indicators-left">
-						<div class="indicator indicator-label">
-							<%= work_package_date( work_package ) %>
-						</div>
-					</div>
-					<div class="indicators-right">
-						<div class="indicator">
-							<div class="indicator indicator-label">
-								<%= work_package_reference( work_package ) %>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</a>
+<li>
+	<%= content_tag( 'h2', link_to( work_package.work_packageable_thing_label, work_package_show_url( :work_package => work_package.id ) ) ) %>
+	<%= work_package_description_with_markup( work_package ) %>
+	<%= render :partial => 'work_package/work_package_flags', :object => work_package %>
+</li>

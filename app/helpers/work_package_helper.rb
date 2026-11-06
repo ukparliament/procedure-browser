@@ -145,18 +145,9 @@ module WorkPackageHelper
   def work_package_description( work_package )
     work_package_list_item_description = 'A work package'
     if work_package.made_available_on
-      if work_package.laying_body_identifier
-        work_package_list_item_description +=' laid on '
-        work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
-        work_package_list_item_description +=' by the '
-        work_package_list_item_description += work_package.laying_body_label
-       else
-        work_package_list_item_description += ' made available on '
-        work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
-      end
+      work_package_list_item_description += ' made available on '
+      work_package_list_item_description += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
     end
-    
-    
     work_package_list_item_description += ', subject to the '
     work_package_list_item_description += work_package.procedure_label
     work_package_list_item_description += ' procedure.'
@@ -166,35 +157,6 @@ module WorkPackageHelper
       work_package_list_item_description += '.'
     end
     work_package_list_item_description
-  end
-  
-  def work_package_date( work_package )
-    work_package_date = ''
-    if work_package.made_available_on
-      work_package_date += work_package.made_available_on.strftime( $DATE_DISPLAY_FORMAT )
-    end
-    work_package_date
-  end
-  
-  def work_package_reference( work_package )
-    work_package_reference = ''
-    if work_package.si_prefix
-      work_package_reference += work_package.si_prefix
-      work_package_reference += ' '
-      work_package_reference += work_package.si_year
-      if work_package.si_number
-        work_package_reference += '/'
-        work_package_reference += work_package.si_number
-      end
-    elsif work_package.command_paper_prefix
-      work_package_reference += work_package.command_paper_prefix
-      work_package_reference += ' '
-      work_package_reference += work_package.command_paper_number
-      if work_package.treaty_series_citation
-        work_package_reference = work_package.treaty_series_citation + ' - ' + work_package_reference
-      end
-    end
-    work_package_reference
   end
   
   def work_package_table_of_contents( work_package_past_business_items, work_package_future_business_items, work_package_undated_business_items )
