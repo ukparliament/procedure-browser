@@ -36,6 +36,14 @@ module Sparql::Get::WorkPackagesCurrentAll
       else
         work_package.has_motion_tabled = false
       end
+      work_package.si_number = row['sINumber']
+      work_package.si_year = row['sIYear']
+      work_package.si_prefix = row['sIprefix']
+      work_package.command_paper_prefix = row['commandPrefix']
+      work_package.command_paper_number = row['commandPaperNumber']
+      work_package.treaty_series_citation = row['seriesCitation']
+      work_package.laying_body_identifier = row['layingBody']
+      work_package.laying_body_label = row['layingBodyName']
       
       # ... and add it to the array of work packages.
       work_packages << work_package
