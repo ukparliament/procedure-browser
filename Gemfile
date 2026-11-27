@@ -24,7 +24,7 @@ gem "puma"
 # Explicitly have csv and irb, freeze json until next version of rails
 gem "csv"
 gem "irb"
-gem 'json', '~> 3.1'
+gem 'json', '~> 3.2'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
