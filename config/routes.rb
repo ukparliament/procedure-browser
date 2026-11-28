@@ -101,6 +101,7 @@ Rails.application.routes.draw do
   
   get 'procedure-browser/procedures' => 'procedure#index', as: :procedure_list
   get 'procedure-browser/procedures/main' => 'procedure#main', as: :procedure_main_list
+  get 'procedure-browser/procedures/components' => 'procedure#component', as: :procedure_component_list
   get 'procedure-browser/procedures/:procedure' => 'procedure#show', as: :procedure_show
   
   get 'procedure-browser/procedures/:procedure/work-packages' => 'procedure_work_package#index', as: :procedure_work_package_list

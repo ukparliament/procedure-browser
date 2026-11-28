@@ -1,6 +1,12 @@
-<li>
-	<%= content_tag( 'h2', link_to( step_label_in_list( step_with_depth ), procedure_step_show_url( :step => step_with_depth.id ) ) ) %>
-	
-	
-	<%= content_tag( 'p', "With step depth #{step_with_depth.depth}." ) %>
-</li>
+<a href="<%= procedure_step_show_url( :step => step_with_depth.id ) %>" class="card">
+	<li class="card-inner">
+		<div class="content">
+			<div class="primary-info">
+				<%= step_label_in_list( step_with_depth ) %>
+			</div>
+			<div class="text text-secondary">
+				With step depth <%= step_with_depth.depth %>
+			</div>
+		</div>
+	</li>
+</a>

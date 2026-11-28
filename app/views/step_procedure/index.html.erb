@@ -5,7 +5,7 @@
 	<%= list_item_count_sentence( 'procedure', @step_procedures.size ) %>
 
 	<% unless @step_procedures.empty? -%>
-		<ol class="unnumbered">
+		<ol class="unnumbered card-list">
 			<%= render :partial => 'procedure/procedure', :collection => @step_procedures %>
 		</ol>
 	<% end -%>

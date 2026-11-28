@@ -5,7 +5,7 @@ module Sparql::Queries::WorkPackageableThingWorkPackages
     "
 PREFIX id: <https://id.parliament.uk/>
 PREFIX : <https://id.parliament.uk/schema/>
-        
+    
 SELECT ?workPackage ?workPackagedThing ?workPackagedThingName ?combinedDate ?procedure ?procedureName ?calculationStyle ?calculationStyleName ?layingBody ?layingBodyName WHERE {
 
   	?workPackagedThing a :WorkPackagedThing;
@@ -38,9 +38,9 @@ SELECT ?workPackage ?workPackagedThing ?workPackagedThingName ?combinedDate ?pro
 
 	OPTIONAL {    
     	?workPackage :workPackageHasBusinessItem ?businessItem2 .
-		?businessItem2 :businessItemHasProcedureStep id:AmYrFxw0;
+		?businessItem2 :businessItemHasProcedureStep ?step2;
 		:businessItemDate ?businessItemDate2.
-
+        VALUES ?step2 {id:AmYrFxwO}
       	}
 
 

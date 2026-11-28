@@ -6,7 +6,7 @@
 	<%= content_tag( 'p', "End date: #{@route.end_on.strftime( $DATE_DISPLAY_FORMAT )}" ) if @route.end_on %>
 
 	<%= list_item_count_sentence( 'procedure', @procedures.size ) %>
-	<ol class="unnumbered">
+	<ol class="unnumbered card-list">
 		<%= render :partial => 'procedure/procedure', :collection => @procedures %>
 	</ol>
 
