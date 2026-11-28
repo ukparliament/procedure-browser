@@ -25,7 +25,15 @@
 class WorkPackage < ApplicationRecord
   include PgSearch::Model
   
-  attr_accessor :work_packageable_thing_link, :laying_body_identifier, :laying_body_label
+  attr_accessor :work_packageable_thing_link
+  attr_accessor :laying_body_identifier
+  attr_accessor :laying_body_label
+  attr_accessor :si_number
+  attr_accessor :si_year
+  attr_accessor :si_prefix
+  attr_accessor :command_paper_prefix
+  attr_accessor :command_paper_number
+  attr_accessor :treaty_series_citation
 
   SEARCH_ON = [
                 :identifier,
