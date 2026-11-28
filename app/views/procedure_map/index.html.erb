@@ -3,48 +3,56 @@
 <div class="reading-width">
 
 	<%= render :partial => 'library_design/feeds/feeds' %>
-
-<script
-      type="text/javascript"
-      src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
-    ></script>
-    <style type="text/css">
-      #graph {
-        width: 100%;
-        height: 800px;
-        border: 1px solid lightgray;
-      }
-    </style>
-    
-        <div id="graph"></div>
-
-<!-- 
-<% @routes.each do |route| %>
-   <code><%= route.inspect %></code>
-<%end %>
- -->
-
-    <script type="text/javascript">
-      var nodes = new vis.DataSet([
-      <% @steps.each do |step| %>
-   		{ id: '<%= step.id %>', label: '<%= step.display_label %>' },
-	  <%end %>
-      ]);
-
-      var edges = new vis.DataSet([  
-      <% @routes.each do |route| %>
-   		{ from: '<%= route.from_step_id %>', to: '<%= route.to_step_id %>', arrows: 'to' },
-   	  <%end %>
-      ]);
-
-      var container = document.getElementById("graph");
-      var data = {
-        nodes: nodes,
-        edges: edges,
-      };
-      var options = {};
-      var network = new vis.Network(container, data, options);
-    </script>
+	
+	<% if @procedure.map_url -%>
+		<div id="map">
+			<%= content_tag( 'h2', "Map of the #{@procedure.label} procedure, hand-drawn by the House of Commons Library" ) %>
+			<p>
+				<a href="<%= @procedure.map_url_svg %>" title="SVG representation of the <%= @procedure.label %> procedure map">
+					<img src="<%= @procedure.map_url_svg %>" alt="SVG representation of the <%= @procedure.label %> procedure map" />
+				</a>
+			</p>
+			<%= content_tag( 'p', "#{link_to( 'Download this map as a PDF', @procedure.map_url_pdf )} from GitHub.".html_safe ) %>
+		</div>
+	<% end -%>
+	
+	<div id="graphviz">
+		<%= content_tag( 'h2', "Graph visualisation of the #{@procedure.label} procedure" ) %>
+		<script
+			type="text/javascript"
+			src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js">
+		</script>
+		<div id="graph"></div>
+		
+		<script type="text/javascript">
+			var nodes = new vis.DataSet([
+				<% @steps.each do |step| %>
+					{
+						id: '<%= step.id %>',
+						label: '<%= step.display_label %>'
+					},
+				<% end %>
+			]);
+			
+			var edges = new vis.DataSet([
+				<% @routes.each do |route| %>
+					{
+						from: '<%= route.from_step_id %>',
+						to: '<%= route.to_step_id %>',
+						arrows: 'to'
+					},
+				<% end %>
+			]);
+			
+			var container = document.getElementById("graph");
+			var data = {
+				nodes: nodes,
+				edges: edges,
+			};
+			var options = {};
+			var network = new vis.Network(container, data, options);
+		</script>
+	</div>
 
 	<%= render :partial => 'common/identifier', :object => @procedure %>
 </div>
